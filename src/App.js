@@ -9,7 +9,7 @@ import './CSS/tabs.css';
 import './CSS/scroll.css';
 import './CSS/status.css';
 
-import logo from './G4W/images/spot.ico';
+import logo from './assets/images/spot.ico';
 import Toolbar from './Components/Toolbar/Toolbar';
 import SpotColorDialog from './Components/Toolbar/SpotColorDialog';
 import Socoban from './Components/Socoban/Socoban';

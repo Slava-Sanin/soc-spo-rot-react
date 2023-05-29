@@ -71,7 +71,7 @@ body {
 }
 
 .main-window {
-  background: url("./G4W/images/GRAND/GRAND11.bmp") no-repeat;
+  background: url("./assets/images/GRAND/GRAND11.bmp") no-repeat;
   border: 2px solid #E7D2A5;
   max-height: 422px;
   min-height: 422px;

@@ -26,7 +26,7 @@ export default class SpotColorDialog extends Component {
 							<div className="div4">
 								<div className="div5">
 									<div className="div6">
-										<img src="./G4W/images/men.png" alt="man" height="60" width="60" />
+										<img src="../assets/images/men.png" alt="man" height="60" width="60" />
 									</div>
 
 									<div className="div9">
@@ -35,7 +35,7 @@ export default class SpotColorDialog extends Component {
 									</div>
 
 									<div className="div6" style={{float: "right"}}>
-										<img src="./G4W/images/computer.jpg" alt="computer" height="60" width="60" />
+										<img src="../assets/images/computer.jpg" alt="computer" height="60" width="60" />
 									</div>
 								</div>
 

@@ -6,7 +6,7 @@
     z-index: 100;
     top: -26px;
     margin-right: 24px;
-    //display: none;
+    /*display: none;*/
 }
 
 .Spot_toolbar p {
@@ -25,13 +25,13 @@
 .Spot_color.left {
     width: 40px;
     height: 40px;
-    background: url("../G4W/images/Spot/spots.png") -80px -80px no-repeat black;
+    background: url("../assets/images/Spot/spots.png") -80px -80px no-repeat black;
 }
 
 .Spot_color.right {
     width: 40px;
     height: 40px;
-    background: url("../G4W/images/Spot/spots.png") -80px -120px no-repeat black;
+    background: url("../assets/images/Spot/spots.png") -80px -120px no-repeat black;
 }
 
 .ramka {
@@ -177,7 +177,7 @@
 
 .div11 {
     width: 40px;
-    background: url("../G4W/images/Spot/spots.png") -80px -80px no-repeat black;
+    background: url("../assets/images/Spot/spots.png") -80px -80px no-repeat black;
 }
 
 .wraper3 form input {

@@ -13,7 +13,7 @@
   }
   
   #tabs-1 {
-    background: url("../G4W/images/GRAND/GRAND12.bmp") no-repeat;
+    background: url("../assets/images/GRAND/GRAND12.bmp") no-repeat;
   }
   
   #tabs-2, #tabs-3 {
@@ -21,11 +21,11 @@
   }
   
   #tabs-2 {
-    background: url("../G4W/images/GRAND/GRAND13.bmp") no-repeat;
+    background: url("../assets/images/GRAND/GRAND13.bmp") no-repeat;
   }
   
   #tabs-3 {
-    background: url("../G4W/images/GRAND/GRAND14.bmp") no-repeat;
+    background: url("../assets/images/GRAND/GRAND14.bmp") no-repeat;
   }
   
   #tabs {
@@ -61,6 +61,6 @@
     height: 100%;
     float: right;
     border: 1px solid black;
-    background: url("../G4W/images/Socoban/fon24.bmp");
+    background: url("../assets/images/Socoban/fon24.bmp");
     box-sizing: border-box;
 }

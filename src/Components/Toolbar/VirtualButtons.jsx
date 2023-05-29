@@ -23,19 +23,19 @@ export default class VirtualButtons extends Component {
                 <tbody>
                     <tr>
                         <th></th>
-                        <th id="virtual_up" onClick={this.state.p1.movetop(72)}></th>
+                        <th id="virtual_up" onClick={ () => {this.state.p1.movetop(72)} }></th>
                         <th></th>
                     </tr>
 
                     <tr>
-                        <th id="virtual_left" onClick={this.state.p1.movetop(75)}></th>
-                        <th id="virtual_move" onMouseMove={(event)=>this.state.moveVirtualButtons(event)}>+</th>
-                        <th id="virtual_right" onClick={this.state.p1.movetop(77)}></th>
+                        <th id="virtual_left" onClick={ () => {this.state.p1.movetop(75)} }></th>
+                        <th id="virtual_move" onMouseMove={ (event) => this.state.moveVirtualButtons(event) }>+</th>
+                        <th id="virtual_right" onClick={ () => {this.state.p1.movetop(77)} }></th>
                     </tr>
 
                     <tr>
                         <th></th>
-                        <th id="virtual_down" onClick={this.state.p1.movetop(80)}></th>
+                        <th id="virtual_down" onClick={ () => {this.state.p1.movetop(80)} }></th>
                         <th></th>
                     </tr>
                 </tbody>

@@ -1,7 +1,7 @@
 .scroll .up {
     width: 100%;
     height: 29px;
-    background: url("../G4W/images/up.png") no-repeat;
+    background: url("../assets/images/up.png") no-repeat;
     background-size: 100% 100%;
     background-color: #EADCBB;
     cursor: pointer;
@@ -10,7 +10,7 @@
 .scroll .down {
     width: 28px;
     height: 28px;
-    background: url("../G4W/images/down.png") no-repeat;
+    background: url("../assets/images/down.png") no-repeat;
     background-size: 100% 100%;
     background-color: #EADCBB;
     position: absolute;
@@ -34,40 +34,40 @@
 }
 
 #tabs-1 .scroll .up {
-    background-image: url("../G4W/images/arrow_up.png"), url("../G4W/images/Socoban/socoban.png");
+    background-image: url("../assets/images/arrow_up.png"), url("../assets/images/Socoban/socoban.png");
     background-repeat: no-repeat;
     background-size: inherit;
     background-position: center, -101px 0px;
 }
 
 #tabs-1 .scroll .down {
-    background-image: url("../G4W/images/arrow_down.png"), url("../G4W/images/Socoban/socoban.png");
+    background-image: url("../assets/images/arrow_down.png"), url("../assets/images/Socoban/socoban.png");
     background-repeat: no-repeat;
     background-size: inherit;
     background-position: center, -101px 0px;
 }
 
 #tabs-1 .scroll .tracking {
-    background: url("../G4W/images/scroll_fon.png") no-repeat;
+    background: url("../assets/images/scroll_fon.png") no-repeat;
 }
 
 #tabs-1 .scroll .lev-position {
-    background: url("../G4W/images/scroll_socoban__fon.png") no-repeat;
+    background: url("../assets/images/scroll_socoban__fon.png") no-repeat;
     background-size: 100% 100%;
 }
 
 #tabs-3 .scroll .up {
-    background: url("../G4W/images/up.png") no-repeat;
+    background: url("../assets/images/up.png") no-repeat;
 }
 
 #tabs-3 .scroll .down {
-    background: url("../G4W/images/down.png") no-repeat;
+    background: url("../assets/images/down.png") no-repeat;
 }
 
 #tabs-3 .scroll .tracking {
 }
 
 #tabs-3 .scroll .lev-position {
-    background: url("../G4W/images/thumb.png") no-repeat;
+    background: url("../assets/images/thumb.png") no-repeat;
     background-size: 100% 100%;
 }

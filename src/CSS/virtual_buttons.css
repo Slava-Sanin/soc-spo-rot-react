@@ -13,22 +13,22 @@
 }
 
 #virtual_up {
-    background: url("../G4W/images/arrows4.png") -9px -6px no-repeat;
+    background: url("../assets/images/arrows4.png") -9px -6px no-repeat;
     cursor: pointer;
 }
 
 #virtual_left {
-    background: url("../G4W/images/arrows4.png") -56px -6px no-repeat;
+    background: url("../assets/images/arrows4.png") -56px -6px no-repeat;
     cursor: pointer;
 }
 
 #virtual_right {
-    background: url("../G4W/images/arrows4.png") -343px -6px no-repeat;
+    background: url("../assets/images/arrows4.png") -343px -6px no-repeat;
     cursor: pointer;
 }
 
 #virtual_down {
-    background: url("../G4W/images/arrows4.png") -150px -6px no-repeat;
+    background: url("../assets/images/arrows4.png") -150px -6px no-repeat;
     cursor: pointer;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .virtual_move_on {
-    background: url("../G4W/images/move5_30x30.png") no-repeat;
+    background: url("../assets/images/move5_30x30.png") no-repeat;
     background-size: cover;
 }
 

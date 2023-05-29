@@ -14,17 +14,17 @@
 }
 
 .toolbar #btn-socoban {
-    background: url("../G4W/images/BIGTOOL22.png")  2px 2px no-repeat;
+    background: url("../assets/images/BIGTOOL22.png")  2px 2px no-repeat;
     background-clip: content-box;
 }
 
 .toolbar #btn-spot {
-    background: url("../G4W/images/BIGTOOL22.png") -38px 2px no-repeat;
+    background: url("../assets/images/BIGTOOL22.png") -38px 2px no-repeat;
     background-clip: content-box;
 }
 
 .toolbar #btn-rotms {
-    background: url("../G4W/images/BIGTOOL22.png") -78px 2px no-repeat;
+    background: url("../assets/images/BIGTOOL22.png") -78px 2px no-repeat;
     background-clip: content-box;
 }
 
@@ -34,32 +34,32 @@
 }
 
 .sound {
-    background: url("../G4W/images/BIGTOOL22.png") -158px 2px no-repeat;
+    background: url("../assets/images/BIGTOOL22.png") -158px 2px no-repeat;
     background-clip: content-box;
 }
 
 .no-sound {
-    background: url("../G4W/images/no_sound.png") 2px no-repeat;
+    background: url("../assets/images/no_sound.png") 2px no-repeat;
     background-clip: content-box;
 }
 
 .toolbar #btn-save {
-    background: url("../G4W/images/BIGTOOL22.png") -198px 2px no-repeat;
+    background: url("../assets/images/BIGTOOL22.png") -198px 2px no-repeat;
     background-clip: content-box;
 }
 
 .toolbar #btn-new {
-    background: url("../G4W/images/BIGTOOL22.png") -238px 2px no-repeat;
+    background: url("../assets/images/BIGTOOL22.png") -238px 2px no-repeat;
     background-clip: content-box;
 }
 
 .toolbar #btn-finish {
-    background: url("../G4W/images/BIGTOOL22.png") -318px 2px no-repeat;
+    background: url("../assets/images/BIGTOOL22.png") -318px 2px no-repeat;
     background-clip: content-box;
 }
 
 .toolbar #btn-undo {
-    background: url("../G4W/images/BIGTOOL22.png") -358px 2px no-repeat;
+    background: url("../assets/images/BIGTOOL22.png") -358px 2px no-repeat;
     background-clip: content-box;
 }
 
