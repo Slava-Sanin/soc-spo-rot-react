@@ -190,7 +190,7 @@
 .wraper3 {
     margin: 0 auto;
     display: table;
-    width: -moz-fit-content;
+    width: fit-content;
 }
 
 .div13 {
