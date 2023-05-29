@@ -1,0 +1,25 @@
+.header {
+    background: linear-gradient(to right, darkblue, #4B9BC6);
+// height: 32px;
+}
+
+.header p {
+    color: yellow;
+//   font-weight: bold;
+//   line-height: 32px;
+//   height: inherit;
+    border: solid #EADCBB;
+    margin: 0;
+    height: 32px;
+}
+
+.header p a {
+    text-decoration: none;
+    color: yellow;
+    font-weight: bold;
+}
+
+.header p span {
+    vertical-align: 10px;
+//  padding-left: 130px;
+}

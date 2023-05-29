@@ -1,0 +1,257 @@
+/************ Player and Computer colors in game Spot *********************/
+
+.Spot_toolbar {
+    position: relative;
+    float: right;
+    z-index: 100;
+    top: -26px;
+    margin-right: 24px;
+    //display: none;
+}
+
+.Spot_toolbar p {
+    margin: 0;
+    padding: 0;
+    font-size: small;
+    padding-bottom: 9px;
+}
+
+#Spot_toolbar_button {
+    width: 12px;
+    height: 40px;
+    margin: 29px 5px 0px;
+}
+
+.Spot_color.left {
+    width: 40px;
+    height: 40px;
+    background: url("../G4W/images/Spot/spots.png") -80px -80px no-repeat black;
+}
+
+.Spot_color.right {
+    width: 40px;
+    height: 40px;
+    background: url("../G4W/images/Spot/spots.png") -80px -120px no-repeat black;
+}
+
+.ramka {
+    border: 1px solid gray;
+    padding: 2px 8px 4px;
+    width: 48px;
+}
+
+.ramka.left {
+    padding-left: 10px;
+    padding-right: 2px;
+}
+
+.ramka.right {
+    padding-left: 2px;
+    padding-right: 10px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+/*************************** Spot's options **********************************/
+
+#Spot_color_dialog {
+    width: 270px;
+    height: 464px;
+    border: 4px solid;
+    border-top-color: #E7D2A5;
+    border-right-color: #776737;
+    border-bottom-color: #776737;
+    border-left-color: lightyellow;
+    position: absolute;
+    top: 60px;
+	left: 172px;
+    z-index: 200;
+    background-color: #EADCBB;
+    box-shadow: 30px 10px 5px rgba(0, 0, 0, .5);
+    display: none;
+}
+
+.wraper2 {
+    height: inherit;
+}
+
+#Spot_color_dialog .header p {
+    border: 0px;
+    text-align: center;
+    padding: 3px;
+}
+
+#Spot_color_dialog .header {
+    height: 28px;
+}
+#Spot_color_dialog .wraper2 .header button {
+    float: right;
+    top: -37px;
+    position: relative;
+    cursor: pointer;
+}
+
+.closed {
+    display: none;
+}
+
+.showen {
+    display: block;
+}
+
+.div2 {
+    border: 3px solid;
+    border-top-color: #776737;
+    border-left-color: #776737;
+    border-right-color: #FFFBF3;
+    border-bottom-color: #FFFBF3;    /*#9A9370*/
+    margin: 15px;
+}
+
+.div3 {
+    border: 3px solid;
+    border-top-color: #FFFBF3;
+    border-left-color: #FFFBF3;
+    border-right-color: #776737;
+    border-bottom-color: #776737;    /*#9A9370*/
+}
+
+.div4 {
+    height: 364px;
+    border: 4px solid;
+    border-top-color: #E7D2A5;
+    border-right-color: #776737;
+    border-bottom-color: #776737;
+    border-left-color: lightyellow;    /*#9A9370*/
+}
+
+.div5 {
+    height: 95px;
+    margin: 0 auto;
+}
+
+.div6 {
+    margin: 5px;
+    border: 4px solid;
+    float: left;
+    border-top-color: #E7D2A5;
+    border-right-color: #776737;
+    border-bottom-color: #776737;
+    border-left-color: lightyellow;    /*#9A9370*/
+}
+
+.div7 {
+    height: 75px;
+    border: 2px solid;
+    border-left-color: white;
+    border-right-color: gray;
+    border-bottom-color: wheat;
+    border-top-color: wheat;
+    margin: 5px 17px 0px;
+}
+
+.div8 {
+    border: 2px solid;
+    border-top-color: white;
+    border-bottom-color: gray;
+    border-left-color: wheat;
+    border-right-color: wheat;
+}
+
+.div9 {
+    float: left;
+    width: 36px;
+}
+
+.div10,.div11,.div12 {
+    border: 1px solid black;
+    height: 200px;
+    float: left;
+}
+
+.div11 {
+    width: 40px;
+    background: url("../G4W/images/Spot/spots.png") -80px -80px no-repeat black;
+}
+
+.wraper3 form input {
+    width: 64px;
+    height: 24px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.wraper3 {
+    margin: 0 auto;
+    display: table;
+    width: -moz-fit-content;
+}
+
+.div13 {
+    margin: 5px auto;
+    float: left;
+}
+
+.div13 .div7 {
+    margin-top: 0px;
+    margin-bottom: 4px;
+    height: 15px;
+}
+
+.div14 {
+    float: left;
+    border: 3px solid;
+    border-top-color: #776737;
+    border-left-color: #776737;
+    border-right-color: #FFFBF3;
+    border-bottom-color: #FFFBF3;
+    width: 64px;
+    margin: 30px 4px 0px;
+    text-align: center;
+    padding: 2px 0px;
+    font-weight: bold;
+    font-family: "Times New Roman" ,Times, serif;
+    user-select: none;
+    background: rgba(37, 37, 32, 0.1) none repeat scroll 0% 0%;
+}
+
+.div15 {
+    border: 1px solid black;
+    margin: 12px;
+}
+
+/*--------------------------------------------------------------*/
+
+#first-or-second {
+    display: inline-block;
+    text-shadow: 1px 1px #fff;
+    text-decoration: none;
+    padding: 4px;
+    border: 1px solid #aaa;
+    border-radius: 100px;
+    outline: none;
+    background: #d6dbbf no-repeat;
+    background-image:
+            linear-gradient(to left, #aaa, #aaa),
+            linear-gradient(to left, #feffe8, #feffe8),
+            linear-gradient(#feffe8, #d6dbbf);
+    background-position: calc(100% - 2.7em) 0, calc(100% - 2.7em + 1px) 0, 0 0;
+    background-size: 1px 100%, 1px 100%, auto auto;
+    overflow: hidden;
+    width: 38px;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+}
+
+/*--------------------------------------------------------------*/
+
+input[name="Player"],input[name="Computer"] {
+    cursor: pointer;
+}

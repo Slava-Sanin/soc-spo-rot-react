@@ -1,0 +1,45 @@
+#status_socoban,
+#status_spot,
+#status_rotms {
+    height: inherit;
+    padding: 0;
+    display: flex;
+}
+
+#status_socoban .time,
+#status_socoban .level,
+#status_socoban .moves,
+#status_spot .time,
+#status_spot .player,
+#status_rotms .time,
+#status_rotms .level,
+#status_rotms .moves,
+#status_rotms .score {
+    height: auto;
+    width: auto;
+    float: left;
+    border-top: solid gray 1px;
+    border-bottom: solid white 1px;
+    border-left: solid gray 2px;
+    border-right: solid white 2px;
+    flex: auto;
+    padding-left: 4px;
+    font-size: 10pt;
+    line-height: -moz-block-height;
+}
+
+/******/
+
+.status {
+    height: 25px;
+    border-top: 2px solid gray;
+    border-left: 2px solid gray;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+    padding-left: 0px;
+    line-height: 25px;
+    line-height: -moz-block-height;
+    text-align: center;
+    z-index: 20;
+    background-color: #EADCBB;
+}

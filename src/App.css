@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  border: 1px solid black;
+  width: 621px;
+  border: 2px solid #E7D2A5;
+  background-color: #EADCBB;
+  overflow: hidden;
+	position: relative;
+  margin: auto;
+}
+
+.App-logo {
+  height: 32px;  
+  float: left;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App-header {
+  background: linear-gradient(to right, darkblue, #4B9BC6);
+  height: 32px;    
+}
+
+.App-header-p {
+  text-align: center;  
+  line-height: 32px;
+  font-weight: bold;
+  /* border: 2px solid red;     */
+}
+
+.App-link {
+  color: yellow;  
+  text-decoration: none;
+}
+
+body {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  overflow: hidden;
+}
+
+.wraper {
+  width: 621px;
+  margin: 0 auto;
+  border: 2px solid #E7D2A5;
+  background-color: #EADCBB;
+  overflow: hidden;
+  position: relative;
+}
+
+.wraper hr {
+  color: #E7D2A5;
+  margin: 0 4px 4px 4px;
+}
+
+.main-window {
+  background: url("./G4W/images/GRAND/GRAND11.bmp") no-repeat;
+  border: 2px solid #E7D2A5;
+  max-height: 422px;
+  min-height: 422px;
+}
+
+.separator1 {
+  width: 0px;
+  height: 46px;
+  border-right: 2px solid #8B8B8B;
+  border-left: 2px solid #F4F4F4;
+  position: relative;
+  top: 23px;
+  margin-left: 6px;
+  display: inline-block;
+}
+
+
+.mytooltiptext {
+  visibility: hidden;
+  width: auto;
+  background-color: #fffbcc;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid black;
+  padding: 5px;
+  margin-top: 25px;
+  position: absolute;
+  z-index: 200;
+}
+
+button:hover .mytooltiptext {
+  visibility: visible;
+  margin-top: 50px;
+}
+
+#IDM_Edit:hover .mytooltiptext,
+#IDM_Help:hover .mytooltiptext,
+#IDM_Exit:hover .mytooltiptext {	
+  visibility: visible;
+}
+
+/*----------------------------------------------*/
+
+.footer {
+text-align: center;
+font-size: 10pt;
+width: 100%;	
+}
+
+.footer p {
+padding: 6px;
+margin: 0;
+}
+
+/*----------------------------------------------*/
