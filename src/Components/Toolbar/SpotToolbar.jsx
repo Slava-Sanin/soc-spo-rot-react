@@ -14,7 +14,7 @@ export default class SpotToolbar extends Component {
 
     render() {
         return (
-                <div className="Spot_toolbar">
+			<div className="Spot_toolbar" style={{display: (this.props.selectedTab === 1) ? "block" : "none"}}>
 
 				<div className="ramka left">
 					<p>Player</p>

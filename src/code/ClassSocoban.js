@@ -11,13 +11,10 @@ import {
     GetColor,   
     moveVirtualButtons
 } from './functions.js'
-
-const A = window.A;
-const B = window.B;
+import SocobanLevels from "../Socoban/levels.json";
+import { A, B } from './constants';
 
 class ClassSocoban {
-    level = 1;
-    data_level = [];
     data_lev_gr = [];
     data_undo = [];
     starttime;
@@ -32,34 +29,35 @@ class ClassSocoban {
     level_is_completed = false;
     is_loaded = 0;
 
+    constructor() {
+        this.init();
+    }
 
     init() {
-        this.error = 0;
-        window.loadDoc(this.filename);
-        this.Level_to_Array();
+        this.level = 1;
+        this.error = 0;        
+        this.data_level = SocobanLevels[this.level - 1].data.split('');
         this.starttime = new Date();
         this.moves = 0;
-        this.bild_ground();
+        this.build_ground();
         this.member_last_move();
         this.level_is_completed = false;
-        $("#btn-undo").prop('disabled',true);
         return 0;
     }
 
     NewGame() {
         if (this.moves)
         {
-            window.PlayMySound("changepage.wav");
-
+            PlayMySound("changepage.wav");
             this.init();
         }
     }
 
     Undo() {
         if (this.level_is_completed === true) return;
-        for(var x=0; x<A; x++)
+        for(let x=0; x<A; x++)
         {
-            for(var y=0; y<B; y++)
+            for(let y=0; y<B; y++)
             {
                 this.data_level[x*B+y] = this.data_undo[x*B+y];
                 if (this.data_level[x*B+y] === '2') {this.curX=x; this.curY=y;}
@@ -70,15 +68,15 @@ class ClassSocoban {
     }
 
     member_last_move() {
-        for(var x=0; x<A; x++)
-            for(var y=0; y<B; y++)
+        for(let x=0; x<A; x++)
+            for(let y=0; y<B; y++)
                 this.data_undo[x*B+y] = this.data_level[x*B+y];
     }
 
-    bild_ground() {
-        // find cursor and bild the ground array
-        for(var x=0; x<A; x++)
-            for(var y=0; y<B; y++)
+    build_ground() {
+        // find cursor and build the ground array
+        for(let x=0; x<A; x++)
+            for(let y=0; y<B; y++)
             {
                 switch (this.data_level[x*B+y])
                 {
@@ -94,43 +92,23 @@ class ClassSocoban {
             }
     }
 
-    change_level() {
-        this.filename = "G4W/socoban/lev" + this.level + ".soc";
+    change_level(dir) {
+        if ((this.level + dir) < 1 || (this.level + dir) > SocobanLevels.length) return;
+        this.level += dir;
+        this.data_level = SocobanLevels[this.level - 1].data.split('');
     }
 
-    // SaveGame(socfilename)
-    // {
-    //     var handle;
-    //     var length = A*B;
-    //     var filename;
+    SaveGame(filename) {
+    }
 
-    //     if (window.Save_as_Flag) filename = socfilename;
-    //     else filename = "G4W/save/" + socfilename;
-
-    //     if ((handle = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE)) === -1)
-    //     {
-    //         alert(hwnd, "Can't create file!","ERROR!!!", MB_OK | MB_ICONERROR);
-    //         return -1;
-    //     }
-
-    //     if (write(handle, this.data_level, A*B) !== length)
-    //     {
-    //         alert(hwnd, "Can't write file!", "ERROR!!!", MB_OK | MB_ICONERROR);
-    //         close(handle);
-    //         return -1;
-    //     }
-
-    //     close(handle);
-    //     return 0;
-    // }
-
-    LoadGame(socfilename) {
-        this.filename = socfilename;
+    LoadGame(filename) {
+        this.filename = filename;
         return this.init();
     }
 
     movetop(key)
     {
+        console.log(key);
         switch (key)
         {
             case 75: // Moving left.
@@ -200,6 +178,7 @@ class ClassSocoban {
                 }
                 break;
             case 72: // Moving up.
+                console.log(this.curX);
                 if (this.data_level[(this.curX-1)*B+this.curY] === ' ' || this.data_level[(this.curX-1)*B+this.curY] === '3')
                 {
                     this.member_last_move();
@@ -271,9 +250,9 @@ class ClassSocoban {
 
     redraw() {
         // Drawing a map of current level.
-        for(var x=0; x<A; x++)
+        for(let x=0; x<A; x++)
         {
-            for(var y=0; y<B; y++)
+            for(let y=0; y<B; y++)
             {
                 this.putthis(x, y, this.data_level[x*B+y]);
             }
@@ -281,7 +260,7 @@ class ClassSocoban {
     }
 
     putthis(x, y, kode) {
-        var kode_x, kode_y;
+        let kode_x, kode_y;
 
         this.data_level[x*B+y] = kode;
 
@@ -289,7 +268,7 @@ class ClassSocoban {
         {
             kode = 'Z';
         }
-        var str = "#tabs-1 div.board div:nth-child(" + (x*B+y+1) + ")";
+        let str = "#tabs-1 div.board div:nth-child(" + (x*B+y+1) + ")";
         $(str).removeClass().addClass("div-soc-"+kode);
     }
 
@@ -300,9 +279,9 @@ class ClassSocoban {
     }
 
     check_end() {
-        for(var x=0; x<A; x++)
+        for(let x=0; x<A; x++)
         {
-            for(var y=0; y<B; y++)
+            for(let y=0; y<B; y++)
             {
                 if (this.data_lev_gr[x*B+y] === '3' && this.data_level[x*B+y] !== '5')
                     return;
@@ -330,7 +309,7 @@ class ClassSocoban {
     }
 
     // My_Scrolling(wParam, lParam) {
-    //     var prevlevel = this.level;
+    //     let prevlevel = this.level;
     //     switch (LOWORD(wParam))
     //     {
     //         case SB_LINEUP:
@@ -364,12 +343,6 @@ class ClassSocoban {
 
     change_background(str) {
     // makeBackGround(hwnd1, me, str);
-    }
-
-    Level_to_Array() {
-         for(var x=0; x < (A*B); x++) {
-                    this.data_level[x] = window.level_in_text_format[x];
-                }
     }
 
 }

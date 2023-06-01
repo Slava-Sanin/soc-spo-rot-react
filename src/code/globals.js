@@ -1,25 +1,51 @@
-window.background0 = "#1";
-window.background = "";
-window.path0 = "#1";
-window.path1 = "#2";
-window.path2 = "#3";
-window.path3 = "#4";
-window.CurPath = '';
-window.paintstruct = {};
-window.parts = [];
-window.gamecode = 0;
-window.loaded = 0;
-window.glob_sound = 1;
-window.status_line = 0;
-window.table = 1;
-window.Save_as_Flag = 0;
+import ClassSocoban from "./ClassSocoban";
+import {ClassSpot} from "./ClassSpot";
+import ClassRotms from "./ClassRotms";
+let
+    background0 = "#1",
+    background = "",
+    path0 = "#1",
+    path1 = "#2",
+    path2 = "#3",
+    path3 = "#4",
+    CurPath = '',
+    paintstruct = {},
+    parts = [],
+    gamecode = 0,
+    loaded = 0,
+    glob_sound = 1,
+    status_line = 0,
+    table = 1,
+    Save_as_Flag = 0,
+    level_in_text_format = "",
+    timer = {},
+    prev_game = 0,
+    virtual_buttons_moving = 0,
+    p1 = {},
+    p2 = {},
+    p3 = {};
 
-//window.p1 = new ClassSocoban();
-//window.p2 = new ClassSpot();
-//window.p3 = new ClassRotms();
-//st_Player PlayerDlg, ComputerDlg;
-
-window.level_in_text_format = "";
-window.timer = {};
-window.prev_game = 0;
-window.virtual_buttons_moving = 0;
+export {
+    background0,
+    background,
+    path0,
+    path1,
+    path2,
+    path3,
+    CurPath,
+    paintstruct,
+    parts,
+    gamecode,
+    loaded,
+    glob_sound,
+    status_line,
+    table,
+    Save_as_Flag,
+    level_in_text_format,
+    timer,
+    prev_game,
+    virtual_buttons_moving,
+    p1,
+    p2,
+    p3
+};

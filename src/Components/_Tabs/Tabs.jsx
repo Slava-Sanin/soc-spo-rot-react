@@ -24,6 +24,7 @@ export default class Tabs extends Component {
       }
     
       onClickTabItem = (tab) => {
+        console.log(tab);
         this.setState({ activeTab: tab });
         //if (tab === 0) this.activeGame = <Socoban />
         //if (tab === 1) this.activeGame = <Spot />

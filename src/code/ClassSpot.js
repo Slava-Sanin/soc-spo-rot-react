@@ -13,8 +13,9 @@ import {
     moveVirtualButtons
 } from './functions.js'
 
-const Asp = window.Asp;
-const Bsp = window.Bsp;
+import SpotsLevels from "../Spot/levels.json";
+import { Asp, Bsp } from './constants';
+import SocobanLevels from "../Socoban/levels.json";
 
 // For finding the best place to put spot.
 const PLACE = {
@@ -31,16 +32,15 @@ const st_Player = {
     is : 0 //first or second moving
 };
 
-var PlayerDlg = Object.create(st_Player);
+const PlayerDlg = Object.create(st_Player);
     PlayerDlg.color = 2;
     PlayerDlg.is = 1;
 
-var ComputerDlg = Object.create(st_Player);
+const ComputerDlg = Object.create(st_Player);
     ComputerDlg.color = 3;
     ComputerDlg.is = 2;
 
 class ClassSpot {
-        data_level = []; //[Asp][Bsp];
         data_lev_gr = []; //[Asp][Bsp];
         data_undo = []; //[Asp][Bsp];
         starttime;
@@ -63,33 +63,31 @@ class ClassSpot {
         best = Object.create(PLACE);
         ready;
     //////////////////////////////////////////////////////////////////////////
-    // Constructor bilds a window, background and fills a map of level.
+    // Constructor builds a window, background and fills a map of level.
     //////////////////////////////////////////////////////////////////////////
     constructor()
     {
         this.table_was_changed = 0; // Background changed "table"/pictures.
         this.level = 1;
+        this.data_level = SpotsLevels[this.level - 1].data.split('');
         this.Player.color = 2;      // Color of player by default.
         this.Computer.color = 3;    // Color of computer by default.
         this.level_is_completed = false;
         this.is_loaded = 0;
-        this.change_level();      // Create filename by level number.
+        this.init();
     }
 
     init() { 
         this.error=0;
         this.level_is_completed = false;
-        loadDoc(this.filename);
-        this.Level_to_Array();
-
+        this.data_level = SpotsLevels[this.level - 1].data.split('');
         this.starttime = new Date(); // Init. timer.
         this.moves = 0;
         this.Player.is = PlayerDlg.is;        // First or second?
         this.Computer.is = ComputerDlg.is;    // First or second?
         this.check_spots_number();            // Init. spots number.
-        InitStatus();                    // Init. status line.
         this.member_last_move();              // Save last moving.
-        this.redraw();                        // Draw all.
+        //this.redraw();                        // Draw all.
         if (this.Computer.is === 1) this.computer_move();
         return 0;
     }
@@ -104,15 +102,15 @@ class ClassSpot {
             // Sleep(700);
                 this.computer_move();
                 this.check_spots_number();
-                InitStatus();
+                //InitStatus();
             }
         }
     }
 
     Undo() {
-        for(var x=0; x<Asp; x++)
+        for(let x=0; x<Asp; x++)
         {
-            for(var y=0; y<Bsp; y++)
+            for(let y=0; y<Bsp; y++)
             {
                 this.data_level[x*Bsp+y] = this.data_undo[x*Bsp+y];
                 if (this.data_level[x*Bsp+y] === '2') {this.curX = x; this.curY = y;}
@@ -121,18 +119,18 @@ class ClassSpot {
         }
         this.moves--;
         this.check_spots_number();
-        InitStatus();
+        //InitStatus();
     }
 
     member_last_move() {
-        for(var x=0; x<Asp; x++)
-            for(var y=0; y<Bsp; y++)
+        for(let x=0; x<Asp; x++)
+            for(let y=0; y<Bsp; y++)
                 this.data_undo[x*Bsp+y] = this.data_level[x*Bsp+y];
     }
 
-    bild_ground() {    
-        for(var x=0; x<Asp; x++)
-            for(var y=0; y<Bsp; y++)
+    build_ground() {    
+        for(let x=0; x<Asp; x++)
+            for(let y=0; y<Bsp; y++)
             {
                 switch (this.data_level[x*Bsp+y])
                 {
@@ -146,44 +144,25 @@ class ClassSpot {
             }
     }
 
-    change_level() {
-        this.filename = "G4W/spot/lev" + this.level + ".spo";
+    change_level(dir) {
+        if ((this.level + dir) < 1 || (this.level + dir) > SpotsLevels.length) return;
+        this.level += dir;
+        this.data_level = SpotsLevels[this.level - 1].data.split('');
     }
 
-    // SaveGame(spofilename) {
-    //     var handle;
-    //     var length = Asp*Bsp;
-    //     var filename;
+    SaveGame(filename) {
+    }
 
-    //     if (Save_as_Flag) filename = spofilename;
-    //     else filename = "G4W/save/" + socfilename;
-
-    //     if ((handle = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE)) === -1)
-    //     {
-    //         alert(hwnd, "Can't create file!","ERROR!!!", MB_OK | MB_ICONERROR);
-    //         return -1;
-    //     }
-
-    //     if (write(handle, this.data_level, Asp*Bsp) !== length)
-    //     {
-    //         alert(hwnd, "Can't write file!", "ERROR!!!", MB_OK | MB_ICONERROR);
-    //         close(handle);
-    //         return -1;
-    //     }
-
-    //     close(handle);
-    //     return 0;
-    // }
-
-    LoadGame(spofilename) {
-        this.filename = window.socfilename;
+    LoadGame(filename) {
+        this.filename = filename;
         return this.init();
     }
+
     redraw() {
-        if (!this.state.this.state.p2.is_loaded) return;    
-        for(var x=0; x<Asp; x++)
+        if (!this.is_loaded) return;    
+        for(let x=0; x<Asp; x++)
         {
-            for(var y=0; y<Bsp; y++)
+            for(let y=0; y<Bsp; y++)
             {
                 this.putthis(1, x, y, this.data_level[x*Bsp+y]);
             }
@@ -195,8 +174,8 @@ class ClassSpot {
     }
 
     putthis(where, x, y, kode) {
-        var kode_x, kode_y;
-        var str;
+        let kode_x, kode_y;
+        let str;
 
         this.data_level[x*Bsp+y] = kode;
 
@@ -232,33 +211,33 @@ class ClassSpot {
     }
 
     retime() {
-        if (this.state.this.state.p2.level_is_completed) return this.htime/1000;
+        if (this.level_is_completed) return this.htime/1000;
         this.curtime = new Date();
         this.htime = this.curtime - this.starttime;
         return this.htime/1000;
     }
 
     check_end() {
-        if ((this.state.this.state.p2.Player.spots !== 0) && (this.state.this.state.p2.Computer.spots !== 0) && (!this.state.this.state.p2.level_is_completed))
+        if ((this.Player.spots !== 0) && (this.Computer.spots !== 0) && (!this.level_is_completed))
         {
-            if ((this.state.this.state.p2.who_is_now === 1) && (!this.state.this.state.p2.player_cant_move)) return 0;
+            if ((this.who_is_now === 1) && (!this.player_cant_move)) return 0;
 
-            for(var x=1; x<(Asp-1); x++)
-                for(var y=1; y<(Bsp-1); y++)
+            for(let x=1; x<(Asp-1); x++)
+                for(let y=1; y<(Bsp-1); y++)
                 {
-                    if (this.state.this.state.p2.data_level[x*Bsp+y] === ' ') return 0;
+                    if (this.data_level[x*Bsp+y] === ' ') return 0;
                 }
         }
 
-        this.state.this.state.p2.level_is_completed = true;
+        this.level_is_completed = true;
         console.log("Level is completed!");
         // Sleep(4000);
         setTimeout(function (){
-        var result;
+        let result;
         // Checking for a winner.
-        if (this.state.this.state.p2.Player.spots === this.state.this.state.p2.Computer.spots) result = "Teko!!!";
-        else if (this.state.this.state.p2.Player.spots < this.state.this.state.p2.Computer.spots) result = "Computer won!!!";
-            else if (this.state.this.state.p2.Player.spots > this.state.this.state.p2.Computer.spots)
+        if (this.Player.spots === this.Computer.spots) result = "Teko!!!";
+        else if (this.Player.spots < this.Computer.spots) result = "Computer won!!!";
+            else if (this.Player.spots > this.Computer.spots)
                     {
                         PlayMySound("winer1.wav");
                         result = "You are winner!!!";
@@ -266,7 +245,7 @@ class ClassSpot {
 
         alert(result + "\n\n Party complete.");
         
-        if (this.state.this.state.p2.level === 20) alert("Level complete. \n\n No more levels!");    
+        if (this.level === 20) alert("Level complete. \n\n No more levels!");    
         }, 500);
         return 1;
     }
@@ -276,7 +255,7 @@ class ClassSpot {
     }
 
     player_move(x, y) {
-        var kode_x, kode_y;
+        let kode_x, kode_y;
         this.who_is_now = 1; // chey hod
 
         if (this.first_step || this.table_was_changed)
@@ -286,8 +265,8 @@ class ClassSpot {
             if (this.data_level[x*Bsp+y] !== this.Player.color) return;
             PlayMySound("poper.wav");
 
-        var str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
-        var kode = this.data_level[x*Bsp+y];
+        let str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
+        let kode = this.data_level[x*Bsp+y];
         $(str).removeClass().addClass("div-spo-"+PlayerDlg.color+"big");
 
             this.first_step = false;
@@ -307,72 +286,72 @@ class ClassSpot {
             }
             else
             {
-                if (this.state.p2.check_the_place(x, y, this.state.p2.first_X, this.state.p2.first_Y)) // If place is empty.
+                if (this.check_the_place(x, y, this.first_X, this.first_Y)) // If place is empty.
                 {
-                    this.state.p2.member_last_move();
+                    this.member_last_move();
                     //EnableMenuItem(GetMenu(hwnd), IDM_Undo, MF_ENABLED);
 
-                    if (Math.abs(this.state.p2.first_X-x)==2 || Math.abs(this.state.p2.first_Y-y)==2) // If spot jumps.
+                    if (Math.abs(this.first_X-x)==2 || Math.abs(this.first_Y-y)==2) // If spot jumps.
                     {
-                        this.state.p2.putthis(1, this.state.p2.first_X, this.state.p2.first_Y, ' ');
+                        this.putthis(1, this.first_X, this.first_Y, ' ');
                         //-------gibuy for fast_draw-------
-                        this.state.p2.putthis(2, this.state.p2.first_X, this.state.p2.first_Y, ' ');
+                        this.putthis(2, this.first_X, this.first_Y, ' ');
                         //---------------------------------
                     }
                     else // Draw new spot.
                     {
-                        this.state.p2.putthis(1, this.state.p2.first_X, this.state.p2.first_Y, this.state.p2.Player.color);
+                        this.putthis(1, this.first_X, this.first_Y, this.Player.color);
                         //-------gibuy for fast_draw-------
-                        this.state.p2.putthis(2, this.state.p2.first_X, this.state.p2.first_Y, this.state.p2.Player.color);
+                        this.putthis(2, this.first_X, this.first_Y, this.Player.color);
                         //---------------------------------
                     }
-                        str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
-                        kode = this.state.p2.data_level[x*Bsp+y];
+                        let str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
+                        let kode = this.data_level[x*Bsp+y];
                         $(str).removeClass().addClass("div-spo-"+PlayerDlg.color+"big");
 
                     setTimeout(function (){
-                            this.state.p2.putthis(1, x, y, this.state.p2.Player.color);
+                            this.putthis(1, x, y, this.Player.color);
                             //-------gibuy for fast_draw-------
-                            this.state.p2.putthis(2, x, y, this.state.p2.Player.color);
+                            this.putthis(2, x, y, this.Player.color);
                             //---------------------------------
 
                             PlayMySound("move1.wav");
-                            this.state.p2.fill_around(x, y, this.state.p2.Computer.color); // Paint around all enemy.
-                            this.state.p2.first_step = true;
-                            this.state.p2.check_spots_number();
-                            InitStatus();
-                            if (this.state.p2.level_is_completed) return;
+                            this.fill_around(x, y, this.Computer.color); // Paint around all enemy.
+                            this.first_step = true;
+                            this.check_spots_number();
+                            //InitStatus();
+                            if (this.level_is_completed) return;
                             //Sleep(1000);
                             //----computer is begining now----
-                                this.state.p2.computer_move();
-                                this.state.p2.moves++;
+                                this.computer_move();
+                                this.moves++;
 
-                                    console.log(this.state.p2.ready);
+                                    console.log(this.ready);
 
                     console.log("after computer_move");
-                                this.state.p2.check_spots_number();
-                                InitStatus();
+                                this.check_spots_number();
+                                //InitStatus();
                     },500);
                     return;
                 }
 
-                this.state.p2.putthis(1, this.state.p2.first_X, this.state.p2.first_Y, this.state.p2.Player.color);
+                this.putthis(1, this.first_X, this.first_Y, this.Player.color);
                 //-------gibuy for fast_draw-------
-                this.state.p2.putthis(2, this.state.p2.first_X, this.state.p2.first_Y, this.state.p2.Player.color);
+                this.putthis(2, this.first_X, this.first_Y, this.Player.color);
                 //---------------------------------
-                this.state.p2.first_step = true;
+                this.first_step = true;
             }
         }
     }
 
     player_cant_move() {
-        var x, y;
-        console.log("Player spots: " + this.state.p2.Player.spots);
-        console.log("Computer spots: " + this.state.p2.Computer.spots);
+        let x, y;
+        console.log("Player spots: " + this.Player.spots);
+        console.log("Computer spots: " + this.Computer.spots);
         for (x=1; x<(Asp-1); x++)
             for (y=1; y<(Bsp-1); y++)
             {
-                if (this.state.p2.data_level[x*Bsp+y] === this.state.p2.Player.color)
+                if (this.data_level[x*Bsp+y] === this.Player.color)
                 {
                     let i, j;
                     for (i=x-2; i<=(x+2); i++)
@@ -380,7 +359,7 @@ class ClassSpot {
                         {
                             if (i<1 || i>=(Asp-1) || j<1 || j>=(Bsp-1)) continue;
                             if ((x==i) && (y==j)) continue;
-                            if (this.state.p2.data_level[i*Bsp+j] === ' ') return false;
+                            if (this.data_level[i*Bsp+j] === ' ') return false;
                         }
                 }
             }
@@ -390,10 +369,10 @@ class ClassSpot {
 
     computer_move() {
         this.who_is_now = 2;
-        var X_from, Y_from;
-        var best = Object.create(PLACE);
-        var choyse; 
-        var i,j;
+        let X_from, Y_from;
+        let best = Object.create(PLACE);
+        let choyse;
+        let i,j;
         for (i=1; i<(Asp-1); i++)
         {
             for (j=1; j<(Bsp-1); j++)
@@ -414,23 +393,23 @@ class ClassSpot {
                 }
             }
         }
-        this.state.p2.ready = false; //to delete later
+        this.ready = false; //to delete later
         if (best.num !== -1) // If found place.
         {
         //Sleep(300);
             setTimeout(function (){
-                this.state.p2.draw_computer_moving(X_from, Y_from, best); // Computer moves.
+                this.draw_computer_moving(X_from, Y_from, best); // Computer moves.
                 }, 1000);
         }
-        else this.state.p2.ready = true;  // to delete later
+        else this.ready = true;  // to delete later
         console.log("exit from computer_move()"); // to delete later
     }
 
     draw_computer_moving(x, y, best) {
         PlayMySound("poper.wav");
 
-        var str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
-        var kode = this.data_level[x*Bsp+y];
+        let str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
+        let kode = this.data_level[x*Bsp+y];
         $(str).removeClass().addClass("div-spo-"+ComputerDlg.color+"big");
     //   Sleep(5000);
     setTimeout(function (){
@@ -438,35 +417,35 @@ class ClassSpot {
         //console.log(best);
         if (Math.abs(best.x-x) === 2 || Math.abs(best.y-y) === 2)
         {
-            this.state.p2.putthis(1, x, y, ' ');
+            this.putthis(1, x, y, ' ');
             //-------gibuy for fast_draw-------
-            this.state.p2.putthis(2, x, y, ' ');
+            this.putthis(2, x, y, ' ');
         }
         else
         {
-            this.state.p2.putthis(1, x, y, this.state.p2.Computer.color);
+            this.putthis(1, x, y, this.Computer.color);
             //-------gibuy for fast_draw-------
-            this.state.p2.putthis(2, x, y, this.state.p2.Computer.color);
+            this.putthis(2, x, y, this.Computer.color);
             //---------------------------------
         }
 
         //-----------------------
         str = "#tabs-2 div.board div:nth-child(" + (best.x*Bsp+best.y+1) + ")";
-        kode = this.state.p2.data_level[best.x*Bsp+best.y];
+        kode = this.data_level[best.x*Bsp+best.y];
         $(str).removeClass().addClass("div-spo-"+ComputerDlg.color+"big");
         //-----------------------
 
     setTimeout(function (){
         //-----------------------
-        this.state.p2.putthis(1, best.x, best.y, this.state.p2.Computer.color);
+        this.putthis(1, best.x, best.y, this.Computer.color);
         //-------gibuy for fast_draw-------
-        this.state.p2.putthis(2, best.x, best.y, this.state.p2.Computer.color);
+        this.putthis(2, best.x, best.y, this.Computer.color);
         //-----------------------
 
     setTimeout(function (){
         //-----------------------
         PlayMySound("move1.wav");
-        this.state.p2.fill_around(best.x, best.y, this.state.p2.Player.color);
+        this.fill_around(best.x, best.y, this.Player.color);
 
         }, 500);
 
@@ -476,8 +455,8 @@ class ClassSpot {
     }
 
     check_around(x, y) {
-        var i, j, bonus=0, num=0;
-        var scolko_odinakovux=0;
+        let i, j, bonus=0, num=0;
+        let scolko_odinakovux=0;
 
         if (this.first_time) this.best.num=-1;
 
@@ -531,7 +510,7 @@ class ClassSpot {
     }
 
     calculate_Players_spots_to_draw(x, y) {
-        var i, j, num=0;
+        let i, j, num=0;
         for (i=x-1; i<=x+1; i++)
             for (j=y-1; j<=y+1; j++)
             {
@@ -549,7 +528,7 @@ class ClassSpot {
     }
 
     fill_around(x, y, color) {
-        var i, j;
+        let i, j;
         for (i=x-1; i<=x+1; i++)
             for (j=y-1; j<=y+1; j++)
                 if (this.data_level[i*Bsp+j] === color)
@@ -559,33 +538,31 @@ class ClassSpot {
                         this.putthis(2, i, j, this.data_level[x*Bsp+y]);
                 }
 
-        this.state.p2.check_spots_number();
+        this.check_spots_number();
 
-        if ((this.state.p2.who_is_now === 2) && this.state.p2.player_cant_move())
+        if ((this.who_is_now === 2) && this.player_cant_move())
                                     {
-                                        this.state.p2.level_is_completed = true;
+                                        this.level_is_completed = true;
                                     }
 
-        this.state.p2.check_end();
+        this.check_end();
     }
 
     check_spots_number() {
         this.Player.spots = 0;
         this.Computer.spots = 0;
-        for(var x=1; x<Asp; x++)
-            for(var y=1; y<Bsp; y++)
+        for(let x=1; x<Asp; x++)
+            for(let y=1; y<Bsp; y++)
             {
                 if (this.data_level[x*Bsp+y] === this.Player.color) this.Player.spots++;
                 if (this.data_level[x*Bsp+y] === this.Computer.color) this.Computer.spots++;
             }
     }
 
-    Level_to_Array() {
-        for(var x=0; x < (Asp*Bsp); x++) {
-                    this.data_level[x] = window.level_in_text_format[x];
-                }
-    }
-
 }
 
-export default ClassSpot;
+export {
+    PlayerDlg,
+    ComputerDlg,
+    ClassSpot
+}

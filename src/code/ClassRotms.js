@@ -13,9 +13,10 @@ import {
     moveVirtualButtons
 } from './functions.js';
 import ClassFire from './ClassFire';
+import RotmsLevels from "../Rotms/levels.json";
+import { A, B } from './constants';
+import SocobanLevels from "../Socoban/levels.json";
 
-const A = window.A;
-const B = window.B;
 
 class ClassRotms {    
     level = 1;
@@ -37,18 +38,20 @@ class ClassRotms {
     level_is_completed = false;
     is_loaded = 0;
 
-    init() {
-        loadDoc(this.filename);
-        this.Level_to_Array();
+    constructor() {
+        this.init();
+    }
 
+    init() {
+        this.error = 0;
+        this.data_level = RotmsLevels[this.level - 1].data.split('');
         this.starttime = new Date();
         this.score = 0;
         this.score_undo = 0;
         this.moves = 0;
-        this.bild_ground();
+        this.build_ground();
         this.member_last_move();
         this.level_is_completed = false;
-        $("#btn-undo").prop('disabled',true);
         return 0;
     }
         
@@ -62,9 +65,9 @@ class ClassRotms {
     
     Undo() {    
         if (this.level_is_completed === true) return;
-        for(var x=0; x<A; x++)
+        for(let x=0; x<A; x++)
         {
-            for(var y=0; y<B; y++)
+            for(let y=0; y<B; y++)
                 this.putthis(x, y, this.data_undo[x*B+y]);
         }
         this.score = this.score_undo;
@@ -72,15 +75,15 @@ class ClassRotms {
     }
         
     member_last_move() {
-        for(var x=0; x<A; x++)
-            for(var y=0; y<B; y++)
+        for(let x=0; x<A; x++)
+            for(let y=0; y<B; y++)
                 this.data_undo[x*B+y] = this.data_level[x*B+y];
         this.score_undo = this.score;
     }
     
-    bild_ground() {        
-        for(var x=0; x<A; x++)
-            for(var y=0; y<B; y++)
+    build_ground() {        
+        for(let x=0; x<A; x++)
+            for(let y=0; y<B; y++)
             {
                 switch (this.data_level[x*B+y])
                 {
@@ -96,37 +99,18 @@ class ClassRotms {
             }        
     }
     
-    change_level() {    
-        this.filename = "G4W/rotms/lev" + this.level + ".rot";
+    change_level(dir) {
+        console.log(RotmsLevels.length);
+        if ((this.level + dir) < 1 || (this.level + dir) > RotmsLevels.length) return;
+        this.level += dir;
+        this.data_level = RotmsLevels[this.level - 1].data.split('');
     }
     
-    // SaveGame(socfilename) {
-    //     var handle;
-    //     var length = A*B;
-    //     var filename;
-
-    //     if (window.Save_as_Flag) filename = socfilename;
-    //         else filename = "G4W/save/" + socfilename;
-
-    //     if ((handle = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE)) === -1)
-    //     {
-    //         alert(hwnd, "Can't create file!","ERROR!!!", MB_OK | MB_ICONERROR);
-    //         return -1;
-    //     }
-
-    //     if (write(handle, this.data_level, A*B) !== length)
-    //     {
-    //         alert(hwnd, "Can't write file!", "ERROR!!!", MB_OK | MB_ICONERROR);
-    //         close(handle);
-    //         return -1;
-    //     }
-
-    //     close(handle);
-    //     return 0;
-    // }
+    SaveGame(filename) {
+    }
     
-    LoadGame(socfilename) {
-        this.filename = socfilename;
+    LoadGame(filename) {
+        this.filename = filename;
         return this.init();
     }
     
@@ -158,8 +142,8 @@ class ClassRotms {
     }
     
     movetop(key) {
-        var Xtemp;
-        var Ytemp;
+        let Xtemp;
+        let Ytemp;
 
         switch (key)
         {
@@ -236,9 +220,9 @@ class ClassRotms {
     }
 
     redraw() {
-        for(var x=0; x<A; x++)
+        for(let x=0; x<A; x++)
         {
-            for(var y=0; y<B; y++)
+            for(let y=0; y<B; y++)
             {
                 this.putthis(x, y, this.data_level[x*B+y]);
             }
@@ -246,7 +230,7 @@ class ClassRotms {
     }
     
     putthis(x, y, kode) {
-        var kode_x, kode_y;
+        let kode_x, kode_y;
 
         this.data_level[x*B+y] = kode;
 
@@ -255,7 +239,7 @@ class ClassRotms {
             kode = 'Z';
         }
 
-        var str = "#tabs-3 div.board div:nth-child(" + (x*B+y+1) + ")";
+        let str = "#tabs-3 div.board div:nth-child(" + (x*B+y+1) + ")";
         $(str).removeClass().addClass("div-rot-" + kode);
     }
 
@@ -266,9 +250,9 @@ class ClassRotms {
     }
     
     check_end() {
-        for(var x=0; x<A; x++)
+        for(let x=0; x<A; x++)
         {
-            for(var y=0; y<B; y++)
+            for(let y=0; y<B; y++)
             {
                 if ((this.data_level[x*B+y]=='B') || (this.data_level[x*B+y]=='G')
                 || (this.data_level[x*B+y]=='K') || (this.data_level[x*B+y]=='R')
@@ -297,7 +281,7 @@ class ClassRotms {
     }
     
     // My_Scrolling(wParam, lParam) {
-    //     var prevlevel = this.level;
+    //     let prevlevel = this.level;
     //     switch (LOWORD(wParam))
     //     {
     //         case window.SB_LINEUP:
@@ -332,15 +316,9 @@ class ClassRotms {
     change_background(str) {
     // makeBackGround(hwnd1, this, str);
     }
-    
-    Level_to_Array() {
-        for(var x=0; x < (A*B); x++) {
-            this.data_level[x] = window.level_in_text_format[x];
-        }
-    }
 
     fire_all_on_pushing(x, y) {
-        var Xtemp, Ytemp;
+        let Xtemp, Ytemp;
         switch (this.data_level[x*B+y])
         {
             case '5': this.moves-=3;
@@ -352,7 +330,7 @@ class ClassRotms {
                 {
                     if (this.data_level[x*B+Ytemp] !== ' ')
                         {
-                            var tempfire = new ClassFire();
+                            let tempfire = new ClassFire();
                             tempfire.fire(x, Ytemp);
                         }
                     Ytemp++;
@@ -369,7 +347,7 @@ class ClassRotms {
                 {
                     if (this.data_level[x*B+Ytemp] !== ' ')
                         {
-                            var tempfire = new ClassFire();
+                            let tempfire = new ClassFire();
                             tempfire.fire(x, Ytemp);
                         }
                     Ytemp--;
@@ -386,7 +364,7 @@ class ClassRotms {
                 {
                     if (this.data_level[Xtemp*B+y] !== ' ')
                         {
-                            var tempfire = new ClassFire();
+                            let tempfire = new ClassFire();
                             tempfire.fire(Xtemp, y);
                         }
                     Xtemp++;
@@ -403,7 +381,7 @@ class ClassRotms {
                 {
                     if (this.data_level[Xtemp*B+y] !== ' ')
                         {
-                            var tempfire = new ClassFire();
+                            let tempfire = new ClassFire();
                             tempfire.fire(Xtemp, y);
                         }
                     Xtemp--;

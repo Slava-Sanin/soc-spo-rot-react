@@ -10,11 +10,13 @@ class Tab extends Component {
   };
 
   onClick = () => {
+    console.log(this.props);
     const { label, onClick } = this.props;
     onClick(label);
   }
 
   render() {
+    console.log(this.props);
     const {
       onClick,
       props: {
