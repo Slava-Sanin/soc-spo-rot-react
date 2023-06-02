@@ -5,10 +5,12 @@ import {moveVirtualButtons} from "../../code/functions";
 import $ from "jquery";
 
  const VirtualButtons = ({state}) => {
-     const [dragging, setDragging] = useState(false);
+     //const [dragging, setDragging] = useState(false);
+     let dragging = false;
      const [position, setPosition] = useState({ x: 430, y: 31 });
      const handleDragStart = () => {
          //setDragging(true);
+         dragging = true;
          $("#virtual_move").removeClass().addClass("virtual_move_on");
      };
 
@@ -21,6 +23,7 @@ import $ from "jquery";
 
      const handleDragEnd = () => {
          //setDragging(false);
+         dragging = false;
          $("#virtual_move").removeClass().addClass("virtual_move_off");
          //moveVirtualButtons(event);
          //let x = event.clientX - 137/2;
@@ -34,8 +37,8 @@ import $ from "jquery";
              className="virtual_buttons"
              style={{
                  display: (state.selectedTab === 0) ? "block" : "none",
-                 // cursor: dragging ? "move" : "auto",
-                 //position: dragging ? "fixed" : "auto",
+                 cursor: dragging ? "none" : "auto",
+                 position: "fixed",
                  left: position.x,
                  top: position.y,
              }}>
