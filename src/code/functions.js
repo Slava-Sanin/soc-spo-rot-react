@@ -160,7 +160,8 @@ function moveVirtualButtons(e)
     //e.preventDefault();
     let x = e.clientX - 137/2;
     let y = e.clientY - 137/2;
-    if (virtual_buttons_moving) $("div.virtual_buttons").css("left", x).css("top", y).css("position","fixed");
+    //if (virtual_buttons_moving) $("div.virtual_buttons").css("left", x).css("top", y).css("position","fixed");
+    $("div.virtual_buttons").css("left", x).css("top", y).css("position","fixed");
 }
 
 export {

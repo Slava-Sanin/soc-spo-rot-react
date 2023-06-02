@@ -1,14 +1,44 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../../CSS/virtual_buttons.css';
 import {moveVirtualButtons} from "../../code/functions";
-import {virtual_buttons_moving} from "../../code/globals";
+//import {virtual_buttons_moving} from "../../code/globals";
 import $ from "jquery";
 
  const VirtualButtons = ({state}) => {
-    let _virtual_buttons_moving = virtual_buttons_moving;
+     const [dragging, setDragging] = useState(false);
+     const [position, setPosition] = useState({ x: 430, y: 31 });
+     const handleDragStart = () => {
+         //setDragging(true);
+         $("#virtual_move").removeClass().addClass("virtual_move_on");
+     };
+
+     const handleDrag = (event) => {
+         //if (dragging) {
+             const { clientX, clientY } = event;
+             setPosition({ x: clientX - 137/2, y: clientY - 137/2 });
+         //}
+     };
+
+     const handleDragEnd = () => {
+         //setDragging(false);
+         $("#virtual_move").removeClass().addClass("virtual_move_off");
+         //moveVirtualButtons(event);
+         //let x = event.clientX - 137/2;
+         //let y = event.clientY - 137/2;
+         //if (virtual_buttons_moving) $("div.virtual_buttons").css("left", x).css("top", y).css("position","fixed");
+         //$("div.virtual_buttons").css("left", x).css("top", y).css("position","fixed");
+     };
 
     return (
-        <div className="virtual_buttons" style={{display: (state.selectedTab === 0) ? "block" : "none"}}>
+        <div
+             className="virtual_buttons"
+             style={{
+                 display: (state.selectedTab === 0) ? "block" : "none",
+                 // cursor: dragging ? "move" : "auto",
+                 //position: dragging ? "fixed" : "auto",
+                 left: position.x,
+                 top: position.y,
+             }}>
             <table>
                 <tbody>
                     <tr>
@@ -20,19 +50,23 @@ import $ from "jquery";
                     <tr>
                         <th id="virtual_left" onClick={ () => {state.p1.movetop(75)} }></th>
                         <th id="virtual_move"
-                            onMouseMove={ (event) => moveVirtualButtons(event) }
+                            draggable
+                            onDragStart={handleDragStart}
+                            onDrag={handleDrag}
+                            onDragEnd={handleDragEnd}
+                            /*onMouseMove={ (event) => moveVirtualButtons(event) }
                             onClick={ () => {
-                                if (_virtual_buttons_moving === 0)
+                                if (!dragging)
                                 {
-                                    _virtual_buttons_moving = 1;
+                                    setDragging(true);
                                     $("#virtual_move").removeClass().addClass("virtual_move_on");
                                 }
                                 else
                                 {
-                                    _virtual_buttons_moving = 0;
+                                    setDragging(false);
                                     $("#virtual_move").removeClass().addClass("virtual_move_off");
                                 }
-                            } }
+                            } }*/
                         >+</th>
                         <th id="virtual_right" onClick={ () => {state.p1.movetop(77)} }></th>
                     </tr>
