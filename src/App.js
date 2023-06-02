@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { Helmet } from "react-helmet";
@@ -102,26 +102,23 @@ const
     p1 = new ClassSocoban(),
     p2 = new ClassSpot(),
     p3 = new ClassRotms();
-    console.log(p1);
 
-class App extends Component {
-	constructor(props) {
-       super(props);
-       this.state = {
-         selectedTab: 0,
-         p1,p2,p3
-       };
-       this.handleTabSelect = this.handleTabSelect.bind(this);
+const App = () => {
+    const [state, setState] = useState({
+     selectedTab: 0,
+     p1,p2,p3
+    });
+
+    //this.handleTabSelect = this.handleTabSelect.bind(this);
+
+    const handleTabSelect = (tab) => {
+        setState({
+            ...state,
+            selectedTab: tab
+        });
     }
 
-  handleTabSelect = (tab) => {
-    this.setState({
-        ...this.state,
-        selectedTab: tab
-    });
-  }
-
-    componentDidMount() {
+    /*componentDidMount() {
         //main();
         document.addEventListener('keydown', this.handleKeyDown);
         //timer = setInterval(InitStatus, 1000);
@@ -130,29 +127,27 @@ class App extends Component {
     componentWillUnmount() {
         clearInterval(timer);
         document.removeEventListener('keydown', this.handleKeyDown);
-    }
+    }*/
 
-    handleKeyDown = (event) => {
-        if (this.state.selectedTab !== 0) return;
+    const handleKeyDown = (event) => {
+        if (state.selectedTab !== 0) return;
         if (event.key === 'ArrowUp') {
             console.log('Нажата стрелка вверх');
-            this.state.p1.movetop(72);
+            state.p1.movetop(72);
         } else if (event.key === 'ArrowDown') {
             console.log('Нажата стрелка вниз');
-            this.state.p1.movetop(80);
+            state.p1.movetop(80);
         } else if (event.key === 'ArrowLeft') {
             console.log('Нажата стрелка влево');
-            this.state.p1.movetop(75);
+            state.p1.movetop(75);
         } else if (event.key === 'ArrowRight') {
             console.log('Нажата стрелка вправо');
-            this.state.p1.movetop(77);
+            state.p1.movetop(77);
         }
         //this.forceUpdate();
     };
 
-	render() {
-    //let activeGame = this.state.activeTab;
-    const { selectedTab } = this.state;
+    const { selectedTab } = state;
 
       return (
       <div className="App">
@@ -178,68 +173,68 @@ class App extends Component {
 
             <div className="main-window">
 
-            <Tabs selectedIndex={selectedTab} onSelect={this.handleTabSelect}>
+                    <Tabs selectedIndex={selectedTab} onSelect={handleTabSelect}>
 
-              <TabList>
-                <Tab>Socoban</Tab>
-                <Tab>Spot</Tab>
-                <Tab>Rotms</Tab>
-              </TabList>
+                      <TabList>
+                        <Tab>Socoban</Tab>
+                        <Tab>Spot</Tab>
+                        <Tab>Rotms</Tab>
+                      </TabList>
 
-              <TabPanel>
-                <div id="tabs-1" style={{display: (selectedTab === 0) ? "block" : "none"}}>
-                    <div className="board">
-                      <Socoban data_level={p1.data_level} />
-                    </div>
-                    <div className="scroll">
-                        <button type="button" className="up" onClick={()=>{
-                            p1.change_level(-1);
-                            this.forceUpdate();
-                        }}></button>
-                        <div className="tracking"></div>
-                        <div className="lev-position"></div>
-                        <button type="button" className="down" onClick={()=>{
-                            p1.change_level(1);
-                            this.forceUpdate();
-                        }}></button>
-                    </div>
-                </div>
-                </TabPanel>
+                      <TabPanel>
+                        <div id="tabs-1" style={{display: (selectedTab === 0) ? "block" : "none"}}>
+                            <div className="board">
+                              <Socoban data_level={p1.data_level} />
+                            </div>
+                            <div className="scroll">
+                                <button type="button" className="up" onClick={()=>{
+                                    p1.change_level(-1);
+                                    //this.forceUpdate();
+                                }}></button>
+                                <div className="tracking"></div>
+                                <div className="lev-position"></div>
+                                <button type="button" className="down" onClick={()=>{
+                                    p1.change_level(1);
+                                    //this.forceUpdate();
+                                }}></button>
+                            </div>
+                        </div>
+                      </TabPanel>
 
-                <TabPanel>
-                <div id="tabs-2" style={{display: (selectedTab === 1) ? "block" : "none"}}>
-                    <div className="board">
-                      <Spot data_level={p2.data_level} />
-                    </div>
-                </div>
-                </TabPanel>
+                      <TabPanel>
+                        <div id="tabs-2" style={{display: (selectedTab === 1) ? "block" : "none"}}>
+                            <div className="board">
+                              <Spot data_level={p2.data_level} />
+                            </div>
+                        </div>
+                      </TabPanel>
 
-                <TabPanel>
-                <div id="tabs-3" style={{display: (selectedTab === 2) ? "block" : "none"}}>
-                    <div className="board">
-                      <Rotms data_level={p3.data_level} />
-                    </div>
-                    <div className="scroll">
-                        <button type="button" className="up" onClick={()=>{
-                            p3.change_level(-1);
-                            this.forceUpdate();
-                        }}></button>
-                        <div className="tracking"></div>
-                        <div className="lev-position"></div>
-                        <button type="button" className="down" onClick={()=>{
-                            p3.change_level(1);
-                            this.forceUpdate();
-                        }}></button>
-                    </div>
-                </div>
-              </TabPanel>
+                      <TabPanel>
+                        <div id="tabs-3" style={{display: (selectedTab === 2) ? "block" : "none"}}>
+                            <div className="board">
+                              <Rotms data_level={p3.data_level} />
+                            </div>
+                            <div className="scroll">
+                                <button type="button" className="up" onClick={()=>{
+                                    p3.change_level(-1);
+                                    //this.forceUpdate();
+                                }}></button>
+                                <div className="tracking"></div>
+                                <div className="lev-position"></div>
+                                <button type="button" className="down" onClick={()=>{
+                                    p3.change_level(1);
+                                    //this.forceUpdate();
+                                }}></button>
+                            </div>
+                        </div>
+                      </TabPanel>
 
-            </Tabs>
+                    </Tabs>
 
                 </div>
             </div>
 
-          <Status state={this.state} />
+          <Status state={state} />
 
           <SpotColorDialog />
 
@@ -250,8 +245,6 @@ class App extends Component {
           </div>
 
       );
-    }
-
 }
 
 export default App;

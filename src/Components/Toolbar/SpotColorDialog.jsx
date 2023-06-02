@@ -1,19 +1,8 @@
-import React, { Component } from 'react';
-
-// import ReactDOM from 'react-dom/client';
+import React from 'react';
 import '../../CSS/spot_toolbar.css';
 
-export default class SpotColorDialog extends Component {
-
-    constructor() {
-        super();
-         let SpotColorDialog;
-
-        this.state = {SpotColorDialog};
-    }    
-
-    render() {
-        return (
+const SpotColorDialog = () => {
+	return (
 		<div id="Spot_color_dialog">
 			<div className="wraper2">
 				<div className="header">
@@ -75,11 +64,10 @@ export default class SpotColorDialog extends Component {
 						</div>
 					</div>
 
-
 			</div>
 		</div>
-            );
-        }
-    
-    }
+	);
+}
+
+export default SpotColorDialog;
     

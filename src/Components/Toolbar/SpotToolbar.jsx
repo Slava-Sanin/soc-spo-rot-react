@@ -1,20 +1,9 @@
-import React, { Component } from 'react';
-// import ReactDOM from 'react-dom/client';
+import React from 'react';
 import '../../CSS/spot_toolbar.css';
 
-export default class SpotToolbar extends Component {
-    // window.spotToolbarState = spotToolbarState;
-
-    constructor() {
-        super();
-        let spotToolBar;
-
-        this.state = {spotToolBar};
-    }    
-
-    render() {
+const SpotToolbar = (props) => {
         return (
-			<div className="Spot_toolbar" style={{display: (this.props.selectedTab === 1) ? "block" : "none"}}>
+			<div className="Spot_toolbar" style={{display: (props.selectedTab === 1) ? "block" : "none"}}>
 
 				<div className="ramka left">
 					<p>Player</p>
@@ -30,6 +19,6 @@ export default class SpotToolbar extends Component {
 
 			</div>            
         );
-    }
-
 }
+
+export default SpotToolbar;
