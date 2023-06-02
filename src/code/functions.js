@@ -30,7 +30,7 @@ function InitStatus(props)
 
         case 1: // Socoban status
             sec = props.p1.retime();
-            str1 = "Time of game: " + parseInt(sec/3600) + ":" + parseInt(sec/60%60) + ":" + parseInt(sec%60);
+            str1 = `Time of game: ${parseInt(sec/3600)} Hours, ${parseInt(sec/60%60)} Minutes, ${parseInt(sec%60)} Seconds`;
             str2 = "Level: " + props.p1.level;
             str3 = "Moves maked: " + props.p1.moves;
             return (<div id="status_socoban"> <div className="time"> {str1} </div><div className="level"> {str2} </div><div className="moves"> {str3} </div></div>);
@@ -38,8 +38,9 @@ function InitStatus(props)
         case 2: // Spot status
             sec = props.p2.retime();
             props.p2.check_spots_number();
-            str1 = "Time of game: " + parseInt(sec/3600) + ":" + parseInt(sec/60%60) + ":" + parseInt(sec%60);
-           
+            //str1 = "Time of game: " + parseInt(sec/3600) + ":" + parseInt(sec/60%60) + ":" + parseInt(sec%60);
+            str1 = `Time of game: ${parseInt(sec/3600)} Hours, ${parseInt(sec/60%60)} Minutes, ${parseInt(sec%60)} Seconds`;
+
             let me_is;
             me_is = props.p2.Player.is === 1 ? "First" : "Second";
             str2 = "Player(" + me_is + "): " + props.p2.Player.spots;
@@ -51,7 +52,8 @@ function InitStatus(props)
 
         case 3: // Rotms status
             sec = props.p3.retime();
-            str1 = "Time of game: " + parseInt(sec/3600) + ":" + parseInt(sec/60%60) + ":" + parseInt(sec%60);
+            //str1 = "Time of game: " + parseInt(sec/3600) + ":" + parseInt(sec/60%60) + ":" + parseInt(sec%60);
+            str1 = `Time of game: ${parseInt(sec/3600)} Hours, ${parseInt(sec/60%60)} Minutes, ${parseInt(sec%60)} Seconds`;
             str2 = "Level: " + props.p3.level;
             str3 = "Moves: " + props.p3.moves;
             str4 = "Score: " + props.p3.score;

@@ -1,9 +1,9 @@
 import React from 'react';
 import '../../CSS/spot_toolbar.css';
 
-const SpotToolbar = (props) => {
+const SpotToolbar = ({state}) => {
         return (
-			<div className="Spot_toolbar" style={{display: (props.selectedTab === 1) ? "block" : "none"}}>
+			<div className="Spot_toolbar" style={{display: (state.selectedTab === 1) ? "block" : "none"}}>
 
 				<div className="ramka left">
 					<p>Player</p>

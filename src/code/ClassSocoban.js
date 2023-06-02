@@ -108,7 +108,6 @@ class ClassSocoban {
 
     movetop(key)
     {
-        console.log(key);
         switch (key)
         {
             case 75: // Moving left.

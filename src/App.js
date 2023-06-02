@@ -109,7 +109,7 @@ const App = () => {
      p1,p2,p3
     });
 
-    //this.handleTabSelect = this.handleTabSelect.bind(this);
+    const [moves, setMoves] = useState(0);
 
     const handleTabSelect = (tab) => {
         setState({
@@ -118,16 +118,15 @@ const App = () => {
         });
     }
 
-    /*componentDidMount() {
-        //main();
-        document.addEventListener('keydown', this.handleKeyDown);
-        //timer = setInterval(InitStatus, 1000);
-    }
+    useEffect(() => {
+        // Добавляем обработчик события keydown
+        document.addEventListener('keydown', handleKeyDown);
 
-    componentWillUnmount() {
-        clearInterval(timer);
-        document.removeEventListener('keydown', this.handleKeyDown);
-    }*/
+        // Очистка обработчика при размонтировании компонента
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
 
     const handleKeyDown = (event) => {
         if (state.selectedTab !== 0) return;
@@ -145,6 +144,8 @@ const App = () => {
             state.p1.movetop(77);
         }
         //this.forceUpdate();
+        console.log("forceUpdate()");
+        //setMoves(++moves);
     };
 
     const { selectedTab } = state;
@@ -169,7 +170,7 @@ const App = () => {
             <p className="App-header-p"><a className="App-link" href="https://soc-spo-rot.game" target="_blank" rel="noopener noreferrer"> Soc-Spo-Rot </a></p>
             </header>
             <hr/>
-            <Toolbar selectedTab={selectedTab}/>
+            <Toolbar state={state}/>
 
             <div className="main-window">
 
@@ -189,13 +190,13 @@ const App = () => {
                             <div className="scroll">
                                 <button type="button" className="up" onClick={()=>{
                                     p1.change_level(-1);
-                                    //forceUpdate();
+                                    //this.forceUpdate();
                                 }}></button>
                                 <div className="tracking"></div>
                                 <div className="lev-position"></div>
                                 <button type="button" className="down" onClick={()=>{
                                     p1.change_level(1);
-                                    //this.forceUpdate();
+                                    //forceUpdate();
                                 }}></button>
                             </div>
                         </div>
