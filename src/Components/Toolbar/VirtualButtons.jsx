@@ -4,26 +4,38 @@ import {moveVirtualButtons} from "../../code/functions";
 //import {virtual_buttons_moving} from "../../code/globals";
 import $ from "jquery";
 
+let VirtualButtonSettings = {
+    isWasDragged: false,
+    x: 430,
+    y: 31,
+    dragging: false
+}
+
  const VirtualButtons = ({state}) => {
      //const [dragging, setDragging] = useState(false);
-     let dragging = false;
-     const [position, setPosition] = useState({ x: 430, y: 31 });
+     //let dragging = false;
+     const [position, setPosition] = useState({ x: VirtualButtonSettings.x, y: VirtualButtonSettings.y });
      const handleDragStart = () => {
          //setDragging(true);
-         dragging = true;
+         VirtualButtonSettings.drugging = true;
+         VirtualButtonSettings.isWasDrugged = true;
          $("#virtual_move").removeClass().addClass("virtual_move_on");
      };
 
      const handleDrag = (event) => {
-         //if (dragging) {
+         //if (VirtualButtonSettings.dragging) {
              const { clientX, clientY } = event;
+             VirtualButtonSettings.x = clientX - 137/2;
+             VirtualButtonSettings.y = clientY - 137/2;
              setPosition({ x: clientX - 137/2, y: clientY - 137/2 });
          //}
      };
 
      const handleDragEnd = () => {
          //setDragging(false);
-         dragging = false;
+         //dragging = false;
+         //VirtualButtonSettings.isWasDragged = false;
+         VirtualButtonSettings.dragging = false;
          $("#virtual_move").removeClass().addClass("virtual_move_off");
          //moveVirtualButtons(event);
          //let x = event.clientX - 137/2;
@@ -37,8 +49,8 @@ import $ from "jquery";
              className="virtual_buttons"
              style={{
                  display: (state.selectedTab === 0) ? "block" : "none",
-                 cursor: dragging ? "none" : "auto",
-                 position: "fixed",
+                 cursor: VirtualButtonSettings.dragging ? "none" : "auto",
+                 position: VirtualButtonSettings.isWasDragged ? "fixed" : "absolute",
                  left: position.x,
                  top: position.y,
              }}>
