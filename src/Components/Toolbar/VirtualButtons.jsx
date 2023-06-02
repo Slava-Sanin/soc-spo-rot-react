@@ -17,8 +17,8 @@ let VirtualButtonSettings = {
      const [position, setPosition] = useState({ x: VirtualButtonSettings.x, y: VirtualButtonSettings.y });
      const handleDragStart = () => {
          //setDragging(true);
-         VirtualButtonSettings.drugging = true;
-         VirtualButtonSettings.isWasDrugged = true;
+         VirtualButtonSettings.dragging = true;
+         VirtualButtonSettings.isWasDragged = true;
          $("#virtual_move").removeClass().addClass("virtual_move_on");
      };
 
