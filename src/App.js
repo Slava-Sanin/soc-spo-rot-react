@@ -189,7 +189,7 @@ const App = () => {
                             <div className="scroll">
                                 <button type="button" className="up" onClick={()=>{
                                     p1.change_level(-1);
-                                    //this.forceUpdate();
+                                    //forceUpdate();
                                 }}></button>
                                 <div className="tracking"></div>
                                 <div className="lev-position"></div>
