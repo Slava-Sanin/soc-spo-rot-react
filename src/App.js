@@ -96,7 +96,7 @@ import {
     moveVirtualButtons
 } from "./code/functions";
 
-import main from "./code/main";
+//import main from "./code/main";
 
 const
     p1 = new ClassSocoban(),
@@ -144,7 +144,6 @@ const App = () => {
             state.p1.movetop(77);
         }
         //this.forceUpdate();
-        console.log("forceUpdate()");
         //setMoves(++moves);
     };
 

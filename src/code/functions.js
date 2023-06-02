@@ -91,7 +91,7 @@ function PlayMySound(soundname)
 {
     if (glob_sound)
     {        
-        let myAudio = new Audio("G4W/sound/" + soundname);
+        let myAudio = new Audio(soundname);
         myAudio.play();
     }
 }

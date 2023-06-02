@@ -115,8 +115,8 @@ class ClassSocoban {
                 {
                     this.member_last_move();
 
-                $("#btn-undo").prop('disabled',false);
-                    PlayMySound("move1.wav");
+                    $("#btn-undo").prop('disabled',false);
+                    PlayMySound("/assets/sound/move1.wav");
                     this.putthis(this.curX, this.curY-1, '2');
                     this.putthis(this.curX, this.curY, this.data_lev_gr[this.curX*B+this.curY]);
                     this.curY--;
