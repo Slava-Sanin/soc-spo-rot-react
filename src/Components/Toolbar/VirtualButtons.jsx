@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { throttle } from 'lodash';
 import '../../CSS/virtual_buttons.css';
 import {moveVirtualButtons} from "../../code/functions";
 //import {virtual_buttons_moving} from "../../code/globals";
@@ -16,7 +17,27 @@ const VirtualButtonSettings = {
      //let dragging = false;
      //const [position, setPosition] = useState({ x: VirtualButtonSettings.x, y: VirtualButtonSettings.y });
      const [position, setPosition] = useState({});
-     const handleDragStart = () => {
+
+     const handleMouseDown = () => {
+        //VirtualButtonSettings.dragging = true;
+        setDragging(true);
+     }
+
+     const handleMouseMove = throttle((event) => {
+         if (dragging) {
+             VirtualButtonSettings.isWasDragged = true;
+             const { clientX, clientY } = event;
+             setPosition({ x: clientX - 137/2, y: clientY - 137/2 });
+             console.log(position);
+         }
+     }, 200);
+
+     const handleMouseUp = () => {
+        //VirtualButtonSettings.dragging = false;
+        setDragging(false);
+     }
+
+     /*const handleDragStart = () => {
          setDragging(true);
          VirtualButtonSettings.dragging = true;
          VirtualButtonSettings.isWasDragged = true;
@@ -24,11 +45,12 @@ const VirtualButtonSettings = {
      };
 
      const handleDrag = (event) => {
+         event.preventDefault();
          if (dragging) {
              const { clientX, clientY } = event;
              VirtualButtonSettings.x = clientX - 137/2;
              VirtualButtonSettings.y = clientY - 137/2;
-             if (!clientX && !clientY) return;
+             //if (!clientX && !clientY) return;
              setPosition({ x: clientX - 137/2, y: clientY - 137/2 });
          }
          console.log(VirtualButtonSettings);
@@ -47,13 +69,13 @@ const VirtualButtonSettings = {
          //$("div.virtual_buttons").css("left", x).css("top", y).css("position","fixed");
          //console.log(VirtualButtonSettings);
      };
-
+*/
     return (
         <div
              className="virtual_buttons"
              style={{
                  display: (state.selectedTab === 0) ? "block" : "none",
-                 cursor: dragging ? "none" : "auto",
+                 //cursor: VirtualButtonSettings.dragging ? "none" : "auto",
                  position: VirtualButtonSettings.isWasDragged ? "fixed" : "absolute",
                  left: position.x,
                  top: position.y,
@@ -69,10 +91,17 @@ const VirtualButtonSettings = {
                     <tr>
                         <th id="virtual_left" onClick={ () => {state.p1.movetop(75)} }></th>
                         <th id="virtual_move"
-                            draggable
-                            onDragStart={handleDragStart}
-                            onDrag={handleDrag}
+                            className={dragging ? "virtual_move_on" : "auto"}
+                            //draggable
+                            //onDragStart={handleDragStart}
+                            //onDrag={handleDrag}
                             //onDragEnd={handleDragEnd}
+
+                            //onMouseMoveCapture
+                            onMouseDown={ handleMouseDown }
+                            onMouseMove={ handleMouseMove }
+                            onMouseUp={ handleMouseUp }
+
                             /*onMouseMove={ (event) => moveVirtualButtons(event) }
                             onClick={ () => {
                                 if (!dragging)
