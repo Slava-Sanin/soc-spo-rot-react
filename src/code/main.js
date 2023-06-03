@@ -201,7 +201,6 @@ $("#first-or-second").click(function(){
   temp = PlayerDlg.is;
   PlayerDlg.is = ComputerDlg.is;
   ComputerDlg.is = temp;
-  console.log(temp);
   return false;
 });
 

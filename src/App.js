@@ -108,6 +108,9 @@ const App = () => {
      selectedTab: 0,
      p1,p2,p3
     });
+    const [socobanLevel, setSocobanLevel] = useState(p1.data_level);
+    const [spotLevel, setSpotLevel] = useState(p2.data_level);
+    const [rotmsLevel, setRotmsLevel] = useState(p3.data_level);
 
     const [moves, setMoves] = useState(0);
 
@@ -131,19 +134,15 @@ const App = () => {
     const handleKeyDown = (event) => {
         if (state.selectedTab !== 0) return;
         if (event.key === 'ArrowUp') {
-            console.log('Нажата стрелка вверх');
             state.p1.movetop(72);
         } else if (event.key === 'ArrowDown') {
-            console.log('Нажата стрелка вниз');
             state.p1.movetop(80);
         } else if (event.key === 'ArrowLeft') {
-            console.log('Нажата стрелка влево');
             state.p1.movetop(75);
         } else if (event.key === 'ArrowRight') {
-            console.log('Нажата стрелка вправо');
             state.p1.movetop(77);
         }
-        //this.forceUpdate();
+        
         //setMoves(++moves);
     };
 
@@ -184,18 +183,18 @@ const App = () => {
                       <TabPanel>
                         <div id="tabs-1" style={{display: (selectedTab === 0) ? "block" : "none"}}>
                             <div className="board">
-                              <Socoban data_level={p1.data_level} />
+                              <Socoban level={socobanLevel} />
                             </div>
                             <div className="scroll">
                                 <button type="button" className="up" onClick={()=>{
                                     p1.change_level(-1);
-                                    //this.forceUpdate();
+                                    //setSocobanLevel(p1.data_level);
                                 }}></button>
                                 <div className="tracking"></div>
                                 <div className="lev-position"></div>
                                 <button type="button" className="down" onClick={()=>{
                                     p1.change_level(1);
-                                    //forceUpdate();
+                                    //setSocobanLevel(p1.data_level);
                                 }}></button>
                             </div>
                         </div>
@@ -204,7 +203,7 @@ const App = () => {
                       <TabPanel>
                         <div id="tabs-2" style={{display: (selectedTab === 1) ? "block" : "none"}}>
                             <div className="board">
-                              <Spot data_level={p2.data_level} />
+                              <Spot level={spotLevel} />
                             </div>
                         </div>
                       </TabPanel>
@@ -212,18 +211,18 @@ const App = () => {
                       <TabPanel>
                         <div id="tabs-3" style={{display: (selectedTab === 2) ? "block" : "none"}}>
                             <div className="board">
-                              <Rotms data_level={p3.data_level} />
+                              <Rotms level={rotmsLevel} />
                             </div>
                             <div className="scroll">
                                 <button type="button" className="up" onClick={()=>{
                                     p3.change_level(-1);
-                                    //this.forceUpdate();
+                                    //setRotmsLevel(p3.data_level);
                                 }}></button>
                                 <div className="tracking"></div>
                                 <div className="lev-position"></div>
                                 <button type="button" className="down" onClick={()=>{
                                     p3.change_level(1);
-                                    //this.forceUpdate();
+                                    //setRotmsLevel(p3.data_level);
                                 }}></button>
                             </div>
                         </div>

@@ -100,10 +100,11 @@ class ClassRotms {
     }
     
     change_level(dir) {
-        console.log(RotmsLevels.length);
         if ((this.level + dir) < 1 || (this.level + dir) > RotmsLevels.length) return;
         this.level += dir;
-        this.data_level = RotmsLevels[this.level - 1].data.split('');
+        //this.data_level = RotmsLevels[this.level - 1].data.split('');
+        PlayMySound("changepage.wav");
+        this.init();
     }
     
     SaveGame(filename) {

@@ -15,6 +15,7 @@ import SocobanLevels from "../Socoban/levels.json";
 import { A, B } from './constants';
 
 class ClassSocoban {
+    level = 1;
     data_lev_gr = [];
     data_undo = [];
     starttime;
@@ -34,7 +35,6 @@ class ClassSocoban {
     }
 
     init() {
-        this.level = 1;
         this.error = 0;        
         this.data_level = SocobanLevels[this.level - 1].data.split('');
         this.starttime = new Date();
@@ -95,7 +95,9 @@ class ClassSocoban {
     change_level(dir) {
         if ((this.level + dir) < 1 || (this.level + dir) > SocobanLevels.length) return;
         this.level += dir;
-        this.data_level = SocobanLevels[this.level - 1].data.split('');
+        //this.data_level = SocobanLevels[this.level - 1].data.split('');
+        PlayMySound("changepage.wav");
+        this.init();
     }
 
     SaveGame(filename) {

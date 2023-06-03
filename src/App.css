@@ -10,40 +10,44 @@
   border: 2px solid #E7D2A5;
   background-color: #EADCBB;
   overflow: hidden;
-	position: relative;
+  position: relative;
   margin: auto;
+  border-radius: 15px;
 }
 
 .App-logo {
   height: 32px;  
   float: left;
+  left: 230px;
+  position: relative;
+  /*border-radius: 50%;*/
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+}
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+from {
+  transform: rotate(0deg);
+}
+to {
+  transform: rotate(360deg);
+}
 }
 
 .App-header {
-  background: linear-gradient(to right, darkblue, #4B9BC6);
-  height: 32px;    
+background: linear-gradient(to right, darkblue, #4B9BC6);
+height: 32px;
 }
 
 .App-header-p {
-  text-align: center;  
-  line-height: 32px;
-  font-weight: bold;
-  /* border: 2px solid red;     */
+text-align: center;
+line-height: 32px;
+font-weight: bold;
+/* border: 2px solid red;     */
 }
 
 .App-link {
@@ -75,7 +79,8 @@ body {
   background: url("./assets/images/GRAND/GRAND11.bmp") no-repeat;
   border: 2px solid #E7D2A5;
   max-height: 422px;
-  min-height: 422px;
+  /*min-height: 422px;*/
+  margin-top: 6px;
 }
 
 .separator1 {
