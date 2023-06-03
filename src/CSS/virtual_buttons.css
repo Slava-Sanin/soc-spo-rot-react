@@ -37,10 +37,15 @@
 }
 
 .virtual_move_on {
-    background: url("../assets/images/move5_30x30.png") no-repeat;
+    /*background: url("../assets/images/move5_30x30.png") no-repeat;
     background-size: cover;
+    content: '';*/
+    content: url("../assets/images/move5_30x30.png");
+    user-select: none;
 }
 
 .virtual_move_off {
     background: none;
+    content: '+';
+    user-select: none;
 }

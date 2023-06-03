@@ -110,7 +110,7 @@ class ClassSocoban {
     {
         switch (key)
         {
-            case 75: // Moving left.
+            case 75: // Moving left
                 if (this.data_level[this.curX*B+this.curY-1] === ' ' || this.data_level[this.curX*B+this.curY-1] === '3')
                 {
                     this.member_last_move();
@@ -143,7 +143,7 @@ class ClassSocoban {
                     break;
                 }
                 break;
-            case 77: // Moving right.
+            case 77: // Moving right
                 if (this.data_level[this.curX*B+this.curY+1] === ' ' || this.data_level[this.curX*B+this.curY+1] === '3')
                 {
                     this.member_last_move();
@@ -176,8 +176,7 @@ class ClassSocoban {
                     break;
                 }
                 break;
-            case 72: // Moving up.
-                console.log(this.curX);
+            case 72: // Moving up
                 if (this.data_level[(this.curX-1)*B+this.curY] === ' ' || this.data_level[(this.curX-1)*B+this.curY] === '3')
                 {
                     this.member_last_move();
@@ -210,7 +209,7 @@ class ClassSocoban {
                     break;
                 }
                 break;
-            case 80: // Moving down.
+            case 80: // Moving down
                 if (this.data_level[(this.curX+1)*B+this.curY] === ' ' || this.data_level[(this.curX+1)*B+this.curY] === '3')
                 {
                     this.member_last_move();
@@ -248,7 +247,7 @@ class ClassSocoban {
     }
 
     redraw() {
-        // Drawing a map of current level.
+        // Drawing a map of current level
         for(let x=0; x<A; x++)
         {
             for(let y=0; y<B; y++)
@@ -263,7 +262,7 @@ class ClassSocoban {
 
         this.data_level[x*B+y] = kode;
 
-        if (kode === ' ') // Draws empty place.
+        if (kode === ' ') // Draws empty place
         {
             kode = 'Z';
         }

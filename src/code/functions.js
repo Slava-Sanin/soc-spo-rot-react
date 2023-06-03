@@ -89,11 +89,11 @@ function Sound_On_Off()
 
 function PlayMySound(soundname)
 {
-    if (glob_sound)
-    {        
+    //if (glob_sound)
+    //{
         let myAudio = new Audio(soundname);
         myAudio.play();
-    }
+    //}
 }
 
 
