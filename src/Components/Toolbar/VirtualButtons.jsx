@@ -91,7 +91,7 @@ const VirtualButtonSettings = {
                     <tr>
                         <th id="virtual_left" onClick={ () => {state.p1.movetop(75)} }></th>
                         <th id="virtual_move"
-                            className={dragging ? "virtual_move_on" : "auto"}
+                            className={dragging ? "virtual_move_on" : "virtual_move_off"}
                             //draggable
                             //onDragStart={handleDragStart}
                             //onDrag={handleDrag}
