@@ -23,7 +23,7 @@ var
     
     TOOLS_BMP        = 800,
     
-    IDM_Socoban      = 900,
+    IDM_Sokoban      = 900,
     IDM_Spot         = 901,
     IDM_Rotms        = 902,
     IDM_Sound        = 903,
@@ -69,7 +69,7 @@ export {
 
     TOOLS_BMP,
 
-    IDM_Socoban,
+    IDM_Sokoban,
     IDM_Spot,
     IDM_Rotms,
     IDM_Sound,

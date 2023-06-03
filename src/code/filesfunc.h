@@ -18,7 +18,7 @@ BOOL LoadGame(HANDLE hwnd)
     ofn.hwndOwner         = GetActiveWindow();
     switch (gamecode)
     {
-        case 1: ofn.lpstrFilter = "Socoban(*.soc)\0*.soc\0";
+        case 1: ofn.lpstrFilter = "Sokoban(*.sok)\0*.sok\0";
             break;
         case 2: ofn.lpstrFilter = "Spot(*.spo)\0*.spo\0";
             break;
@@ -42,7 +42,7 @@ BOOL LoadGame(HANDLE hwnd)
 
     switch (gamecode)
     {
-        case 1: p1->LoadGame(szFileName); // Load  game Socoban.
+        case 1: p1->LoadGame(szFileName); // Load  game Sokoban.
             break;
         case 2: p2->LoadGame(szFileName); // Load game Spot.
             break;
@@ -71,7 +71,7 @@ BOOL SaveGame(HANDLE hwnd)
     ofn.hwndOwner         = hwnd;
     switch (gamecode)
     {
-        case 1: ofn.lpstrFilter = "Socoban(*.soc)\0*.soc\0";
+        case 1: ofn.lpstrFilter = "Sokoban(*.sok)\0*.sok\0";
             break;
         case 2: ofn.lpstrFilter = "Spot(*.spo)\0*.spo\0";
             break;
@@ -93,9 +93,9 @@ BOOL SaveGame(HANDLE hwnd)
 
     switch (gamecode)
     {
-        case 1: if (strcmp(&(szFileName[strlen(szFileName)-4]), ".soc"))
-                strcat(szFileName, ".soc");
-            p1->SaveGame(szFileName); // Save game Socoban.
+        case 1: if (strcmp(&(szFileName[strlen(szFileName)-4]), ".sok"))
+                strcat(szFileName, ".sok");
+            p1->SaveGame(szFileName); // Save game Sokoban.
             break;
         case 2: if (strcmp(&(szFileName[strlen(szFileName)-4]), ".spo"))
                 strcat(szFileName, ".spo");

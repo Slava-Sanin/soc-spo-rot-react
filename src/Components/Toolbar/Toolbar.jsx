@@ -7,7 +7,7 @@ const Toolbar = ({state}) => {
 
     return (
         <div className='toolbar'>
-            <button id='btn-socoban' key='btn-1'><span className="mytooltiptext">Play Socoban</span></button>
+            <button id='btn-sokoban' key='btn-1'><span className="mytooltiptext">Play Sokoban</span></button>
             <button id='btn-spot' key='btn-2'><span className="mytooltiptext">Play Spot</span></button>
             <button id='btn-rotms' key='btn-3'><span className="mytooltiptext">Play Rotms</span></button>
             <button id='btn-sound' className='sound' key='btn-4' ><span className="mytooltiptext">Sound On/Off</span></button>

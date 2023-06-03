@@ -1,4 +1,4 @@
-import ClassSocoban from "./ClassSocoban";
+import ClassSokoban from "./ClassSokoban";
 import {ClassSpot} from "./ClassSpot";
 import ClassRotms from "./ClassRotms";
 let

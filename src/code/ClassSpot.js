@@ -15,7 +15,7 @@ import {
 
 import SpotsLevels from "../Spot/levels.json";
 import { Asp, Bsp } from './constants';
-import SocobanLevels from "../Socoban/levels.json";
+import SokobanLevels from "../Sokoban/levels.json";
 
 // For finding the best place to put spot.
 const PLACE = {

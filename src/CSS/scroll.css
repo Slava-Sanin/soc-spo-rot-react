@@ -34,14 +34,14 @@
 }
 
 #tabs-1 .scroll .up {
-    background-image: url("../assets/images/arrow_up.png"), url("../assets/images/Socoban/socoban.png");
+    background-image: url("../assets/images/arrow_up.png"), url("../assets/images/Sokoban/sokoban.png");
     background-repeat: no-repeat;
     background-size: inherit;
     background-position: center, -101px 0px;
 }
 
 #tabs-1 .scroll .down {
-    background-image: url("../assets/images/arrow_down.png"), url("../assets/images/Socoban/socoban.png");
+    background-image: url("../assets/images/arrow_down.png"), url("../assets/images/Sokoban/sokoban.png");
     background-repeat: no-repeat;
     background-size: inherit;
     background-position: center, -101px 0px;
@@ -52,7 +52,7 @@
 }
 
 #tabs-1 .scroll .lev-position {
-    background: url("../assets/images/scroll_socoban__fon.png") no-repeat;
+    background: url("../assets/images/scroll_sokoban__fon.png") no-repeat;
     background-size: 100% 100%;
 }
 

@@ -1,4 +1,4 @@
-#status_socoban,
+#status_sokoban,
 #status_spot,
 #status_rotms {
     height: inherit;
@@ -6,9 +6,9 @@
     display: flex;
 }
 
-#status_socoban .time,
-#status_socoban .level,
-#status_socoban .moves,
+#status_sokoban .time,
+#status_sokoban .level,
+#status_sokoban .moves,
 #status_spot .time,
 #status_spot .player,
 #status_rotms .time,

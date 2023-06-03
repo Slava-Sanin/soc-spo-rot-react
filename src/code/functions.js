@@ -28,12 +28,12 @@ function InitStatus(props)
         case 0: // Empty Status bar.
             return (<div> Try to play!!! </div>);
 
-        case 1: // Socoban status
+        case 1: // Sokoban status
             sec = props.p1.retime();
             str1 = `Time of game: ${parseInt(sec/3600)} Hours, ${parseInt(sec/60%60)} Minutes, ${parseInt(sec%60)} Seconds`;
             str2 = "Level: " + props.p1.level;
             str3 = "Moves maked: " + props.p1.moves;
-            return (<div id="status_socoban"> <div className="time"> {str1} </div><div className="level"> {str2} </div><div className="moves"> {str3} </div></div>);
+            return (<div id="status_sokoban"> <div className="time"> {str1} </div><div className="level"> {str2} </div><div className="moves"> {str3} </div></div>);
 
         case 2: // Spot status
             sec = props.p2.retime();

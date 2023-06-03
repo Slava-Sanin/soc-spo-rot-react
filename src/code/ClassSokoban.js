@@ -11,10 +11,10 @@ import {
     GetColor,   
     moveVirtualButtons
 } from './functions.js'
-import SocobanLevels from "../Socoban/levels.json";
+import SokobanLevels from "../Sokoban/levels.json";
 import { A, B } from './constants';
 
-class ClassSocoban {
+class ClassSokoban {
     level = 1;
     data_lev_gr = [];
     data_undo = [];
@@ -36,7 +36,7 @@ class ClassSocoban {
 
     init() {
         this.error = 0;        
-        this.data_level = SocobanLevels[this.level - 1].data.split('');
+        this.data_level = SokobanLevels[this.level - 1].data.split('');
         this.starttime = new Date();
         this.moves = 0;
         this.build_ground();
@@ -93,9 +93,9 @@ class ClassSocoban {
     }
 
     change_level(dir) {
-        if ((this.level + dir) < 1 || (this.level + dir) > SocobanLevels.length) return;
+        if ((this.level + dir) < 1 || (this.level + dir) > SokobanLevels.length) return;
         this.level += dir;
-        //this.data_level = SocobanLevels[this.level - 1].data.split('');
+        //this.data_level = SokobanLevels[this.level - 1].data.split('');
         PlayMySound("changepage.wav");
         this.init();
     }
@@ -269,7 +269,7 @@ class ClassSocoban {
             kode = 'Z';
         }
         let str = "#tabs-1 div.board div:nth-child(" + (x*B+y+1) + ")";
-        $(str).removeClass().addClass("div-soc-"+kode);
+        $(str).removeClass().addClass("div-sok-"+kode);
     }
 
     retime() {
@@ -347,4 +347,4 @@ class ClassSocoban {
 
 }
 
-export default ClassSocoban;
+export default ClassSokoban;

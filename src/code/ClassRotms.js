@@ -15,7 +15,7 @@ import {
 import ClassFire from './ClassFire';
 import RotmsLevels from "../Rotms/levels.json";
 import { A, B } from './constants';
-import SocobanLevels from "../Socoban/levels.json";
+import SokobanLevels from "../Sokoban/levels.json";
 
 
 class ClassRotms {    

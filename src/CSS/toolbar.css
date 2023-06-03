@@ -14,7 +14,7 @@
     cursor: pointer;
 }
 
-.toolbar #btn-socoban {
+.toolbar #btn-sokoban {
     background: url("../assets/images/BIGTOOL22.png")  2px 2px no-repeat;
     background-clip: content-box;
 }

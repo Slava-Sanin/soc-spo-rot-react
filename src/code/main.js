@@ -6,7 +6,7 @@ import {Bsp} from "./constants";
 
 export default function main(){
 
-$("#btn-socoban").click(function(){
+$("#btn-sokoban").click(function(){
   $(this).hide();
   $("#tabs").css("visibility","visible");
   $("#tabs-1").css("visibility","visible");
@@ -15,7 +15,7 @@ $("#btn-socoban").click(function(){
   p1.change_level();
   p1.init();
   $("#ui-id-1").click();
-  $(".status").html('<div id="status_socoban"> <div className="time"> Time of game: </div><div className="level"> Level: </div><div className="moves"> Moves maked: </div></div>');
+  $(".status").html('<div id="status_sokoban"> <div className="time"> Time of game: </div><div className="level"> Level: </div><div className="moves"> Moves maked: </div></div>');
   loaded++;
   p1.is_loaded = 1;
 });
@@ -220,7 +220,7 @@ $("#btn-undo").click(function(){
   // Move back.
         switch (gamecode)
         {
-            case 1: // in Socoban.
+            case 1: // in Sokoban.
                 if (!p1.is_loaded) break;
                 if (p1.moves === 0) return;
                 if (p1.level_is_completed === false) p1.Undo();

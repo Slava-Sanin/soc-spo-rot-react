@@ -13,10 +13,10 @@ import logo from './assets/images/spot.ico';
 import Toolbar from './Components/Toolbar/Toolbar';
 import Status from './Components/Status/Status';
 import SpotColorDialog from './Components/Toolbar/SpotColorDialog';
-import Socoban from './Components/Socoban/Socoban';
+import Sokoban from './Components/Sokoban/Sokoban';
 import Spot from './Components/Spot/Spot';
 import Rotms from './Components/Rotms/Rotms';
-import ClassSocoban from './code/ClassSocoban';
+import ClassSokoban from './code/ClassSokoban';
 import { PlayerDlg, ComputerDlg, ClassSpot } from './code/ClassSpot';
 import ClassRotms from './code/ClassRotms';
 
@@ -41,7 +41,7 @@ import {
     IDM_NormalSize,
     ID_TOOLBAR,
     TOOLS_BMP,
-    IDM_Socoban,
+    IDM_Sokoban,
     IDM_Spot,
     IDM_Rotms,
     IDM_Sound,
@@ -99,7 +99,7 @@ import {
 //import main from "./code/main";
 
 const
-    p1 = new ClassSocoban(),
+    p1 = new ClassSokoban(),
     p2 = new ClassSpot(),
     p3 = new ClassRotms();
 
@@ -108,7 +108,7 @@ const App = () => {
      selectedTab: 0,
      p1,p2,p3
     });
-    const [socobanLevel, setSocobanLevel] = useState(p1.data_level);
+    const [sokobanLevel, setSokobanLevel] = useState(p1.data_level);
     const [spotLevel, setSpotLevel] = useState(p2.data_level);
     const [rotmsLevel, setRotmsLevel] = useState(p3.data_level);
 
@@ -154,7 +154,7 @@ const App = () => {
          {/*<script src="./code/constants.js" />*/}
          {/*<script src="./code/dialogs.js" />*/}
          {/* <script src="./code/ClassFire.js" />        */}
-         {/* <script src="./code/ClassSocoban.js" /> */}
+         {/* <script src="./code/ClassSokoban.js" /> */}
          {/* <script src="./code/ClassSpot.js" /> */}
          {/* <script src="./code/ClassRotms.js" />       */}
          {/*<script src="./code/globals.js" />          */}
@@ -165,7 +165,7 @@ const App = () => {
         <div className="wraper">
             <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <p className="App-header-p"><a className="App-link" href="https://soc-spo-rot.game" target="_blank" rel="noopener noreferrer"> Soc-Spo-Rot </a></p>
+            <p className="App-header-p"><a className="App-link" href="https://sok-spo-rot.game" target="_blank" rel="noopener noreferrer"> Sok-Spo-Rot </a></p>
             </header>
             <hr/>
             <Toolbar state={state}/>
@@ -175,7 +175,7 @@ const App = () => {
                     <Tabs selectedIndex={selectedTab} onSelect={handleTabSelect}>
 
                       <TabList>
-                        <Tab>Socoban</Tab>
+                        <Tab>Sokoban</Tab>
                         <Tab>Spot</Tab>
                         <Tab>Rotms</Tab>
                       </TabList>
@@ -183,18 +183,18 @@ const App = () => {
                       <TabPanel>
                         <div id="tabs-1" style={{display: (selectedTab === 0) ? "block" : "none"}}>
                             <div className="board">
-                              <Socoban level={socobanLevel} />
+                              <Sokoban level={sokobanLevel} />
                             </div>
                             <div className="scroll">
                                 <button type="button" className="up" onClick={()=>{
                                     p1.change_level(-1);
-                                    //setSocobanLevel(p1.data_level);
+                                    setSokobanLevel(p1.data_level);
                                 }}></button>
                                 <div className="tracking"></div>
                                 <div className="lev-position"></div>
                                 <button type="button" className="down" onClick={()=>{
                                     p1.change_level(1);
-                                    //setSocobanLevel(p1.data_level);
+                                    setSokobanLevel(p1.data_level);
                                 }}></button>
                             </div>
                         </div>
@@ -216,13 +216,13 @@ const App = () => {
                             <div className="scroll">
                                 <button type="button" className="up" onClick={()=>{
                                     p3.change_level(-1);
-                                    //setRotmsLevel(p3.data_level);
+                                    setRotmsLevel(p3.data_level);
                                 }}></button>
                                 <div className="tracking"></div>
                                 <div className="lev-position"></div>
                                 <button type="button" className="down" onClick={()=>{
                                     p3.change_level(1);
-                                    //setRotmsLevel(p3.data_level);
+                                    setRotmsLevel(p3.data_level);
                                 }}></button>
                             </div>
                         </div>
