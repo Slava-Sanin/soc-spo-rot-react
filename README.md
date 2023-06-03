@@ -1,2 +1,2 @@
-# soc-spo-rot-react
-soc-spo-rot (React)
+# sok-spo-rot-react
+sok-spo-rot (React)
