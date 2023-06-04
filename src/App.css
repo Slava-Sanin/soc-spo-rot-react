@@ -77,12 +77,14 @@ body {
 
 .wrapper hr {
   color: #E7D2A5;
-  margin: 0 4px 4px 4px;
+  margin: 0 0 4px 0;
+  height: 2px;
+  background-color: #E7D2A5;
 }
 
 .main-window {
   background: url("./assets/images/GRAND/GRAND11.bmp") no-repeat;
-  border: 2px solid #E7D2A5;
+  /*border: 2px solid #E7D2A5;*/
   /*max-height: 422px;*/
   /*min-height: 422px;*/
   margin-top: 6px;
@@ -172,17 +174,15 @@ body {
 }
 
 .App {
-  /*width: 30rem;*/
-  /*height: 20rem;*/
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   position: relative;
   z-index: 1;
   background: inherit;
   overflow: hidden;
 }
 
-.container:before {
+.App:before {
   content: "";
   position: absolute;
   background: inherit;

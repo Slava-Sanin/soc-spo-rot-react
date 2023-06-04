@@ -4,6 +4,8 @@
     line-height: 1.5rem;
     padding: 3px;
     display: flex;
+    /*color: greenyellow;*/
+    font-weight: 500;
 }
 
 #status_sokoban .time,

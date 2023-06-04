@@ -1,8 +1,9 @@
 .toolbar {
     background-color: #EADCBB;
     /*margin: 0 4px 3px 4px;*/
-    height: 46px;
+    height: 54px;
     padding-left: 10px;
+    padding-top: 5px;
 }
 
 .toolbar button {
