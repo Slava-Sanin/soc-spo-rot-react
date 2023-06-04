@@ -63,4 +63,5 @@
     border: 1px solid black;
     background: url("../assets/images/Sokoban/fon24.bmp");
     box-sizing: border-box;
+    position: relative;
 }

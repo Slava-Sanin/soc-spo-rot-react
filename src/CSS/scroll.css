@@ -14,7 +14,7 @@
     background-size: 100% 100%;
     background-color: #EADCBB;
     position: absolute;
-    top: 386px;
+    bottom: 0px;
     box-sizing: border-box;
     cursor: pointer;
 }
@@ -31,20 +31,22 @@
     background-color: #EADCBB;
     border: 2px black;
     background-size: 100% 100%;
+    position: relative;
+    top: -3px;
 }
 
 #tabs-1 .scroll .up {
     background-image: url("../assets/images/arrow_up.png"), url("../assets/images/Sokoban/sokoban.png");
     background-repeat: no-repeat;
     background-size: inherit;
-    background-position: center, -101px 0px;
+    background-position: center, -100px 0px;
 }
 
 #tabs-1 .scroll .down {
     background-image: url("../assets/images/arrow_down.png"), url("../assets/images/Sokoban/sokoban.png");
     background-repeat: no-repeat;
     background-size: inherit;
-    background-position: center, -101px 0px;
+    background-position: center, -100px 0px;
 }
 
 #tabs-1 .scroll .tracking {
