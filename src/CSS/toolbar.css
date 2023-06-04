@@ -12,6 +12,7 @@
     /*margin: -1px;*/
     margin-right: 2px;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .toolbar #btn-sokoban {
@@ -31,7 +32,7 @@
 
 .toolbar #btn-sound {
     margin-left: 13px;
-    margin-right: 4px;
+    /*margin-right: 4px;*/
 }
 
 .sound {

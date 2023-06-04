@@ -1,8 +1,8 @@
 #status_sokoban,
 #status_spot,
 #status_rotms {
-    height: inherit;
-    padding: 0;
+    line-height: 1.5rem;
+    padding: 3px;
     display: flex;
 }
 

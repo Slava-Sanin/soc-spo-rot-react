@@ -6,8 +6,8 @@
 
 .App {
   border: 1px solid black;
-  width: 621px;
-  border: 2px solid #E7D2A5;
+  width: 625px;
+  /*border: 2px solid #E7D2A5;*/
   background-color: #EADCBB;
   overflow: hidden;
   position: relative;
@@ -39,15 +39,20 @@ to {
 }
 
 .App-header {
-background: linear-gradient(to right, darkblue, #4B9BC6);
-height: 32px;
+  background: linear-gradient(to right, darkblue, #4B9BC6);
+  height: 32px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+
 }
 
 .App-header-p {
-text-align: center;
-line-height: 32px;
-font-weight: bold;
-/* border: 2px solid red;     */
+  text-align: center;
+  line-height: 32px;
+  font-weight: bold;
+  /* border: 2px solid red;     */
 }
 
 .App-link {
@@ -61,16 +66,16 @@ body {
   overflow: hidden;
 }
 
-.wraper {
-  width: 621px;
+.wrapper {
+  /*width: 621px;
   margin: 0 auto;
   border: 2px solid #E7D2A5;
   background-color: #EADCBB;
   overflow: hidden;
-  position: relative;
+  position: relative;*/
 }
 
-.wraper hr {
+.wrapper hr {
   color: #E7D2A5;
   margin: 0 4px 4px 4px;
 }
@@ -78,7 +83,7 @@ body {
 .main-window {
   background: url("./assets/images/GRAND/GRAND11.bmp") no-repeat;
   border: 2px solid #E7D2A5;
-  max-height: 422px;
+  /*max-height: 422px;*/
   /*min-height: 422px;*/
   margin-top: 6px;
 }
@@ -133,3 +138,19 @@ margin: 0;
 }
 
 /*----------------------------------------------*/
+
+.react-tabs__tab-list {
+  margin: 0;
+}
+
+.react-tabs__tab--selected {
+  background: none;
+  border-color: #aaa;
+  color: black;
+  border-radius: 5px 5px 0 0;
+  left: 8px;
+}
+
+.react-tabs__tab--selected {
+  text-transform: uppercase;
+}

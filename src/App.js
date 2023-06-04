@@ -162,7 +162,7 @@ const App = () => {
          {/*<script src="./code/main.js" />*/}
          </Helmet>
 
-        <div className="wraper">
+        <div className="wrapper">
             <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             <p className="App-header-p"><a className="App-link" href="https://sok-spo-rot.game" target="_blank" rel="noopener noreferrer"> Sok-Spo-Rot </a></p>
