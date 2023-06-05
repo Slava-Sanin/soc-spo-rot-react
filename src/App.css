@@ -61,8 +61,8 @@ to {
 }
 
 body {
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
   overflow: hidden;
 }
 
@@ -93,7 +93,7 @@ body {
 }
 
 .separator1 {
-  width: 0px;
+  width: 0;
   height: 46px;
   border-right: 2px solid #8B8B8B;
   border-left: 2px solid #F4F4F4;
