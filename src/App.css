@@ -159,7 +159,7 @@ width: 100%;
   background: none;
   /*border-color: #97FF97;*/
   /*border-color: #aaa;*/
-  color: black;
+  color: crimson; /*black;*/
   border-radius: 5px 5px 0 0;
   left: 8px;
   border: 5px solid #97FF97;
@@ -202,3 +202,7 @@ body {
   margin: -20px;
 }
 /*----------------------------------------------*/
+
+.background-off {
+  background: none !important;
+}
