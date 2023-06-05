@@ -244,7 +244,15 @@ const App = () => {
           <SpotColorDialog />
 
           <div className="footer">
-            <p> © Viacheslav Sanin - 2023 - socsporot@gmail.com </p>
+              <p> © Viacheslav Sanin - 2023 - <a
+                      style={{color: "blue", textDecoration: "none"}}
+                      rel="author"
+                      type="text/html"
+                      target="_blank"
+                      href="https://www.linkedin.com/in/slava1974/">
+                      www.linkedin.com/in/slava1974
+                  </a>
+              </p>
           </div>
 
           </div>

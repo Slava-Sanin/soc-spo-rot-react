@@ -20,7 +20,7 @@ function InitStatus(props)
     let str2;
     let str3;
     let str4;
-    let sec;
+    let sec,s;
     let gamecode = props.selectedTab + 1;
     
     switch (gamecode)
@@ -30,7 +30,8 @@ function InitStatus(props)
 
         case 1: // Sokoban status
             sec = props.p1.retime();
-            str1 = `Time of game: ${parseInt(sec/3600)} Hours, ${parseInt(sec/60%60)} Minutes, ${parseInt(sec%60)} Seconds`;
+            s = parseInt(sec%60);
+            str1 = `Time of game: ${parseInt(sec/3600)} Hours, ${parseInt(sec/60%60)} Minutes, ${(s<10)?'0'+s:s} Seconds`;
             str2 = "Level: " + props.p1.level;
             str3 = "Moves maked: " + props.p1.moves;
             return (<div id="status_sokoban"> <div className="time"> {str1} </div><div className="level"> {str2} </div><div className="moves"> {str3} </div></div>);
