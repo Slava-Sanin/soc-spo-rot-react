@@ -154,6 +154,7 @@ width: 100%;
   bottom: -6px;
   font-family: 'Benne', serif;
   font-weight: 600;
+  letter-spacing: 2px;
 }
 
 .react-tabs__tab--selected {

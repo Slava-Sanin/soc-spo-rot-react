@@ -15,7 +15,7 @@ $("#btn-sokoban").click(function(){
   p1.change_level();
   p1.init();
   $("#ui-id-1").click();
-  $(".status").html('<div id="status_sokoban"> <div className="time"> Time of game: </div><div className="level"> Level: </div><div className="moves"> Moves maked: </div></div>');
+  $(".status").html('<div id="status_sokoban"> <div className="time"> Time of game: </div><div className="level"> Level: </div><div className="moves"> Moves made: </div></div>');
   loaded++;
   p1.is_loaded = 1;
 });
