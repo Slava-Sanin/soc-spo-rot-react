@@ -153,6 +153,7 @@ width: 100%;
 .react-tabs__tab {
   bottom: -6px;
   font-family: 'Benne', serif;
+  font-weight: 600;
 }
 
 .react-tabs__tab--selected {

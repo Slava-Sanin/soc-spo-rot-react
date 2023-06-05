@@ -6,6 +6,7 @@
     display: flex;
     /*color: greenyellow;*/
     font-weight: 500;
+    font-size: 11pt;
     text-align: center;
 }
 
@@ -27,8 +28,6 @@
     border-right: solid white 2px;
     flex: auto;
     padding-left: 4px;
-    font-size: 10pt;
-    /*line-height: -moz-block-height;*/
 }
 
 /******/

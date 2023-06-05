@@ -1,4 +1,6 @@
 /*************************** Tabs ****************************************/
+@import url('https://fonts.googleapis.com/css2?family=Benne&display=swap');
+
 .ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all {
     background-image: none;
     background-color: #EADCBB;
