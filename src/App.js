@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { Helmet } from "react-helmet";
@@ -104,6 +104,7 @@ const
     p3 = new ClassRotms();
 
 const App = () => {
+    const refApp = useRef(null);
     const [state, setState] = useState({
      selectedTab: 0,
      p1,p2,p3
@@ -111,14 +112,15 @@ const App = () => {
     const [sokobanLevel, setSokobanLevel] = useState(p1.data_level);
     const [spotLevel, setSpotLevel] = useState(p2.data_level);
     const [rotmsLevel, setRotmsLevel] = useState(p3.data_level);
-
     const [moves, setMoves] = useState(0);
+    const { selectedTab } = state;
 
     const handleTabSelect = (tab) => {
         setState({
             ...state,
-            selectedTab: tab
+            selectedTab: tab,
         });
+        refApp.current.focus();
     }
 
     useEffect(() => {
@@ -130,6 +132,12 @@ const App = () => {
             document.removeEventListener('keydown', handleKeyDown);
         };
     }, []);
+
+    useEffect(() => {
+        //refApp.current.focus();
+
+        console.log('selectedTab changed');
+    }, [selectedTab]);
 
     const handleKeyDown = (event) => {
         if (state.selectedTab !== 0) return;
@@ -146,10 +154,8 @@ const App = () => {
         //setMoves(++moves);
     };
 
-    const { selectedTab } = state;
-
       return (
-      <div className="App">
+      <div ref={refApp} className="App">
         <Helmet>
          {/*<script src="./code/constants.js" />*/}
          {/*<script src="./code/dialogs.js" />*/}
@@ -172,7 +178,7 @@ const App = () => {
 
             <div className="main-window">
 
-                    <Tabs selectedIndex={selectedTab} onSelect={handleTabSelect}>
+                    <Tabs selectedIndex={selectedTab} onSelect={handleTabSelect} disableUpDownKeys disableLeftRightKeys focusTabOnClick>
 
                       <TabList>
                         <Tab>Sokoban</Tab>
@@ -182,7 +188,7 @@ const App = () => {
 
                       <TabPanel>
                         <div id="tabs-1" style={{display: (selectedTab === 0) ? "block" : "none"}}>
-                            <div className="board">
+                            <div id="sokoban-board" className="board">
                               <Sokoban level={sokobanLevel} />
                             </div>
                             <div className="scroll">
