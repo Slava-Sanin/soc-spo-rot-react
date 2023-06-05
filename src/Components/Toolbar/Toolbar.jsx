@@ -5,50 +5,55 @@ import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
 
 const Toolbar = ({state}) => {
-    const [sokobanBackgroundMode, setSokobanBackgroundMode] = useState(3);
-    const handleSokobanBackgroundMode = () => {
-        let mode = sokobanBackgroundMode + 1;
-        if (mode > 3) mode = 1;
-        setSokobanBackgroundMode(mode);
+    const [backgroundMode, setBackgroundMode] = useState([3,3,3]);
+    const handleBackgroundMode = (game) => {
+        let modes = [...backgroundMode];
+        modes[game]++;
+        if (modes[game] > 3) modes[game] = 1;
+        setBackgroundMode(modes);
     };
 
     useEffect(() => {
-        switch (sokobanBackgroundMode) {
+        let elem = "#tabs-" + (state.selectedTab + 1);
+        console.log(elem);
+        switch (backgroundMode[state.selectedTab]) { //mode
             case 1:
                 $('.main-window').addClass("background-off");
-                $('#tabs-1').addClass("background-off");
+                $(elem).addClass("background-off");
                 break;
 
             case 2:
                 $('.main-window').removeClass("background-off");
-                $('#tabs-1').addClass("background-off");
+                $(elem).addClass("background-off");
                 break;
 
             case 3:
-                $('#tabs-1').removeClass("background-off");
+                $(elem).removeClass("background-off");
                 break;
 
             default:
         }
-        console.log('bg mode: ', sokobanBackgroundMode);
-    }, [sokobanBackgroundMode]);
+        console.log('bg mode: ', backgroundMode);
+    }, [backgroundMode]);
 
     return (
         <div className='toolbar'>
             <button id='btn-sokoban'
                     key='btn-1'
-                    onClick={handleSokobanBackgroundMode}>
-                <span className="mytooltiptext">Sokoban Background Mode ({sokobanBackgroundMode}/3)</span>
+                    onClick={() => handleBackgroundMode(0)}>
+                <span className="mytooltiptext">Sokoban Background Mode ({backgroundMode[0]}/3)</span>
             </button>
 
             <button id='btn-spot'
-                    key='btn-2'>
-                <span className="mytooltiptext">Spot Background Mode</span>
+                    key='btn-2'
+                    onClick={() => handleBackgroundMode(1)}>
+                <span className="mytooltiptext">Spot Background Mode ({backgroundMode[1]}/3)</span>
             </button>
 
             <button id='btn-rotms'
-                    key='btn-3'>
-                <span className="mytooltiptext">Rotms Background Mode</span>
+                    key='btn-3'
+                    onClick={() => handleBackgroundMode(2)}>
+                <span className="mytooltiptext">Rotms Background Mode ({backgroundMode[2]}/3)</span>
             </button>
 
             <button id='btn-sound'
