@@ -120,7 +120,7 @@ const App = () => {
             ...state,
             selectedTab: tab,
         });
-        refApp.current.focus();
+        //refApp.current.focus();
     }
 
     useEffect(() => {
@@ -133,11 +133,11 @@ const App = () => {
         };
     }, []);
 
-    useEffect(() => {
+    /*useEffect(() => {
         //refApp.current.focus();
 
         console.log('selectedTab changed');
-    }, [selectedTab]);
+    }, [selectedTab]);*/
 
     const handleKeyDown = (event) => {
         if (state.selectedTab !== 0) return;
