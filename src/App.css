@@ -84,6 +84,8 @@ body {
 
 .main-window {
   background: url("./assets/images/GRAND/GRAND11.bmp") no-repeat;
+  background-size: 100% 100% !important;
+  //background-size: cover !important;
   /*border: 2px solid #E7D2A5;*/
   /*max-height: 422px;*/
   /*min-height: 422px;*/
