@@ -28,7 +28,7 @@
     flex: auto;
     padding-left: 4px;
     font-size: 10pt;
-    line-height: -moz-block-height;
+    /*line-height: -moz-block-height;*/
 }
 
 /******/
@@ -39,9 +39,9 @@
     border-left: 2px solid gray;
     border-bottom: 2px solid white;
     border-right: 2px solid white;
-    padding-left: 0px;
+    padding-left: 0;
     line-height: 25px;
-    line-height: -moz-block-height;
+    /*line-height: -moz-block-height;*/
     text-align: center;
     z-index: 20;
     background-color: #EADCBB;
