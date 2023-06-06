@@ -2,12 +2,12 @@ import ClassSokoban from "./ClassSokoban";
 import {ClassSpot} from "./ClassSpot";
 import ClassRotms from "./ClassRotms";
 let
-    background0 = "#1",
-    background = "",
-    path0 = "#1",
-    path1 = "#2",
-    path2 = "#3",
-    path3 = "#4",
+    Backgrounds = {
+        backgroundDefault: "http://localhost:3000/static/media/GRAND11.28024d201c76f6f482b3.bmp",
+        backgroundTab1: "http://localhost:3000/static/media/_47873efd-8680-4a97-a570-7515d034bc63.cc6cb989cae9d75543c8.jfif",
+        backgroundTab2: "http://localhost:3000/static/media/GRAND13.d1dd2323807ab8ddc268.bmp",
+        backgroundTab3: "http://localhost:3000/static/media/GRAND14.1e4201f6c1e48e68da7a.bmp",
+    },
     CurPath = '',
     paintstruct = {},
     parts = [],
@@ -26,12 +26,7 @@ let
     p3 = {};
 
 export {
-    background0,
-    background,
-    path0,
-    path1,
-    path2,
-    path3,
+    Backgrounds,
     CurPath,
     paintstruct,
     parts,

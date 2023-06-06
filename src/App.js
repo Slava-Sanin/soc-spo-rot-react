@@ -62,12 +62,7 @@ import {
 } from "./code/constants";
 
 import {
-    background0,
-    background,
-    path0,
-    path1,
-    path2,
-    path3,
+    Backgrounds,
     CurPath,
     paintstruct,
     parts,
@@ -180,10 +175,7 @@ const App = () => {
             <Toolbar state={state} setState={setState} />
 
             <div className="main-window"
-                 style={{
-                     //display: (selectedTab === 0) ? "block" : "none",
-                     background: (backgroundModes[selectedTab] !== 1) ? "auto" : "none"
-                 }}>
+                 style={{background: (backgroundModes[selectedTab] !== 1) ? `url("${Backgrounds.backgroundDefault}")` : 'none'}}>
 
                     <Tabs selectedIndex={selectedTab} onSelect={handleTabSelect} disableUpDownKeys disableLeftRightKeys focusTabOnClick>
 
@@ -196,7 +188,7 @@ const App = () => {
                       <TabPanel>
                         <div id="tabs-1" style={{
                             display: (selectedTab === 0) ? "block" : "none",
-                            background: (backgroundModes[0] === 3) ? "auto" : "none"
+                            background: (backgroundModes[0] === 3) ? `url("${Backgrounds.backgroundTab1}")` : "none"
                         }}>
                             <div id="sokoban-board" className="board">
                               <Sokoban level={sokobanLevel} />
@@ -219,7 +211,7 @@ const App = () => {
                       <TabPanel>
                         <div id="tabs-2" style={{
                             display: (selectedTab === 1) ? "block" : "none",
-                            background: (backgroundModes[1] === 3) ? "auto" : "none"
+                            background: (backgroundModes[1] === 3) ? `url("${Backgrounds.backgroundTab2}")` : "none"
                         }}>
                             <div className="board">
                               <Spot level={spotLevel} />
@@ -230,7 +222,7 @@ const App = () => {
                       <TabPanel>
                         <div id="tabs-3" style={{
                             display: (selectedTab === 2) ? "block" : "none",
-                            background: (backgroundModes[2] === 3) ? "auto" : "none"
+                            background: (backgroundModes[2] === 3) ? `url("${Backgrounds.backgroundTab3}")` : "none"
                         }}>
                             <div className="board">
                               <Rotms level={rotmsLevel} />

@@ -6,12 +6,12 @@ import VirtualButtons from './VirtualButtons';
 
 const Toolbar = ({state, setState}) => {
     /*
-     backgroundMode[0] - Sokoban background mode
-     backgroundMode[1] - Spot background mode
-     backgroundMode[2] - Rotms background mode
+     backgroundModes[0] - Sokoban background mode
+     backgroundModes[1] - Spot background mode
+     backgroundModes[2] - Rotms background mode
      mode 1 - Background is transparent
      mode 2 - Background of '.main-window' is visible
-     mode 3 - Background of 'tab-x' is visible
+     mode 3 - Backgrounds of '.main-window' and '#tabs-x' is visible
     */
 
     console.log('------------------------')
@@ -33,7 +33,7 @@ const Toolbar = ({state, setState}) => {
     /*useEffect(() => {
         let elem = "#tabs-" + (state.selectedTab + 1);
         console.log(elem);
-        switch (backgroundMode[state.selectedTab]) { //mode
+        switch (state.backgroundModes[state.selectedTab]) { //mode
             case 1:
                 $('.main-window').addClass("background-off");
                 $(elem).addClass("background-off");
@@ -51,8 +51,8 @@ const Toolbar = ({state, setState}) => {
 
             default:
         }
-        console.log('bg mode: ', backgroundMode);
-    }, [backgroundMode]);*/
+        console.log('bg mode: ', backgroundModes);
+    }, [backgroundModes]);*/
 
     return (
         <div className='toolbar'>

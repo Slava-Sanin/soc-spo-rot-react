@@ -205,6 +205,12 @@ body {
 }
 /*----------------------------------------------*/
 
+/*
 .background-off {
-  background: none; /* !important;*/
+  background: none; !* !important;*!
 }
+
+.background-on {
+  background: url("./assets/images/GRAND/GRAND11.bmp");
+}
+*/
