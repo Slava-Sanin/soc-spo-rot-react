@@ -2,6 +2,8 @@ import React from 'react';
 import '../../CSS/rotms.css';
 
 const Rotms = (props) => {
+    console.log("Redrawing Component Rotms");
+
     return (
         <>
             {props.level.map((number, index) => (

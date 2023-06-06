@@ -206,5 +206,5 @@ body {
 /*----------------------------------------------*/
 
 .background-off {
-  background: none !important;
+  background: none; /* !important;*/
 }

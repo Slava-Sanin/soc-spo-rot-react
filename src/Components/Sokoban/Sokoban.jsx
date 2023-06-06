@@ -3,7 +3,6 @@ import '../../CSS/sokoban.css';
 
 const Sokoban = (props) => {
     console.log("Redrawing Component Sokoban");
-    console.log(props);
 
     return (
         <>

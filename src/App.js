@@ -104,16 +104,19 @@ const
     p3 = new ClassRotms();
 
 const App = () => {
+    console.log("Redrawing App");
+
     const refApp = useRef(null);
     const [state, setState] = useState({
      selectedTab: 0,
+     backgroundModes: [3,3,3],
      p1,p2,p3
     });
     const [sokobanLevel, setSokobanLevel] = useState(p1.data_level);
     const [spotLevel, setSpotLevel] = useState(p2.data_level);
     const [rotmsLevel, setRotmsLevel] = useState(p3.data_level);
     const [moves, setMoves] = useState(0);
-    const { selectedTab } = state;
+    const { selectedTab, backgroundModes } = state;
 
     const handleTabSelect = (tab) => {
         setState({
@@ -140,7 +143,7 @@ const App = () => {
     }, [selectedTab]);*/
 
     const handleKeyDown = (event) => {
-        if (state.selectedTab !== 0) return;
+        if (selectedTab !== 0) return;
         if (event.key === 'ArrowUp') {
             state.p1.movetop(72);
         } else if (event.key === 'ArrowDown') {
@@ -174,12 +177,12 @@ const App = () => {
             <p className="App-header-p"><a className="App-link" href="https://sok-spo-rot.game" target="_blank" rel="noopener noreferrer"> Sok-Spo-Rot </a></p>
             </header>
             <hr/>
-            <Toolbar state={state}/>
+            <Toolbar state={state} setState={setState} />
 
             <div className="main-window"
                  style={{
                      //display: (selectedTab === 0) ? "block" : "none",
-                     background: ([`p${selectedTab+1}`].backgroundMode !== 1) ? "auto" : "none"
+                     background: (backgroundModes[selectedTab] !== 1) ? "auto" : "none"
                  }}>
 
                     <Tabs selectedIndex={selectedTab} onSelect={handleTabSelect} disableUpDownKeys disableLeftRightKeys focusTabOnClick>
@@ -193,7 +196,7 @@ const App = () => {
                       <TabPanel>
                         <div id="tabs-1" style={{
                             display: (selectedTab === 0) ? "block" : "none",
-                            background: (p1.backgroundMode == 3) ? "auto" : "none"
+                            background: (backgroundModes[0] === 3) ? "auto" : "none"
                         }}>
                             <div id="sokoban-board" className="board">
                               <Sokoban level={sokobanLevel} />
@@ -216,7 +219,7 @@ const App = () => {
                       <TabPanel>
                         <div id="tabs-2" style={{
                             display: (selectedTab === 1) ? "block" : "none",
-                            background: (p2.backgroundMode == 3) ? "auto" : "none"
+                            background: (backgroundModes[1] === 3) ? "auto" : "none"
                         }}>
                             <div className="board">
                               <Spot level={spotLevel} />
@@ -227,7 +230,7 @@ const App = () => {
                       <TabPanel>
                         <div id="tabs-3" style={{
                             display: (selectedTab === 2) ? "block" : "none",
-                            background: (p3.backgroundMode == 3) ? "auto" : "none"
+                            background: (backgroundModes[2] === 3) ? "auto" : "none"
                         }}>
                             <div className="board">
                               <Rotms level={rotmsLevel} />

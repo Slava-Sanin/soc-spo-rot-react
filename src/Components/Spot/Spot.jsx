@@ -2,6 +2,8 @@ import React from 'react';
 import '../../CSS/spot.css';
 
 const Spot = (props) => {
+    console.log("Redrawing Component Spot");
+
     return (
         <>
           {props.level.map((number, index) => (
