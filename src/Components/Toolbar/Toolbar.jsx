@@ -58,18 +58,21 @@ const Toolbar = ({state, setState}) => {
         <div className='toolbar'>
             <button id='btn-sokoban'
                     key='btn-1'
+                    disabled={(state.selectedTab !== 0)}
                     onClick={() => handleBackgroundMode(0)}>
                 <span className="mytooltiptext">Sokoban Background Mode ({state.backgroundModes[0]}/3)</span>
             </button>
 
             <button id='btn-spot'
                     key='btn-2'
+                    disabled={(state.selectedTab !== 1)}
                     onClick={() => handleBackgroundMode(1)}>
                 <span className="mytooltiptext">Spot Background Mode ({state.backgroundModes[1]}/3)</span>
             </button>
 
             <button id='btn-rotms'
                     key='btn-3'
+                    disabled={(state.selectedTab !== 2)}
                     onClick={() => handleBackgroundMode(2)}>
                 <span className="mytooltiptext">Rotms Background Mode ({state.backgroundModes[2]}/3)</span>
             </button>
