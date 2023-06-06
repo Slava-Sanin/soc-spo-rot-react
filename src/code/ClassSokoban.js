@@ -23,6 +23,7 @@ class ClassSokoban {
     htime;
     moves;
     background;
+    backgroundMode = 3;
     filename;
     curX;
     curY;

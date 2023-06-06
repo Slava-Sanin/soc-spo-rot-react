@@ -30,6 +30,7 @@ class ClassRotms {
     score;
     score_undo;
     background;
+    backgroundMode = 3;
     filename;
     curX;
     curY;

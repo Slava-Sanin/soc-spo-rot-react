@@ -5,11 +5,29 @@ import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
 
 const Toolbar = ({state}) => {
+    /*
+     backgroundMode[0] - Sokoban background mode
+     backgroundMode[1] - Spot background mode
+     backgroundMode[2] - Rotms background mode
+     mode 1 - Background is transparent
+     mode 2 - Background of '.main-window' is visible
+     mode 3 - Background of 'tab-x' is visible
+    */
+
     const [backgroundMode, setBackgroundMode] = useState([3,3,3]);
     const handleBackgroundMode = (game) => {
         let modes = [...backgroundMode];
         modes[game]++;
         if (modes[game] > 3) modes[game] = 1;
+        switch (game) {
+            case 0: state.p1.backgroundMode = modes[0];
+                break;
+            case 1: state.p2.backgroundMode = modes[1];
+                break;
+            case 2: state.p3.backgroundMode = modes[2];
+                break;
+            default:
+        }
         setBackgroundMode(modes);
     };
 

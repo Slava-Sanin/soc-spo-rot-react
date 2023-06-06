@@ -176,7 +176,11 @@ const App = () => {
             <hr/>
             <Toolbar state={state}/>
 
-            <div className="main-window">
+            <div className="main-window"
+                 style={{
+                     //display: (selectedTab === 0) ? "block" : "none",
+                     background: ([`p${selectedTab+1}`].backgroundMode !== 1) ? "auto" : "none"
+                 }}>
 
                     <Tabs selectedIndex={selectedTab} onSelect={handleTabSelect} disableUpDownKeys disableLeftRightKeys focusTabOnClick>
 
@@ -187,7 +191,10 @@ const App = () => {
                       </TabList>
 
                       <TabPanel>
-                        <div id="tabs-1" style={{display: (selectedTab === 0) ? "block" : "none"}}>
+                        <div id="tabs-1" style={{
+                            display: (selectedTab === 0) ? "block" : "none",
+                            background: (p1.backgroundMode == 3) ? "auto" : "none"
+                        }}>
                             <div id="sokoban-board" className="board">
                               <Sokoban level={sokobanLevel} />
                             </div>
@@ -207,7 +214,10 @@ const App = () => {
                       </TabPanel>
 
                       <TabPanel>
-                        <div id="tabs-2" style={{display: (selectedTab === 1) ? "block" : "none"}}>
+                        <div id="tabs-2" style={{
+                            display: (selectedTab === 1) ? "block" : "none",
+                            background: (p2.backgroundMode == 3) ? "auto" : "none"
+                        }}>
                             <div className="board">
                               <Spot level={spotLevel} />
                             </div>
@@ -215,7 +225,10 @@ const App = () => {
                       </TabPanel>
 
                       <TabPanel>
-                        <div id="tabs-3" style={{display: (selectedTab === 2) ? "block" : "none"}}>
+                        <div id="tabs-3" style={{
+                            display: (selectedTab === 2) ? "block" : "none",
+                            background: (p3.backgroundMode == 3) ? "auto" : "none"
+                        }}>
                             <div className="board">
                               <Rotms level={rotmsLevel} />
                             </div>
