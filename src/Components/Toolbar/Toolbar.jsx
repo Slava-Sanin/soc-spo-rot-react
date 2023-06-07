@@ -117,21 +117,14 @@ const Toolbar = ({state, setState}) => {
                 <span className="mytooltiptext">Undo</span>
             </button>
 
-            <SpotToolbar state={state} />
-            <VirtualButtons state={state} />
-
             <button id='toolbar-switch'
-                    style={{
-                        backgroundColor: 'red',
-                        float: 'right',
-                        width: '15px',
-                        height: '15px',
-                        margin: '10px',
-                        borderRadius: '50%'
-                    }}
-                    onClick={ toggleToolbarMode }>
+                    // className="#toolbar-switch"
+                    onClick={ toggleToolbarMode }
                 ><span className="mytooltiptext">Toolbar mode</span>
             </button>
+
+            <SpotToolbar state={state} />
+            <VirtualButtons state={state} />
         </div>
     );
 }

@@ -1,14 +1,12 @@
 /************ Player and Computer colors in game Spot *********************/
 
 .Spot_toolbar {
-    position: relative;
-    float: right;
+    position: absolute;
     z-index: 100;
-    top: 33px;
-    margin-right: 41px;
-    /*display: none;*/
+    top: 36px;
     /*color: white;*/
     font-weight: 600;
+    right: 42px;
 }
 
 .Spot_toolbar p {

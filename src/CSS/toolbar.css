@@ -4,6 +4,7 @@
     height: 54px;
     padding-left: 10px;
     padding-top: 5px;
+    position: relative;
 }
 
 .toolbar button {
@@ -67,3 +68,11 @@
     background-clip: content-box;
 }
 
+.toolbar #toolbar-switch {
+    background-color: white;
+    float: right;
+    width: 15px;
+    height: 15px;
+    margin: 10px;
+    border-radius: 50%;
+}
