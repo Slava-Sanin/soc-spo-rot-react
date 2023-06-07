@@ -1,7 +1,9 @@
 
 export
-const
+let
     host = "http://localhost:3000",
+    CurPath= window.location.pathname,
+    soundPath = "/static/sound/",
     Backgrounds= {
         /*backgroundDefault= "http=//localhost=3000/static/media/GRAND11.28024d201c76f6f482b3.bmp",
         backgroundTab1= "http=//localhost=3000/static/media/_47873efd-8680-4a97-a570-7515d034bc63.cc6cb989cae9d75543c8.jfif",
@@ -12,7 +14,6 @@ const
         backgroundTab2: host + "/static/backgrounds/GRAND13.bmp",
         backgroundTab3: host + "/static/backgrounds/GRAND14.bmp",
     },
-    CurPath= window.location.pathname,
     paintstruct= {},
     parts= [],
     gamecode= 0,

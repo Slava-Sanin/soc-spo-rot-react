@@ -3,8 +3,6 @@ import React, {useEffect, useState} from 'react';
 import '../../CSS/toolbar.css';
 import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
-import {glob_sound} from "../../code/globals";
-//import {glob_sound} from "../../code/globals";
 
 const Toolbar = ({state, setState}) => {
     /*
@@ -20,7 +18,7 @@ const Toolbar = ({state, setState}) => {
     console.log("Redrawing Toolbar");
     console.log("state.backgroundModes: ", state.backgroundModes);
 
-    const [sound, setSound] = useState(state.sound);
+    const [soundMode, setSoundMode] = useState(state.soundMode);
 
     const handleBackgroundMode = (game) => {
         let { backgroundModes } = state;
@@ -34,9 +32,8 @@ const Toolbar = ({state, setState}) => {
     };
 
     const toggleSound = () => {
-        glob_sound = !glob_sound;
-        state.sound = !state.sound;
-        setSound(state.sound);
+        state.soundMode = !state.soundMode;
+        setSoundMode(state.soundMode);
     };
 
     /*useEffect(() => {
@@ -88,7 +85,7 @@ const Toolbar = ({state, setState}) => {
 
             <button id='btn-sound'
                     key='btn-4'
-                    className={sound ? "sound" : "no-sound"}
+                    className={soundMode ? "sound" : "no-sound"}
                     onClick={ toggleSound }
                     ><span className="mytooltiptext">Sound On/Off</span>
             </button>

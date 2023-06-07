@@ -56,10 +56,10 @@ class ClassRotms {
         return 0;
     }
         
-    NewGame() {
+    NewGame(soundMode) {
         if (this.moves)
         {
-            PlayMySound("changepage.wav");
+            PlayMySound("changepage.wav", soundMode);
             this.init();    
         }
     }
@@ -100,11 +100,11 @@ class ClassRotms {
             }        
     }
     
-    change_level(dir) {
+    change_level(dir, soundMode) {
         if ((this.level + dir) < 1 || (this.level + dir) > RotmsLevels.length) return;
         this.level += dir;
         //this.data_level = RotmsLevels[this.level - 1].data.split('');
-        PlayMySound("changepage.wav");
+        PlayMySound("changepage.wav", soundMode);
         this.init();
     }
     
@@ -143,14 +143,14 @@ class ClassRotms {
         setTimeout(function(){ this.state.p3.fire_all_on_pushing(x, y); }, 200);
     }
     
-    movetop(key) {
+    movetop(key, soundMode) {
         let Xtemp;
         let Ytemp;
 
         switch (key)
         {
             case '2': // Moving left.
-                PlayMySound("move1.wav");
+                PlayMySound("move1.wav", soundMode);
                 for (Ytemp = this.curY - 1; ((this.data_level[this.curX * B + Ytemp] < '0')
                 || (this.data_level[this.curX * B + Ytemp] > '5')) && (Ytemp > 0); Ytemp--);
                 while(Ytemp !== this.curY - 1)
@@ -167,7 +167,7 @@ class ClassRotms {
                 break;
 
             case '1': // Moving right.
-                PlayMySound("move1.wav");
+                PlayMySound("move1.wav", soundMode);
                 for (Ytemp = this.curY + 1; ((this.data_level[this.curX * B + Ytemp] < '0')
                 || (this.data_level[this.curX * B + Ytemp] > '5')) && (Ytemp < (B-1)); Ytemp++);
                 while(Ytemp !== this.curY + 1)
@@ -184,7 +184,7 @@ class ClassRotms {
                 break;
 
             case '3': // Moving up.
-                PlayMySound("move1.wav");
+                PlayMySound("move1.wav", soundMode);
                 for (Xtemp = this.curX-1; ((this.data_level[Xtemp * B + this.curY] < '0')
                 || (this.data_level[Xtemp * B + this.curY] > '5')) && (Xtemp > 0); Xtemp--);
                 while(Xtemp !== this.curX - 1)
@@ -201,7 +201,7 @@ class ClassRotms {
                 break;
 
             case '4': // Moving down.
-                PlayMySound("move1.wav");
+                PlayMySound("move1.wav", soundMode);
                 for (Xtemp = this.curX + 1; ((this.data_level[Xtemp * B + this.curY] < '0')
                 || (this.data_level[Xtemp * B + this.curY] > '5')) && (Xtemp < (A-1)); Xtemp++);
                 while(Xtemp !== this.curX+1)
@@ -251,7 +251,7 @@ class ClassRotms {
         return this.htime/1000;
     }
     
-    check_end() {
+    check_end(soundMode) {
         for(let x=0; x<A; x++)
         {
             for(let y=0; y<B; y++)
@@ -262,7 +262,7 @@ class ClassRotms {
                     return;
             }
         }
-        PlayMySound("winer1.wav");
+        PlayMySound("winer1.wav", soundMode);
 
         $("#btn-undo").prop('disabled',true);
         
@@ -276,7 +276,7 @@ class ClassRotms {
                 this.state.p3.level++;                
                 $("#tabs-3 .scroll .lev-position").css("height", 15 * this.state.p3.level + 4);
                 this.state.p3.change_level();  // Load next level.
-                this.state.p3.NewGame(); // Play again.
+                this.state.p3.NewGame(soundMode); // Play again.
             }
         }
         }, 500);

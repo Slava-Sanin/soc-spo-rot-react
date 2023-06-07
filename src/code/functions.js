@@ -1,17 +1,17 @@
 import $ from 'jquery';
 import { PlayerDlg, ComputerDlg } from './ClassSpot';
-import { level_in_text_format, glob_sound, virtual_buttons_moving } from './globals';
+import {level_in_text_format, glob_sound, virtual_buttons_moving, soundPath} from './globals';
 
-function loadDoc(filename) {
+/*function loadDoc(filename) {
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState === 4 && xhttp.status === 200) {
-        level_in_text_format = xhttp.responseText;
+        let level_in_text_format = xhttp.responseText;
     }
   };
   xhttp.open("GET", filename, false);
   xhttp.send();
-}
+}*/
 
 
 function InitStatus(props)
@@ -74,7 +74,7 @@ function SomeArrow(props)
 }
 
 
-function Sound_On_Off()
+/*function Sound_On_Off()
 {
     if (glob_sound)
     {
@@ -86,16 +86,16 @@ function Sound_On_Off()
             glob_sound = 1;            
             $("#btn-sound").removeClass("no-sound");
          }
-}
+}*/
 
 
-function PlayMySound(soundname)
+function PlayMySound(soundName, soundMode)
 {
-    //if (glob_sound)
-    //{
-        let myAudio = new Audio(soundname);
+    if (soundMode)
+    {
+        let myAudio = new Audio(soundPath + soundName);
         myAudio.play();
-    //}
+    }
 }
 
 
@@ -167,10 +167,10 @@ function moveVirtualButtons(e)
 }
 
 export {
-    loadDoc,
+    //loadDoc,
     InitStatus,   
     SomeArrow,
-    Sound_On_Off,    
+    //Sound_On_Off,
     PlayMySound,
     Change_Player_color,
     Change_Computer_color,

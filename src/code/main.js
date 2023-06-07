@@ -84,7 +84,7 @@ $("#btn-sound").click(function(){
 });
 
 
-$(".up").click(function(){
+$(".up").click(function(soundMode){
   if (!loaded) return;
   switch (gamecode)
   {
@@ -93,7 +93,7 @@ $(".up").click(function(){
       p1.level--;
       $("#tabs-1 .scroll .lev-position").css("height", 15 * p1.level + 4);
       p1.change_level();
-      PlayMySound("changepage.wav");
+      PlayMySound("changepage.wav", soundMode);
       p1.init();
       InitStatus();
       break;
@@ -102,7 +102,7 @@ $(".up").click(function(){
       p3.level--;
       $("#tabs-3 .scroll .lev-position").css("height", 15 * p3.level + 4);
       p3.change_level();
-      PlayMySound("changepage.wav");
+      PlayMySound("changepage.wav", soundMode);
       p3.init();
       InitStatus();
       break;
@@ -111,7 +111,7 @@ $(".up").click(function(){
   return false;
 });
 
-$(".down").click(function(){
+$(".down").click(function(soundMode){
   if (!loaded) return;
   gamecode = $( "#tabs" ).tabs( "option", "active" ) + 1;
 
@@ -123,7 +123,7 @@ $(".down").click(function(){
       p1.level++;
       $("#tabs-1 .scroll .lev-position").css("height", 15 * p1.level + 4);
       p1.change_level();
-      PlayMySound("changepage.wav");
+      PlayMySound("changepage.wav", soundMode);
       p1.init();
       InitStatus();
       break;
@@ -133,7 +133,7 @@ $(".down").click(function(){
       p3.level++;
       $("#tabs-3 .scroll .lev-position").css("height", 15 * p3.level + 4);
       p3.change_level();
-      PlayMySound("changepage.wav");
+      PlayMySound("changepage.wav", soundMode);
       p3.init();
       InitStatus();
       break;

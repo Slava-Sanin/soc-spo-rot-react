@@ -93,10 +93,10 @@ class ClassSpot {
         return 0;
     }
 
-    NewGame() {
+    NewGame(soundMode) {
         if (this.moves)
         {
-            PlayMySound("changepage.wav");
+            PlayMySound("changepage.wav", soundMode);
             this.init();
             if (this.ComputerDlg.is === 1)
             {
@@ -138,8 +138,8 @@ class ClassSpot {
                     case ' ':
                     case '1': this.data_lev_gr[x*Bsp+y] = this.data_level[x*Bsp+y]; break;
                     case '2':
-                    case '3': this.curX = x; this.curY = y;
-                    default: break;
+                    case '3': this.curX = x; this.curY = y; break;
+                    default:
                 }
                 this.putthis(2, x, y, this.data_level[x*Bsp+y]);
             }
@@ -189,7 +189,7 @@ class ClassSpot {
                 break;
             case ' ': // Empty place.
                 kode = 'Z';
-                if (window.table==2)
+                if (window.table===2)
                 {
                     str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
                     $(str).removeClass().addClass("div-spo-"+kode);
@@ -201,7 +201,7 @@ class ClassSpot {
                 }
                 break;
             default:  // Player's or computer's spot.
-                if (kode==2) kode = PlayerDlg.color;
+                if (kode===2) kode = PlayerDlg.color;
                 else kode = ComputerDlg.color;
 
                 str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
@@ -218,7 +218,7 @@ class ClassSpot {
         return this.htime/1000;
     }
 
-    check_end() {
+    check_end(soundMode) {
         if ((this.Player.spots !== 0) && (this.Computer.spots !== 0) && (!this.level_is_completed))
         {
             if ((this.who_is_now === 1) && (!this.player_cant_move)) return 0;
@@ -240,7 +240,7 @@ class ClassSpot {
         else if (this.Player.spots < this.Computer.spots) result = "Computer won!!!";
             else if (this.Player.spots > this.Computer.spots)
                     {
-                        PlayMySound("winer1.wav");
+                        PlayMySound("winer1.wav", soundMode);
                         result = "You are winner!!!";
                     }
 
@@ -255,7 +255,7 @@ class ClassSpot {
         //makeBackGround(hwnd1, this, str);
     }
 
-    player_move(x, y) {
+    player_move(x, y, soundMode) {
         let kode_x, kode_y;
         this.who_is_now = 1; // chey hod
 
@@ -264,7 +264,7 @@ class ClassSpot {
             this.first_X = x;
             this.first_Y = y;
             if (this.data_level[x*Bsp+y] !== this.Player.color) return;
-            PlayMySound("poper.wav");
+            PlayMySound("poper.wav", soundMode);
 
         let str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
         let kode = this.data_level[x*Bsp+y];
@@ -292,7 +292,7 @@ class ClassSpot {
                     this.member_last_move();
                     //EnableMenuItem(GetMenu(hwnd), IDM_Undo, MF_ENABLED);
 
-                    if (Math.abs(this.first_X-x)==2 || Math.abs(this.first_Y-y)==2) // If spot jumps.
+                    if (Math.abs(this.first_X-x)===2 || Math.abs(this.first_Y-y)===2) // If spot jumps.
                     {
                         this.putthis(1, this.first_X, this.first_Y, ' ');
                         //-------gibuy for fast_draw-------
@@ -316,7 +316,7 @@ class ClassSpot {
                             this.putthis(2, x, y, this.Player.color);
                             //---------------------------------
 
-                            PlayMySound("move1.wav");
+                            PlayMySound("move1.wav", soundMode);
                             this.fill_around(x, y, this.Computer.color); // Paint around all enemy.
                             this.first_step = true;
                             this.check_spots_number();
@@ -359,7 +359,7 @@ class ClassSpot {
                         for (j=y-2; j<=(y+2); j++)
                         {
                             if (i<1 || i>=(Asp-1) || j<1 || j>=(Bsp-1)) continue;
-                            if ((x==i) && (y==j)) continue;
+                            if ((x === i) && (y === j)) continue;
                             if (this.data_level[i*Bsp+j] === ' ') return false;
                         }
                 }
@@ -406,8 +406,8 @@ class ClassSpot {
         console.log("exit from computer_move()"); // to delete later
     }
 
-    draw_computer_moving(x, y, best) {
-        PlayMySound("poper.wav");
+    draw_computer_moving(x, y, best, soundMode) {
+        PlayMySound("poper.wav", soundMode);
 
         let str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
         let kode = this.data_level[x*Bsp+y];
@@ -445,7 +445,7 @@ class ClassSpot {
 
     setTimeout(function (){
         //-----------------------
-        PlayMySound("move1.wav");
+        PlayMySound("move1.wav", soundMode);
         this.fill_around(best.x, best.y, this.Player.color);
 
         }, 500);
@@ -465,7 +465,7 @@ class ClassSpot {
             for (j=y-2; j<=y+2; j++)
             {
                 if (i<1 || i>=(Asp-1) || j<1 || j>=(Bsp-1)) continue;
-                if ((x==i) && (y==j)) continue;
+                if ((x===i) && (y===j)) continue;
                 if ((Math.abs(x-i) <= 1) && (Math.abs(y-j) <= 1)) bonus=1;
                 else bonus=0;
 
@@ -516,7 +516,7 @@ class ClassSpot {
             for (j=y-1; j<=y+1; j++)
             {
                 if (i<1 || i>=(Asp-1) || j<1 || j>=(Bsp-1)) continue;
-                if ((x==i) && (y==j)) continue;
+                if ((x===i) && (y===j)) continue;
                 if (this.data_level[i*Bsp+j] === this.Player.color) num++;
             }
         return num;

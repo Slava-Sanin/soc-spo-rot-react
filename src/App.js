@@ -62,6 +62,8 @@ import {
 } from "./code/constants";
 
 import {
+    host,
+    soundPath,
     Backgrounds,
     CurPath,
     paintstruct,
@@ -104,7 +106,7 @@ const App = () => {
     const refApp = useRef(null);
     const [state, setState] = useState({
      selectedTab: 0,
-     sound: glob_sound,
+     soundMode: glob_sound,
      backgroundModes: [3,3,3],
      p1,p2,p3
     });
@@ -141,13 +143,13 @@ const App = () => {
     const handleKeyDown = (event) => {
         if (selectedTab !== 0) return;
         if (event.key === 'ArrowUp') {
-            state.p1.movetop(72, state.sound);
+            state.p1.movetop(72, state.soundMode);
         } else if (event.key === 'ArrowDown') {
-            state.p1.movetop(80, state.sound);
+            state.p1.movetop(80, state.soundMode);
         } else if (event.key === 'ArrowLeft') {
-            state.p1.movetop(75, state.sound);
+            state.p1.movetop(75, state.soundMode);
         } else if (event.key === 'ArrowRight') {
-            state.p1.movetop(77, state.sound);
+            state.p1.movetop(77, state.soundMode);
         }
         
         //setMoves(++moves);
@@ -196,13 +198,13 @@ const App = () => {
                             </div>
                             <div className="scroll">
                                 <button type="button" className="up" onClick={()=>{
-                                    p1.change_level(-1);
+                                    p1.change_level(-1, state.soundMode);
                                     setSokobanLevel(p1.data_level);
                                 }}></button>
                                 <div className="tracking"></div>
                                 <div className="lev-position"></div>
                                 <button type="button" className="down" onClick={()=>{
-                                    p1.change_level(1);
+                                    p1.change_level(1, state.soundMode);
                                     setSokobanLevel(p1.data_level);
                                 }}></button>
                             </div>
@@ -229,14 +231,17 @@ const App = () => {
                               <Rotms level={rotmsLevel} />
                             </div>
                             <div className="scroll">
-                                <button type="button" className="up" onClick={()=>{
-                                    p3.change_level(-1);
+                                <button type="button"
+                                        className="up"
+                                        onClick={()=>{
+                                    p3.change_level(-1, state.soundMode);
                                     setRotmsLevel(p3.data_level);
-                                }}></button>
+                                }}
+                                ></button>
                                 <div className="tracking"></div>
                                 <div className="lev-position"></div>
                                 <button type="button" className="down" onClick={()=>{
-                                    p3.change_level(1);
+                                    p3.change_level(1, state.soundMode);
                                     setRotmsLevel(p3.data_level);
                                 }}></button>
                             </div>

@@ -27,14 +27,12 @@ class ClassFire {
         this.points = 0;
     }
         
-    fire(x, y) {
+    fire(x, y, soundMode) {
         this.init();
         this.check_around(x, y); // Find more rotms around this rotm.
         if (this.count > 1)
         {
-            if (glob_sound) {
-                PlayMySound("fire.wav");
-            }
+            PlayMySound("fire.wav", soundMode);
             this.points = this.count * this.count * 10; // Points of player.
             p3.score += this.points;
             while(this.count) // Remove rotms from board.
