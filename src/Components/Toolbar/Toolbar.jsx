@@ -3,6 +3,8 @@ import React, {useEffect, useState} from 'react';
 import '../../CSS/toolbar.css';
 import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
+import {glob_sound} from "../../code/globals";
+//import {glob_sound} from "../../code/globals";
 
 const Toolbar = ({state, setState}) => {
     /*
@@ -17,7 +19,8 @@ const Toolbar = ({state, setState}) => {
     console.log('------------------------')
     console.log("Redrawing Toolbar");
     console.log("state.backgroundModes: ", state.backgroundModes);
-    console.log('------------------------')
+
+    const [sound, setSound] = useState(state.sound);
 
     const handleBackgroundMode = (game) => {
         let { backgroundModes } = state;
@@ -28,6 +31,12 @@ const Toolbar = ({state, setState}) => {
             ...state,
             backgroundModes,
         });
+    };
+
+    const toggleSound = () => {
+        glob_sound = !glob_sound;
+        state.sound = !state.sound;
+        setSound(state.sound);
     };
 
     /*useEffect(() => {
@@ -59,27 +68,29 @@ const Toolbar = ({state, setState}) => {
             <button id='btn-sokoban'
                     key='btn-1'
                     disabled={(state.selectedTab !== 0)}
-                    onClick={() => handleBackgroundMode(0)}>
-                <span className="mytooltiptext">Sokoban Background Mode ({state.backgroundModes[0]}/3)</span>
+                    onClick={() => handleBackgroundMode(0)}
+                    ><span className="mytooltiptext">Sokoban Background Mode ({state.backgroundModes[0]}/3)</span>
             </button>
 
             <button id='btn-spot'
                     key='btn-2'
                     disabled={(state.selectedTab !== 1)}
-                    onClick={() => handleBackgroundMode(1)}>
-                <span className="mytooltiptext">Spot Background Mode ({state.backgroundModes[1]}/3)</span>
+                    onClick={() => handleBackgroundMode(1)}
+                    ><span className="mytooltiptext">Spot Background Mode ({state.backgroundModes[1]}/3)</span>
             </button>
 
             <button id='btn-rotms'
                     key='btn-3'
                     disabled={(state.selectedTab !== 2)}
-                    onClick={() => handleBackgroundMode(2)}>
-                <span className="mytooltiptext">Rotms Background Mode ({state.backgroundModes[2]}/3)</span>
+                    onClick={() => handleBackgroundMode(2)}
+                    ><span className="mytooltiptext">Rotms Background Mode ({state.backgroundModes[2]}/3)</span>
             </button>
 
             <button id='btn-sound'
                     key='btn-4'
-                    className='sound' ><span className="mytooltiptext">Sound On/Off</span>
+                    className={sound ? "sound" : "no-sound"}
+                    onClick={ toggleSound }
+                    ><span className="mytooltiptext">Sound On/Off</span>
             </button>
 
             <button id='btn-save'

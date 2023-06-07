@@ -104,6 +104,7 @@ const App = () => {
     const refApp = useRef(null);
     const [state, setState] = useState({
      selectedTab: 0,
+     sound: glob_sound,
      backgroundModes: [3,3,3],
      p1,p2,p3
     });
@@ -140,13 +141,13 @@ const App = () => {
     const handleKeyDown = (event) => {
         if (selectedTab !== 0) return;
         if (event.key === 'ArrowUp') {
-            state.p1.movetop(72);
+            state.p1.movetop(72, state.sound);
         } else if (event.key === 'ArrowDown') {
-            state.p1.movetop(80);
+            state.p1.movetop(80, state.sound);
         } else if (event.key === 'ArrowLeft') {
-            state.p1.movetop(75);
+            state.p1.movetop(75, state.sound);
         } else if (event.key === 'ArrowRight') {
-            state.p1.movetop(77);
+            state.p1.movetop(77, state.sound);
         }
         
         //setMoves(++moves);

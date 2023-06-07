@@ -13,6 +13,7 @@ import {
 } from './functions.js'
 import SokobanLevels from "../Sokoban/levels.json";
 import { A, B } from './constants';
+import {glob_sound} from "./globals";
 
 class ClassSokoban {
     level = 1;
@@ -109,7 +110,7 @@ class ClassSokoban {
         return this.init();
     }
 
-    movetop(key)
+    movetop(key, sound)
     {
         switch (key)
         {
@@ -119,7 +120,9 @@ class ClassSokoban {
                     this.member_last_move();
 
                     $("#btn-undo").prop('disabled',false);
-                    PlayMySound("/assets/sound/move1.wav");
+                    if (sound) {
+                        PlayMySound("/src/assets/sound/move1.wav");
+                    }
                     this.putthis(this.curX, this.curY-1, '2');
                     this.putthis(this.curX, this.curY, this.data_lev_gr[this.curX*B+this.curY]);
                     this.curY--;
