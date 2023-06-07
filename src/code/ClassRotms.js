@@ -20,6 +20,7 @@ import SokobanLevels from "../Sokoban/levels.json";
 
 class ClassRotms {    
     level = 1;
+    maxLevel = 20;
     data_level = [];
     data_lev_gr = [];
     data_undo = [];

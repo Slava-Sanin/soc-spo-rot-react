@@ -201,8 +201,10 @@ const App = () => {
                                     p1.change_level(-1, state.soundMode);
                                     setSokobanLevel(p1.data_level);
                                 }}></button>
-                                <div className="tracking"></div>
-                                <div className="lev-position"></div>
+                                {/*<div className="tracking"></div>*/}
+                                <div className="lev-position"
+                                     style={{height: `${state.p1.level/state.p1.maxLevel*304}px`}}
+                                ></div>
                                 <button type="button" className="down" onClick={()=>{
                                     p1.change_level(1, state.soundMode);
                                     setSokobanLevel(p1.data_level);
@@ -238,8 +240,9 @@ const App = () => {
                                     setRotmsLevel(p3.data_level);
                                 }}
                                 ></button>
-                                <div className="tracking"></div>
-                                <div className="lev-position"></div>
+                                <div className="lev-position"
+                                     style={{height: `${state.p3.level/state.p3.maxLevel*304}px`}}
+                                ></div>
                                 <button type="button" className="down" onClick={()=>{
                                     p3.change_level(1, state.soundMode);
                                     setRotmsLevel(p3.data_level);

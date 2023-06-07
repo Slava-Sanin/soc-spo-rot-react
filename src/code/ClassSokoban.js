@@ -17,6 +17,7 @@ import {glob_sound} from "./globals";
 
 class ClassSokoban {
     level = 1;
+    maxLevel = 20;
     data_lev_gr = [];
     data_undo = [];
     starttime;
