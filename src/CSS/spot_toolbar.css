@@ -4,10 +4,11 @@
     position: relative;
     float: right;
     z-index: 100;
-    top: -26px;
-    margin-right: 24px;
+    top: 33px;
+    margin-right: 41px;
     /*display: none;*/
-    color: white;
+    /*color: white;*/
+    font-weight: 600;
 }
 
 .Spot_toolbar p {

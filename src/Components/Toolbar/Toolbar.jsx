@@ -19,6 +19,7 @@ const Toolbar = ({state, setState}) => {
     console.log("state.backgroundModes: ", state.backgroundModes);
 
     const [soundMode, setSoundMode] = useState(state.soundMode);
+    const [toolbarMode, setToolbarMode] = useState(state.toolbarMode);
 
     const handleBackgroundMode = (game) => {
         let { backgroundModes } = state;
@@ -34,6 +35,11 @@ const Toolbar = ({state, setState}) => {
     const toggleSound = () => {
         state.soundMode = !state.soundMode;
         setSoundMode(state.soundMode);
+    };
+
+    const toggleToolbarMode = () => {
+        state.toolbarMode = !state.toolbarMode;
+        setToolbarMode(state.toolbarMode);
     };
 
     /*useEffect(() => {
@@ -61,7 +67,7 @@ const Toolbar = ({state, setState}) => {
     }, [backgroundModes]);*/
 
     return (
-        <div className='toolbar'>
+        <div className='toolbar' style={{backgroundColor: !toolbarMode && "transparent"}}>
             <button id='btn-sokoban'
                     key='btn-1'
                     disabled={(state.selectedTab !== 0)}
@@ -113,6 +119,19 @@ const Toolbar = ({state, setState}) => {
 
             <SpotToolbar state={state} />
             <VirtualButtons state={state} />
+
+            <button id='toolbar-switch'
+                    style={{
+                        backgroundColor: 'red',
+                        float: 'right',
+                        width: '15px',
+                        height: '15px',
+                        margin: '10px',
+                        borderRadius: '50%'
+                    }}
+                    onClick={ toggleToolbarMode }>
+                ><span className="mytooltiptext">Toolbar mode</span>
+            </button>
         </div>
     );
 }

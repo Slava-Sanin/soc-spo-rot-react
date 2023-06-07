@@ -107,6 +107,7 @@ const App = () => {
     const [state, setState] = useState({
      selectedTab: 0,
      soundMode: glob_sound,
+     toolbarMode: false,
      backgroundModes: [3,3,3],
      p1,p2,p3
     });
