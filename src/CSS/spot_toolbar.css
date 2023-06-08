@@ -3,23 +3,29 @@
 .Spot_toolbar {
     position: absolute;
     z-index: 100;
-    top: 36px;
+    top: -5px;
     /*color: white;*/
     font-weight: 600;
-    right: 42px;
+    right: 38px;
 }
 
 .Spot_toolbar p {
     margin: 0;
-    padding: 0;
+    padding: 2px;
     font-size: small;
-    padding-bottom: 9px;
+    /*padding-bottom: 9px;*/
+    text-align: center;
 }
 
 #Spot_toolbar_button {
     width: 12px;
     height: 40px;
     margin: 29px 5px 0px;
+}
+
+.Spot_color {
+    border: 2px solid black;
+    margin: 0 11px 0;
 }
 
 .Spot_color.left {
@@ -36,11 +42,12 @@
 
 .ramka {
     border: 1px solid gray;
-    padding: 2px 8px 4px;
-    width: 48px;
+    /*padding: 2px 8px 4px;*/
+    padding-bottom: 5px;
+    width: 66px;
 }
 
-.ramka.left {
+/*.ramka.left {
     padding-left: 10px;
     padding-right: 2px;
 }
@@ -48,7 +55,7 @@
 .ramka.right {
     padding-left: 2px;
     padding-right: 10px;
-}
+}*/
 
 .left {
     float: left;
