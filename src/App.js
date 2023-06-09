@@ -162,11 +162,13 @@ const App = () => {
         }
         if (p1.moves === movesBefore) return;
 
+console.log('state.undoStates: ', state.undoStates);
+
         let tempUndoStates = [...state.undoStates];
         tempUndoStates[0] = true;
         setState({
             ...state,
-            undoStates: tempUndoStates,
+            undoStates: [...tempUndoStates],
         });
 
         //setMoves(++moves);

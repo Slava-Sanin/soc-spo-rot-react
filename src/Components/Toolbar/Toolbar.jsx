@@ -21,7 +21,7 @@ const Toolbar = ({state, setState}) => {
     const [soundMode, setSoundMode] = useState(state.soundMode);
     const [toolbarMode, setToolbarMode] = useState(state.toolbarMode);
     const [undoStates, setUndoStates] = useState(state.undoStates);
-
+console.log('undoStates: ', undoStates);
     const handleBackgroundMode = (game) => {
         let { backgroundModes } = state;
         backgroundModes[game]++;
@@ -82,12 +82,12 @@ const Toolbar = ({state, setState}) => {
         }
         let tempUndoStates = [...undoStates];
         tempUndoStates[state.selectedTab] = false;
-        setUndoStates(tempUndoStates);
+        setUndoStates([...tempUndoStates]);
         setState({
             ...state,
             undoStates: [...tempUndoStates]
         });
-    }
+    };
 
     /*useEffect(() => {
         let elem = "#tabs-" + (state.selectedTab + 1);
