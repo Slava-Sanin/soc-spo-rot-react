@@ -15,7 +15,6 @@ const Toolbar = ({state, setState}) => {
      mode 3 - Backgrounds of '.main-window' and '#tabs-x' is visible
     */
 
-    console.log('------------------------')
     console.log("Redrawing Toolbar");
     console.log("state.backgroundModes: ", state.backgroundModes);
 
@@ -84,7 +83,10 @@ const Toolbar = ({state, setState}) => {
         let tempUndoStates = [...undoStates];
         tempUndoStates[state.selectedTab] = false;
         setUndoStates(tempUndoStates);
-        setState({...state, undoStates: [...tempUndoStates]});
+        setState({
+            ...state,
+            undoStates: [...tempUndoStates]
+        });
     }
 
     /*useEffect(() => {

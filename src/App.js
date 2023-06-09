@@ -101,6 +101,7 @@ const
     p3 = new ClassRotms();
 
 const App = () => {
+    console.log('------------------------')
     console.log("Redrawing App");
 
     const refApp = useRef(null);
@@ -151,20 +152,22 @@ const App = () => {
         if (selectedTab !== 0) return;
         let movesBefore = p1.moves;
         if (event.key === 'ArrowUp') {
-            state.p1.movetop(72, state.soundMode);
+            state.p1.movetop(72);
         } else if (event.key === 'ArrowDown') {
-            state.p1.movetop(80, state.soundMode);
+            state.p1.movetop(80);
         } else if (event.key === 'ArrowLeft') {
-            state.p1.movetop(75, state.soundMode);
+            state.p1.movetop(75);
         } else if (event.key === 'ArrowRight') {
-            state.p1.movetop(77, state.soundMode);
+            state.p1.movetop(77);
         }
         if (p1.moves === movesBefore) return;
 
         let tempUndoStates = [...state.undoStates];
         tempUndoStates[0] = true;
-        state.undoStates = tempUndoStates;
-        setState({...state});
+        setState({
+            ...state,
+            undoStates: tempUndoStates,
+        });
 
         //setMoves(++moves);
     };
@@ -212,7 +215,7 @@ const App = () => {
                             </div>
                             <div className="scroll">
                                 <button type="button" className="up" onClick={()=>{
-                                    p1.change_level(-1, state.soundMode);
+                                    p1.change_level(-1);
                                     setSokobanLevel(p1.data_level);
                                 }}></button>
                                 {/*<div className="tracking"></div>*/}
@@ -220,7 +223,7 @@ const App = () => {
                                      style={{height: `${state.p1.level/state.p1.maxLevel*304}px`}}
                                 ></div>
                                 <button type="button" className="down" onClick={()=>{
-                                    p1.change_level(1, state.soundMode);
+                                    p1.change_level(1);
                                     setSokobanLevel(p1.data_level);
                                 }}></button>
                             </div>
@@ -250,7 +253,7 @@ const App = () => {
                                 <button type="button"
                                         className="up"
                                         onClick={()=>{
-                                    p3.change_level(-1, state.soundMode);
+                                    p3.change_level(-1);
                                     setRotmsLevel(p3.data_level);
                                 }}
                                 ></button>
@@ -258,7 +261,7 @@ const App = () => {
                                      style={{height: `${state.p3.level/state.p3.maxLevel*304}px`}}
                                 ></div>
                                 <button type="button" className="down" onClick={()=>{
-                                    p3.change_level(1, state.soundMode);
+                                    p3.change_level(1);
                                     setRotmsLevel(p3.data_level);
                                 }}></button>
                             </div>
