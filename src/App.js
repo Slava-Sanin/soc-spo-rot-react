@@ -115,7 +115,7 @@ const App = () => {
     const [sokobanLevel, setSokobanLevel] = useState(p1.data_level);
     const [spotLevel, setSpotLevel] = useState(p2.data_level);
     const [rotmsLevel, setRotmsLevel] = useState(p3.data_level);
-    const [moves, setMoves] = useState(0);
+    const [isMoved, setIsMoved] = useState(false);
     const { selectedTab, backgroundModes } = state;
     //const { undoStates, setUndoStates } = [...state.undoStates];
 
@@ -149,6 +149,7 @@ const App = () => {
 
     const handleKeyDown = (event) => {
         if (selectedTab !== 0) return;
+        let movesBefore = p1.moves;
         if (event.key === 'ArrowUp') {
             state.p1.movetop(72, state.soundMode);
         } else if (event.key === 'ArrowDown') {
@@ -158,12 +159,13 @@ const App = () => {
         } else if (event.key === 'ArrowRight') {
             state.p1.movetop(77, state.soundMode);
         }
-        if (state.undoStates[0]) {
-            let tempUndoStates = [...state.undoStates];
-            tempUndoStates[0] = true;
-            state.undoStates = tempUndoStates;
-            setState({...state});
-        }
+        if (p1.moves === movesBefore) return;
+
+        let tempUndoStates = [...state.undoStates];
+        tempUndoStates[0] = true;
+        state.undoStates = tempUndoStates;
+        setState({...state});
+
         //setMoves(++moves);
     };
 

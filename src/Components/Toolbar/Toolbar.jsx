@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import '../../CSS/toolbar.css';
 import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
-import {InitStatus} from "../../code/functions";
+import {InitStatus, PlayMySound} from "../../code/functions";
 
 const Toolbar = ({state, setState}) => {
     /*
@@ -84,6 +84,7 @@ const Toolbar = ({state, setState}) => {
         let tempUndoStates = [...undoStates];
         tempUndoStates[state.selectedTab] = false;
         setUndoStates(tempUndoStates);
+        setState({...state, undoStates: [...tempUndoStates]});
     }
 
     /*useEffect(() => {

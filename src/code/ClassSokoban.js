@@ -48,10 +48,10 @@ class ClassSokoban {
         this.level_is_completed = false;
     }
 
-    NewGame(soundMode) {
+    NewGame() {
         if (this.moves)
         {
-            PlayMySound("changepage.wav", soundMode);
+            PlayMySound("changepage.wav", this.refState.soundMode);
             this.init();
         }
     }
@@ -67,6 +67,7 @@ class ClassSokoban {
             }
         }
         this.moves--;
+        PlayMySound("move1.wav", this.refState.soundMode);
     }
 
     member_last_move() {
@@ -94,11 +95,11 @@ class ClassSokoban {
             }
     }
 
-    change_level(dir, soundMode) {
+    change_level(dir) {
         if ((this.level + dir) < 1 || (this.level + dir) > SokobanLevels.length) return;
         this.level += dir;
         //this.data_level = SokobanLevels[this.level - 1].data.split('');
-        PlayMySound("changepage.wav", soundMode);
+        PlayMySound("changepage.wav", this.refState.soundMode);
         this.init();
     }
 
@@ -110,7 +111,7 @@ class ClassSokoban {
         return this.init();
     }
 
-    movetop(key, soundMode)
+    movetop(key)
     {
         switch (key)
         {
@@ -121,7 +122,7 @@ class ClassSokoban {
 
                     //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
-                    PlayMySound("move1.wav", soundMode);
+                    PlayMySound("move1.wav", this.refState.soundMode);
                     this.putthis(this.curX, this.curY-1, '2');
                     this.putthis(this.curX, this.curY, this.data_lev_gr[this.curX*B+this.curY]);
                     this.curY--;
@@ -136,7 +137,7 @@ class ClassSokoban {
 
                     //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
-                    PlayMySound("move_push.wav", soundMode);
+                    PlayMySound("move_push.wav", this.refState.soundMode);
                     if (this.data_level[this.curX*B+this.curY-2] === ' ')
                         this.putthis(this.curX, this.curY-2, '4');
                     else
@@ -156,7 +157,7 @@ class ClassSokoban {
 
                     //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
-                    PlayMySound("move1.wav", soundMode);
+                    PlayMySound("move1.wav", this.refState.soundMode);
                     this.putthis(this.curX, this.curY+1, '2');
                     this.putthis(this.curX, this.curY, this.data_lev_gr[this.curX*B+this.curY]);
                     this.curY++;
@@ -171,7 +172,7 @@ class ClassSokoban {
 
                     //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
-                    PlayMySound("move_push.wav", soundMode);
+                    PlayMySound("move_push.wav", this.refState.soundMode);
                     if (this.data_level[this.curX*B+this.curY+2] === ' ')
                         this.putthis(this.curX, this.curY+2, '4');
                     else
@@ -191,7 +192,7 @@ class ClassSokoban {
 
                     //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
-                    PlayMySound("move1.wav", soundMode);
+                    PlayMySound("move1.wav", this.refState.soundMode);
                     this.putthis(this.curX-1, this.curY, '2');
                     this.putthis(this.curX, this.curY, this.data_lev_gr[this.curX*B+this.curY]);
                     this.curX--;
@@ -206,7 +207,7 @@ class ClassSokoban {
 
                     //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
-                    PlayMySound("move_push.wav", soundMode);
+                    PlayMySound("move_push.wav", this.refState.soundMode);
                     if (this.data_level[(this.curX-2)*B+this.curY] === ' ')
                         this.putthis(this.curX-2, this.curY, '4');
                     else
@@ -226,7 +227,7 @@ class ClassSokoban {
 
                     //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
-                    PlayMySound("move1.wav", soundMode);
+                    PlayMySound("move1.wav", this.refState.soundMode);
                     this.putthis(this.curX+1, this.curY, '2');
                     this.putthis(this.curX, this.curY, this.data_lev_gr[this.curX*B+this.curY]);
                     this.curX++;
@@ -241,7 +242,7 @@ class ClassSokoban {
 
                     //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
-                    PlayMySound("move_push.wav", soundMode);
+                    PlayMySound("move_push.wav", this.refState.soundMode);
                     if (this.data_level[(this.curX+2)*B+this.curY] === ' ')
                         this.putthis(this.curX+2, this.curY, '4');
                     else
@@ -278,8 +279,8 @@ class ClassSokoban {
         {
             kode = 'Z';
         }
-        let str = "#tabs-1 div.board div:nth-child(" + (x*B+y+1) + ")";
-        $(str).removeClass().addClass("div-sok-"+kode);
+        /*let str = "#tabs-1 div.board div:nth-child(" + (x*B+y+1) + ")";
+        $(str).removeClass().addClass("div-sok-"+kode);*/
     }
 
     retime() {
@@ -288,7 +289,7 @@ class ClassSokoban {
         return this.htime/1000;
     }
 
-    check_end(soundMode) {
+    check_end() {
         for(let x=0; x<A; x++)
         {
             for(let y=0; y<B; y++)
@@ -298,7 +299,7 @@ class ClassSokoban {
             }
         }
 
-        PlayMySound("winer1.wav", soundMode);
+        PlayMySound("winer1.wav", this.refState.soundMode);
 
         //$("#btn-undo").prop('disabled',true);
         this.refState.undoStates[0] = false;
@@ -313,7 +314,7 @@ class ClassSokoban {
                 this.level++;
                 // $("#tabs-1 .scroll .lev-position").css("height", 15 * this.level + 4);
                 this.change_level();  // Load next level.
-                this.NewGame(soundMode); // Play again.
+                this.NewGame(); // Play again.
             }
         }
         }, 500);
