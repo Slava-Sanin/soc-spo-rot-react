@@ -122,6 +122,17 @@ button:hover .mytooltiptext {
   margin-top: 50px;
 }
 
+#toolbar-switch:hover .mytooltiptext {
+  right: 10px;
+  top: -75px;
+}
+
+#virtual_move:hover .mytooltiptext {
+  visibility: visible;
+  right: 10px;
+  top: -20px;
+}
+
 #IDM_Edit:hover .mytooltiptext,
 #IDM_Help:hover .mytooltiptext,
 #IDM_Exit:hover .mytooltiptext {	

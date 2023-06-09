@@ -57,7 +57,7 @@ const VirtualButtonSettings = {
                             onMouseDown={ handleMouseDown }
                             onMouseMove={ handleMouseMove }
                             onMouseUp={ handleMouseUp }
-                        >+</th>
+                        >+<span className="mytooltiptext">You can drag it to any place</span></th>
                         <th id="virtual_right" onClick={ () => {state.p1.movetop(77)} }></th>
                     </tr>
 

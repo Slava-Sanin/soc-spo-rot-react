@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import '../../CSS/toolbar.css';
 import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
+import {InitStatus} from "../../code/functions";
 
 const Toolbar = ({state, setState}) => {
     /*
@@ -20,6 +21,7 @@ const Toolbar = ({state, setState}) => {
 
     const [soundMode, setSoundMode] = useState(state.soundMode);
     const [toolbarMode, setToolbarMode] = useState(state.toolbarMode);
+    const [undoStates, setUndoStates] = useState(state.undoStates);
 
     const handleBackgroundMode = (game) => {
         let { backgroundModes } = state;
@@ -41,6 +43,48 @@ const Toolbar = ({state, setState}) => {
         state.toolbarMode = !state.toolbarMode;
         setToolbarMode(state.toolbarMode);
     };
+
+    const newGame = () => {
+        switch (state.selectedTab)
+        {
+            case 0:
+                state.p1.init();
+                break;
+            case 1:
+                state.p2.init();
+                break;
+            case 2:
+                state.p3.init();
+                break;
+            default:
+        }
+        let tempUndoStates = [...undoStates];
+        tempUndoStates[state.selectedTab] = false;
+        setUndoStates(tempUndoStates);
+        InitStatus(state);
+    }
+
+    const undo = () => {
+        console.log("Clicked undo");
+        switch (state.selectedTab)
+        {
+            case 0: //Socoban
+                if (state.p1.moves === 0) return;
+                if (!state.p1.level_is_completed) state.p1.Undo();
+                break;
+            case 1: //Spot
+
+                break;
+            case 2: //Rotms
+                if (state.p3.moves === 0) return;
+                if (!state.p3.level_is_completed) state.p3.Undo();
+                break;
+            default:
+        }
+        let tempUndoStates = [...undoStates];
+        tempUndoStates[state.selectedTab] = false;
+        setUndoStates(tempUndoStates);
+    }
 
     /*useEffect(() => {
         let elem = "#tabs-" + (state.selectedTab + 1);
@@ -102,8 +146,9 @@ const Toolbar = ({state, setState}) => {
             </button>
 
             <button id='btn-new'
-                    key='btn-6'>
-                <span className="mytooltiptext">New game</span>
+                    key='btn-6'
+                    onClick={ newGame }
+                ><span className="mytooltiptext">New game</span>
             </button>
 
             <button id='btn-finish'
@@ -113,12 +158,13 @@ const Toolbar = ({state, setState}) => {
             </button>
 
             <button id='btn-undo'
-                    key='btn-8'>
-                <span className="mytooltiptext">Undo</span>
+                    key='btn-8'
+                    disabled={(undoStates[state.selectedTab] === false)}
+                    onClick={ undo }
+                ><span className="mytooltiptext">Undo</span>
             </button>
 
             <button id='toolbar-switch'
-                    // className="#toolbar-switch"
                     onClick={ toggleToolbarMode }
                 ><span className="mytooltiptext">Toolbar mode</span>
             </button>

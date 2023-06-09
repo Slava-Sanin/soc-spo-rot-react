@@ -109,6 +109,7 @@ const App = () => {
      soundMode: glob_sound,
      toolbarMode: false,
      backgroundModes: [3,3,3],
+     undoStates: [false,false,false],
      p1,p2,p3
     });
     const [sokobanLevel, setSokobanLevel] = useState(p1.data_level);
@@ -116,6 +117,11 @@ const App = () => {
     const [rotmsLevel, setRotmsLevel] = useState(p3.data_level);
     const [moves, setMoves] = useState(0);
     const { selectedTab, backgroundModes } = state;
+    //const { undoStates, setUndoStates } = [...state.undoStates];
+
+    p1.refState = state;
+    p2.refState = state;
+    p3.refState = state;
 
     const handleTabSelect = (tab) => {
         setState({
@@ -152,7 +158,12 @@ const App = () => {
         } else if (event.key === 'ArrowRight') {
             state.p1.movetop(77, state.soundMode);
         }
-        
+        if (state.undoStates[0]) {
+            let tempUndoStates = [...state.undoStates];
+            tempUndoStates[0] = true;
+            state.undoStates = tempUndoStates;
+            setState({...state});
+        }
         //setMoves(++moves);
     };
 
