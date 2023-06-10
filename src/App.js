@@ -168,7 +168,7 @@ console.log('state.undoStates: ', state.undoStates);
         tempUndoStates[0] = true;
         setState({
             ...state,
-            undoStates: [...tempUndoStates],
+            undoStates: tempUndoStates
         });
 
         //setMoves(++moves);

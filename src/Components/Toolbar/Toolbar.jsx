@@ -22,6 +22,7 @@ const Toolbar = ({state, setState}) => {
     const [toolbarMode, setToolbarMode] = useState(state.toolbarMode);
     const [undoStates, setUndoStates] = useState(state.undoStates);
 console.log('undoStates: ', undoStates);
+
     const handleBackgroundMode = (game) => {
         let { backgroundModes } = state;
         backgroundModes[game]++;
@@ -82,10 +83,10 @@ console.log('undoStates: ', undoStates);
         }
         let tempUndoStates = [...undoStates];
         tempUndoStates[state.selectedTab] = false;
-        setUndoStates([...tempUndoStates]);
+        setUndoStates(tempUndoStates);
         setState({
             ...state,
-            undoStates: [...tempUndoStates]
+            undoStates: tempUndoStates
         });
     };
 
