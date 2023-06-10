@@ -120,7 +120,6 @@ class ClassSokoban {
                 {
                     this.member_last_move();
 
-                    //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
                     PlayMySound("move1.wav", this.refState.soundMode);
                     this.putthis(this.curX, this.curY-1, '2');
@@ -135,7 +134,6 @@ class ClassSokoban {
                 {
                     this.member_last_move();
 
-                    //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
                     PlayMySound("move_push.wav", this.refState.soundMode);
                     if (this.data_level[this.curX*B+this.curY-2] === ' ')
@@ -155,7 +153,6 @@ class ClassSokoban {
                 {
                     this.member_last_move();
 
-                    //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
                     PlayMySound("move1.wav", this.refState.soundMode);
                     this.putthis(this.curX, this.curY+1, '2');
@@ -170,7 +167,6 @@ class ClassSokoban {
                 {
                     this.member_last_move();
 
-                    //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
                     PlayMySound("move_push.wav", this.refState.soundMode);
                     if (this.data_level[this.curX*B+this.curY+2] === ' ')
@@ -190,7 +186,6 @@ class ClassSokoban {
                 {
                     this.member_last_move();
 
-                    //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
                     PlayMySound("move1.wav", this.refState.soundMode);
                     this.putthis(this.curX-1, this.curY, '2');
@@ -205,7 +200,6 @@ class ClassSokoban {
                 {
                     this.member_last_move();
 
-                    //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
                     PlayMySound("move_push.wav", this.refState.soundMode);
                     if (this.data_level[(this.curX-2)*B+this.curY] === ' ')
@@ -225,7 +219,6 @@ class ClassSokoban {
                 {
                     this.member_last_move();
 
-                    //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
                     PlayMySound("move1.wav", this.refState.soundMode);
                     this.putthis(this.curX+1, this.curY, '2');
@@ -240,7 +233,6 @@ class ClassSokoban {
                 {
                     this.member_last_move();
 
-                    //$("#btn-undo").prop('disabled',false);
                     this.refState.undoStates[0] = true;
                     PlayMySound("move_push.wav", this.refState.soundMode);
                     if (this.data_level[(this.curX+2)*B+this.curY] === ' ')

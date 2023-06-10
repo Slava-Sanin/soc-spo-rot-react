@@ -118,7 +118,6 @@ const App = () => {
     const [rotmsLevel, setRotmsLevel] = useState(p3.data_level);
     const [isMoved, setIsMoved] = useState(false);
     const { selectedTab, backgroundModes } = state;
-    //const { undoStates, setUndoStates } = [...state.undoStates];
 
     p1.refState = state;
     p2.refState = state;
@@ -161,8 +160,6 @@ const App = () => {
             state.p1.movetop(77);
         }
         if (p1.moves === movesBefore) return;
-
-console.log('state.undoStates: ', state.undoStates);
 
         let tempUndoStates = [...state.undoStates];
         tempUndoStates[0] = true;

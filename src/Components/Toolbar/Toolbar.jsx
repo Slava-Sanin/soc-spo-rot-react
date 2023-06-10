@@ -21,7 +21,6 @@ const Toolbar = ({state, setState}) => {
     const [soundMode, setSoundMode] = useState(state.soundMode);
     const [toolbarMode, setToolbarMode] = useState(state.toolbarMode);
     const [undoStates, setUndoStates] = useState(state.undoStates);
-console.log('undoStates: ', undoStates);
 
     const handleBackgroundMode = (game) => {
         let { backgroundModes } = state;
