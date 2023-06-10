@@ -57,9 +57,15 @@ const Toolbar = ({state, setState}) => {
                 break;
             default:
         }
+
         let tempUndoStates = [...undoStates];
         tempUndoStates[state.selectedTab] = false;
         setUndoStates(tempUndoStates);
+
+        setState({
+            ...state
+        });
+
         InitStatus(state);
     }
 

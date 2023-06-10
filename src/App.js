@@ -116,7 +116,6 @@ const App = () => {
     const [sokobanLevel, setSokobanLevel] = useState(p1.data_level);
     const [spotLevel, setSpotLevel] = useState(p2.data_level);
     const [rotmsLevel, setRotmsLevel] = useState(p3.data_level);
-    const [isMoved, setIsMoved] = useState(false);
     const { selectedTab, backgroundModes } = state;
 
     p1.refState = state;
