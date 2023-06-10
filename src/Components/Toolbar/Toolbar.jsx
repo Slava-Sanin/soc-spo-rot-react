@@ -5,7 +5,7 @@ import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
 import {InitStatus, PlayMySound} from "../../code/functions";
 
-const Toolbar = ({state, setState}) => {
+const Toolbar = ({state, setState, setSokobanLevelData}) => {
     /*
      backgroundModes[0] - Sokoban background mode
      backgroundModes[1] - Spot background mode
@@ -16,11 +16,15 @@ const Toolbar = ({state, setState}) => {
     */
 
     console.log("Redrawing Toolbar");
-    console.log("state.backgroundModes: ", state.backgroundModes);
+    //console.log("state.backgroundModes: ", state.backgroundModes);
 
     const [soundMode, setSoundMode] = useState(state.soundMode);
     const [toolbarMode, setToolbarMode] = useState(state.toolbarMode);
     const [undoStates, setUndoStates] = useState(state.undoStates);
+
+    useEffect(() => {
+        setUndoStates([...state.undoStates]);
+    }, [state]);
 
     const handleBackgroundMode = (game) => {
         let { backgroundModes } = state;
@@ -44,6 +48,7 @@ const Toolbar = ({state, setState}) => {
     };
 
     const newGame = () => {
+        console.log("Clicked newGame");
         switch (state.selectedTab)
         {
             case 0:
@@ -67,6 +72,7 @@ const Toolbar = ({state, setState}) => {
             undoStates: tempUndoStates
         });
 
+        setSokobanLevelData(state.p1.data_level);
         //InitStatus(state);
     };
 

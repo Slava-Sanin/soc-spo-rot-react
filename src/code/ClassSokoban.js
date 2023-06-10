@@ -49,11 +49,11 @@ class ClassSokoban {
     }
 
     NewGame() {
-        if (this.moves)
-        {
+        //if (this.moves)
+        //{
             PlayMySound("changepage.wav", this.refState.soundMode);
             this.init();
-        }
+        //}
     }
 
     Undo() {
@@ -63,7 +63,7 @@ class ClassSokoban {
             {
                 this.data_level[x*B+y] = this.data_undo[x*B+y];
                 if (this.data_level[x*B+y] === '2') {this.curX=x; this.curY=y;}
-                this.putthis(x, y, this.data_level[x*B+y]);
+                //this.putthis(x, y, this.data_level[x*B+y]);
             }
         }
         this.moves--;
@@ -89,9 +89,9 @@ class ClassSokoban {
                     case '4':
                     case ' ': this.data_lev_gr[x*B+y] = ' '; break;
                     case '5': this.data_lev_gr[x*B+y] = '3';
-                    default: break;
+                    default:
                 }
-                this.putthis(x, y, this.data_level[x*B+y]);
+                //this.putthis(x, y, this.data_level[x*B+y]);
             }
     }
 
@@ -247,7 +247,7 @@ class ClassSokoban {
                     break;
                 }
 
-                default: break;
+                default:
         }
     }
 
@@ -263,15 +263,15 @@ class ClassSokoban {
     }
 
     putthis(x, y, kode) {
-        let kode_x, kode_y;
+        //let kode_x, kode_y;
 
         this.data_level[x*B+y] = kode;
 
-        if (kode === ' ') // Draws empty place
+        /*if (kode === ' ') // Draws empty place
         {
             kode = 'Z';
         }
-        /*let str = "#tabs-1 div.board div:nth-child(" + (x*B+y+1) + ")";
+        let str = "#tabs-1 div.board div:nth-child(" + (x*B+y+1) + ")";
         $(str).removeClass().addClass("div-sok-"+kode);*/
     }
 

@@ -170,19 +170,34 @@ const App = () => {
         //setMoves(++moves);
     };
 
+    const changeSokobanLevel = (direction) => {
+        p1.change_level(direction);
+
+        let tempUndoStates = [...state.undoStates];
+        tempUndoStates[0] = false;
+        setState({
+            ...state,
+            undoStates: tempUndoStates
+        });
+
+        setSokobanLevelData(p1.data_level);
+    };
+
+    const changeRotmsLevel = (direction) => {
+        p3.change_level(direction);
+
+        let tempUndoStates = [...state.undoStates];
+        tempUndoStates[0] = false;
+        setState({
+            ...state,
+            undoStates: tempUndoStates
+        });
+
+        setRotmsLevelData(p3.data_level);
+    };
+
       return (
       <div ref={refApp} className="App">
-        <Helmet>
-         {/*<script src="./code/constants.js" />*/}
-         {/*<script src="./code/dialogs.js" />*/}
-         {/* <script src="./code/ClassFire.js" />        */}
-         {/* <script src="./code/ClassSokoban.js" /> */}
-         {/* <script src="./code/ClassSpot.js" /> */}
-         {/* <script src="./code/ClassRotms.js" />       */}
-         {/*<script src="./code/globals.js" />          */}
-         {/*<script src="./code/functions.js" />       */}
-         {/*<script src="./code/main.js" />*/}
-         </Helmet>
 
         <div className="wrapper">
             <header className="App-header">
@@ -190,7 +205,8 @@ const App = () => {
             <p className="App-header-p"><a className="App-link" href="https://sok-spo-rot.game" target="_blank" rel="noopener noreferrer"> Sok-Spo-Rot </a></p>
             </header>
             <hr/>
-            <Toolbar state={state} setState={setState} />
+
+            <Toolbar state={state} setState={setState} setSokobanLevelData={setSokobanLevelData}/>
 
             <div className="main-window"
                  style={{background: (backgroundModes[selectedTab] !== 1) ? `url("${Backgrounds.backgroundDefault}")` : 'none'}}>
@@ -212,18 +228,12 @@ const App = () => {
                               <Sokoban level={sokobanLevelData} />
                             </div>
                             <div className="scroll">
-                                <button type="button" className="up" onClick={()=>{
-                                    p1.change_level(-1);
-                                    setSokobanLevelData(p1.data_level);
-                                }}></button>
+                                <button type="button" className="up" onClick={() => changeSokobanLevel(-1)}></button>
                                 {/*<div className="tracking"></div>*/}
                                 <div className="lev-position"
                                      style={{height: `${state.p1.level/state.p1.maxLevel*304}px`}}
                                 ></div>
-                                <button type="button" className="down" onClick={()=>{
-                                    p1.change_level(1);
-                                    setSokobanLevelData(p1.data_level);
-                                }}></button>
+                                <button type="button" className="down" onClick={() => changeSokobanLevel(1)}></button>
                             </div>
                         </div>
                       </TabPanel>
@@ -250,18 +260,15 @@ const App = () => {
                             <div className="scroll">
                                 <button type="button"
                                         className="up"
-                                        onClick={()=>{
-                                    p3.change_level(-1);
-                                    setRotmsLevelData(p3.data_level);
-                                }}
+                                        onClick={()=> changeRotmsLevel(-1)}
                                 ></button>
                                 <div className="lev-position"
                                      style={{height: `${state.p3.level/state.p3.maxLevel*304}px`}}
                                 ></div>
-                                <button type="button" className="down" onClick={()=>{
-                                    p3.change_level(1);
-                                    setRotmsLevelData(p3.data_level);
-                                }}></button>
+                                <button type="button"
+                                        className="down"
+                                        onClick={()=> changeRotmsLevel(1)}
+                                ></button>
                             </div>
                         </div>
                       </TabPanel>
