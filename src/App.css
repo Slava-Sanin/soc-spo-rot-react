@@ -182,14 +182,17 @@ width: 100%;
 /*----------------------------------------------*/
 /*Матовое стекло на CSS*/
 body {
-  background: url(https://images.unsplash.com/photo-1544306094-e2dcf9479da3) no-repeat;
+  /*background: url(https://images.unsplash.com/photo-1544306094-e2dcf9479da3) no-repeat;*/
+  background: url(http://localhost:3000/static/images/kandinsky-download-1686260629023.png) no-repeat;
   /* Keep the inherited background full size. */
   background-attachment: fixed;
-  background-size: cover;
+  /*background-size: cover;*/
+  background-size: contain;
   display: grid;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background-position: center;
 }
 
 .App {
