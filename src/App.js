@@ -113,9 +113,9 @@ const App = () => {
      undoStates: [false,false,false],
      p1,p2,p3
     });
-    const [sokobanLevel, setSokobanLevel] = useState(p1.data_level);
-    const [spotLevel, setSpotLevel] = useState(p2.data_level);
-    const [rotmsLevel, setRotmsLevel] = useState(p3.data_level);
+    const [sokobanLevelData, setSokobanLevelData] = useState(p1.data_level);
+    const [spotLevelData, setSpotLevelData] = useState(p2.data_level);
+    const [rotmsLevelData, setRotmsLevelData] = useState(p3.data_level);
     const { selectedTab, backgroundModes } = state;
 
     p1.refState = state;
@@ -209,12 +209,12 @@ const App = () => {
                             background: (backgroundModes[0] === 3) ? `url("${Backgrounds.backgroundTab1}")` : "none"
                         }}>
                             <div id="sokoban-board" className="board">
-                              <Sokoban level={sokobanLevel} />
+                              <Sokoban level={sokobanLevelData} />
                             </div>
                             <div className="scroll">
                                 <button type="button" className="up" onClick={()=>{
                                     p1.change_level(-1);
-                                    setSokobanLevel(p1.data_level);
+                                    setSokobanLevelData(p1.data_level);
                                 }}></button>
                                 {/*<div className="tracking"></div>*/}
                                 <div className="lev-position"
@@ -222,7 +222,7 @@ const App = () => {
                                 ></div>
                                 <button type="button" className="down" onClick={()=>{
                                     p1.change_level(1);
-                                    setSokobanLevel(p1.data_level);
+                                    setSokobanLevelData(p1.data_level);
                                 }}></button>
                             </div>
                         </div>
@@ -234,7 +234,7 @@ const App = () => {
                             background: (backgroundModes[1] === 3) ? `url("${Backgrounds.backgroundTab2}")` : "none"
                         }}>
                             <div className="board">
-                              <Spot level={spotLevel} />
+                              <Spot level={spotLevelData} />
                             </div>
                         </div>
                       </TabPanel>
@@ -245,14 +245,14 @@ const App = () => {
                             background: (backgroundModes[2] === 3) ? `url("${Backgrounds.backgroundTab3}")` : "none"
                         }}>
                             <div className="board">
-                              <Rotms level={rotmsLevel} />
+                              <Rotms level={rotmsLevelData} />
                             </div>
                             <div className="scroll">
                                 <button type="button"
                                         className="up"
                                         onClick={()=>{
                                     p3.change_level(-1);
-                                    setRotmsLevel(p3.data_level);
+                                    setRotmsLevelData(p3.data_level);
                                 }}
                                 ></button>
                                 <div className="lev-position"
@@ -260,7 +260,7 @@ const App = () => {
                                 ></div>
                                 <button type="button" className="down" onClick={()=>{
                                     p3.change_level(1);
-                                    setRotmsLevel(p3.data_level);
+                                    setRotmsLevelData(p3.data_level);
                                 }}></button>
                             </div>
                         </div>

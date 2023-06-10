@@ -47,13 +47,13 @@ const Toolbar = ({state, setState}) => {
         switch (state.selectedTab)
         {
             case 0:
-                state.p1.init();
+                state.p1.NewGame();
                 break;
             case 1:
-                state.p2.init();
+                state.p2.NewGame();
                 break;
             case 2:
-                state.p3.init();
+                state.p3.NewGame();
                 break;
             default:
         }
@@ -63,11 +63,12 @@ const Toolbar = ({state, setState}) => {
         setUndoStates(tempUndoStates);
 
         setState({
-            ...state
+            ...state,
+            undoStates: tempUndoStates
         });
 
-        InitStatus(state);
-    }
+        //InitStatus(state);
+    };
 
     const undo = () => {
         console.log("Clicked undo");
