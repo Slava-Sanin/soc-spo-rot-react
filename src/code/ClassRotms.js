@@ -136,7 +136,7 @@ class ClassRotms {
                     this.movetop('2');
                     this.movetop('3');
                     this.movetop('4');
-            default: break;
+            default:
         }
         //Sleep(200);
         //this.fire_all_on_pushing(x, y); // Fires the rotms.
@@ -328,7 +328,7 @@ class ClassRotms {
                 {
                     if (this.data_level[x*B+Ytemp] !== ' ')
                         {
-                            let tempfire = new ClassFire();
+                            let tempfire = new ClassFire(this); // this -> p3
                             tempfire.fire(x, Ytemp);
                         }
                     Ytemp++;
@@ -345,7 +345,7 @@ class ClassRotms {
                 {
                     if (this.data_level[x*B+Ytemp] !== ' ')
                         {
-                            let tempfire = new ClassFire();
+                            let tempfire = new ClassFire(this);
                             tempfire.fire(x, Ytemp);
                         }
                     Ytemp--;
@@ -362,7 +362,7 @@ class ClassRotms {
                 {
                     if (this.data_level[Xtemp*B+y] !== ' ')
                         {
-                            let tempfire = new ClassFire();
+                            let tempfire = new ClassFire(this);
                             tempfire.fire(Xtemp, y);
                         }
                     Xtemp++;
@@ -379,7 +379,7 @@ class ClassRotms {
                 {
                     if (this.data_level[Xtemp*B+y] !== ' ')
                         {
-                            let tempfire = new ClassFire();
+                            let tempfire = new ClassFire(this);
                             tempfire.fire(Xtemp, y);
                         }
                     Xtemp--;
