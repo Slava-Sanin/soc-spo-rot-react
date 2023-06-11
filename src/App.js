@@ -122,6 +122,8 @@ const App = () => {
     p1.refState = state;
     p2.refState = state;
     p3.refState = state;
+    p3.setState = setState;
+    p3.setRotmsLevelData = setRotmsLevelData;
 
     const handleTabSelect = (tab) => {
         setState({
@@ -206,12 +208,12 @@ const App = () => {
         if (selectedTab !== 2) return;
         let element = event.target;
         console.log("element: ", element);
-        var parentElement = element.parentElement;
-        var elementRect = element.getBoundingClientRect();
-        var parentRect = parentElement.getBoundingClientRect();
+        let parentElement = element.parentElement;
+        let elementRect = element.getBoundingClientRect();
+        let parentRect = parentElement.getBoundingClientRect();
 
-        var offsetX = elementRect.left - parentRect.left;
-        var offsetY = elementRect.top - parentRect.top;
+        let offsetX = elementRect.left - parentRect.left;
+        let offsetY = elementRect.top - parentRect.top;
         console.log('Относительные координаты элемента: X:', offsetX, 'Y:', offsetY);
 
         //let x = (elem.offsetTop - 50 - (elem.offsetTop % 25) ) / 25;

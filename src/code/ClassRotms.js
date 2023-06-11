@@ -36,6 +36,7 @@ class ClassRotms {
     error = 0;
     level_is_completed = false;
     refState;
+    setRotmsLevelData;
 
     constructor() {
         this.init();
@@ -138,9 +139,20 @@ class ClassRotms {
                     this.movetop('4');
             default:
         }
+
+        this.setRotmsLevelData(this.data_level);
+
+        let tempUndoStates = [...this.refState.undoStates];
+        tempUndoStates[2] = true;
+        this.setState({
+            ...this.refState,
+            undoStates: tempUndoStates
+        });
+
         //Sleep(200);
         //this.fire_all_on_pushing(x, y); // Fires the rotms.
-        setTimeout(() => this.fire_all_on_pushing(x, y), 200);
+
+        ////setTimeout(() => this.fire_all_on_pushing(x, y), 200);
     }
     
     movetop(key) {
@@ -252,9 +264,9 @@ class ClassRotms {
         {
             for(let y=0; y<B; y++)
             {
-                if ((this.data_level[x*B+y]=='B') || (this.data_level[x*B+y]=='G')
-                || (this.data_level[x*B+y]=='K') || (this.data_level[x*B+y]=='R')
-                || (this.data_level[x*B+y]=='S') || (this.data_level[x*B+y]=='Y'))
+                if ((this.data_level[x*B+y]==='B') || (this.data_level[x*B+y]==='G')
+                || (this.data_level[x*B+y]==='K') || (this.data_level[x*B+y]==='R')
+                || (this.data_level[x*B+y]==='S') || (this.data_level[x*B+y]==='Y'))
                     return;
             }
         }
@@ -270,9 +282,9 @@ class ClassRotms {
             else
             {
                 this.level++;
-                $("#tabs-3 .scroll .lev-position").css("height", 15 * this.level + 4);
+                //$("#tabs-3 .scroll .lev-position").css("height", 15 * this.level + 4);
                 this.change_level();  // Load next level.
-                this.NewGame(this.refState.soundMode); // Play again.
+                this.NewGame(); // Play again.
             }
         }
         }, 500);

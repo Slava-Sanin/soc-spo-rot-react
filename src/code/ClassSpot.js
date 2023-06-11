@@ -63,6 +63,7 @@ class ClassSpot {
         first_time = true;
         best = Object.create(PLACE);
         ready;
+        refState;
     //////////////////////////////////////////////////////////////////////////
     // Constructor builds a window, background and fills a map of level.
     //////////////////////////////////////////////////////////////////////////
@@ -93,10 +94,10 @@ class ClassSpot {
         return 0;
     }
 
-    NewGame(soundMode) {
+    NewGame() {
         if (this.moves)
         {
-            PlayMySound("changepage.wav", soundMode);
+            PlayMySound("changepage.wav", this.refState.soundMode);
             this.init();
             if (this.ComputerDlg.is === 1)
             {
