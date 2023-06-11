@@ -202,16 +202,28 @@ const App = () => {
        Rotms part
       ------------------------------------------------------------------------------*/
     const handleClick = (event) => {
-        console.log('clicked mouse');
+        console.log('clicked mouse in Rotms');
         if (selectedTab !== 2) return;
+        let element = event.target;
+        console.log("element: ", element);
+        var parentElement = element.parentElement;
+        var elementRect = element.getBoundingClientRect();
+        var parentRect = parentElement.getBoundingClientRect();
 
-        let elem = event.target;
-        let x = (elem[0].offsetTop - 50 - (elem[0].offsetTop % 25) ) / 25;
-        let y = (elem[0].offsetLeft - 5) / 25;
+        var offsetX = elementRect.left - parentRect.left;
+        var offsetY = elementRect.top - parentRect.top;
+        console.log('Относительные координаты элемента: X:', offsetX, 'Y:', offsetY);
+
+        //let x = (elem.offsetTop - 50 - (elem.offsetTop % 25) ) / 25;
+        //let y = (elem.offsetLeft - 5) / 25;
+        let x = parseInt(offsetY / 25);
+        let y = parseInt(offsetX / 25);
+        console.log(x,y);
+
         p3.pushbutton(x, y);
     }
 
-    useEffect(() => {
+    /*useEffect(() => {
         console.log('Rotms element mounted');
         document.addEventListener('click', handleClick);
 
@@ -219,7 +231,7 @@ const App = () => {
             document.removeEventListener('click', handleClick);
             console.log('Rotms element unmounted');
         };
-    }, []);
+    }, []);*/
 
     /*------------------------------------------------------------------------------
        End Rotms part
@@ -284,7 +296,7 @@ const App = () => {
                             background: (backgroundModes[2] === 3) ? `url("${Backgrounds.backgroundTab3}")` : "none"
                         }}>
                             <div className="board">
-                              <Rotms level={rotmsLevelData} />
+                              <Rotms level={rotmsLevelData} handleClick={handleClick} />
                             </div>
                             <div className="scroll">
                                 <button type="button"
