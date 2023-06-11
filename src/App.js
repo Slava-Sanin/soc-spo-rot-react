@@ -92,6 +92,7 @@ import {
     GetColor,
     moveVirtualButtons
 } from "./code/functions";
+import $ from "jquery";
 
 //import main from "./code/main";
 
@@ -195,6 +196,34 @@ const App = () => {
 
         setRotmsLevelData(p3.data_level);
     };
+
+
+    /*------------------------------------------------------------------------------
+       Rotms part
+      ------------------------------------------------------------------------------*/
+    const handleClick = (event) => {
+        console.log('clicked mouse');
+        if (selectedTab !== 2) return;
+
+        let elem = event.target;
+        let x = (elem[0].offsetTop - 50 - (elem[0].offsetTop % 25) ) / 25;
+        let y = (elem[0].offsetLeft - 5) / 25;
+        p3.pushbutton(x, y);
+    }
+
+    useEffect(() => {
+        console.log('Rotms element mounted');
+        document.addEventListener('click', handleClick);
+
+        return () => {
+            document.removeEventListener('click', handleClick);
+            console.log('Rotms element unmounted');
+        };
+    }, []);
+
+    /*------------------------------------------------------------------------------
+       End Rotms part
+      ------------------------------------------------------------------------------*/
 
       return (
       <div ref={refApp} className="App">

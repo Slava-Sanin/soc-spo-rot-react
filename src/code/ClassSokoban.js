@@ -1,19 +1,14 @@
-import $ from 'jquery';
 import {
     loadDoc,
     InitStatus,   
     SomeArrow,
     Sound_On_Off,    
     PlayMySound,
-    Change_Player_color,
-    Change_Computer_color,
     Sleep,
-    GetColor,   
     moveVirtualButtons
 } from './functions.js'
 import SokobanLevels from "../Sokoban/levels.json";
 import { A, B } from './constants';
-import {glob_sound} from "./globals";
 
 class ClassSokoban {
     level = 1;
@@ -251,7 +246,7 @@ class ClassSokoban {
         }
     }
 
-    redraw() {
+    /*redraw() {
         // Drawing a map of current level
         for(let x=0; x<A; x++)
         {
@@ -260,7 +255,7 @@ class ClassSokoban {
                 this.putthis(x, y, this.data_level[x*B+y]);
             }
         }
-    }
+    }*/
 
     putthis(x, y, kode) {
         //let kode_x, kode_y;
@@ -293,13 +288,12 @@ class ClassSokoban {
 
         PlayMySound("winer1.wav", this.refState.soundMode);
 
-        //$("#btn-undo").prop('disabled',true);
         this.refState.undoStates[0] = false;
         // Delay before the confirm window is shown
         setTimeout(function (){
         if (window.confirm("Level completed. Next level?")  === true)
         {
-            if (this.level === 20) // If this is a last level.
+            if (this.level === this.maxLevel) // If this is a last level.
                 alert("Level completed. No more levels!");
             else
             {

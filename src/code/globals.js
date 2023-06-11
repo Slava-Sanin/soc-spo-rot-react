@@ -31,9 +31,6 @@ let
     level_in_text_format= "",
     timer= {},
     prev_game= 0,
-    virtual_buttons_moving= 0,
-    p1= {},
-    p2= {},
-    p3= {};
+    virtual_buttons_moving= 0;
 
 

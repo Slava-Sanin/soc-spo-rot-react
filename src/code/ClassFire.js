@@ -8,11 +8,9 @@ import {
     Change_Computer_color,
     Sleep,
     GetColor,   
-    moveVirtualButtons
 } from './functions.js'
 
 import { A, B } from './constants';
-import {glob_sound, p3} from "./globals";
 
 const rotm = {
     x : 0, 
@@ -21,7 +19,8 @@ const rotm = {
 
 // Firing rotms class.
 class ClassFire {
-    constructor() {
+    constructor(refP3) {
+        this.p3 = refP3;
         this.mat = [Object.create(rotm), Object.create(rotm), Object.create(rotm), Object.create(rotm)];
         this.count = 0;
         this.points = 0;
@@ -34,10 +33,10 @@ class ClassFire {
         {
             PlayMySound("fire.wav", soundMode);
             this.points = this.count * this.count * 10; // Points of player.
-            p3.score += this.points;
+            this.p3.score += this.points;
             while(this.count) // Remove rotms from board.
             {
-                p3.putthis(this.mat[this.count-1].x, this.mat[this.count-1].y, ' ');
+                this.p3.putthis(this.mat[this.count-1].x, this.mat[this.count-1].y, ' ');
                 this.count--;
             }
         }
@@ -70,25 +69,25 @@ class ClassFire {
             this.count++; // Counts rotms that is found and must been fired.
             if (x-1 > -1) // Check place from left of rotm.
             {
-                if (p3.data_level[(x-1)*B+y] === p3.data_level[x*B+y])
+                if (this.p3.data_level[(x-1)*B+y] === this.p3.data_level[x*B+y])
                     this.check_around(x-1, y);
             }
 
             if ((y+1) < B)  // Check place from right of rotm.
             {
-                if (p3.data_level[x*B+(y+1)] === p3.data_level[x*B+y])
+                if (this.p3.data_level[x*B+(y+1)] === this.p3.data_level[x*B+y])
                     this.check_around(x, y+1);
             }
 
             if ((x+1) < A)  // Check place from up of rotm.
             {
-                if (p3.data_level[(x+1)*B+y] === p3.data_level[x*B+y])
+                if (this.p3.data_level[(x+1)*B+y] === this.p3.data_level[x*B+y])
                     this.check_around(x+1, y);
             }
 
             if ((y-1) > -1)  // Check place from down of rotm.
             {
-                if (p3.data_level[x*B+(y-1)] === p3.data_level[x*B+y])
+                if (this.p3.data_level[x*B+(y-1)] === this.p3.data_level[x*B+y])
                     this.check_around(x, y-1);
             }
         }
