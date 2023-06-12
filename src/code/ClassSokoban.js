@@ -25,7 +25,7 @@ class ClassSokoban {
     curX;
     curY;
     error = 0;
-    level_is_completed = false;
+    level_is_completed;
     is_loaded = 0;
     refState;
 

@@ -35,6 +35,7 @@ const VirtualButtonSettings = {
      const handleKeyDown = (key) => {
          if (state.selectedTab !== 0) return;
          let movesBefore = state.p1.moves;
+
          if (key === 'ArrowUp') {
              state.p1.movetop(72);
          } else if (key === 'ArrowDown') {

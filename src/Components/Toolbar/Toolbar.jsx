@@ -73,11 +73,9 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
             undoStates: tempUndoStates
         });
 
-        //
-        //InitStatus(state);
     };
 
-    const undo = () => {
+    const handleUndo = () => {
         console.log("Clicked undo");
         switch (state.selectedTab)
         {
@@ -85,15 +83,19 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
                 if (state.p1.moves === 0) return;
                 if (!state.p1.level_is_completed) state.p1.Undo();
                 break;
+
             case 1: //Spot
 
                 break;
+
             case 2: //Rotms
                 if (state.p3.moves === 0) return;
                 if (!state.p3.level_is_completed) state.p3.Undo();
                 break;
+
             default:
         }
+
         let tempUndoStates = [...undoStates];
         tempUndoStates[state.selectedTab] = false;
         setUndoStates(tempUndoStates);
@@ -177,7 +179,7 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
             <button id='btn-undo'
                     key='btn-8'
                     disabled={(undoStates[state.selectedTab] === false)}
-                    onClick={ undo }
+                    onClick={ handleUndo }
                 ><span className="mytooltiptext">Undo</span>
             </button>
 

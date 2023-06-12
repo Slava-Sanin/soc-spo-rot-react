@@ -34,7 +34,7 @@ class ClassRotms {
     curY;
     flag_push = 0;
     error = 0;
-    level_is_completed = false;
+    level_is_completed;
     refState;
     setRotmsLevelData;
 
@@ -61,9 +61,9 @@ class ClassRotms {
             this.init();    
         //}
     }
-    
-    Undo() {    
-        if (this.level_is_completed === true) return;
+
+    Undo() {
+        if (this.level_is_completed) return;
         this.data_level = [...this.data_undo];
         /*for(let x=0; x<A; x++)
         {
@@ -73,6 +73,7 @@ class ClassRotms {
         this.score = this.score_undo;
         this.moves--;
         PlayMySound("move1.wav", this.refState.soundMode);
+        this.setRotmsLevelData(this.data_level);
     }
         
     member_last_move() {
@@ -130,24 +131,29 @@ class ClassRotms {
         else return;
         switch (this.data_level[x*B+y])
         {
-            case '1': this.member_last_move();
+            case '1': //Left
+                      this.member_last_move();
                       isMoved = this.movetop('1');
-                      break; //Left
+                      break;
 
-            case '2': this.member_last_move();
+            case '2': //Right
+                      this.member_last_move();
                       isMoved = this.movetop('2');
-                      break; //Right
+                      break;
 
-            case '3': this.member_last_move();
+            case '3': //Up
+                      this.member_last_move();
                       isMoved = this.movetop('3');
-                      break; //Up
+                      break;
 
-            case '4': this.member_last_move();
+            case '4': //Down
+                      this.member_last_move();
                       isMoved = this.movetop('4');
-                      break; //Down
+                      break;
 
-            case '5': this.member_last_move();
-                      isMoved = this.movetop('1'); // (All) Left, Right, Up and Down
+            case '5': // (All) Left, Right, Up and Down
+                      this.member_last_move();
+                      isMoved = this.movetop('1');
                       isMoved = this.movetop('2');
                       isMoved = this.movetop('3');
                       isMoved = this.movetop('4');
@@ -166,7 +172,6 @@ class ClassRotms {
             {
                 this.fire_all_on_pushing(x, y);
                 this.redraw();
-
                 //this.setRotmsLevelData(this.data_level);
             }, 200);
         }
