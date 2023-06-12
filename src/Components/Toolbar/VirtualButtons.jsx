@@ -11,7 +11,7 @@ const VirtualButtonSettings = {
     //y: 31,
 }
 
- const VirtualButtons = ({state}) => {
+ const VirtualButtons = ({state, setState}) => {
      const [dragging, setDragging] = useState(false);
      //const [position, setPosition] = useState({ x: VirtualButtonSettings.x, y: VirtualButtonSettings.y });
      const [position, setPosition] = useState({});
@@ -32,6 +32,30 @@ const VirtualButtonSettings = {
         setDragging(false);
      }
 
+     const handleKeyDown = (key) => {
+         if (state.selectedTab !== 0) return;
+         let movesBefore = state.p1.moves;
+         if (key === 'ArrowUp') {
+             state.p1.movetop(72);
+         } else if (key === 'ArrowDown') {
+             state.p1.movetop(80);
+         } else if (key === 'ArrowLeft') {
+             state.p1.movetop(75);
+         } else if (key === 'ArrowRight') {
+             state.p1.movetop(77);
+         }
+         if (state.p1.moves === movesBefore) return;
+
+         let tempUndoStates = [...state.undoStates];
+         tempUndoStates[0] = true;
+         setState({
+             ...state,
+             undoStates: tempUndoStates
+         });
+
+         //setMoves(++moves);
+     };
+
     return (
         <div
              className="virtual_buttons"
@@ -45,12 +69,12 @@ const VirtualButtonSettings = {
                 <tbody>
                     <tr>
                         <th></th>
-                        <th id="virtual_up" onClick={ () => {state.p1.movetop(72)} }></th>
+                        <th id="virtual_up" onClick={ () => {handleKeyDown('ArrowUp')} }></th>
                         <th></th>
                     </tr>
 
                     <tr>
-                        <th id="virtual_left" onClick={ () => {state.p1.movetop(75)} }></th>
+                        <th id="virtual_left" onClick={ () => {handleKeyDown('ArrowLeft')} }></th>
                         <th id="virtual_move"
                             className={dragging ? "virtual_move_on" : "virtual_move_off"}
                             //onMouseMoveCapture
@@ -58,12 +82,12 @@ const VirtualButtonSettings = {
                             onMouseMove={ handleMouseMove }
                             onMouseUp={ handleMouseUp }
                         >+<span className="mytooltiptext">You can drag it to any place</span></th>
-                        <th id="virtual_right" onClick={ () => {state.p1.movetop(77)} }></th>
+                        <th id="virtual_right" onClick={ () => {handleKeyDown('ArrowRight')} }></th>
                     </tr>
 
                     <tr>
                         <th></th>
-                        <th id="virtual_down" onClick={ () => {state.p1.movetop(80)} }></th>
+                        <th id="virtual_down" onClick={ () => {handleKeyDown('ArrowDown')} }></th>
                         <th></th>
                     </tr>
                 </tbody>

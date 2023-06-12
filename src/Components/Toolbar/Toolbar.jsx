@@ -3,7 +3,7 @@ import '../../CSS/toolbar.css';
 import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
 
-const Toolbar = ({state, setState, setSokobanLevelData}) => {
+const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRotmsLevelData}) => {
     /*
      backgroundModes[0] - Sokoban background mode
      backgroundModes[1] - Spot background mode
@@ -51,12 +51,15 @@ const Toolbar = ({state, setState, setSokobanLevelData}) => {
         {
             case 0:
                 state.p1.NewGame();
+                setSokobanLevelData(state.p1.data_level);
                 break;
             case 1:
                 state.p2.NewGame();
+                setSpotLevelData(state.p2.data_level);
                 break;
             case 2:
                 state.p3.NewGame();
+                setRotmsLevelData(state.p3.data_level);
                 break;
             default:
         }
@@ -70,7 +73,7 @@ const Toolbar = ({state, setState, setSokobanLevelData}) => {
             undoStates: tempUndoStates
         });
 
-        setSokobanLevelData(state.p1.data_level);
+        //
         //InitStatus(state);
     };
 
@@ -184,7 +187,7 @@ const Toolbar = ({state, setState, setSokobanLevelData}) => {
             </button>
 
             <SpotToolbar state={state} />
-            <VirtualButtons state={state} />
+            <VirtualButtons state={state} setState={setState} />
         </div>
     );
 }

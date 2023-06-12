@@ -153,13 +153,13 @@ const App = () => {
         if (selectedTab !== 0) return;
         let movesBefore = p1.moves;
         if (event.key === 'ArrowUp') {
-            state.p1.movetop(72);
+            p1.movetop(72);
         } else if (event.key === 'ArrowDown') {
-            state.p1.movetop(80);
+            p1.movetop(80);
         } else if (event.key === 'ArrowLeft') {
-            state.p1.movetop(75);
+            p1.movetop(75);
         } else if (event.key === 'ArrowRight') {
-            state.p1.movetop(77);
+            p1.movetop(77);
         }
         if (p1.moves === movesBefore) return;
 
@@ -190,7 +190,7 @@ const App = () => {
         p3.change_level(direction);
 
         let tempUndoStates = [...state.undoStates];
-        tempUndoStates[0] = false;
+        tempUndoStates[2] = false;
         setState({
             ...state,
             undoStates: tempUndoStates
@@ -249,7 +249,11 @@ const App = () => {
             </header>
             <hr/>
 
-            <Toolbar state={state} setState={setState} setSokobanLevelData={setSokobanLevelData}/>
+            <Toolbar state={state} setState={setState}
+                     setSokobanLevelData={setSokobanLevelData}
+                     setSpotLevelData={setSpotLevelData}
+                     setRotmsLevelData={setRotmsLevelData}
+            />
 
             <div className="main-window"
                  style={{background: (backgroundModes[selectedTab] !== 1) ? `url("${Backgrounds.backgroundDefault}")` : 'none'}}>
@@ -272,7 +276,6 @@ const App = () => {
                             </div>
                             <div className="scroll">
                                 <button type="button" className="up" onClick={() => changeSokobanLevel(-1)}></button>
-                                {/*<div className="tracking"></div>*/}
                                 <div className="lev-position"
                                      style={{height: `${state.p1.level/state.p1.maxLevel*304}px`}}
                                 ></div>

@@ -118,6 +118,8 @@ class ClassRotms {
     }
     
     pushbutton(x, y) {
+        let isMoved = false;
+
         if (this.data_level[x*B+y]>'0' && this.data_level[x*B+y]<'6')
         {
             this.flag_push=1;
@@ -128,41 +130,60 @@ class ClassRotms {
         else return;
         switch (this.data_level[x*B+y])
         {
-            case '1': this.member_last_move(); this.movetop('1'); break; // Left.
-            case '2': this.member_last_move(); this.movetop('2'); break; // Right.
-            case '3': this.member_last_move(); this.movetop('3'); break; // Up.
-            case '4': this.member_last_move(); this.movetop('4'); break; // Down.
+            case '1': this.member_last_move();
+                      isMoved = this.movetop('1');
+                      break; //Left
+
+            case '2': this.member_last_move();
+                      isMoved = this.movetop('2');
+                      break; //Right
+
+            case '3': this.member_last_move();
+                      isMoved = this.movetop('3');
+                      break; //Up
+
+            case '4': this.member_last_move();
+                      isMoved = this.movetop('4');
+                      break; //Down
+
             case '5': this.member_last_move();
-                    this.movetop('1'); // Left, Right, Up and Down (All).
-                    this.movetop('2');
-                    this.movetop('3');
-                    this.movetop('4');
+                      isMoved = this.movetop('1'); // Left, Right, Up and Down (All).
+                      isMoved = this.movetop('2');
+                      isMoved = this.movetop('3');
+                      isMoved = this.movetop('4');
+
             default:
         }
 
-        this.setRotmsLevelData(this.data_level);
+        if (isMoved) {
+            //this.refState.undoStates[2] = true;
+            PlayMySound("move1.wav", this.refState.soundMode);
 
-        let tempUndoStates = [...this.refState.undoStates];
-        tempUndoStates[2] = true;
-        this.setState({
-            ...this.refState,
-            undoStates: tempUndoStates
-        });
+            this.setRotmsLevelData(this.data_level);
 
-        //Sleep(200);
-        //this.fire_all_on_pushing(x, y); // Fires the rotms.
+            let tempUndoStates = [...this.refState.undoStates];
+            tempUndoStates[2] = true;
+            this.setState({
+                ...this.refState,
+                undoStates: tempUndoStates
+            });
 
-        ////setTimeout(() => this.fire_all_on_pushing(x, y), 200);
+            setTimeout(() =>
+            {
+                this.fire_all_on_pushing(x, y);
+                this.setRotmsLevelData(this.data_level);
+            }, 200);
+        }
     }
     
     movetop(key) {
         let Xtemp;
         let Ytemp;
+        let isMoved = false;
 
         switch (key)
         {
-            case '2': // Moving left.
-                PlayMySound("move1.wav", this.refState.soundMode);
+            case '2': // Moving left
                 for (Ytemp = this.curY - 1; ((this.data_level[this.curX * B + Ytemp] < '0')
                 || (this.data_level[this.curX * B + Ytemp] > '5')) && (Ytemp > 0); Ytemp--);
                 while(Ytemp !== this.curY - 1)
@@ -171,14 +192,13 @@ class ClassRotms {
                     {
                         this.putthis(this.curX, Ytemp, this.data_level[this.curX * B + Ytemp+1]);
                         this.putthis(this.curX, Ytemp+1, ' ');
+                        isMoved = true;
                     }
                     Ytemp++;
                 }
-                this.refState.undoStates[2] = true;
                 break;
 
-            case '1': // Moving right.
-                PlayMySound("move1.wav", this.refState.soundMode);
+            case '1': // Moving right
                 for (Ytemp = this.curY + 1; ((this.data_level[this.curX * B + Ytemp] < '0')
                 || (this.data_level[this.curX * B + Ytemp] > '5')) && (Ytemp < (B-1)); Ytemp++);
                 while(Ytemp !== this.curY + 1)
@@ -187,14 +207,13 @@ class ClassRotms {
                     {
                         this.putthis(this.curX, Ytemp, this.data_level[this.curX * B + (Ytemp-1)]);
                         this.putthis(this.curX, Ytemp-1, ' ');
+                        isMoved = true;
                     }
                     Ytemp--;
                 }
-                this.refState.undoStates[2] = true;
                 break;
 
-            case '3': // Moving up.
-                PlayMySound("move1.wav", this.refState.soundMode);
+            case '3': // Moving up
                 for (Xtemp = this.curX-1; ((this.data_level[Xtemp * B + this.curY] < '0')
                 || (this.data_level[Xtemp * B + this.curY] > '5')) && (Xtemp > 0); Xtemp--);
                 while(Xtemp !== this.curX - 1)
@@ -203,14 +222,13 @@ class ClassRotms {
                     {
                         this.putthis(Xtemp, this.curY, this.data_level[(Xtemp+1) * B + this.curY]);
                         this.putthis(Xtemp + 1, this.curY, ' ');
+                        isMoved = true;
                     }
                     Xtemp++;
                 }
-                this.refState.undoStates[2] = true;
                 break;
 
-            case '4': // Moving down.
-                PlayMySound("move1.wav", this.refState.soundMode);
+            case '4': // Moving down
                 for (Xtemp = this.curX + 1; ((this.data_level[Xtemp * B + this.curY] < '0')
                 || (this.data_level[Xtemp * B + this.curY] > '5')) && (Xtemp < (A-1)); Xtemp++);
                 while(Xtemp !== this.curX+1)
@@ -219,14 +237,16 @@ class ClassRotms {
                     {
                         this.putthis(Xtemp, this.curY, this.data_level[(Xtemp-1) * B + this.curY]);
                         this.putthis(Xtemp-1, this.curY, ' ');
+                        isMoved = true;
                     }
                     Xtemp--;
                 }
-                this.refState.undoStates[2] = true;
                 break;
 
             default: break;
         }
+
+        return isMoved;
     }
 
     /*redraw() {
