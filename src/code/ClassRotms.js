@@ -159,19 +159,15 @@ class ClassRotms {
             //this.refState.undoStates[2] = true;
             PlayMySound("move1.wav", this.refState.soundMode);
 
-            this.setRotmsLevelData(this.data_level);
-
-            let tempUndoStates = [...this.refState.undoStates];
-            tempUndoStates[2] = true;
-            this.setState({
-                ...this.refState,
-                undoStates: tempUndoStates
-            });
+            //this.setRotmsLevelData(this.data_level);
+            this.redraw();
 
             setTimeout(() =>
             {
                 this.fire_all_on_pushing(x, y);
-                this.setRotmsLevelData(this.data_level);
+                this.redraw();
+
+                //this.setRotmsLevelData(this.data_level);
             }, 200);
         }
     }
@@ -249,15 +245,14 @@ class ClassRotms {
         return isMoved;
     }
 
-    /*redraw() {
-        for(let x=0; x<A; x++)
-        {
-            for(let y=0; y<B; y++)
-            {
-                this.putthis(x, y, this.data_level[x*B+y]);
-            }
-        }
-    }*/
+    redraw() {
+        let tempUndoStates = [...this.refState.undoStates];
+        tempUndoStates[2] = true;
+        this.setState({
+            ...this.refState,
+            undoStates: tempUndoStates
+        });
+    }
     
     putthis(x, y, kode) {
         //let kode_x, kode_y;
@@ -361,7 +356,7 @@ class ClassRotms {
                     if (this.data_level[x*B+Ytemp] !== ' ')
                         {
                             let tempfire = new ClassFire(this); // this -> p3
-                            tempfire.fire(x, Ytemp);
+                            tempfire.fire(x, Ytemp, this.refState.soundMode);
                         }
                     Ytemp++;
                 }
@@ -378,7 +373,7 @@ class ClassRotms {
                     if (this.data_level[x*B+Ytemp] !== ' ')
                         {
                             let tempfire = new ClassFire(this);
-                            tempfire.fire(x, Ytemp);
+                            tempfire.fire(x, Ytemp, this.refState.soundMode);
                         }
                     Ytemp--;
                 }
@@ -395,7 +390,7 @@ class ClassRotms {
                     if (this.data_level[Xtemp*B+y] !== ' ')
                         {
                             let tempfire = new ClassFire(this);
-                            tempfire.fire(Xtemp, y);
+                            tempfire.fire(Xtemp, y, this.refState.soundMode);
                         }
                     Xtemp++;
                 }
@@ -412,7 +407,7 @@ class ClassRotms {
                     if (this.data_level[Xtemp*B+y] !== ' ')
                         {
                             let tempfire = new ClassFire(this);
-                            tempfire.fire(Xtemp, y);
+                            tempfire.fire(Xtemp, y, this.sefState.soundMode);
                         }
                     Xtemp--;
                 }
