@@ -147,7 +147,7 @@ class ClassRotms {
                       break; //Down
 
             case '5': this.member_last_move();
-                      isMoved = this.movetop('1'); // Left, Right, Up and Down (All).
+                      isMoved = this.movetop('1'); // (All) Left, Right, Up and Down
                       isMoved = this.movetop('2');
                       isMoved = this.movetop('3');
                       isMoved = this.movetop('4');
@@ -227,7 +227,7 @@ class ClassRotms {
             case '4': // Moving down
                 for (Xtemp = this.curX + 1; ((this.data_level[Xtemp * B + this.curY] < '0')
                 || (this.data_level[Xtemp * B + this.curY] > '5')) && (Xtemp < (A-1)); Xtemp++);
-                while(Xtemp !== this.curX+1)
+                while(Xtemp !== this.curX + 1)
                 {
                     if (this.data_level[Xtemp * B + this.curY] === ' ')
                     {
@@ -239,7 +239,7 @@ class ClassRotms {
                 }
                 break;
 
-            default: break;
+            default:
         }
 
         return isMoved;
@@ -407,7 +407,7 @@ class ClassRotms {
                     if (this.data_level[Xtemp*B+y] !== ' ')
                         {
                             let tempfire = new ClassFire(this);
-                            tempfire.fire(Xtemp, y, this.sefState.soundMode);
+                            tempfire.fire(Xtemp, y, this.refState.soundMode);
                         }
                     Xtemp--;
                 }
