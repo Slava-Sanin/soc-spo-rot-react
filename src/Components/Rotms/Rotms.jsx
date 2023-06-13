@@ -9,7 +9,7 @@ const Rotms = (props) => {
             {props.level.map((number, index) => (
             <div className={`div-rot-${(number === ' ') ? 'Z' : number}`}
                  key={'rot'+index}
-                 onClick={ ['1', '2', '3', '4', '5'].includes(number) && props.handleClick }
+                 onClick={['1', '2', '3', '4', '5'].includes(number) ? props.handleClick : null}
             ></div>
             ))}
         </>

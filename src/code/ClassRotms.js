@@ -297,14 +297,14 @@ class ClassRotms {
         setTimeout( () => {
         if (window.confirm("Level completed. Next level?") === true)
         {
-            if (this.level === this.maxLevel) // If this is a last level.
+            if (this.level === this.maxLevel) // If this is the last level
             alert("Level completed. No more levels!");
             else
             {
                 this.level++;
                 //$("#tabs-3 .scroll .lev-position").css("height", 15 * this.level + 4);
-                this.change_level();  // Load next level.
-                this.NewGame(); // Play again.
+                this.change_level(1);  // Load next level.
+                //this.NewGame(); // Play again.
             }
         }
         }, 500);
@@ -352,7 +352,7 @@ class ClassRotms {
         switch (this.data_level[x*B+y])
         {
             case '5': this.moves-=3;
-            case '2': // Search left.
+            case '2': // Search left
                 for (Ytemp=this.curY-1; ((this.data_level[this.curX*B+Ytemp] < '0')
                 || (this.data_level[this.curX*B+Ytemp] > '5')) && (Ytemp>-1); Ytemp--);
                 Ytemp++;
@@ -369,7 +369,7 @@ class ClassRotms {
                 this.check_end();
                 if (this.data_level[x*B+y] === '2') break;
 
-            case '1': // Search up.
+            case '1': // Search up
                 for (Ytemp=this.curY+1; ((this.data_level[this.curX*B+Ytemp] < '0')
                 || (this.data_level[this.curX*B+Ytemp] > '5')) && (Ytemp<B); Ytemp++);
                 Ytemp--;
@@ -386,7 +386,7 @@ class ClassRotms {
                 this.check_end();
                 if (this.data_level[x*B+y] === '1') break;
 
-            case '3': // Search left.
+            case '3': // Search left
                 for (Xtemp=this.curX-1; ((this.data_level[Xtemp*B+this.curY] < '0')
                 || (this.data_level[Xtemp*B+this.curY] > '5')) && (Xtemp>-1); Xtemp--);
                 Xtemp++;

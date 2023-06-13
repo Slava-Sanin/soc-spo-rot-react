@@ -290,7 +290,7 @@ class ClassSokoban {
 
         this.refState.undoStates[0] = false;
         // Delay before the confirm window is shown
-        setTimeout(function (){
+        setTimeout( () => {
         if (window.confirm("Level completed. Next level?")  === true)
         {
             if (this.level === this.maxLevel) // If this is a last level.
@@ -299,8 +299,8 @@ class ClassSokoban {
             {
                 this.level++;
                 // $("#tabs-1 .scroll .lev-position").css("height", 15 * this.level + 4);
-                this.change_level();  // Load next level.
-                this.NewGame(); // Play again.
+                this.change_level(1);  // Load next level.
+                //this.NewGame(); // Play again.
             }
         }
         }, 500);
