@@ -297,7 +297,7 @@ class ClassSokoban {
                 alert("Level completed. No more levels!");
             else
             {
-                this.level++;
+                //this.level++;
                 // $("#tabs-1 .scroll .lev-position").css("height", 15 * this.level + 4);
                 this.change_level(1);  // Load next level.
                 //this.NewGame(); // Play again.
