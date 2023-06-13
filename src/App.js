@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { Helmet } from "react-helmet";
 
 import './App.css';
 import './CSS/spot_toolbar.css';
@@ -21,33 +20,6 @@ import { PlayerDlg, ComputerDlg, ClassSpot } from './code/ClassSpot';
 import ClassRotms from './code/ClassRotms';
 
 import {
-    IDM_Load,
-    IDM_Save,
-    IDM_Save_As,
-    IDM_Save_All,
-    IDM_Exit,
-    IDM_Status_Off,
-    IDM_Status_On,
-    IDM_Status,
-    IDM_Undo,
-    IDM_On,
-    IDM_Off,
-    IDM_Background,
-    IDM_Table,
-    IDM_Spot_Options,
-    IDM_Spot_Color,
-    IDM_Help,
-    IDM_About,
-    IDM_NormalSize,
-    ID_TOOLBAR,
-    TOOLS_BMP,
-    IDM_Sokoban,
-    IDM_Spot,
-    IDM_Rotms,
-    IDM_Sound,
-    IDM_New,
-    IDM_Finish,
-    NUMBUTTONS,
     A,
     B,
     Asp,
@@ -83,7 +55,6 @@ import {
 import {
     loadDoc,
     InitStatus,
-    Sound_On_Off,
     PlayMySound,
     Change_Player_color,
     Change_Computer_color,
@@ -91,9 +62,7 @@ import {
     GetColor,
     moveVirtualButtons
 } from "./code/functions";
-import $ from "jquery";
 
-//import main from "./code/main";
 
 const
     p1 = new ClassSokoban(),
@@ -133,24 +102,16 @@ const App = () => {
             ...state,
             selectedTab: tab,
         });
-        //refApp.current.focus();
     }
 
     useEffect(() => {
-        // Добавляем обработчик события keydown
         document.addEventListener('keydown', handleKeyDown);
 
-        // Очистка обработчика при размонтировании компонента
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
         };
     }, []);
 
-    /*useEffect(() => {
-        //refApp.current.focus();
-
-        console.log('selectedTab changed');
-    }, [selectedTab]);*/
 
     const handleKeyDown = (event) => {
         if (selectedTab !== 0) return;
@@ -229,17 +190,6 @@ const App = () => {
 
         p3.pushbutton(x, y);
     }
-
-    /*useEffect(() => {
-        console.log('Rotms element mounted');
-        document.addEventListener('click', handleClick);
-
-        return () => {
-            document.removeEventListener('click', handleClick);
-            console.log('Rotms element unmounted');
-        };
-    }, []);*/
-
     /*------------------------------------------------------------------------------
        End Rotms part
       ------------------------------------------------------------------------------*/
@@ -346,7 +296,6 @@ const App = () => {
           </div>
 
           </div>
-
       );
 }
 

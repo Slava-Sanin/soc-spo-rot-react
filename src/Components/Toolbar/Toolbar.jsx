@@ -36,13 +36,20 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
     };
 
     const toggleSound = () => {
-        state.soundMode = !state.soundMode;
-        setSoundMode(state.soundMode);
+        setSoundMode(!soundMode);
+        setState({
+            ...state,
+            soundMode,
+        });
+
     };
 
     const toggleToolbarMode = () => {
-        state.toolbarMode = !state.toolbarMode;
-        setToolbarMode(state.toolbarMode);
+        setToolbarMode(!toolbarMode);
+        setState({
+            ...state,
+            toolbarMode,
+        });
     };
 
     const newGame = () => {
@@ -53,14 +60,17 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
                 state.p1.NewGame();
                 setSokobanLevelData(state.p1.data_level);
                 break;
+
             case 1:
                 state.p2.NewGame();
                 setSpotLevelData(state.p2.data_level);
                 break;
+
             case 2:
                 state.p3.NewGame();
                 setRotmsLevelData(state.p3.data_level);
                 break;
+
             default:
         }
 
@@ -105,29 +115,6 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
         });
     };
 
-    /*useEffect(() => {
-        let elem = "#tabs-" + (state.selectedTab + 1);
-        console.log(elem);
-        switch (state.backgroundModes[state.selectedTab]) { //mode
-            case 1:
-                $('.main-window').addClass("background-off");
-                $(elem).addClass("background-off");
-                break;
-
-            case 2:
-                $('.main-window').removeClass("background-off");
-                $(elem).addClass("background-off");
-                break;
-
-            case 3:
-                $('.main-window').removeClass("background-off");
-                $(elem).removeClass("background-off");
-                break;
-
-            default:
-        }
-        console.log('bg mode: ', backgroundModes);
-    }, [backgroundModes]);*/
 
     return (
         <div className='toolbar' style={{backgroundColor: !toolbarMode && "transparent"}}>
