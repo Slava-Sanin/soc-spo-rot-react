@@ -3,8 +3,7 @@ import $ from 'jquery';
 import {
     loadDoc,
     InitStatus,   
-    SomeArrow,
-    Sound_On_Off,    
+    Sound_On_Off,
     PlayMySound,
     Change_Player_color,
     Change_Computer_color,
@@ -89,8 +88,7 @@ class ClassSpot {
         this.Computer.is = ComputerDlg.is;    // First or second?
         this.check_spots_number();            // Init. spots number.
         this.member_last_move();              // Save last moving.
-        //this.redraw();                        // Draw all.
-        if (this.Computer.is === 1) this.computer_move();
+        if (this.Computer.is === 1) this.computer_move(); // TODO: remove to run() function
         return 0;
     }
 

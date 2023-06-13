@@ -1,8 +1,6 @@
 import {
     loadDoc,
     InitStatus,   
-    SomeArrow,
-    Sound_On_Off,    
     PlayMySound,
     Change_Player_color,
     Change_Computer_color,

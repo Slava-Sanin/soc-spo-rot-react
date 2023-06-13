@@ -65,29 +65,6 @@ function InitStatus(props)
     }
 }
 
-function SomeArrow(props)
-{
-    let elem = $(this);
-    let x = (elem[0].offsetTop - 53) / 25; console.log(x);
-    let y = (elem[0].offsetLeft - 5) / 25; console.log(y);
-    props.p3.pushbutton(x, y);
-}
-
-
-/*function Sound_On_Off()
-{
-    if (glob_sound)
-    {
-        glob_sound = 0;        
-        $("#btn-sound").addClass("no-sound");
-        return;
-    }
-    else {
-            glob_sound = 1;            
-            $("#btn-sound").removeClass("no-sound");
-         }
-}*/
-
 
 function PlayMySound(soundName, soundMode)
 {
@@ -169,7 +146,6 @@ function moveVirtualButtons(e)
 export {
     //loadDoc,
     InitStatus,   
-    SomeArrow,
     //Sound_On_Off,
     PlayMySound,
     Change_Player_color,

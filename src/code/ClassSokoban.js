@@ -1,8 +1,7 @@
 import {
     loadDoc,
     InitStatus,   
-    SomeArrow,
-    Sound_On_Off,    
+    Sound_On_Off,
     PlayMySound,
     Sleep,
     moveVirtualButtons
@@ -28,6 +27,8 @@ class ClassSokoban {
     level_is_completed;
     is_loaded = 0;
     refState;
+    setState;
+    setSokobanLevelData;
 
     constructor() {
         this.init();
@@ -246,16 +247,14 @@ class ClassSokoban {
         }
     }
 
-    /*redraw() {
-        // Drawing a map of current level
-        for(let x=0; x<A; x++)
-        {
-            for(let y=0; y<B; y++)
-            {
-                this.putthis(x, y, this.data_level[x*B+y]);
-            }
-        }
-    }*/
+    switchUndoMode(mode) {
+        let tempUndoStates = [...this.refState.undoStates];
+        tempUndoStates[0] = mode;
+        this.setState({
+            ...this.refState,
+            undoStates: tempUndoStates
+        });
+    }
 
     putthis(x, y, kode) {
         //let kode_x, kode_y;
@@ -285,10 +284,10 @@ class ClassSokoban {
                     return;
             }
         }
-
+        this.level_is_completed = true;
         PlayMySound("winer1.wav", this.refState.soundMode);
+        this.switchUndoMode(false);
 
-        this.refState.undoStates[0] = false;
         // Delay before the confirm window is shown
         setTimeout( () => {
         if (window.confirm("Level completed. Next level?")  === true)
@@ -297,10 +296,8 @@ class ClassSokoban {
                 alert("Level completed. No more levels!");
             else
             {
-                //this.level++;
-                // $("#tabs-1 .scroll .lev-position").css("height", 15 * this.level + 4);
                 this.change_level(1);  // Load next level.
-                //this.NewGame(); // Play again.
+                this.setSokobanLevelData(this.data_level);
             }
         }
         }, 500);

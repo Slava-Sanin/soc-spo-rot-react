@@ -83,7 +83,6 @@ import {
 import {
     loadDoc,
     InitStatus,
-    SomeArrow,
     Sound_On_Off,
     PlayMySound,
     Change_Player_color,
@@ -120,7 +119,11 @@ const App = () => {
     const { selectedTab, backgroundModes } = state;
 
     p1.refState = state;
+    p1.setState = setState;
+    p1.setSokobanLevelData = setSokobanLevelData;
+
     p2.refState = state;
+
     p3.refState = state;
     p3.setState = setState;
     p3.setRotmsLevelData = setRotmsLevelData;
@@ -152,6 +155,7 @@ const App = () => {
     const handleKeyDown = (event) => {
         if (selectedTab !== 0) return;
         let movesBefore = p1.moves;
+
         if (event.key === 'ArrowUp') {
             p1.movetop(72);
         } else if (event.key === 'ArrowDown') {
@@ -161,6 +165,7 @@ const App = () => {
         } else if (event.key === 'ArrowRight') {
             p1.movetop(77);
         }
+
         if (p1.moves === movesBefore) return;
 
         let tempUndoStates = [...state.undoStates];
@@ -170,7 +175,7 @@ const App = () => {
             undoStates: tempUndoStates
         });
 
-        //setMoves(++moves);
+        //setSokobanLevelData(p1.data_level);
     };
 
     const changeSokobanLevel = (direction) => {

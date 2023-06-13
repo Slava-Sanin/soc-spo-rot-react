@@ -1,10 +1,7 @@
 import './ClassFire'  // Defining class fire
-import $ from 'jquery';
 import {
     loadDoc,
     InitStatus,   
-    SomeArrow,
-    Sound_On_Off,    
     PlayMySound,
     Change_Player_color,
     Change_Computer_color,
@@ -36,6 +33,7 @@ class ClassRotms {
     error = 0;
     level_is_completed;
     refState;
+    setState;
     setRotmsLevelData;
 
     constructor() {
@@ -162,17 +160,13 @@ class ClassRotms {
         }
 
         if (isMoved) {
-            //this.refState.undoStates[2] = true;
             PlayMySound("move1.wav", this.refState.soundMode);
-
-            //this.setRotmsLevelData(this.data_level);
-            this.redraw();
+            this.switchUndoMode(true);
 
             setTimeout(() =>
             {
                 this.fire_all_on_pushing(x, y);
-                this.redraw();
-                //this.setRotmsLevelData(this.data_level);
+                this.setRotmsLevelData(this.data_level);
             }, 200);
         }
     }
@@ -250,9 +244,9 @@ class ClassRotms {
         return isMoved;
     }
 
-    redraw() {
+    switchUndoMode(mode) {
         let tempUndoStates = [...this.refState.undoStates];
-        tempUndoStates[2] = true;
+        tempUndoStates[2] = mode;
         this.setState({
             ...this.refState,
             undoStates: tempUndoStates
@@ -290,9 +284,9 @@ class ClassRotms {
                     return;
             }
         }
+        this.level_is_completed = true;
         PlayMySound("winer1.wav", this.refState.soundMode);
-
-        this.refState.undoStates[2] = false;
+        this.switchUndoMode(false);
         
         setTimeout( () => {
         if (window.confirm("Level completed. Next level?") === true)
@@ -305,6 +299,7 @@ class ClassRotms {
                 //$("#tabs-3 .scroll .lev-position").css("height", 15 * this.level + 4);
                 this.change_level(1);  // Load next level.
                 //this.NewGame(); // Play again.
+                this.setRotmsLevelData(this.data_level);
             }
         }
         }, 500);
