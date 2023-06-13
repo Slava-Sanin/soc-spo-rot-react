@@ -128,6 +128,7 @@ const App = () => {
         }
 
         if (p1.moves === movesBefore) return;
+        if (p1.level_is_completed) return;
 
         let tempUndoStates = [...state.undoStates];
         tempUndoStates[0] = true;
@@ -136,18 +137,18 @@ const App = () => {
             undoStates: tempUndoStates
         });
 
-        //setSokobanLevelData(p1.data_level);
+        setSokobanLevelData(p1.data_level);
     };
 
     const changeSokobanLevel = (direction) => {
         p1.change_level(direction);
 
-        let tempUndoStates = [...state.undoStates];
+        /*let tempUndoStates = [...state.undoStates];
         tempUndoStates[0] = false;
         setState({
             ...state,
             undoStates: tempUndoStates
-        });
+        });*/
 
         setSokobanLevelData(p1.data_level);
     };
@@ -204,7 +205,8 @@ const App = () => {
             </header>
             <hr/>
 
-            <Toolbar state={state} setState={setState}
+            <Toolbar state={state}
+                     setState={setState}
                      setSokobanLevelData={setSokobanLevelData}
                      setSpotLevelData={setSpotLevelData}
                      setRotmsLevelData={setRotmsLevelData}

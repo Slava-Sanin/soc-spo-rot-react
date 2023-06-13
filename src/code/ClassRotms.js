@@ -254,17 +254,7 @@ class ClassRotms {
     }
     
     putthis(x, y, kode) {
-        //let kode_x, kode_y;
-
         this.data_level[x*B+y] = kode;
-
-        /*if (kode === ' ') // Draws empty place.
-        {
-            kode = 'Z';
-        }
-
-        let str = "#tabs-3 div.board div:nth-child(" + (x*B+y+1) + ")";
-        $(str).removeClass().addClass("div-rot-" + kode);*/
     }
 
     retime() {

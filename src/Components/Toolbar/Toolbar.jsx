@@ -14,21 +14,21 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
     */
 
     console.log("Redrawing Toolbar");
-    //console.log("state.backgroundModes: ", state.backgroundModes);
 
     const [soundMode, setSoundMode] = useState(state.soundMode);
     const [toolbarMode, setToolbarMode] = useState(state.toolbarMode);
     const [undoStates, setUndoStates] = useState(state.undoStates);
 
-    useEffect(() => {
+    /*useEffect(() => {
         setUndoStates([...state.undoStates]);
-    }, [state]);
+    }, [state]);*/
+
+    console.log('soundMode:', soundMode);
 
     const handleBackgroundMode = (game) => {
         let { backgroundModes } = state;
         backgroundModes[game]++;
         if (backgroundModes[game] > 3) backgroundModes[game] = 1;
-
         setState({
             ...state,
             backgroundModes,
@@ -36,20 +36,20 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
     };
 
     const toggleSound = () => {
-        setSoundMode(!soundMode);
+        let sm = !soundMode;
+        setSoundMode(sm);
         setState({
             ...state,
-            soundMode,
+            soundMode: sm
         });
-
     };
 
     const toggleToolbarMode = () => {
         setToolbarMode(!toolbarMode);
-        setState({
+        /*setState({
             ...state,
             toolbarMode,
-        });
+        });*/
     };
 
     const newGame = () => {

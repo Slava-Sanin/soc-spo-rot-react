@@ -24,7 +24,7 @@ let
     parts= [],
     gamecode= 0,
     loaded= 0,
-    glob_sound= true,
+    glob_sound= false,
     status_line= 0,
     table= 1,
     Save_as_Flag= 0,

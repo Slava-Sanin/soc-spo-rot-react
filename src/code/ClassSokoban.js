@@ -67,9 +67,10 @@ class ClassSokoban {
     }
 
     member_last_move() {
-        for(let x=0; x<A; x++)
+        this.data_undo = [...this.data_level];
+        /*for(let x=0; x<A; x++)
             for(let y=0; y<B; y++)
-                this.data_undo[x*B+y] = this.data_level[x*B+y];
+                this.data_undo[x*B+y] = this.data_level[x*B+y];*/
     }
 
     build_ground() {
@@ -109,6 +110,8 @@ class ClassSokoban {
 
     movetop(key)
     {
+        console.log('this.refState:', this.refState);
+
         switch (key)
         {
             case 75: // Moving left
@@ -257,16 +260,7 @@ class ClassSokoban {
     }
 
     putthis(x, y, kode) {
-        //let kode_x, kode_y;
-
         this.data_level[x*B+y] = kode;
-
-        /*if (kode === ' ') // Draws empty place
-        {
-            kode = 'Z';
-        }
-        let str = "#tabs-1 div.board div:nth-child(" + (x*B+y+1) + ")";
-        $(str).removeClass().addClass("div-sok-"+kode);*/
     }
 
     retime() {
