@@ -142,9 +142,9 @@ class ClassRotms {
             case '5': // (All) Left, Right, Up and Down
                       this.member_last_move();
                       isMoved = this.movetop('1');
-                      isMoved = this.movetop('2');
-                      isMoved = this.movetop('3');
-                      isMoved = this.movetop('4');
+                      isMoved = this.movetop('2') || isMoved;
+                      isMoved = this.movetop('3') || isMoved;
+                      isMoved = this.movetop('4') || isMoved;
 
             default:
         }
@@ -156,7 +156,7 @@ class ClassRotms {
             setTimeout(() => {
                 this.fire_all_on_pushing(x, y);
                 this.setRotmsLevelData([...this.data_level]);
-            }, 600);
+            }, 500);
         }
     }
     
