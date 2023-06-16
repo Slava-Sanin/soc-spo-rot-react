@@ -45,11 +45,8 @@ class ClassSokoban {
     }
 
     NewGame() {
-        //if (this.moves)
-        //{
             PlayMySound("changepage.wav", this.refState.soundMode);
             this.init();
-        //}
     }
 
     Undo() {
@@ -59,7 +56,6 @@ class ClassSokoban {
             {
                 this.data_level[x*B+y] = this.data_undo[x*B+y];
                 if (this.data_level[x*B+y] === '2') {this.curX=x; this.curY=y;}
-                //this.putthis(x, y, this.data_level[x*B+y]);
             }
         }
         this.moves--;
@@ -68,9 +64,6 @@ class ClassSokoban {
 
     member_last_move() {
         this.data_undo = [...this.data_level];
-        /*for(let x=0; x<A; x++)
-            for(let y=0; y<B; y++)
-                this.data_undo[x*B+y] = this.data_level[x*B+y];*/
     }
 
     build_ground() {
@@ -88,14 +81,12 @@ class ClassSokoban {
                     case '5': this.data_lev_gr[x*B+y] = '3';
                     default:
                 }
-                //this.putthis(x, y, this.data_level[x*B+y]);
             }
     }
 
     change_level(dir) {
         if ((this.level + dir) < 1 || (this.level + dir) > SokobanLevels.length) return;
         this.level += dir;
-        //this.data_level = SokobanLevels[this.level - 1].data.split('');
         PlayMySound("changepage.wav", this.refState.soundMode);
         this.init();
     }
@@ -110,8 +101,6 @@ class ClassSokoban {
 
     movetop(key)
     {
-        console.log('this.refState:', this.refState);
-
         switch (key)
         {
             case 75: // Moving left

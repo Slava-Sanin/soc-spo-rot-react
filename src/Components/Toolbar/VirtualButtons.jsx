@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { throttle } from 'lodash';
 import '../../CSS/virtual_buttons.css';
-import {moveVirtualButtons} from "../../code/functions";
 //import {virtual_buttons_moving} from "../../code/globals";
 //import $ from "jquery";
 
@@ -13,7 +12,6 @@ const VirtualButtonSettings = {
 
  const VirtualButtons = ({state, setState}) => {
      const [dragging, setDragging] = useState(false);
-     //const [position, setPosition] = useState({ x: VirtualButtonSettings.x, y: VirtualButtonSettings.y });
      const [position, setPosition] = useState({});
 
      const handleMouseDown = () => {
@@ -45,16 +43,11 @@ const VirtualButtonSettings = {
          } else if (key === 'ArrowRight') {
              state.p1.movetop(77);
          }
+
          if (state.p1.moves === movesBefore) return;
+         if (state.p1.level_is_completed) return;
 
-         let tempUndoStates = [...state.undoStates];
-         tempUndoStates[0] = true;
-         setState({
-             ...state,
-             undoStates: tempUndoStates
-         });
-
-         //setMoves(++moves);
+         setState({...state});
      };
 
     return (

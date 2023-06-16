@@ -14,42 +14,24 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
     */
 
     console.log("Redrawing Toolbar");
-
-    const [soundMode, setSoundMode] = useState(state.soundMode);
-    const [toolbarMode, setToolbarMode] = useState(state.toolbarMode);
-    const [undoStates, setUndoStates] = useState(state.undoStates);
-
-    /*useEffect(() => {
-        setUndoStates([...state.undoStates]);
-    }, [state]);*/
-
-    console.log('soundMode:', soundMode);
-
     const handleBackgroundMode = (game) => {
-        let { backgroundModes } = state;
-        backgroundModes[game]++;
-        if (backgroundModes[game] > 3) backgroundModes[game] = 1;
-        setState({
-            ...state,
-            backgroundModes,
-        });
+        state.backgroundModes[game]++;
+        if (state.backgroundModes[game] > 3) state.backgroundModes[game] = 1;
+        setState({...state});
     };
 
     const toggleSound = () => {
-        let sm = !soundMode;
-        setSoundMode(sm);
         setState({
             ...state,
-            soundMode: sm
+            soundMode: !state.soundMode
         });
     };
 
     const toggleToolbarMode = () => {
-        setToolbarMode(!toolbarMode);
-        /*setState({
+        setState({
             ...state,
-            toolbarMode,
-        });*/
+            toolbarMode: !state.toolbarMode
+        });
     };
 
     const newGame = () => {
@@ -74,16 +56,13 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
             default:
         }
 
-        let tempUndoStates = [...undoStates];
-        tempUndoStates[state.selectedTab] = false;
-        setUndoStates(tempUndoStates);
-
-        setState({
-            ...state,
-            undoStates: tempUndoStates
-        });
-
+        switchUndoMode(false);
     };
+
+    const switchUndoMode = (mode) => {
+        state.undoStates[state.selectedTab] = mode;
+        setState({...state});
+    }
 
     const handleUndo = () => {
         console.log("Clicked undo");
@@ -105,19 +84,12 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
 
             default:
         }
-
-        let tempUndoStates = [...undoStates];
-        tempUndoStates[state.selectedTab] = false;
-        setUndoStates(tempUndoStates);
-        setState({
-            ...state,
-            undoStates: tempUndoStates
-        });
+        switchUndoMode(false);
     };
 
 
     return (
-        <div className='toolbar' style={{backgroundColor: !toolbarMode && "transparent"}}>
+        <div className='toolbar' >
             <button id='btn-sokoban'
                     key='btn-1'
                     disabled={(state.selectedTab !== 0)}
@@ -141,7 +113,7 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
 
             <button id='btn-sound'
                     key='btn-4'
-                    className={soundMode ? "sound" : "no-sound"}
+                    className={state.soundMode ? "sound" : "no-sound"}
                     onClick={ toggleSound }
                     ><span className="mytooltiptext">Sound On/Off</span>
             </button>
@@ -165,7 +137,7 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
 
             <button id='btn-undo'
                     key='btn-8'
-                    disabled={(undoStates[state.selectedTab] === false)}
+                    disabled={(state.undoStates[state.selectedTab] === false)}
                     onClick={ handleUndo }
                 ><span className="mytooltiptext">Undo</span>
             </button>
@@ -175,7 +147,7 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
                 ><span className="mytooltiptext">Toolbar mode</span>
             </button>
 
-            <SpotToolbar state={state} />
+            <SpotToolbar state={state} setState={setState} />
             <VirtualButtons state={state} setState={setState} />
         </div>
     );

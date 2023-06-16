@@ -103,7 +103,6 @@ class ClassRotms {
     change_level(dir) {
         if ((this.level + dir) < 1 || (this.level + dir) > RotmsLevels.length) return;
         this.level += dir;
-        //this.data_level = RotmsLevels[this.level - 1].data.split('');
         PlayMySound("changepage.wav", this.refState.soundMode);
         this.init();
     }
@@ -285,8 +284,6 @@ class ClassRotms {
             alert("Level completed. No more levels!");
             else
             {
-                //this.level++;
-                //$("#tabs-3 .scroll .lev-position").css("height", 15 * this.level + 4);
                 this.change_level(1);  // Load next level.
                 //this.NewGame(); // Play again.
                 this.setRotmsLevelData(this.data_level);

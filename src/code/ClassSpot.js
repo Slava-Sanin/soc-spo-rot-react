@@ -63,6 +63,8 @@ class ClassSpot {
         best = Object.create(PLACE);
         ready;
         refState;
+        setState;
+
     //////////////////////////////////////////////////////////////////////////
     // Constructor builds a window, background and fills a map of level.
     //////////////////////////////////////////////////////////////////////////
@@ -217,7 +219,7 @@ class ClassSpot {
         return this.htime/1000;
     }
 
-    check_end(soundMode) {
+    check_end() {
         if ((this.Player.spots !== 0) && (this.Computer.spots !== 0) && (!this.level_is_completed))
         {
             if ((this.who_is_now === 1) && (!this.player_cant_move)) return 0;
@@ -239,7 +241,7 @@ class ClassSpot {
         else if (this.Player.spots < this.Computer.spots) result = "Computer won!!!";
             else if (this.Player.spots > this.Computer.spots)
                     {
-                        PlayMySound("winer1.wav", soundMode);
+                        PlayMySound("winer1.wav", this.refState.soundMode);
                         result = "You are winner!!!";
                     }
 
@@ -254,7 +256,7 @@ class ClassSpot {
         //makeBackGround(hwnd1, this, str);
     }
 
-    player_move(x, y, soundMode) {
+    player_move(x, y) {
         let kode_x, kode_y;
         this.who_is_now = 1; // chey hod
 
@@ -263,7 +265,7 @@ class ClassSpot {
             this.first_X = x;
             this.first_Y = y;
             if (this.data_level[x*Bsp+y] !== this.Player.color) return;
-            PlayMySound("poper.wav", soundMode);
+            PlayMySound("poper.wav", this.refState.soundMode);
 
         let str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
         let kode = this.data_level[x*Bsp+y];
@@ -315,7 +317,7 @@ class ClassSpot {
                             this.putthis(2, x, y, this.Player.color);
                             //---------------------------------
 
-                            PlayMySound("move1.wav", soundMode);
+                            PlayMySound("move1.wav", this.refState.soundMode);
                             this.fill_around(x, y, this.Computer.color); // Paint around all enemy.
                             this.first_step = true;
                             this.check_spots_number();
@@ -405,8 +407,8 @@ class ClassSpot {
         console.log("exit from computer_move()"); // to delete later
     }
 
-    draw_computer_moving(x, y, best, soundMode) {
-        PlayMySound("poper.wav", soundMode);
+    draw_computer_moving(x, y, best) {
+        PlayMySound("poper.wav", this.refState.soundMode);
 
         let str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
         let kode = this.data_level[x*Bsp+y];
@@ -444,7 +446,7 @@ class ClassSpot {
 
     setTimeout(function (){
         //-----------------------
-        PlayMySound("move1.wav", soundMode);
+        PlayMySound("move1.wav", this.refState.soundMode);
         this.fill_around(best.x, best.y, this.Player.color);
 
         }, 500);

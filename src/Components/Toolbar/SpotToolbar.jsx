@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../CSS/spot_toolbar.css';
 
-const SpotToolbar = ({state}) => {
+const SpotToolbar = ({state, setState}) => {
         return (
 			<div className="Spot_toolbar" style={{display: (state.selectedTab === 1) ? "block" : "none"}}>
 

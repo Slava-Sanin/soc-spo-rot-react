@@ -8,7 +8,8 @@ import './CSS/tabs.css';
 import './CSS/scroll.css';
 import './CSS/status.css';
 
-import logo from './assets/images/spot.ico';
+//import logo from './assets/images/spot.ico';
+import logo from './assets/images/logo64.png';
 import Toolbar from './Components/Toolbar/Toolbar';
 import Status from './Components/Status/Status';
 import SpotColorDialog from './Components/Toolbar/SpotColorDialog';
@@ -137,7 +138,7 @@ const App = () => {
             undoStates: tempUndoStates
         });
 
-        setSokobanLevelData(p1.data_level);
+        //setSokobanLevelData(p1.data_level);
     };
 
     const changeSokobanLevel = (direction) => {
@@ -174,20 +175,15 @@ const App = () => {
         console.log('clicked mouse in Rotms');
         if (selectedTab !== 2) return;
         let element = event.target;
-        console.log("element: ", element);
         let parentElement = element.parentElement;
         let elementRect = element.getBoundingClientRect();
         let parentRect = parentElement.getBoundingClientRect();
 
         let offsetX = elementRect.left - parentRect.left;
         let offsetY = elementRect.top - parentRect.top;
-        console.log('Относительные координаты элемента: X:', offsetX, 'Y:', offsetY);
 
-        //let x = (elem.offsetTop - 50 - (elem.offsetTop % 25) ) / 25;
-        //let y = (elem.offsetLeft - 5) / 25;
         let x = parseInt(offsetY / 25);
         let y = parseInt(offsetX / 25);
-        console.log(x,y);
 
         p3.pushbutton(x, y);
     }
@@ -196,7 +192,7 @@ const App = () => {
       ------------------------------------------------------------------------------*/
 
       return (
-      <div ref={refApp} className="App">
+      <div ref={refApp} className="App" style={{backgroundColor: state.toolbarMode ? 'rgb(234,220,187,0.5)' : 'transparent'}}>
 
         <div className="wrapper">
             <header className="App-header">
@@ -283,7 +279,7 @@ const App = () => {
 
           <Status state={state} />
 
-          <SpotColorDialog />
+          {/*<SpotColorDialog />*/}
 
           <div className="footer">
               <p> © Viacheslav Sanin - 2023 - <a
