@@ -280,7 +280,7 @@ class ClassSokoban {
             else
             {
                 this.change_level(1);  // Load next level.
-                this.setSokobanLevelData(this.data_level);
+                this.setSokobanLevelData([...this.data_level]);
             }
         }
         }, 500);

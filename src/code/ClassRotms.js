@@ -63,22 +63,14 @@ class ClassRotms {
     Undo() {
         if (this.level_is_completed) return;
         this.data_level = [...this.data_undo];
-        /*for(let x=0; x<A; x++)
-        {
-            for(let y=0; y<B; y++)
-                this.putthis(x, y, this.data_undo[x*B+y]);
-        }*/
         this.score = this.score_undo;
         this.moves--;
         PlayMySound("move1.wav", this.refState.soundMode);
-        this.setRotmsLevelData(this.data_level);
+        this.setRotmsLevelData([...this.data_level]);
     }
         
     member_last_move() {
         this.data_undo = [...this.data_level];
-        /*for(let x=0; x<A; x++)
-            for(let y=0; y<B; y++)
-                this.data_undo[x*B+y] = this.data_level[x*B+y];*/
         this.score_undo = this.score;
     }
     
@@ -165,7 +157,7 @@ class ClassRotms {
             setTimeout(() =>
             {
                 this.fire_all_on_pushing(x, y);
-                this.setRotmsLevelData(this.data_level);
+                this.setRotmsLevelData([...this.data_level]);
             }, 200);
         }
     }
@@ -286,7 +278,7 @@ class ClassRotms {
             {
                 this.change_level(1);  // Load next level.
                 //this.NewGame(); // Play again.
-                this.setRotmsLevelData(this.data_level);
+                this.setRotmsLevelData([...this.data_level]);
             }
         }
         }, 500);

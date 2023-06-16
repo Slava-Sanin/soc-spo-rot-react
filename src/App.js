@@ -115,6 +115,7 @@ const App = () => {
 
 
     const handleKeyDown = (event) => {
+        event.preventDefault();
         if (selectedTab !== 0) return;
         let movesBefore = p1.moves;
 
@@ -131,14 +132,8 @@ const App = () => {
         if (p1.moves === movesBefore) return;
         if (p1.level_is_completed) return;
 
-        let tempUndoStates = [...state.undoStates];
-        tempUndoStates[0] = true;
-        setState({
-            ...state,
-            undoStates: tempUndoStates
-        });
-
-        //setSokobanLevelData(p1.data_level);
+        //setState({...state});
+        setSokobanLevelData([...p1.data_level]);
     };
 
     const changeSokobanLevel = (direction) => {
@@ -151,7 +146,7 @@ const App = () => {
             undoStates: tempUndoStates
         });*/
 
-        setSokobanLevelData(p1.data_level);
+        setSokobanLevelData([...p1.data_level]);
     };
 
     const changeRotmsLevel = (direction) => {
@@ -164,7 +159,7 @@ const App = () => {
             undoStates: tempUndoStates
         });
 
-        setRotmsLevelData(p3.data_level);
+        setRotmsLevelData([...p3.data_level]);
     };
 
 

@@ -40,17 +40,17 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
         {
             case 0:
                 state.p1.NewGame();
-                setSokobanLevelData(state.p1.data_level);
+                setSokobanLevelData([...state.p1.data_level]);
                 break;
 
             case 1:
                 state.p2.NewGame();
-                setSpotLevelData(state.p2.data_level);
+                setSpotLevelData([...state.p2.data_level]);
                 break;
 
             case 2:
                 state.p3.NewGame();
-                setRotmsLevelData(state.p3.data_level);
+                setRotmsLevelData([...state.p3.data_level]);
                 break;
 
             default:
