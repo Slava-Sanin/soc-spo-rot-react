@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { throttle } from 'lodash';
 import '../../CSS/virtual_buttons.css';
 //import {virtual_buttons_moving} from "../../code/globals";
-//import $ from "jquery";
 
 const VirtualButtonSettings = {
     isWasDragged: false,
