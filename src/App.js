@@ -132,33 +132,16 @@ const App = () => {
         if (p1.moves === movesBefore) return;
         if (p1.level_is_completed) return;
 
-        //setState({...state});
         setSokobanLevelData([...p1.data_level]);
     };
 
     const changeSokobanLevel = (direction) => {
         p1.change_level(direction);
-
-        /*let tempUndoStates = [...state.undoStates];
-        tempUndoStates[0] = false;
-        setState({
-            ...state,
-            undoStates: tempUndoStates
-        });*/
-
         setSokobanLevelData([...p1.data_level]);
     };
 
     const changeRotmsLevel = (direction) => {
         p3.change_level(direction);
-
-        let tempUndoStates = [...state.undoStates];
-        tempUndoStates[2] = false;
-        setState({
-            ...state,
-            undoStates: tempUndoStates
-        });
-
         setRotmsLevelData([...p3.data_level]);
     };
 

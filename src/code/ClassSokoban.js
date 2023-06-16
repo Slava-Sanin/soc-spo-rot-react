@@ -89,6 +89,8 @@ class ClassSokoban {
         this.level += dir;
         PlayMySound("changepage.wav", this.refState.soundMode);
         this.init();
+        this.refState.undoStates[0] = false;
+        this.setState({...this.refState});
     }
 
     SaveGame(filename) {
