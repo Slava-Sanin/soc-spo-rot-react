@@ -241,7 +241,7 @@ class ClassSpot {
         else if (this.Player.spots < this.Computer.spots) result = "Computer won!!!";
             else if (this.Player.spots > this.Computer.spots)
                     {
-                        PlayMySound("winer1.wav", this.refState.soundMode);
+                        PlayMySound("winner.wav", this.refState.soundMode);
                         result = "You are winner!!!";
                     }
 

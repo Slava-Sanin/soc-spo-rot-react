@@ -67,7 +67,7 @@ class ClassSokoban {
     }
 
     build_ground() {
-        // find cursor and build the ground array
+        /* Find cursor and build the ground array */
         for(let x=0; x<A; x++)
             for(let y=0; y<B; y++)
             {
@@ -270,7 +270,7 @@ class ClassSokoban {
             }
         }
         this.level_is_completed = true;
-        PlayMySound("winer1.wav", this.refState.soundMode);
+        PlayMySound("winner.wav", this.refState.soundMode);
         this.switchUndoMode(false);
 
         // Delay before the confirm window is shown

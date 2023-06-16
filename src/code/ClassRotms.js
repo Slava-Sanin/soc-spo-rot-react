@@ -53,11 +53,8 @@ class ClassRotms {
     }
         
     NewGame() {
-        //if (this.moves)
-        //{
-            PlayMySound("changepage.wav", this.refState.soundMode);
-            this.init();    
-        //}
+        PlayMySound("changepage.wav", this.refState.soundMode);
+        this.init();
     }
 
     Undo() {
@@ -97,6 +94,8 @@ class ClassRotms {
         this.level += dir;
         PlayMySound("changepage.wav", this.refState.soundMode);
         this.init();
+        this.refState.undoStates[2] = false;
+        this.setState({...this.refState});
     }
     
     SaveGame(filename) {
@@ -153,12 +152,11 @@ class ClassRotms {
         if (isMoved) {
             PlayMySound("move1.wav", this.refState.soundMode);
             this.switchUndoMode(true);
-
-            setTimeout(() =>
-            {
+            this.setRotmsLevelData([...this.data_level]);
+            setTimeout(() => {
                 this.fire_all_on_pushing(x, y);
                 this.setRotmsLevelData([...this.data_level]);
-            }, 200);
+            }, 600);
         }
     }
     
@@ -266,7 +264,7 @@ class ClassRotms {
             }
         }
         this.level_is_completed = true;
-        PlayMySound("winer1.wav", this.refState.soundMode);
+        PlayMySound("winner.wav", this.refState.soundMode);
         this.switchUndoMode(false);
         
         setTimeout( () => {
