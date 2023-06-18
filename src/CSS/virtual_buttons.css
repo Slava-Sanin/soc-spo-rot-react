@@ -1,7 +1,7 @@
 .virtual_buttons {
     width: 137px;
     position: absolute;
-    right: 45px;
+    right: 35px;
     top: -12px;
     z-index: 150;
     display: none;
