@@ -272,6 +272,7 @@ class ClassSokoban {
         this.level_is_completed = true;
         PlayMySound("winner.wav", this.refState.soundMode);
         this.switchUndoMode(false);
+        this.setSokobanLevelData([...this.data_level]);
 
         // Delay before the confirm window is shown
         setTimeout( () => {
