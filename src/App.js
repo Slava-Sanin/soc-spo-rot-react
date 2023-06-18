@@ -160,7 +160,7 @@ const App = () => {
             console.log('Clicked mouse in Spot');
             let x = parseInt(offsetY / SpotBlockWidth);
             let y = parseInt(offsetX / SpotBlockHeight);
-            p2.pushbutton(x, y);
+            p2.player_move(x, y);
         }
 
         if (selectedTab === 2) {

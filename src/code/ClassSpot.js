@@ -273,9 +273,9 @@ class ClassSpot {
             if (this.data_level[x*Bsp+y] !== this.Player.color) return;
             PlayMySound("poper.wav", this.refState.soundMode);
 
-        let str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
-        let kode = this.data_level[x*Bsp+y];
-        $(str).removeClass().addClass("div-spo-"+PlayerDlg.color+"big");
+            let str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
+            let kode = this.data_level[x*Bsp+y];
+            $(str).removeClass().addClass("div-spo-"+PlayerDlg.color+"big");
 
             this.first_step = false;
             this.table_was_changed = 0;
