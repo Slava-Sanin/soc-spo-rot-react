@@ -1,4 +1,5 @@
-var
+export
+const
     IDM_Load       =  101,
     IDM_Save       =  102,
     IDM_Save_As    =  103,
@@ -41,52 +42,9 @@ var
     W4 = 312,
     otstup = 6,
     otstup_sp = 7,
-    
+    SpotBlockWidth = 40,
+    SpotBlockHeight = 40,
+    RotmsBlockWidth = 25,
+    RotmsBlockHeight = 25,
+
     MENU_PIC = 10;
-    
-export {
-    IDM_Load,
-    IDM_Save,
-    IDM_Save_As,
-    IDM_Save_All,
-    IDM_Exit,
-    IDM_Status_Off,
-    IDM_Status_On,
-    IDM_Status,
-    IDM_Undo,
-    IDM_On,
-    IDM_Off,
-    IDM_Background,
-    IDM_Table,
-    IDM_Spot_Options,
-    IDM_Spot_Color,
-    IDM_Help,
-    IDM_About,
-
-    IDM_NormalSize,
-
-    ID_TOOLBAR,
-
-    TOOLS_BMP,
-
-    IDM_Sokoban,
-    IDM_Spot,
-    IDM_Rotms,
-    IDM_Sound,
-    IDM_New,
-    IDM_Finish,
-
-    NUMBUTTONS,
-    A,
-    B,
-    Asp,
-    Bsp,
-    W1,
-    W2,
-    W3,
-    W4,
-    otstup,
-    otstup_sp,
-
-    MENU_PIC
-}

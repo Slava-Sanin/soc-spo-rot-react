@@ -14,7 +14,6 @@ import {
 
 import SpotsLevels from "../Spot/levels.json";
 import { Asp, Bsp } from './constants';
-import SokobanLevels from "../Sokoban/levels.json";
 
 // For finding the best place to put spot.
 const PLACE = {
@@ -40,30 +39,32 @@ const ComputerDlg = Object.create(st_Player);
     ComputerDlg.is = 2;
 
 class ClassSpot {
-        data_lev_gr = []; //[Asp][Bsp];
-        data_undo = []; //[Asp][Bsp];
-        starttime;
-        curtime;
-        htime;
-        moves;
-        background = "";
-        backgroundMode = 3;
-        filename;
-        curX;
-        curY;
-        Player = Object.create(st_Player);
-        Computer = Object.create(st_Player);
-        who_is_now;
-        error;
-        first_step = true;
-        first_X;
-        first_Y;
-        kakoe_iz_odinakovux_vubrat = 0;
-        first_time = true;
-        best = Object.create(PLACE);
-        ready;
-        refState;
-        setState;
+    maxLevel = 20;
+    data_lev_gr = []; //[Asp][Bsp];
+    data_undo = []; //[Asp][Bsp];
+    starttime;
+    curtime;
+    htime;
+    moves;
+    background = "";
+    backgroundMode = 3;
+    filename;
+    curX;
+    curY;
+    Player = Object.create(st_Player);
+    Computer = Object.create(st_Player);
+    who_is_now;
+    error;
+    first_step = true;
+    first_X;
+    first_Y;
+    kakoe_iz_odinakovux_vubrat = 0;
+    first_time = true;
+    best = Object.create(PLACE);
+    ready;
+    table = 1;
+    refState;
+    setState;
 
     //////////////////////////////////////////////////////////////////////////
     // Constructor builds a window, background and fills a map of level.
@@ -90,7 +91,12 @@ class ClassSpot {
         this.Computer.is = ComputerDlg.is;    // First or second?
         this.check_spots_number();            // Init. spots number.
         this.member_last_move();              // Save last moving.
-        if (this.Computer.is === 1) this.computer_move(); // TODO: remove to run() function
+        if (this.Computer.is === 1) {
+            setTimeout(
+                () => this.computer_move(),
+                0
+            );
+        } // TODO: remove to run() function
         return 0;
     }
 
@@ -175,7 +181,7 @@ class ClassSpot {
 
     }
 
-    putthis(where, x, y, kode) {
+    putthis(x, y, kode) {
         let kode_x, kode_y;
         let str;
 
@@ -190,7 +196,7 @@ class ClassSpot {
                 break;
             case ' ': // Empty place.
                 kode = 'Z';
-                if (window.table===2)
+                if (this.table===2)
                 {
                     str = "#tabs-2 div.board div:nth-child(" + (x*Bsp+y+1) + ")";
                     $(str).removeClass().addClass("div-spo-"+kode);
@@ -234,7 +240,7 @@ class ClassSpot {
         this.level_is_completed = true;
         console.log("Level is completed!");
         // Sleep(4000);
-        setTimeout(function (){
+        setTimeout( () => {
         let result;
         // Checking for a winner.
         if (this.Player.spots === this.Computer.spots) result = "Teko!!!";
@@ -247,7 +253,7 @@ class ClassSpot {
 
         alert(result + "\n\n Party complete.");
         
-        if (this.level === 20) alert("Level complete. \n\n No more levels!");    
+        if (this.level === this.maxLevel) alert("Level complete. \n\n No more levels!");
         }, 500);
         return 1;
     }
@@ -311,7 +317,7 @@ class ClassSpot {
                         let kode = this.data_level[x*Bsp+y];
                         $(str).removeClass().addClass("div-spo-"+PlayerDlg.color+"big");
 
-                    setTimeout(function (){
+                    setTimeout(() => {
                             this.putthis(1, x, y, this.Player.color);
                             //-------gibuy for fast_draw-------
                             this.putthis(2, x, y, this.Player.color);
@@ -395,16 +401,16 @@ class ClassSpot {
                 }
             }
         }
-        this.ready = false; //to delete later
+        this.ready = false; //TODO: To delete later
         if (best.num !== -1) // If found place.
         {
         //Sleep(300);
-            setTimeout(function (){
+            setTimeout(() => {
                 this.draw_computer_moving(X_from, Y_from, best); // Computer moves.
                 }, 1000);
         }
-        else this.ready = true;  // to delete later
-        console.log("exit from computer_move()"); // to delete later
+        else this.ready = true;  // TODO: To delete later
+        console.log("exit from computer_move()"); // TODO: To delete later
     }
 
     draw_computer_moving(x, y, best) {
@@ -414,7 +420,7 @@ class ClassSpot {
         let kode = this.data_level[x*Bsp+y];
         $(str).removeClass().addClass("div-spo-"+ComputerDlg.color+"big");
     //   Sleep(5000);
-    setTimeout(function (){
+    setTimeout(() => {
         //-----------------------
         //console.log(best);
         if (Math.abs(best.x-x) === 2 || Math.abs(best.y-y) === 2)
@@ -437,14 +443,14 @@ class ClassSpot {
         $(str).removeClass().addClass("div-spo-"+ComputerDlg.color+"big");
         //-----------------------
 
-    setTimeout(function (){
+    setTimeout(() => {
         //-----------------------
         this.putthis(1, best.x, best.y, this.Computer.color);
         //-------gibuy for fast_draw-------
         this.putthis(2, best.x, best.y, this.Computer.color);
         //-----------------------
 
-    setTimeout(function (){
+    setTimeout(() => {
         //-----------------------
         PlayMySound("move1.wav", this.refState.soundMode);
         this.fill_around(best.x, best.y, this.Player.color);

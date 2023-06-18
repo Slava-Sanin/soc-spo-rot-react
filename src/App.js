@@ -31,7 +31,7 @@ import {
     W4,
     otstup,
     otstup_sp,
-    MENU_PIC
+    MENU_PIC, RotmsBlockWidth, RotmsBlockHeight, SpotBlockWidth, SpotBlockHeight
 } from "./code/constants";
 
 import {
@@ -146,28 +146,31 @@ const App = () => {
     };
 
 
-    /*------------------------------------------------------------------------------
-       Rotms part
-      ------------------------------------------------------------------------------*/
     const handleClick = (event) => {
-        console.log('clicked mouse in Rotms');
-        if (selectedTab !== 2) return;
+        if (selectedTab === 0) return;
+
         let element = event.target;
         let parentElement = element.parentElement;
         let elementRect = element.getBoundingClientRect();
         let parentRect = parentElement.getBoundingClientRect();
-
         let offsetX = elementRect.left - parentRect.left;
         let offsetY = elementRect.top - parentRect.top;
 
-        let x = parseInt(offsetY / 25);
-        let y = parseInt(offsetX / 25);
+        if (selectedTab === 2) {
+            console.log('Clicked mouse in Spot');
+            let x = parseInt(offsetY / SpotBlockWidth);
+            let y = parseInt(offsetX / SpotBlockHeight);
+            p2.pushbutton(x, y);
+        }
 
-        p3.pushbutton(x, y);
+        if (selectedTab === 3) {
+            console.log('Clicked mouse in Rotms');
+            let x = parseInt(offsetY / RotmsBlockWidth);
+            let y = parseInt(offsetX / RotmsBlockHeight);
+            p3.pushbutton(x, y);
+        }
     }
-    /*------------------------------------------------------------------------------
-       End Rotms part
-      ------------------------------------------------------------------------------*/
+
 
       return (
       <div ref={refApp} className="App" style={{backgroundColor: state.toolbarMode ? 'rgb(234,220,187,0.5)' : 'transparent'}}>
@@ -221,7 +224,7 @@ const App = () => {
                             background: (backgroundModes[1] === 3) ? `url("${Backgrounds.backgroundTab2}")` : "none"
                         }}>
                             <div className="board">
-                              <Spot level={spotLevelData} />
+                              <Spot level={spotLevelData} handleClick={handleClick} />
                             </div>
                         </div>
                       </TabPanel>
