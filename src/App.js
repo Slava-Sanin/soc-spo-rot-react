@@ -156,14 +156,14 @@ const App = () => {
         let offsetX = elementRect.left - parentRect.left;
         let offsetY = elementRect.top - parentRect.top;
 
-        if (selectedTab === 2) {
+        if (selectedTab === 1) {
             console.log('Clicked mouse in Spot');
             let x = parseInt(offsetY / SpotBlockWidth);
             let y = parseInt(offsetX / SpotBlockHeight);
             p2.pushbutton(x, y);
         }
 
-        if (selectedTab === 3) {
+        if (selectedTab === 2) {
             console.log('Clicked mouse in Rotms');
             let x = parseInt(offsetY / RotmsBlockWidth);
             let y = parseInt(offsetX / RotmsBlockHeight);
