@@ -62,7 +62,6 @@ class ClassSpot {
     best = Object.create(PLACE);
     ready;
     table = 1;
-    big = false; // Is the spot now clicked or not. Clicked => big = true.
     refState;
     setState;
 
@@ -285,6 +284,7 @@ class ClassSpot {
                             this.putthis(x, y, this.Player.color);
 
                             PlayMySound("move1.wav", this.refState.soundMode);
+                        console.log('hohoho')
                             this.fill_around(x, y, this.Computer.color); // Paint around all enemy
                             this.first_step = true;
                             this.check_spots_number();
@@ -356,7 +356,7 @@ class ClassSpot {
         if (best.num !== -1) // If found place.
         {
         //Sleep(300);
-            console.log('i am here')
+            console.log('i am before setTimeout')
             setTimeout(() => {
                 this.draw_computer_moving(X_from, Y_from, best); // Computer moves.
                 }, 1000);
