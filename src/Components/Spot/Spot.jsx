@@ -9,7 +9,7 @@ const Spot = ({level, handleClick}) => {
           {level.map((number, index) => (
             <div className={`div-spo-${(number === ' ') ? 'Z' : number}`}
                  key={'spo'+index}
-                 onClick={['2', '3', '4', '5', '6'].includes(number) ? handleClick : null}
+                 onClick={[' ', '2', '3', '4', '5', '6'].includes(number) ? handleClick : null}
             ></div>
           ))}
         </>

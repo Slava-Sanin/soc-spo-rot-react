@@ -155,13 +155,11 @@ const App = () => {
         let parentRect = parentElement.getBoundingClientRect();
         let offsetX = elementRect.left - parentRect.left;
         let offsetY = elementRect.top - parentRect.top;
-console.log(offsetX,offsetY)
 
         if (selectedTab === 1) {
             console.log('Clicked mouse in Spot');
             let x = parseInt((offsetY-42) / SpotBlockWidth);
             let y = parseInt((offsetX-3) / SpotBlockHeight);
-            console.log(x,y);
             p2.player_move(x, y);
         }
 

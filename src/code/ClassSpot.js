@@ -249,19 +249,11 @@ class ClassSpot {
         let kode_x, kode_y;
         this.who_is_now = 1; // chey hod
         if (this.first_step || this.table_was_changed) {
-            console.log('111111111111111')
-            console.log(this.data_level)
-            console.log(this.data_level[x*Bsp+y])
-            console.log(this.Player.color)
-            console.log('x*Bsp+y=',x*Bsp+y)
-
             this.first_X = x;
             this.first_Y = y;
             if (this.data_level[x*Bsp+y] != this.Player.color) return;
             PlayMySound("poper.wav", this.refState.soundMode);
-        console.log('111111112222222')
-            let str = '#tabs-2 div.board div:nth-child(' + (x * Bsp + y + 1) + ')';;
-        console.log(str)
+            let str = '#tabs-2 div.board div:nth-child(' + (x * Bsp + y + 1) + ')';
             let kode = this.data_level[x*Bsp+y];
             document.querySelector(str).className = 'div-spo-' + PlayerDlg.color + 'big';
             this.first_step = false;
@@ -269,14 +261,12 @@ class ClassSpot {
             return;
         }
         else {
-        console.log('222222222222222')
             if ((x === this.first_X) && (y === this.first_Y)) { // Same place. Drop down the spot.
                 this.putthis(x, y, this.Player.color);
                 this.first_step = true;
                 return;
             }
             else {
-            console.log('3333333333333')
                 if (this.check_the_place(x, y, this.first_X, this.first_Y)) { // If place is empty
                     this.member_last_move();
                     //EnableMenuItem(GetMenu(hwnd), IDM_Undo, MF_ENABLED);
@@ -362,15 +352,16 @@ class ClassSpot {
                 }
             }
         }
-        this.ready = false; //TODO: To delete later
+        //this.ready = false; //TODO: To delete later
         if (best.num !== -1) // If found place.
         {
         //Sleep(300);
+            console.log('i am here')
             setTimeout(() => {
                 this.draw_computer_moving(X_from, Y_from, best); // Computer moves.
                 }, 1000);
         }
-        else this.ready = true;  // TODO: To delete later
+        //else this.ready = true;  // TODO: To delete later
         console.log("exit from computer_move()"); // TODO: To delete later
     }
 
