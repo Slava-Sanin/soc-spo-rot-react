@@ -34,8 +34,8 @@ const
     NUMBUTTONS = 10,
     A = 12,
     B = 23,
-    Asp = 7,
-    Bsp = 15,
+    Asp = 7, //Spots in column
+    Bsp = 15, //Spots in line
     W1 = 10,
     W2 = 33,
     W3 = 587,
