@@ -195,7 +195,7 @@ class ClassSpot {
                 break;
 
             default:  // Player's or computer's spot
-                if (kode===2) kode = PlayerDlg.color;
+                if (kode === 2) kode = PlayerDlg.color;
                 else kode = ComputerDlg.color;
 
                 str = '#tabs-2 div.board div:nth-child(' + (x*Bsp+y+1) + ')';
@@ -270,7 +270,7 @@ class ClassSpot {
                     this.member_last_move();
                     //EnableMenuItem(GetMenu(hwnd), IDM_Undo, MF_ENABLED);
 
-                    if (Math.abs(this.first_X-x)===2 || Math.abs(this.first_Y-y)===2) { // If spot jumps
+                    if ((Math.abs(this.first_X-x) === 2) || (Math.abs(this.first_Y-y) === 2)) { // If spot jumps
                         this.putthis(this.first_X, this.first_Y, ' ');
                     }
                     else { // Draw new spot.
@@ -284,7 +284,6 @@ class ClassSpot {
                             this.putthis(x, y, this.Player.color);
 
                             PlayMySound("move1.wav", this.refState.soundMode);
-                        console.log('hohoho')
                             this.fill_around(x, y, this.Computer.color); // Paint around all enemy
                             this.first_step = true;
                             this.check_spots_number();
@@ -316,7 +315,7 @@ class ClassSpot {
         console.log("Computer spots: " + this.Computer.spots);
         for (x=1; x<(Asp-1); x++)
             for (y=1; y<(Bsp-1); y++) {
-                if (this.data_level[x*Bsp+y] === this.Player.color) {
+                if (this.data_level[x*Bsp+y] == this.Player.color) {
                     let i, j;
                     for (i=x-2; i<=(x+2); i++)
                         for (j=y-2; j<=(y+2); j++) {
@@ -338,7 +337,7 @@ class ClassSpot {
         let i,j;
         for (i=1; i<(Asp-1); i++) {
             for (j=1; j<(Bsp-1); j++) {
-                if (this.data_level[i*Bsp+j] === this.Computer.color) {
+                if (this.data_level[i*Bsp+j] == this.Computer.color) {
                     choyse = this.check_around(i, j);
                     if (best.num < choyse.num) {
                         best.x = choyse.x;
@@ -375,7 +374,7 @@ class ClassSpot {
         setTimeout(() => {
             //-----------------------
             //console.log(best);
-            if (Math.abs(best.x-x) === 2 || Math.abs(best.y-y) === 2) {
+            if ((Math.abs(best.x-x) === 2) || (Math.abs(best.y-y) === 2)) {
                 this.putthis(x, y, ' ');
             }
             else {
@@ -413,7 +412,7 @@ class ClassSpot {
         for (i=x-2; i<=x+2; i++)
             for (j=y-2; j<=y+2; j++) {
                 if (i<1 || i>=(Asp-1) || j<1 || j>=(Bsp-1)) continue;
-                if ((x===i) && (y===j)) continue;
+                if ((x === i) && (y === j)) continue;
                 if ((Math.abs(x-i) <= 1) && (Math.abs(y-j) <= 1)) bonus=1;
                 else bonus=0;
 
@@ -456,8 +455,8 @@ class ClassSpot {
         for (i=x-1; i<=x+1; i++)
             for (j=y-1; j<=y+1; j++) {
                 if (i<1 || i>=(Asp-1) || j<1 || j>=(Bsp-1)) continue;
-                if ((x===i) && (y===j)) continue;
-                if (this.data_level[i*Bsp+j] === this.Player.color) num++;
+                if ((x === i) && (y === j)) continue;
+                if (this.data_level[i*Bsp+j] == this.Player.color) num++;
             }
         return num;
     }
@@ -472,7 +471,7 @@ class ClassSpot {
         let i, j;
         for (i=x-1; i<=x+1; i++)
             for (j=y-1; j<=y+1; j++)
-                if (this.data_level[i*Bsp+j] === color) {
+                if (this.data_level[i*Bsp+j] == color) {
                     this.putthis(i, j, this.data_level[x*Bsp+y]);
                 }
 
@@ -490,8 +489,8 @@ class ClassSpot {
         this.Computer.spots = 0;
         for(let x=1; x<Asp; x++)
             for(let y=1; y<Bsp; y++) {
-                if (this.data_level[x*Bsp+y] === this.Player.color) this.Player.spots++;
-                if (this.data_level[x*Bsp+y] === this.Computer.color) this.Computer.spots++;
+                if (this.data_level[x*Bsp+y] == this.Player.color) this.Player.spots++;
+                if (this.data_level[x*Bsp+y] == this.Computer.color) this.Computer.spots++;
             }
     }
 
