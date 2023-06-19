@@ -86,11 +86,11 @@ class ClassSpot {
         this.data_level = SpotsLevels[this.level - 1].data.split('');
         this.starttime = new Date(); // Init. timer.
         this.moves = 0;
-        this.Player.is = PlayerDlg.is;        // First or second?
-        this.Computer.is = ComputerDlg.is;    // First or second?
+        //this.Player.is = PlayerDlg.is;        // First or second?
+        //this.Computer.is = ComputerDlg.is;    // First or second?
         this.check_spots_number();            // Init. spots number.
         this.member_last_move();              // Save last moving.
-        if (this.Computer.is === 1) {
+        if (ComputerDlg.is === 1) {
             setTimeout(
                 () => this.computer_move(),
                 0
@@ -101,9 +101,10 @@ class ClassSpot {
 
     NewGame() {
         if (this.moves) {
+            console.log(this.moves)
             PlayMySound("changepage.wav", this.refState.soundMode);
             this.init();
-            if (this.ComputerDlg.is === 1) {
+            if (ComputerDlg.is === 1) {
             // Sleep(700);
                 this.computer_move();
                 this.check_spots_number();
@@ -351,16 +352,15 @@ class ClassSpot {
                 }
             }
         }
-        //this.ready = false; //TODO: To delete later
+        this.ready = false; //TODO: To delete later
         if (best.num !== -1) // If found place.
         {
         //Sleep(300);
-            console.log('i am before setTimeout')
             setTimeout(() => {
                 this.draw_computer_moving(X_from, Y_from, best); // Computer moves.
                 }, 1000);
         }
-        //else this.ready = true;  // TODO: To delete later
+        else this.ready = true;  // TODO: To delete later
         console.log("exit from computer_move()"); // TODO: To delete later
     }
 
