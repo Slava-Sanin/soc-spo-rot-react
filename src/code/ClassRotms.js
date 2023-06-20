@@ -32,8 +32,8 @@ class ClassRotms {
     flag_push = 0;
     error = 0;
     level_is_completed;
-    refState;
-    setState;
+    refState = null;
+    setState = null;
     setRotmsLevelData;
 
     constructor() {

@@ -93,6 +93,8 @@ const App = () => {
     p1.setSokobanLevelData = setSokobanLevelData;
 
     p2.refState = state;
+    p2.setState = setState;
+    p2.setSpotLevelData = setSpotLevelData;
 
     p3.refState = state;
     p3.setState = setState;

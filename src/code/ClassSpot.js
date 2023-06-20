@@ -62,8 +62,9 @@ class ClassSpot {
     best = Object.create(PLACE);
     ready;
     table = 1;
-    refState;
-    setState;
+    refState = null;
+    setState = null;
+    setSpotLevelData = null;
 
     //////////////////////////////////////////////////////////////////////////
     // Constructor builds a window, background and fills a map of level.
@@ -81,7 +82,7 @@ class ClassSpot {
     }
 
     init() { 
-        this.error=0;
+        this.error = 0;
         this.level_is_completed = false;
         this.data_level = SpotsLevels[this.level - 1].data.split('');
         this.starttime = new Date(); // Init. timer.
@@ -90,27 +91,34 @@ class ClassSpot {
         //this.Computer.is = ComputerDlg.is;    // First or second?
         this.check_spots_number();            // Init. spots number.
         this.member_last_move();              // Save last moving.
+
         if (ComputerDlg.is === 1) {
             setTimeout(
                 () => this.computer_move(),
                 0
             );
         } // TODO: remove to run() function
+
         return 0;
     }
 
     NewGame() {
-        if (this.moves) {
-            console.log(this.moves)
+        console.log('moves before init:', this.moves)
+        console.log('p2.data_level:', this.refState.p2.data_level)
+
+        //if (this.moves) {
             PlayMySound("changepage.wav", this.refState.soundMode);
             this.init();
-            if (ComputerDlg.is === 1) {
-            // Sleep(700);
-                this.computer_move();
-                this.check_spots_number();
+            console.log('moves after init:', this.moves)
+            //if (ComputerDlg.is === 1) {
+                //this.setState({...this.refState});
+                // Sleep(700);
+                //this.computer_move();
+                //this.moves++;
+                //this.check_spots_number();
                 //InitStatus();
-            }
-        }
+            //}
+        //}
     }
 
     Undo() {
@@ -196,7 +204,7 @@ class ClassSpot {
                 break;
 
             default:  // Player's or computer's spot
-                if (kode === 2) kode = PlayerDlg.color;
+                if (kode == 2) kode = PlayerDlg.color;
                 else kode = ComputerDlg.color;
 
                 str = '#tabs-2 div.board div:nth-child(' + (x*Bsp+y+1) + ')';

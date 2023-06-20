@@ -26,8 +26,8 @@ class ClassSokoban {
     error = 0;
     level_is_completed;
     is_loaded = 0;
-    refState;
-    setState;
+    refState = null;
+    setState = null;
     setSokobanLevelData;
 
     constructor() {
