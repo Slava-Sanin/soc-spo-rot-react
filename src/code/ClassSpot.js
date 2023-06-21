@@ -280,6 +280,8 @@ class ClassSpot {
                 if (this.check_the_place(x, y, this.first_X, this.first_Y)) { // If place is empty
                     this.member_last_move();
                     //EnableMenuItem(GetMenu(hwnd), IDM_Undo, MF_ENABLED);
+                    this.refState.undoStates[1] = true;
+                    this.setState({...this.refState});
 
                     if ((Math.abs(this.first_X-x) === 2) || (Math.abs(this.first_Y-y) === 2)) { // If spot jumps
                         this.putthis(this.first_X, this.first_Y, ' ');
@@ -305,10 +307,11 @@ class ClassSpot {
                                 this.computer_move();
                                 this.moves++;
 
-                                console.log(this.ready);
+                                console.log('Ready:', this.ready);
 
                                 console.log("after computer_move");
                                 this.check_spots_number();
+                                this.setSpotLevelData([...this.data_level]);
                                 //InitStatus();
                     },500);
                     return;

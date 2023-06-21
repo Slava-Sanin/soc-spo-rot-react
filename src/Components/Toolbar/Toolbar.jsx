@@ -48,6 +48,7 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
                 console.log('here')
                 setSpotLevelData([...state.p2.data_level]);
                 //setState({...state});
+                console.log(state.p2)
                 break;
 
             case 2:
@@ -76,7 +77,8 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
                 break;
 
             case 1: //Spot
-
+                if (state.p2.moves === 0) return;
+                if (!state.p2.level_is_completed) state.p2.Undo();
                 break;
 
             case 2: //Rotms
