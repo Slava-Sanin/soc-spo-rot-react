@@ -85,8 +85,10 @@ class ClassSpot {
         this.error = 0;
         this.level_is_completed = false;
         this.data_level = SpotsLevels[this.level - 1].data.split('');
+        console.log(this.data_level)
         this.starttime = new Date(); // Init. timer.
         this.moves = 0;
+        this.first_step = true;
         //this.Player.is = PlayerDlg.is;        // First or second?
         //this.Computer.is = ComputerDlg.is;    // First or second?
         this.check_spots_number();            // Init. spots number.
@@ -183,7 +185,7 @@ class ClassSpot {
         let kode_x, kode_y;
         let str;
 
-        this.data_level[x*Bsp+y] = kode;
+        this.data_level[x*Bsp+y] = '' + kode; // '' - To convert any kode always to string
 
         switch (kode) {
             case '0': // Stown(border)

@@ -83,7 +83,7 @@ body {
 }
 
 .main-window {
-  background: url("./assets/images/GRAND/GRAND11.bmp") no-repeat;
+  background: url("./assets/images/GRAND/grand1.jpg") no-repeat;
   background-size: 100% 100% !important;
   //background-size: cover !important;
   /*border: 2px solid #E7D2A5;*/
@@ -177,6 +177,7 @@ width: 100%;
   left: 8px;
   border: 5px solid #97FF97;
   text-transform: uppercase;
+  margin-right: 12px;
 }
 
 /*----------------------------------------------*/
@@ -225,6 +226,6 @@ body {
 }
 
 .background-on {
-  background: url("./assets/images/GRAND/GRAND11.bmp");
+  background: url("./assets/images/GRAND/grand1.jpg");
 }
 */
