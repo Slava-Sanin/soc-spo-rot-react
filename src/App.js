@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 import './App.css';
@@ -17,7 +17,7 @@ import Sokoban from './Components/Sokoban/Sokoban';
 import Spot from './Components/Spot/Spot';
 import Rotms from './Components/Rotms/Rotms';
 import ClassSokoban from './code/ClassSokoban';
-import { PlayerDlg, ComputerDlg, ClassSpot } from './code/ClassSpot';
+import {PlayerDlg, ComputerDlg, ClassSpot} from './code/ClassSpot';
 import ClassRotms from './code/ClassRotms';
 
 import {

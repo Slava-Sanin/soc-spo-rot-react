@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { PlayerDlg, ComputerDlg } from './ClassSpot';
+import {PlayerDlg, ComputerDlg} from './ClassSpot';
 import {level_in_text_format, glob_sound, virtual_buttons_moving, soundPath} from './globals';
 
 /*function loadDoc(filename) {

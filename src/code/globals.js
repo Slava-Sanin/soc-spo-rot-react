@@ -15,6 +15,11 @@ let
 
         backgroundTab3: host + "/static/backgrounds/grand4.jpg",
     },
+    MaxLevel = {
+        socoban: 20,
+        spot: 1,
+        rotms: 20
+    },
     paintstruct= {},
     parts= [],
     gamecode= 0,

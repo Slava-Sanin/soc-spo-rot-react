@@ -7,11 +7,12 @@ import {
     moveVirtualButtons
 } from './functions.js'
 import SokobanLevels from "../Sokoban/levels.json";
-import { A, B } from './constants';
+import {A, B} from './constants';
+import {MaxLevel} from "./globals";
 
 class ClassSokoban {
     level = 1;
-    maxLevel = 20;
+    maxLevel = MaxLevel.socoban;
     data_lev_gr = [];
     data_undo = [];
     starttime;

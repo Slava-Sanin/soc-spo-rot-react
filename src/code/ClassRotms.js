@@ -10,11 +10,12 @@ import {
 } from './functions.js';
 import ClassFire from './ClassFire';
 import RotmsLevels from "../Rotms/levels.json";
-import { A, B } from './constants';
+import {A, B} from './constants';
+import {MaxLevel} from "./globals";
 
 class ClassRotms {    
     level = 1;
-    maxLevel = 20;
+    maxLevel = MaxLevel.rotms;
     data_level = [];
     data_lev_gr = [];
     data_undo = [];

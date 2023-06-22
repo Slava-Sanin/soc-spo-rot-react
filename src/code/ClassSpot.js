@@ -12,7 +12,8 @@ import {
 } from './functions.js'
 
 import SpotsLevels from "../Spot/levels.json";
-import { Asp, Bsp } from './constants';
+import {Asp, Bsp} from './constants';
+import {MaxLevel} from "./globals";
 
 // For finding the best place to put spot.
 const PLACE = {
@@ -38,7 +39,7 @@ const ComputerDlg = Object.create(st_Player);
     ComputerDlg.is = 2;
 
 class ClassSpot {
-    maxLevel = 20;
+    maxLevel = MaxLevel.spot;
     data_lev_gr = []; //[Asp][Bsp];
     data_undo = []; //[Asp][Bsp];
     starttime;
@@ -71,17 +72,15 @@ class ClassSpot {
     //////////////////////////////////////////////////////////////////////////
     constructor()
     {
-        this.table_was_changed = 0; // Background changed "table"/pictures.
         this.level = 1;
-        this.data_level = SpotsLevels[this.level - 1].data.split('');
         this.Player.color = 2;      // Color of player by default.
         this.Computer.color = 3;    // Color of computer by default.
-        this.level_is_completed = false;
-        this.is_loaded = 0;
         this.init();
     }
 
-    init() { 
+    init() {
+        this.table_was_changed = 0; // Background changed "table"/pictures.
+        this.level_is_completed = false;
         this.error = 0;
         this.level_is_completed = false;
         this.data_level = SpotsLevels[this.level - 1].data.split('');
@@ -140,7 +139,7 @@ class ClassSpot {
         this.data_undo = [...this.data_level];
     }
 
-    build_ground() {    
+    /*build_ground() {
         for(let x=0; x<Asp; x++)
             for(let y=0; y<Bsp; y++) {
                 switch (this.data_level[x*Bsp+y]) {
@@ -152,7 +151,7 @@ class ClassSpot {
                 }
                 this.putthis(x, y, this.data_level[x*Bsp+y]);
             }
-    }
+    }*/
 
     change_level(dir) {
         if ((this.level + dir) < 1 || (this.level + dir) > SpotsLevels.length) return;
@@ -168,18 +167,17 @@ class ClassSpot {
         return this.init();
     }
 
-    redraw() {
-        if (!this.is_loaded) return;    
+    /*redraw() {
         for(let x=0; x<Asp; x++) {
             for(let y=0; y<Bsp; y++) {
                 this.putthis(x, y, this.data_level[x*Bsp+y]);
             }
         }
-    }
+    }*/
 
-    fast_redraw() {
+    /*fast_redraw() {
 
-    }
+    }*/
 
     putthis(x, y, kode) {
         let kode_x, kode_y;

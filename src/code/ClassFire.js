@@ -8,7 +8,7 @@ import {
     GetColor,   
 } from './functions.js'
 
-import { A, B } from './constants';
+import {A, B} from './constants';
 
 const rotm = {
     x : 0, 
