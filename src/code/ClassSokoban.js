@@ -37,12 +37,12 @@ class ClassSokoban {
 
     init() {
         this.error = 0;        
-        this.data_level = SokobanLevels[this.level - 1].data.split('');
+        this.data_level = [...SokobanLevels[this.level - 1].data.split('')];
         this.starttime = new Date();
         this.moves = 0;
+        this.level_is_completed = false;
         this.build_ground();
         this.member_last_move();
-        this.level_is_completed = false;
     }
 
     NewGame() {
@@ -61,6 +61,7 @@ class ClassSokoban {
         }
         this.moves--;
         PlayMySound("move1.wav", this.refState.soundMode);
+        this.setSokobanLevelData([...this.data_level]);
     }
 
     member_last_move() {

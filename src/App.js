@@ -158,6 +158,7 @@ const App = () => {
         let offsetX = elementRect.left - parentRect.left;
         let offsetY = elementRect.top - parentRect.top;
 
+        if (selectedTab !== 1) { state.p2.first_step = true; state.p2.table_was_changed = false; }
         if (selectedTab === 1) {
             console.log('Clicked mouse in Spot');
             let x = parseInt((offsetY-42) / SpotBlockWidth);

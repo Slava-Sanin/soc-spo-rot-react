@@ -79,7 +79,7 @@ class ClassSpot {
     }
 
     init() {
-        this.table_was_changed = 0; // Background changed "table"/pictures.
+        this.table_was_changed = false; // Background changed "table"/pictures.
         this.level_is_completed = false;
         this.error = 0;
         this.level_is_completed = false;
@@ -266,7 +266,7 @@ class ClassSpot {
             let kode = this.data_level[x*Bsp+y];
             document.querySelector(str).className = 'div-spo-' + PlayerDlg.color + 'big';
             this.first_step = false;
-            this.table_was_changed = 0;
+            this.table_was_changed = false;
             return;
         }
         else {
