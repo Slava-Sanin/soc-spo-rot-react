@@ -101,6 +101,10 @@ const App = () => {
     p3.setRotmsLevelData = setRotmsLevelData;
 
     const handleTabSelect = (tab) => {
+        if (tab !== 1) { // When some spot was selected for moving but not moved yet and we gone to another game it cancel selection
+            state.p2.first_step = true;
+            state.p2.table_was_changed = false;
+        }
         setState({
             ...state,
             selectedTab: tab,
@@ -158,7 +162,6 @@ const App = () => {
         let offsetX = elementRect.left - parentRect.left;
         let offsetY = elementRect.top - parentRect.top;
 
-        if (selectedTab !== 1) { state.p2.first_step = true; state.p2.table_was_changed = false; }
         if (selectedTab === 1) {
             console.log('Clicked mouse in Spot');
             let x = parseInt((offsetY-42) / SpotBlockWidth);
