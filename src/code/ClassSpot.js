@@ -105,22 +105,9 @@ class ClassSpot {
     }
 
     NewGame() {
-        console.log('moves before init:', this.moves)
-        console.log('data_level:', this.data_level)
-
-        //if (this.moves) {
-            PlayMySound("changepage.wav", this.refState.soundMode);
-            this.init();
-            console.log('moves after init:', this.moves)
-            //if (ComputerDlg.is === 1) {
-                //this.setState({...this.refState});
-                // Sleep(700);
-                //this.computer_move();
-                //this.moves++;
-                //this.check_spots_number();
-                //InitStatus();
-            //}
-        //}
+        PlayMySound("changepage.wav", this.refState.soundMode);
+        this.init();
+        //InitStatus();
     }
 
     Undo() {

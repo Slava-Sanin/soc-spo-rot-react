@@ -112,6 +112,10 @@ const App = () => {
     }
 
     useEffect(() => {
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
         document.addEventListener('keydown', handleKeyDown);
 
         return () => {

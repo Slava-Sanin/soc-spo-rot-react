@@ -46,8 +46,8 @@ class ClassSokoban {
     }
 
     NewGame() {
-            PlayMySound("changepage.wav", this.refState.soundMode);
-            this.init();
+        PlayMySound("changepage.wav", this.refState.soundMode);
+        this.init();
     }
 
     Undo() {

@@ -45,7 +45,6 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
 
             case 1:
                 state.p2.NewGame();
-                console.log('here')
                 setSpotLevelData([...state.p2.data_level]);
                 //setState({...state});
                 console.log(state.p2)
