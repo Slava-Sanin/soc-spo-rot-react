@@ -83,11 +83,12 @@ class ClassSpot {
         this.level_is_completed = false;
         this.error = 0;
         this.level_is_completed = false;
-        this.data_level = SpotsLevels[this.level - 1].data.split('');
+        this.data_level = [...SpotsLevels[this.level - 1].data.split('')];
         console.log(this.data_level)
         this.starttime = new Date(); // Init. timer.
         this.moves = 0;
         this.first_step = true;
+        this.who_is_now = (PlayerDlg.is === 1) ? 1 : 2;
         //this.Player.is = PlayerDlg.is;        // First or second?
         //this.Computer.is = ComputerDlg.is;    // First or second?
         this.check_spots_number();            // Init. spots number.
@@ -105,7 +106,7 @@ class ClassSpot {
 
     NewGame() {
         console.log('moves before init:', this.moves)
-        console.log('p2.data_level:', this.refState.p2.data_level)
+        console.log('data_level:', this.data_level)
 
         //if (this.moves) {
             PlayMySound("changepage.wav", this.refState.soundMode);
@@ -406,7 +407,7 @@ class ClassSpot {
                     //-----------------------
                     PlayMySound("move1.wav", this.refState.soundMode);
                     this.fill_around(best.x, best.y, this.Player.color);
-
+                    this.setSpotLevelData([...this.data_level]);
                 }, 500);
 
             }, 500);

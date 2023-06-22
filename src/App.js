@@ -163,6 +163,7 @@ const App = () => {
             let x = parseInt((offsetY-42) / SpotBlockWidth);
             let y = parseInt((offsetX-3) / SpotBlockHeight);
             p2.player_move(x, y);
+            setSpotLevelData([...p2.data_level]);
         }
 
         if (selectedTab === 2) {
