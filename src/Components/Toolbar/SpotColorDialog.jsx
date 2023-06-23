@@ -2,7 +2,7 @@ import React from 'react';
 import '../../CSS/spot_toolbar.css';
 import men from '../../assets/images/men.png';
 import computer from '../../assets/images/computer.jpg';
-
+// import '../../CSS/header.css'
 
 const SpotColorDialog = () => {
 	return (

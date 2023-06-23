@@ -89,19 +89,28 @@
 }
 
 #Spot_color_dialog .header p {
-    border: 0px;
     text-align: center;
     padding: 3px;
+    color: yellow;
 }
 
 #Spot_color_dialog .header {
-    height: 28px;
+    height: 30px;
+    background: linear-gradient(to right, darkblue, #4B9BC6);
 }
+
 #Spot_color_dialog .wraper2 .header button {
+    width: 26px;
+    height: 26px;
     float: right;
-    top: -37px;
+    top: -25px;
+    right: 2px;
     position: relative;
     cursor: pointer;
+    background-image: url("../assets/images/close_32x32.png");
+    background-color: transparent;
+    border: none;
+    background-size: contain;
 }
 
 .closed {
