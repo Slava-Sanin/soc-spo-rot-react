@@ -81,7 +81,7 @@
     z-index: 200;
     background-color: #EADCBB;
     box-shadow: 30px 10px 5px rgba(0, 0, 0, .5);
-    display: none;
+    display: block;
 }
 
 .wraper2 {

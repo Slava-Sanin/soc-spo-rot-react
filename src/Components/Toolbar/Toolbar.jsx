@@ -3,7 +3,12 @@ import '../../CSS/toolbar.css';
 import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
 
-const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRotmsLevelData}) => {
+const Toolbar = ({state, setState,
+                  setSokobanLevelData,
+                  setSpotLevelData,
+                  setRotmsLevelData,
+                  handleSpotDialogTrigger
+        }) => {
     /*
      backgroundModes[0] - Sokoban background mode
      backgroundModes[1] - Spot background mode
@@ -150,7 +155,7 @@ const Toolbar = ({state, setState, setSokobanLevelData, setSpotLevelData, setRot
                 ><span className="mytooltiptext">Toolbar mode</span>
             </button>
 
-            <SpotToolbar state={state} setState={setState} />
+            <SpotToolbar state={state} setState={setState} handleSpotDialogTrigger={handleSpotDialogTrigger} />
             <VirtualButtons state={state} setState={setState} />
         </div>
     );

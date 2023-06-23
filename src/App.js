@@ -87,6 +87,7 @@ const App = () => {
     const [spotLevelData, setSpotLevelData] = useState(p2.data_level);
     const [rotmsLevelData, setRotmsLevelData] = useState(p3.data_level);
     const { selectedTab, backgroundModes } = state;
+    const [spotSettingsDialogMode, setSpotSettingsDialogMode] = useState(false);
 
     p1.refState = state;
     p1.setState = setState;
@@ -112,9 +113,10 @@ const App = () => {
     }
 
     useEffect(() => {
-        document.addEventListener('contextmenu', function(e) {
+        //TODO: To uncomment later
+        /*document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
-        });
+        });*/
 
         document.addEventListener('keydown', handleKeyDown);
 
@@ -182,6 +184,7 @@ const App = () => {
         }
     }
 
+    const handleSpotDialogTrigger = () => setSpotSettingsDialogMode(!spotSettingsDialogMode);
 
       return (
       <div ref={refApp} className="App" style={{backgroundColor: state.toolbarMode ? 'rgb(234,220,187,0.5)' : 'transparent'}}>
@@ -198,6 +201,7 @@ const App = () => {
                      setSokobanLevelData={setSokobanLevelData}
                      setSpotLevelData={setSpotLevelData}
                      setRotmsLevelData={setRotmsLevelData}
+                     handleSpotDialogTrigger={handleSpotDialogTrigger}
             />
 
             <div className="main-window"
@@ -271,7 +275,7 @@ const App = () => {
 
           <Status state={state} />
 
-          {/*<SpotColorDialog />*/}
+          {spotSettingsDialogMode && <SpotColorDialog />}
 
           <div className="footer">
               <p> © Viacheslav Sanin - 2023 - <a

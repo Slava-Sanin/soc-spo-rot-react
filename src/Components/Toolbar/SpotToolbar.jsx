@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../CSS/spot_toolbar.css';
+import SpotColorDialog from "./SpotColorDialog";
 
-const SpotToolbar = ({state, setState}) => {
+const SpotToolbar = ({state, setState, handleSpotDialogTrigger}) => {
+
         return (
 			<div className="Spot_toolbar" style={{display: (state.selectedTab === 1) ? "block" : "none"}}>
 
@@ -10,7 +12,9 @@ const SpotToolbar = ({state, setState}) => {
 					<div className="Spot_color left"></div>
 				</div>
 
-				<button id="Spot_toolbar_button"></button>
+				<button id="Spot_toolbar_button"
+						onClick={handleSpotDialogTrigger}
+				></button>
 
 				<div className="ramka right">
 					<p>Computer</p>

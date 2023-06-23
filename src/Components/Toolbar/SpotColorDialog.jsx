@@ -1,5 +1,8 @@
 import React from 'react';
 import '../../CSS/spot_toolbar.css';
+import men from '../../assets/images/men.png';
+import computer from '../../assets/images/computer.jpg';
+
 
 const SpotColorDialog = () => {
 	return (
@@ -15,7 +18,7 @@ const SpotColorDialog = () => {
 							<div className="div4">
 								<div className="div5">
 									<div className="div6">
-										<img src="../assets/images/men.png" alt="man" height="60" width="60" />
+										<img src={men} alt="man" height="60" width="60" />
 									</div>
 
 									<div className="div9">
@@ -24,7 +27,7 @@ const SpotColorDialog = () => {
 									</div>
 
 									<div className="div6" style={{float: "right"}}>
-										<img src="../assets/images/computer.jpg" alt="computer" height="60" width="60" />
+										<img src={computer} alt="computer" height="60" width="60" />
 									</div>
 								</div>
 
