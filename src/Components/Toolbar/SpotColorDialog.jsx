@@ -4,12 +4,13 @@ import men from '../../assets/images/men.png';
 import computer from '../../assets/images/computer.jpg';
 // import '../../CSS/header.css'
 
-const SpotColorDialog = () => {
+const SpotColorDialog = ({handleSpotDialogTrigger}) => {
 	return (
 		<div id="Spot_color_dialog">
 			<div className="wraper2">
 				<div className="header">
-					<p>Spot's options</p><button style={{float: "right"}}>X</button>
+					<p>Spot's options</p>
+					<button style={{float: "right"}} onClick={handleSpotDialogTrigger}>X</button>
 				</div>
 					<div className="div2">
 						<div className="div3">

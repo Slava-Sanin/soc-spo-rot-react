@@ -275,7 +275,7 @@ const App = () => {
 
           <Status state={state} />
 
-          {spotSettingsDialogMode && <SpotColorDialog />}
+          {spotSettingsDialogMode && <SpotColorDialog handleSpotDialogTrigger={handleSpotDialogTrigger}/>}
 
           <div className="footer">
               <p> © Viacheslav Sanin - 2023 - <a
