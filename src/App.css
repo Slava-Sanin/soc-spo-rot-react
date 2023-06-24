@@ -151,6 +151,10 @@ button:hover .mytooltiptext {
   top: -20px;
 }
 
+#virtual_move > span.mytooltiptext {
+  left: -20px;
+}
+
 #IDM_Edit:hover .mytooltiptext,
 #IDM_Help:hover .mytooltiptext,
 #IDM_Exit:hover .mytooltiptext {	
