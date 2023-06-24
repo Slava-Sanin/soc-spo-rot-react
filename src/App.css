@@ -210,7 +210,8 @@ li#tab\:r0\:0 {
 /*Матовое стекло на CSS*/
 body {
   /*background: url(https://images.unsplash.com/photo-1544306094-e2dcf9479da3) no-repeat;*/
-  background: url(http://localhost:3000/static/images/kandinsky-download-1686260629023.png) no-repeat;
+  /*background: url(http://localhost:3000/static/images/kandinsky-download-1686260629023.png) no-repeat;*/
+  background: url("../public/static/images/kandinsky-download-1686260629023.png") no-repeat;
   /* Keep the inherited background full size. */
   background-attachment: fixed;
   /*background-size: cover;*/
