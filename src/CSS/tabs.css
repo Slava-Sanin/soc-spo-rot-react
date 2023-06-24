@@ -18,13 +18,9 @@
   }
   
   #tabs-1 {
-    background: url("../assets/images/backgrounds/1/_47873efd-8680-4a97-a570-7515d034bc63.jfif") no-repeat;
+    background: url("../assets/images/GRAND/grand2.jpg") no-repeat;
   }
-  
-  #tabs-2, #tabs-3 {
-    /* display: none; */
-  }
-  
+
   #tabs-2 {
     background: url("../assets/images/GRAND/grand3.jpg") no-repeat;
   }
@@ -34,7 +30,6 @@
   }
   
   #tabs {
-    /* height: 417px; */
     padding: 0;
   }
   

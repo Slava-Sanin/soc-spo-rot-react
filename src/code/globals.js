@@ -4,16 +4,17 @@ let
     CurPath= window.location.pathname,
     soundPath = "/static/sound/",
     Backgrounds= {
-        backgroundDefault: host + "/static/backgrounds/grand1.jpg",
-        //backgroundDefault: host + "/static/images/kandinsky-download-1686260629023.png",
-        //backgroundDefault: host + "/static/backgrounds/_7bb09faf-2bc5-43c2-9c01-dccb9184e35d.jfif",
+        //backgroundDefault: host + "/static/backgrounds/grand1.jpg",
+        backgroundDefault: host + "/static/images/kandinsky-download-1686290078868.png",
 
-        //backgroundTab1: host + "/static/backgrounds/_47873efd-8680-4a97-a570-7515d034bc63.jfif",
-        backgroundTab1: host + "/static/images/kandinsky-download-1686260629023.png",
+        //backgroundTab1: host + "/static/backgrounds/grand2.jpg",
+        backgroundTab1: host + "/static/images/kandinsky-download-1686290520138.png",
 
-        backgroundTab2: host + "/static/backgrounds/grand3.jpg",
+        //backgroundTab2: host + "/static/backgrounds/grand3.jpg",
+        backgroundTab2: host + "/static/images/kandinsky-download-1686289628458.png",
 
-        backgroundTab3: host + "/static/backgrounds/grand4.jpg",
+        //backgroundTab3: host + "/static/backgrounds/grand4.jpg",
+        backgroundTab3: host + "/static/images/kandinsky-download-1686291071861.png",
     },
     MaxLevel = {
         socoban: 20,
