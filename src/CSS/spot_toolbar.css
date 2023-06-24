@@ -273,7 +273,8 @@
 /*--------------------------------------------------------------*/
 #Spot_color_dialog > div > div.header > p,
 #Player_is,
-#Computer_is
+#Computer_is,
+.mytooltiptext
 {
     font-family: 'Benne', serif;
     font-weight: 600;
