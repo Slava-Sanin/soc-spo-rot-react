@@ -14,7 +14,8 @@ const SpotToolbar = ({state, setState, handleSpotDialogTrigger}) => {
 
 				<button id="Spot_toolbar_button"
 						onClick={handleSpotDialogTrigger}
-				></button>
+				><span className="mytooltiptext">Spot's options</span>
+				</button>
 
 				<div className="ramka right">
 					<p>Computer</p>

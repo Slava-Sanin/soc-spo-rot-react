@@ -82,6 +82,7 @@
     background-color: #EADCBB;
     box-shadow: 30px 10px 5px rgba(0, 0, 0, .5);
     display: block;
+    border-radius: 15px;
 }
 
 .wraper2 {
@@ -90,7 +91,7 @@
 
 #Spot_color_dialog .header p {
     text-align: center;
-    padding: 3px;
+    padding: 1px;
     color: yellow;
 }
 
@@ -103,7 +104,7 @@
     width: 26px;
     height: 26px;
     float: right;
-    top: -25px;
+    top: -30px;
     right: 2px;
     position: relative;
     cursor: pointer;
@@ -229,6 +230,7 @@
     border-right-color: #FFFBF3;
     border-bottom-color: #FFFBF3;
     width: 64px;
+    height: 18px;
     margin: 30px 4px 0px;
     text-align: center;
     padding: 2px 0px;
@@ -236,6 +238,7 @@
     font-family: "Times New Roman" ,Times, serif;
     user-select: none;
     background: rgba(37, 37, 32, 0.1) none repeat scroll 0% 0%;
+    line-height: 1.4;
 }
 
 .div15 {
@@ -268,7 +271,11 @@
 }
 
 /*--------------------------------------------------------------*/
-
-input[name="Player"],input[name="Computer"] {
-    cursor: pointer;
+#Spot_color_dialog > div > div.header > p,
+#Player_is,
+#Computer_is
+{
+    font-family: 'Benne', serif;
+    font-weight: 600;
+    letter-spacing: 2px;
 }
