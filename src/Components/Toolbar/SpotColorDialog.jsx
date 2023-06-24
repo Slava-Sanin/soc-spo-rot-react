@@ -1,10 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../../CSS/spot_toolbar.css';
 import men from '../../assets/images/men.png';
 import computer from '../../assets/images/computer.jpg';
-// import '../../CSS/header.css'
+import {ComputerDlg, PlayerDlg} from "../../code/globals";
 
 const SpotColorDialog = ({handleSpotDialogTrigger}) => {
+	const [playerIs, setPlayerIs] = useState(PlayerDlg.is);
+	const [computerIs, setComputerIs] = useState(ComputerDlg.is);
+
+	/*useEffect(() => {},
+		[]
+		);*/
+
+	const handleFirstOrSecond = () => {
+		let temp = PlayerDlg.is;
+		PlayerDlg.is = ComputerDlg.is;
+		ComputerDlg.is = temp;
+		setPlayerIs(PlayerDlg.is);
+		setComputerIs(ComputerDlg.is);
+	}
+
 	return (
 		<div id="Spot_color_dialog">
 			<div className="wraper2">
@@ -55,13 +70,15 @@ const SpotColorDialog = ({handleSpotDialogTrigger}) => {
 										</form>
 									</div>
 								</div>
-								<div id="Player_is" className="div14">First</div>
+								<div id="Player_is" className="div14">{(playerIs === 1) ? 'First' : 'Second'}</div>
 								<div className="div13">
 									<div className="div8"></div>
 									<div className="div7"></div>
-									<button id="first-or-second" type="button">&lt;&gt;</button>
+									<button id="first-or-second" type="button"
+											onClick={handleFirstOrSecond}
+									>&lt;&gt;</button>
 								</div>
-								<div id="Computer_is" className="div14">Second</div>
+								<div id="Computer_is" className="div14">{(computerIs === 1) ? 'First' : 'Second'}</div>
 							</div>
 						</div>
 

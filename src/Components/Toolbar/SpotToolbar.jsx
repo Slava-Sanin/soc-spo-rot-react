@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import '../../CSS/spot_toolbar.css';
-import SpotColorDialog from "./SpotColorDialog";
 
 const SpotToolbar = ({state, setState, handleSpotDialogTrigger}) => {
 

@@ -32,6 +32,14 @@ let
     level_in_text_format= "",
     timer= {},
     prev_game= 0,
+    PlayerDlg = {
+        color: 2,
+        is: 1
+    },
+    ComputerDlg = {
+        color: 3,
+        is: 2
+    },
     virtual_buttons_moving= 0;
 
 

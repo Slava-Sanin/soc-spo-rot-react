@@ -13,7 +13,7 @@ import {
 
 import SpotsLevels from "../Spot/levels.json";
 import {Asp, Bsp} from './constants';
-import {MaxLevel} from "./globals";
+import {PlayerDlg, ComputerDlg, MaxLevel} from "./globals";
 
 // For finding the best place to put spot.
 const PLACE = {
@@ -22,21 +22,6 @@ const PLACE = {
     num : -1,
     next : 0
 };
-
-// Structure For Player and Computer data.
-const st_Player = {
-    spots : 0,
-    color : 0,
-    is : 0 //first or second moving
-};
-
-const PlayerDlg = Object.create(st_Player);
-    PlayerDlg.color = 2;
-    PlayerDlg.is = 1;
-
-const ComputerDlg = Object.create(st_Player);
-    ComputerDlg.color = 3;
-    ComputerDlg.is = 2;
 
 class ClassSpot {
     maxLevel = MaxLevel.spot;
@@ -51,8 +36,6 @@ class ClassSpot {
     filename;
     curX;
     curY;
-    Player = Object.create(st_Player);
-    Computer = Object.create(st_Player);
     who_is_now;
     error;
     first_step = true;
@@ -73,8 +56,8 @@ class ClassSpot {
     constructor()
     {
         this.level = 1;
-        this.Player.color = 2;      // Color of player by default.
-        this.Computer.color = 3;    // Color of computer by default.
+        this.Player = PlayerDlg;      // Color of player by default.
+        this.Computer = ComputerDlg;    // Color of computer by default.
         this.init();
     }
 
@@ -99,7 +82,7 @@ class ClassSpot {
                 () => this.computer_move(),
                 0
             );
-        } // TODO: remove to run() function
+        }
 
         return 0;
     }
@@ -496,7 +479,5 @@ class ClassSpot {
 }
 
 export {
-    PlayerDlg,
-    ComputerDlg,
     ClassSpot
 }
