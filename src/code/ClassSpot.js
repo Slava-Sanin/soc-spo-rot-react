@@ -70,7 +70,7 @@ class ClassSpot {
     }
 
     init() {
-        this.table_was_changed = false; // Background changed "table"/pictures.
+        this.table_was_changed = false; // Background changed "table"/pictures
         this.level_is_completed = false;
         this.error = 0;
         this.level_is_completed = false;
@@ -82,8 +82,8 @@ class ClassSpot {
         this.who_is_now = (PlayerDlg.is === 1) ? 1 : 2;
         this.Player.is = PlayerDlg.is;        // First or second?
         this.Computer.is = ComputerDlg.is;    // First or second?
-        this.check_spots_number();            // Init. spots number.
-        this.member_last_move();              // Save last moving.
+        this.check_spots_number();            // Init. spots number
+        this.member_last_move();              // Save last moving
 
         if (ComputerDlg.is === 1) {
             setTimeout(
@@ -110,6 +110,7 @@ class ClassSpot {
             }
         }
         this.moves--;
+        this.first_step = true;
         this.check_spots_number();
         //InitStatus();
     }

@@ -3,7 +3,6 @@ import '../../CSS/spot_toolbar.css';
 import men from '../../assets/images/men.png';
 import computer from '../../assets/images/computer.jpg';
 import {PlayerDlg, ComputerDlg} from "../../code/globals";
-import $ from "jquery";
 
 const SpotColorDialog = ({handleSpotDialogTrigger}) => {
 	const [config, setConfig] = useState(false);
