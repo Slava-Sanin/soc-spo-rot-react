@@ -300,6 +300,9 @@ class ClassSpot {
     }
 
     computer_move() {
+        document.querySelector('#btn-new').setAttribute('disabled', true);
+        document.querySelector('#btn-undo').setAttribute('disabled', true);
+
         this.who_is_now = 2;
         let X_from, Y_from;
         let best = Object.create(PLACE);
@@ -321,12 +324,12 @@ class ClassSpot {
                 }
             }
         }
-        this.ready = false; //TODO: To delete later
-        if (best.num !== -1) // If found place.
+        this.ready = false; // TODO: To delete later
+        if (best.num !== -1) // If found place
         {
         //Sleep(300);
             setTimeout(() => {
-                this.draw_computer_moving(X_from, Y_from, best); // Computer moves.
+                    this.draw_computer_moving(X_from, Y_from, best); // Computer moves.
                 }, 1000);
         }
         else this.ready = true;  // TODO: To delete later
@@ -365,6 +368,8 @@ class ClassSpot {
                     PlayMySound("move1.wav", this.refState.soundMode);
                     this.fill_around(best.x, best.y, this.Player.color);
                     this.setSpotLevelData([...this.data_level]);
+                    document.querySelector('#btn-new').removeAttribute('disabled');
+                    document.querySelector('#btn-undo').removeAttribute('disabled');
                 }, 500);
 
             }, 500);
