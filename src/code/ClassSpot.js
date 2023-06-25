@@ -56,8 +56,16 @@ class ClassSpot {
     constructor()
     {
         this.level = 1;
-        this.Player = PlayerDlg;      // Color of player by default.
-        this.Computer = ComputerDlg;    // Color of computer by default.
+        this.Player = {
+            color: 2, // Color of player in level array
+            is: 1,    // Moving by default
+            spots: 0
+        };
+        this.Computer = {
+            color: 3, // Color of computer in level array
+            is: 2,    // Moving by default
+            spots: 0
+        };
         this.init();
     }
 
@@ -72,8 +80,8 @@ class ClassSpot {
         this.moves = 0;
         this.first_step = true;
         this.who_is_now = (PlayerDlg.is === 1) ? 1 : 2;
-        //this.Player.is = PlayerDlg.is;        // First or second?
-        //this.Computer.is = ComputerDlg.is;    // First or second?
+        this.Player.is = PlayerDlg.is;        // First or second?
+        this.Computer.is = ComputerDlg.is;    // First or second?
         this.check_spots_number();            // Init. spots number.
         this.member_last_move();              // Save last moving.
 

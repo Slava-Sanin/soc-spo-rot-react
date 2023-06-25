@@ -22,16 +22,12 @@ const SpotColorDialog = ({handleSpotDialogTrigger}) => {
 	}
 
 	const handleChangePlayerColor = (params) =>	{
-		console.log("params: ",params)
 		PlayerDlg.color = parseInt(document.forms["Player"].color.value);
-		console.log("PlayerDlg.color:", PlayerDlg.color)
 		if (PlayerDlg.color === ComputerDlg.color)
 		{
 			ComputerDlg.color++;
 			if (ComputerDlg.color > 6) ComputerDlg.color = 2;
 		}
-		//$(".Spot_color.left").css("background", "url('G4W/images/Spot/spots.png') -80px -" + 40*PlayerDlg.color + "px no-repeat black");
-		//$(".Spot_color.right").css("background", "url('G4W/images/Spot/spots.png') -80px -" + 40*ComputerDlg.color + "px no-repeat black");
 		setConfig(!config);
 	}
 
@@ -42,8 +38,6 @@ const SpotColorDialog = ({handleSpotDialogTrigger}) => {
 			PlayerDlg.color++;
 			if (PlayerDlg.color > 6) PlayerDlg.color = 2;
 		}
-		//$(".Spot_color.left").css("background", "url('G4W/images/Spot/spots.png') -80px -" + 40*PlayerDlg.color + "px no-repeat black");
-		//$(".Spot_color.right").css("background", "url('G4W/images/Spot/spots.png') -80px -" + 40*ComputerDlg.color + "px no-repeat black");
 		setConfig(!config);
 	}
 
