@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../CSS/spot.css';
+import {ComputerDlg, PlayerDlg} from "../../code/globals";
 
 const Spot = ({level, handleClick}) => {
     console.log("Redrawing Component Spot");
@@ -7,7 +8,9 @@ const Spot = ({level, handleClick}) => {
     return (
         <>
           {level.map((number, index) => (
-            <div className={`div-spo-${(number === ' ') ? 'Z' : number}`}
+            <div className={`div-spo-${(number === ' ') ? 'Z' : 
+                ((number == 2) ? PlayerDlg.color :
+                    ((number == 3) ? ComputerDlg.color : number))}`}
                  key={'spo'+index}
                  onClick={[' ', '2', '3', '4', '5', '6'].includes(number) ? handleClick : null}
             ></div>
