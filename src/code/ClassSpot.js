@@ -300,6 +300,7 @@ class ClassSpot {
     }
 
     computer_move() {
+        document.body.style.cursor = "none";
         document.querySelector('#btn-new').setAttribute('disabled', true);
         document.querySelector('#btn-undo').setAttribute('disabled', true);
 
@@ -370,6 +371,7 @@ class ClassSpot {
                     this.setSpotLevelData([...this.data_level]);
                     document.querySelector('#btn-new').removeAttribute('disabled');
                     document.querySelector('#btn-undo').removeAttribute('disabled');
+                    document.body.style.cursor = "auto";
                 }, 500);
 
             }, 500);
