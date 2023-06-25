@@ -1,28 +1,35 @@
 import React, {useEffect, useState} from 'react';
 import '../../CSS/spot_toolbar.css';
+import {PlayerDlg, ComputerDlg} from "../../code/globals";
+import SpotsImages from "../../assets/images/Spot/spots.png";
 
 const SpotToolbar = ({state, setState, handleSpotDialogTrigger}) => {
+	console.log("Redrawing SpotToolbar");
 
-        return (
-			<div className="Spot_toolbar" style={{display: (state.selectedTab === 1) ? "block" : "none"}}>
+	return (
+		<div className="Spot_toolbar" style={{display: (state.selectedTab === 1) ? "block" : "none"}}>
 
-				<div className="ramka left">
-					<p>Player</p>
-					<div className="Spot_color left"></div>
-				</div>
+			<div className="ramka left">
+				<p>Player</p>
+				<div className="Spot_color left"
+					 style={{background: `url(${SpotsImages}) -80px ${-40*(PlayerDlg.color)}px no-repeat black`}}
+				></div>
+			</div>
 
-				<button id="Spot_toolbar_button"
-						onClick={handleSpotDialogTrigger}
-				><span className="mytooltiptext">Spot's options</span>
-				</button>
+			<button id="Spot_toolbar_button"
+					onClick={handleSpotDialogTrigger}
+			><span className="mytooltiptext">Spot's options</span>
+			</button>
 
-				<div className="ramka right">
-					<p>Computer</p>
-					<div className="Spot_color right"></div>
-				</div>
+			<div className="ramka right">
+				<p>Computer</p>
+				<div className="Spot_color right"
+					 style={{background: `url(${SpotsImages}) -80px ${-40*(ComputerDlg.color)}px no-repeat black`}}
+				></div>
+			</div>
 
-			</div>            
-        );
+		</div>
+	);
 }
 
 export default SpotToolbar;

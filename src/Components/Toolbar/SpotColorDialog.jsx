@@ -2,22 +2,49 @@ import React, {useEffect, useState} from 'react';
 import '../../CSS/spot_toolbar.css';
 import men from '../../assets/images/men.png';
 import computer from '../../assets/images/computer.jpg';
-import {ComputerDlg, PlayerDlg} from "../../code/globals";
+import {PlayerDlg, ComputerDlg} from "../../code/globals";
+import $ from "jquery";
 
 const SpotColorDialog = ({handleSpotDialogTrigger}) => {
-	const [playerIs, setPlayerIs] = useState(PlayerDlg.is);
-	const [computerIs, setComputerIs] = useState(ComputerDlg.is);
+	const [config, setConfig] = useState(false);
 
-	/*useEffect(() => {},
-		[]
-		);*/
+	useEffect(() => {
+			console.log("Redrawing Spot's options")
+			console.log("PlayerDlg:",PlayerDlg)
+			console.log("ComputerDlg:",ComputerDlg)
+		});
 
 	const handleFirstOrSecond = () => {
 		let temp = PlayerDlg.is;
 		PlayerDlg.is = ComputerDlg.is;
 		ComputerDlg.is = temp;
-		setPlayerIs(PlayerDlg.is);
-		setComputerIs(ComputerDlg.is);
+		setConfig(!config);
+	}
+
+	const handleChangePlayerColor = (params) =>	{
+		console.log("params: ",params)
+		PlayerDlg.color = parseInt(document.forms["Player"].color.value);
+		console.log("PlayerDlg.color:", PlayerDlg.color)
+		if (PlayerDlg.color === ComputerDlg.color)
+		{
+			ComputerDlg.color++;
+			if (ComputerDlg.color > 6) ComputerDlg.color = 2;
+		}
+		//$(".Spot_color.left").css("background", "url('G4W/images/Spot/spots.png') -80px -" + 40*PlayerDlg.color + "px no-repeat black");
+		//$(".Spot_color.right").css("background", "url('G4W/images/Spot/spots.png') -80px -" + 40*ComputerDlg.color + "px no-repeat black");
+		setConfig(!config);
+	}
+
+	const handleChangeComputerColor = () => {
+		ComputerDlg.color = parseInt(document.forms["Computer"].color.value);
+		if (ComputerDlg.color === PlayerDlg.color)
+		{
+			PlayerDlg.color++;
+			if (PlayerDlg.color > 6) PlayerDlg.color = 2;
+		}
+		//$(".Spot_color.left").css("background", "url('G4W/images/Spot/spots.png') -80px -" + 40*PlayerDlg.color + "px no-repeat black");
+		//$(".Spot_color.right").css("background", "url('G4W/images/Spot/spots.png') -80px -" + 40*ComputerDlg.color + "px no-repeat black");
+		setConfig(!config);
 	}
 
 	return (
@@ -49,28 +76,44 @@ const SpotColorDialog = ({handleSpotDialogTrigger}) => {
 
 								<div className="wraper3">
 									<div className="div10">
-										<form name="Player" onChange="Change_Player_color();">
-											<input type="radio" name="color" value="2" checked /><br/>
-											<input type="radio" name="color" value="3" /><br/>
-											<input type="radio" name="color" value="4" /><br/>
-											<input type="radio" name="color" value="5" /><br/>
-											<input type="radio" name="color" value="6" />
+										<form name="Player" onChange={handleChangePlayerColor}>
+											{
+												[2,3,4,5,6].map((number, index) => (
+													<React.Fragment key={'pl' + index}>
+														<input type="radio"
+														   name="color"
+														   value={number}
+														   checked={number === PlayerDlg.color}
+														/>
+														<br/>
+													</React.Fragment>
+												))
+											}
 										</form>
 									</div>
 									<div className="div11">
-					{/*  				images of spots					*/}
+
+									{/*	images of spots	*/}
+
 									</div>
 									<div className="div12">
-										<form name="Computer" onChange="Change_Computer_color();">
-											<input type="radio" name="color" value="2" /><br/>
-											<input type="radio" name="color" value="3" checked /><br/>
-											<input type="radio" name="color" value="4" /><br/>
-											<input type="radio" name="color" value="5" /><br/>
-											<input type="radio" name="color" value="6" />
+										<form name="Computer" onChange={handleChangeComputerColor}>
+											{
+												[2,3,4,5,6].map((number, index) => (
+													<React.Fragment key={'pc' + index}>
+														<input type="radio"
+															   name="color"
+															   value={number}
+															   checked={number === ComputerDlg.color}
+														/>
+														<br/>
+													</React.Fragment>
+												))
+											}
 										</form>
 									</div>
 								</div>
-								<div id="Player_is" className="div14">{(playerIs === 1) ? 'First' : 'Second'}</div>
+								<div id="Player_is" className="div14">{(PlayerDlg.is === 1) ? 'First' : 'Second'}</div>
 								<div className="div13">
 									<div className="div8"></div>
 									<div className="div7"></div>
@@ -78,7 +121,7 @@ const SpotColorDialog = ({handleSpotDialogTrigger}) => {
 											onClick={handleFirstOrSecond}
 									>&lt;&gt;</button>
 								</div>
-								<div id="Computer_is" className="div14">{(computerIs === 1) ? 'First' : 'Second'}</div>
+								<div id="Computer_is" className="div14">{(ComputerDlg.is === 1) ? 'First' : 'Second'}</div>
 							</div>
 						</div>
 

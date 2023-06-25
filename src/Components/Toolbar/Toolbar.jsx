@@ -3,7 +3,8 @@ import '../../CSS/toolbar.css';
 import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
 
-const Toolbar = ({state, setState,
+const Toolbar = ({
+                  state, setState,
                   setSokobanLevelData,
                   setSpotLevelData,
                   setRotmsLevelData,
