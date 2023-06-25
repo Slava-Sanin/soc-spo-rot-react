@@ -51,8 +51,8 @@ const Toolbar = ({
 
             case 1:
                 state.p2.NewGame();
-                setSpotLevelData([...state.p2.data_level]);
                 //setState({...state});
+                setSpotLevelData([...state.p2.data_level]);
                 console.log(state.p2)
                 break;
 

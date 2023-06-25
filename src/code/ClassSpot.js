@@ -73,10 +73,9 @@ class ClassSpot {
         this.table_was_changed = false; // Background changed "table"/pictures
         this.level_is_completed = false;
         this.error = 0;
-        this.level_is_completed = false;
         this.data_level = [...SpotsLevels[this.level - 1].data.split('')];
         console.log(this.data_level)
-        this.starttime = new Date(); // Init. timer.
+        this.starttime = new Date(); // Init. timer
         this.moves = 0;
         this.first_step = true;
         this.who_is_now = (PlayerDlg.is === 1) ? 1 : 2;
@@ -97,6 +96,11 @@ class ClassSpot {
 
     NewGame() {
         PlayMySound("changepage.wav", this.refState.soundMode);
+        if (this.first_step === false) { //If big spot now on the board, cancel it by backing it be small
+            let str = '#tabs-2 div.board div:nth-child(' + (this.first_X * Bsp + this.first_Y + 1) + ')';
+            let kode = this.data_level[this.first_X*Bsp+this.first_Y];
+            document.querySelector(str).className = 'div-spo-' + PlayerDlg.color;
+        }
         this.init();
         //InitStatus();
     }
@@ -119,20 +123,6 @@ class ClassSpot {
         this.data_undo = [...this.data_level];
     }
 
-    /*build_ground() {
-        for(let x=0; x<Asp; x++)
-            for(let y=0; y<Bsp; y++) {
-                switch (this.data_level[x*Bsp+y]) {
-                    case ' ':
-                    case '1': this.data_lev_gr[x*Bsp+y] = this.data_level[x*Bsp+y]; break;
-                    case '2':
-                    case '3': this.curX = x; this.curY = y; break;
-                    default:
-                }
-                this.putthis(x, y, this.data_level[x*Bsp+y]);
-            }
-    }*/
-
     change_level(dir) {
         if ((this.level + dir) < 1 || (this.level + dir) > SpotsLevels.length) return;
         this.level += dir;
@@ -146,18 +136,6 @@ class ClassSpot {
         this.filename = filename;
         return this.init();
     }
-
-    /*redraw() {
-        for(let x=0; x<Asp; x++) {
-            for(let y=0; y<Bsp; y++) {
-                this.putthis(x, y, this.data_level[x*Bsp+y]);
-            }
-        }
-    }*/
-
-    /*fast_redraw() {
-
-    }*/
 
     putthis(x, y, kode) {
         let kode_x, kode_y;
@@ -214,7 +192,7 @@ class ClassSpot {
         // Sleep(4000);
         setTimeout( () => {
             let result;
-            // Checking for a winner.
+            // Checking for a winner
             if (this.Player.spots === this.Computer.spots) result = "Teko!!!";
             else if (this.Player.spots < this.Computer.spots) result = "Computer won!!!";
                 else if (this.Player.spots > this.Computer.spots) {
