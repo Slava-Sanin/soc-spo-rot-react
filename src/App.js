@@ -230,7 +230,7 @@ const App = () => {
                             <div className="scroll">
                                 <button type="button" className="up" onClick={() => changeSokobanLevel(-1)}></button>
                                 <div className="lev-position"
-                                     style={{height: `${state.p1.level/state.p1.maxLevel*304}px`}}
+                                     style={{height: `${state.p1.level/state.p1.maxLevel*305}px`}}
                                 ></div>
                                 <button type="button" className="down" onClick={() => changeSokobanLevel(1)}></button>
                             </div>
@@ -262,7 +262,7 @@ const App = () => {
                                         onClick={()=> changeRotmsLevel(-1)}
                                 ></button>
                                 <div className="lev-position"
-                                     style={{height: `${state.p3.level/state.p3.maxLevel*304}px`}}
+                                     style={{height: `${state.p3.level/state.p3.maxLevel*305}px`}}
                                 ></div>
                                 <button type="button"
                                         className="down"
