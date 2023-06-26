@@ -1,6 +1,6 @@
 .scroll .up {
     width: 100%;
-    height: 30px;
+    height: 29px;
     background: url("../assets/images/up.png") no-repeat;
     background-size: 100% 100%;
     background-color: #EADCBB;
@@ -9,7 +9,7 @@
 
 .scroll .down {
     width: 28px;
-    height: 30px;
+    height: 29px;
     background: url("../assets/images/down.png") no-repeat;
     background-size: 100% 100%;
     background-color: #EADCBB;

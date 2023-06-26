@@ -88,6 +88,7 @@ const App = () => {
     const [rotmsLevelData, setRotmsLevelData] = useState(p3.data_level);
     const { selectedTab, backgroundModes } = state;
     const [spotSettingsDialogMode, setSpotSettingsDialogMode] = useState(false);
+    const [waitFlag, setWaitFlag] = useState(false);
 
     p1.refState = state;
     p1.setState = setState;
@@ -96,6 +97,7 @@ const App = () => {
     p2.refState = state;
     p2.setState = setState;
     p2.setSpotLevelData = setSpotLevelData;
+    p2.setWaitFlag = setWaitFlag;
 
     p3.refState = state;
     p3.setState = setState;
@@ -186,7 +188,7 @@ const App = () => {
 
     const handleSpotDialogTrigger = () => setSpotSettingsDialogMode(!spotSettingsDialogMode);
 
-      return (
+    return (
       <div ref={refApp} className="App" style={{backgroundColor: state.toolbarMode ? 'rgb(234,220,187,0.5)' : 'transparent'}}>
 
         <div className="wrapper">
@@ -203,6 +205,8 @@ const App = () => {
                      setRotmsLevelData={setRotmsLevelData}
                      handleSpotDialogTrigger={handleSpotDialogTrigger}
             />
+
+            {waitFlag && <div className="protector"></div>}
 
             <div className="main-window"
                  style={{background: (backgroundModes[selectedTab] !== 1) ? `url("${Backgrounds.backgroundDefault}")` : 'none'}}>

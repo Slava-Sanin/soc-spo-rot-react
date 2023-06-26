@@ -98,14 +98,16 @@
 #Spot_color_dialog .header {
     height: 30px;
     background: linear-gradient(to right, darkblue, #4B9BC6);
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
 }
 
 #Spot_color_dialog .wraper2 .header button {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     float: right;
-    top: -30px;
-    right: 2px;
+    top: -29px;
+    right: 5px;
     position: relative;
     cursor: pointer;
     background-image: url("../assets/images/close_32x32.png");
@@ -161,6 +163,16 @@
     border-right-color: #776737;
     border-bottom-color: #776737;
     border-left-color: lightyellow;    /*#9A9370*/
+    position: relative;
+    height: 61px;
+}
+
+.man {
+    left: 4px;
+}
+
+.pc {
+    right: 3px;
 }
 
 .div7 {
@@ -237,7 +249,7 @@
     font-weight: bold;
     font-family: "Times New Roman" ,Times, serif;
     user-select: none;
-    background: rgba(37, 37, 32, 0.1) none repeat scroll 0% 0%;
+    background: rgba(155, 155, 155, 0.2); /* none repeat scroll 0% 0%;*/
     line-height: 1.4;
 }
 

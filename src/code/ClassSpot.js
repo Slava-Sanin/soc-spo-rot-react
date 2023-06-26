@@ -14,6 +14,7 @@ import {
 import SpotsLevels from "../Spot/levels.json";
 import {Asp, Bsp} from './constants';
 import {PlayerDlg, ComputerDlg, MaxLevel} from "./globals";
+import {wait} from "@testing-library/user-event/dist/utils";
 
 // For finding the best place to put spot.
 const PLACE = {
@@ -49,7 +50,7 @@ class ClassSpot {
     refState = null;
     setState = null;
     setSpotLevelData = null;
-
+    setWaitFlag = false;
     //////////////////////////////////////////////////////////////////////////
     // Constructor builds a window, background and fills a map of level.
     //////////////////////////////////////////////////////////////////////////
@@ -300,7 +301,7 @@ class ClassSpot {
     }
 
     computer_move() {
-        document.body.style.cursor = "none";
+        this.setWaitFlag(true);
         document.querySelector('#btn-new').setAttribute('disabled', true);
         document.querySelector('#btn-undo').setAttribute('disabled', true);
 
@@ -371,8 +372,8 @@ class ClassSpot {
                     this.setSpotLevelData([...this.data_level]);
                     document.querySelector('#btn-new').removeAttribute('disabled');
                     document.querySelector('#btn-undo').removeAttribute('disabled');
-                    document.body.style.cursor = "auto";
-                }, 500);
+                    this.setWaitFlag(false);
+                    }, 500);
 
             }, 500);
 

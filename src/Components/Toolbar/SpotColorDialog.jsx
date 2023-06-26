@@ -53,7 +53,7 @@ const SpotColorDialog = ({handleSpotDialogTrigger}) => {
 						<div className="div15">
 							<div className="div4">
 								<div className="div5">
-									<div className="div6">
+									<div className="div6 man">
 										<img src={men} alt="man" height="60" width="60" />
 									</div>
 
@@ -62,7 +62,7 @@ const SpotColorDialog = ({handleSpotDialogTrigger}) => {
 										<div className="div8"></div>
 									</div>
 
-									<div className="div6" style={{float: "right"}}>
+									<div className="div6 pc">
 										<img src={computer} alt="computer" height="60" width="60" />
 									</div>
 								</div>
