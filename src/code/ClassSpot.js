@@ -51,6 +51,8 @@ class ClassSpot {
     setState = null;
     setSpotLevelData = null;
     setWaitFlag = false;
+    needUpdateTrigger;
+    setNeedUpdateTrigger;
     //////////////////////////////////////////////////////////////////////////
     // Constructor builds a window, background and fills a map of level.
     //////////////////////////////////////////////////////////////////////////
@@ -190,6 +192,7 @@ class ClassSpot {
 
         this.level_is_completed = true;
         console.log("Level is completed!");
+
         // Sleep(4000);
         setTimeout( () => {
             let result;
@@ -260,7 +263,7 @@ class ClassSpot {
                             //InitStatus();
                             if (this.level_is_completed) return;
                             //Sleep(1000);
-                            //----computer is begining now----
+                            //----computer is beginning now----
                                 this.computer_move();
                                 this.moves++;
 
@@ -469,7 +472,18 @@ class ClassSpot {
                 if (this.data_level[x*Bsp+y] == this.Player.color) this.Player.spots++;
                 if (this.data_level[x*Bsp+y] == this.Computer.color) this.Computer.spots++;
             }
+
+        const playerScoreElem = document.getElementById('player-score');
+        if (playerScoreElem) {
+            playerScoreElem.text = this.Player.spots;
+        }
+
+        const computerScoreElem = document.getElementById('computer-score');
+        if (computerScoreElem) {
+            computerScoreElem.text = this.Computer.spots;
+        }
     }
+
 
 }
 

@@ -89,6 +89,7 @@ const App = () => {
     const { selectedTab, backgroundModes } = state;
     const [spotSettingsDialogMode, setSpotSettingsDialogMode] = useState(false);
     const [waitFlag, setWaitFlag] = useState(false);
+    const [needUpdateTrigger, setNeedUpdateTrigger] = useState(false);
 
     p1.refState = state;
     p1.setState = setState;
@@ -98,6 +99,8 @@ const App = () => {
     p2.setState = setState;
     p2.setSpotLevelData = setSpotLevelData;
     p2.setWaitFlag = setWaitFlag;
+    p2.needUpdateTrigger = needUpdateTrigger;
+    p2.setNeedUpdateTrigger = setNeedUpdateTrigger;
 
     p3.refState = state;
     p3.setState = setState;
@@ -277,9 +280,9 @@ const App = () => {
                 </div>
             </div>
 
-          <Status state={state} />
+          <Status state={state} needUpdateTrigger={needUpdateTrigger}/>
 
-          {spotSettingsDialogMode && <SpotColorDialog handleSpotDialogTrigger={handleSpotDialogTrigger}/>}
+          {spotSettingsDialogMode && <SpotColorDialog handleSpotDialogTrigger={handleSpotDialogTrigger} state={state} setState={setState} />}
 
           <div className="footer">
               <p> © Viacheslav Sanin - 2023 - <a

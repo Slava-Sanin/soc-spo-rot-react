@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {InitStatus} from "../../code/functions"
 
-const Status = ({state}) => {
+const Status = ({state, needUpdateTrigger}) => {
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const Status = ({state}) => {
 
     return (
         <>
-            {InitStatus(state)}
+            {InitStatus(state, needUpdateTrigger)}
         </>
     );
 }

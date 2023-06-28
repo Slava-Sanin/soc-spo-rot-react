@@ -41,16 +41,29 @@ function InitStatus(props)
             sec = props.p2.retime();
             s = parseInt(sec%60);
             props.p2.check_spots_number();
-            str1 = `Time of game: ${parseInt(sec/3600)} Hours, ${parseInt(sec/60%60)} Minutes, ${(s<10)?'0'+s:s} Seconds`;
+            str1 = ` ${parseInt(sec/3600)} Hours, ${parseInt(sec/60%60)} Minutes, ${(s<10)?'0'+s:s} Seconds`;
 
-            let me_is;
-            me_is = props.p2.Player.is === 1 ? "First" : "Second";
-            str2 = "Player(" + me_is + "): " + props.p2.Player.spots;
+            let playerIs = props.p2.Player.is === 1 ? "first" : "second";
+            //str2 = "Player(" + me_is + ")<br/> " + props.p2.Player.spots;
            
-            me_is = props.p2.Computer.is === 1 ? "First" : "Second";
-            str3 = "Computer(" + me_is + "): " + props.p2.Computer.spots;
+            let computerIs = props.p2.Computer.is === 1 ? "first" : "second";
+            //str3 = "Computer(" + me_is + ")<br/> " + props.p2.Computer.spots;
 
-            return (<div id="status_spot"><div className="time"> {str1} </div><div className="player" style={{color: "{GetColor(PlayerDlg.color)}"}}> {str2} </div><div className="player" style={{color: "{GetColor(ComputerDlg.color)}"}}> {str3} </div></div>);
+            return (
+                <div id="status_spot">
+                    <div className="time">Time of game<br/> {str1} </div>
+                    <div className="player">
+                        <span style={{color: GetColor(PlayerDlg.color)}}>Player</span>
+                        <span style={{fontWeight: "lighter"}}> ({playerIs})</span>
+                        <div id="player-score">{props.p2.Player.spots}</div>
+                    </div>
+                    <div className="player">
+                        <span style={{color: GetColor(ComputerDlg.color)}}>Computer</span>
+                        <span style={{fontWeight: "lighter"}}> ({computerIs})</span>
+                        <div id="computer-score">{props.p2.Computer.spots}</div>
+                    </div>
+                </div>
+            );
 
         case 3: // Rotms status
             sec = props.p3.retime();

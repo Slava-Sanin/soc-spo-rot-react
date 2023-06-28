@@ -4,7 +4,7 @@ import men from '../../assets/images/men.png';
 import computer from '../../assets/images/computer.jpg';
 import {PlayerDlg, ComputerDlg} from "../../code/globals";
 
-const SpotColorDialog = ({handleSpotDialogTrigger}) => {
+const SpotColorDialog = ({handleSpotDialogTrigger, state, setState}) => {
 	const [config, setConfig] = useState(false);
 
 	useEffect(() => {
@@ -28,6 +28,7 @@ const SpotColorDialog = ({handleSpotDialogTrigger}) => {
 			if (ComputerDlg.color > 6) ComputerDlg.color = 2;
 		}
 		setConfig(!config);
+		setState({...state});
 	}
 
 	const handleChangeComputerColor = () => {
@@ -38,6 +39,7 @@ const SpotColorDialog = ({handleSpotDialogTrigger}) => {
 			if (PlayerDlg.color > 6) PlayerDlg.color = 2;
 		}
 		setConfig(!config);
+		setState({...state});
 	}
 
 	return (
