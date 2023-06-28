@@ -304,7 +304,7 @@ class ClassSpot {
     }
 
     computer_move() {
-        this.setWaitFlag(true);
+        this.setWaitFlag(true); // Block player moving and pressing on some buttons. Waiting while computer completes her move.
         document.querySelector('#btn-new').setAttribute('disabled', true);
         document.querySelector('#btn-undo').setAttribute('disabled', true);
 
@@ -374,8 +374,12 @@ class ClassSpot {
                     this.fill_around(best.x, best.y, this.Player.color);
                     this.setSpotLevelData([...this.data_level]);
                     document.querySelector('#btn-new').removeAttribute('disabled');
-                    document.querySelector('#btn-undo').removeAttribute('disabled');
-                    this.setWaitFlag(false);
+                    if (!this.level_is_completed) document.querySelector('#btn-undo').removeAttribute('disabled');
+                    else {
+                        this.refState.undoStates[1] = false;
+                        this.setState({...this.refState});
+                    }
+                    this.setWaitFlag(false); //Cancel blocking player actions
                     }, 500);
 
             }, 500);
