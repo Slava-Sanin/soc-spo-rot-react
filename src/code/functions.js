@@ -22,20 +22,35 @@ function InitStatus(props)
     let str4;
     let sec,s;
     let gamecode = props.selectedTab + 1;
-    
+    const strStyle = {font: "caption", fontSize: 20, fontWeight: "bold", paddingTop: "4px"};
+
     switch (gamecode)
     {
-        case 0: // Empty Status bar.
-            return (<div> Try to play!!! </div>);
-
         case 1: // Sokoban status
             sec = props.p1.retime();
             s = parseInt(sec%60);
-            //str1 = "Time of game: " + parseInt(sec/3600) + ":" + parseInt(sec/60%60) + ":" + parseInt(sec%60);
-            str1 = `Time of game: ${parseInt(sec/3600)} Hours, ${parseInt(sec/60%60)} Minutes, ${(s<10)?'0'+s:s} Seconds`;
-            str2 = "Level: " + props.p1.level;
-            str3 = "Moves made: " + props.p1.moves;
-            return (<div id="status_sokoban"> <div className="time"> {str1} </div><div className="level"> {str2} </div><div className="moves"> {str3} </div></div>);
+
+            return (
+                <div id="status_sokoban">
+
+                    <div className="time">
+                        <div>Time of game</div>
+                        <span style={strStyle}>{parseInt(sec/3600)}</span><span style={{fontWeight: "lighter"}}> Hours </span>
+                        <span style={strStyle}>{parseInt(sec/60%60)}</span><span style={{fontWeight: "lighter"}}> Minutes </span>
+                        <span style={strStyle}>{(s<10)?'0'+s:s}</span><span style={{fontWeight: "lighter"}}> Seconds</span>
+                    </div>
+
+                    <div className="level"> {str2}
+                        <div>Level</div>
+                        <span style={strStyle}>{props.p1.level}</span>
+                    </div>
+
+                    <div className="moves"> {str3}
+                        <div>Moves</div>
+                        <span style={strStyle}>{props.p1.moves}</span>
+                    </div>
+
+                </div>);
 
         case 2: // Spot status
             let playerIs = props.p2.Player.is === 1 ? "first" : "second";
@@ -44,8 +59,6 @@ function InitStatus(props)
             sec = props.p2.retime();
             s = parseInt(sec%60);
             props.p2.check_spots_number();
-
-            const strStyle = {font: "caption", fontSize: 20, fontWeight: "bold", paddingTop: "4px"};
 
             return (
                 <div id="status_spot">
@@ -75,11 +88,33 @@ function InitStatus(props)
         case 3: // Rotms status
             sec = props.p3.retime();
             s = parseInt(sec%60);
-            str1 = `Time of game: ${parseInt(sec/3600)} Hours, ${parseInt(sec/60%60)} Minutes, ${(s<10)?'0'+s:s} Seconds`;
-            str2 = "Level: " + props.p3.level;
-            str3 = "Moves: " + props.p3.moves;
-            str4 = "Score: " + props.p3.score;
-            return (<div id="status_rotms"> <div className="time"> {str1} </div><div className="level"> {str2} </div><div className="moves"> {str3} </div><div className="score"> {str4} </div></div>);
+
+            return (
+                <div id="status_rotms">
+
+                    <div className="time">
+                        <div>Time of game</div>
+                        <span style={strStyle}>{parseInt(sec/3600)}</span><span style={{fontWeight: "lighter"}}> Hours </span>
+                        <span style={strStyle}>{parseInt(sec/60%60)}</span><span style={{fontWeight: "lighter"}}> Minutes </span>
+                        <span style={strStyle}>{(s<10)?'0'+s:s}</span><span style={{fontWeight: "lighter"}}> Seconds</span>
+                    </div>
+
+                    <div className="level">
+                        <div>Level</div>
+                        <span style={strStyle}>{props.p3.level}</span>
+                    </div>
+
+                    <div className="moves">
+                        <div>Moves</div>
+                        <span style={strStyle}>{props.p3.moves}</span>
+                    </div>
+
+                    <div className="score">
+                        <div>Score</div>
+                        <span style={strStyle}>{props.p3.score}</span>
+                    </div>
+                </div>
+            );
 
         default: break;
     }
