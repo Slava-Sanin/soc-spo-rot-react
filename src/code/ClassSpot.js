@@ -77,6 +77,19 @@ class ClassSpot {
         this.level_is_completed = false;
         this.error = 0;
         this.data_level = [...SpotsLevels[this.level - 1].data.split('')];
+        ///////////////////////
+        // Test
+        for(let x=1; x<6; x++) {
+            for(let y=1; y<9; y++) {
+                this.data_level[x*Bsp+y] = '2';
+            }
+        }
+        for(let x=1; x<6; x++) {
+            for(let y=9; y<11; y++) {
+                this.data_level[x*Bsp+y] = '3';
+            }
+        }
+        ///////////////////////
         console.log(this.data_level)
         this.starttime = new Date(); // Init. timer
         this.moves = 0;
@@ -206,7 +219,7 @@ class ClassSpot {
 
             alert(result + "\n\n Party complete.");
 
-            if (this.level === this.maxLevel) alert("Level complete. \n\n No more levels!");
+            //if (this.level === this.maxLevel) alert("Level complete. \n\n No more levels!");
         }, 500);
         return 1;
     }
@@ -265,7 +278,7 @@ class ClassSpot {
                             //Sleep(1000);
                             //----computer is beginning now----
                                 this.computer_move();
-                                this.moves++;
+                                //this.moves++;
 
                                 console.log('Ready:', this.ready);
 
@@ -274,6 +287,8 @@ class ClassSpot {
                                 this.setSpotLevelData([...this.data_level]);
                                 //InitStatus();
                     },500);
+
+
                     return;
                 }
 
@@ -329,16 +344,16 @@ class ClassSpot {
                 }
             }
         }
-        this.ready = false; // TODO: To delete later
+
         if (best.num !== -1) // If found place
         {
-        //Sleep(300);
+            //Sleep(300);
             setTimeout(() => {
                     this.draw_computer_moving(X_from, Y_from, best); // Computer moves.
                 }, 1000);
         }
-        else this.ready = true;  // TODO: To delete later
-        console.log("exit from computer_move()"); // TODO: To delete later
+
+        console.log("exit from computer_move()");
     }
 
     draw_computer_moving(x, y, best) {
@@ -380,7 +395,13 @@ class ClassSpot {
                         this.setState({...this.refState});
                     }
                     this.setWaitFlag(false); //Cancel blocking player actions
-                    }, 500);
+                    this.moves++;
+                    setTimeout(() => {
+                        console.log("Loop for case when player can't move and computer can");
+                        if (!this.level_is_completed && this.player_cant_move()) this.computer_move();
+                    },0); // Loop for case when player can't move and computer can
+
+                }, 500);
 
             }, 500);
 
@@ -461,7 +482,7 @@ class ClassSpot {
 
         this.check_spots_number();
 
-        if ((this.who_is_now === 2) && this.player_cant_move()) {
+        if ((this.who_is_now === 2) && this.player_cant_move() && (this.Computer.spots > this.Player.spots)) {
             this.level_is_completed = true;
         }
 
