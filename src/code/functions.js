@@ -38,39 +38,35 @@ function InitStatus(props)
             return (<div id="status_sokoban"> <div className="time"> {str1} </div><div className="level"> {str2} </div><div className="moves"> {str3} </div></div>);
 
         case 2: // Spot status
+            let playerIs = props.p2.Player.is === 1 ? "first" : "second";
+            let computerIs = props.p2.Computer.is === 1 ? "first" : "second";
+
             sec = props.p2.retime();
             s = parseInt(sec%60);
             props.p2.check_spots_number();
-            /*str1 = ` ${parseInt(sec/3600)} <span style={{fontWeight: "lighter"}}>Hours</span>,
-             ${parseInt(sec/60%60)} <span style={{fontWeight: "lighter"}}>Minutes</span>,
-              ${(s<10)?'0'+s:s} <span style={{fontWeight: "lighter"}}>Seconds</span>`;*/
 
-            let playerIs = props.p2.Player.is === 1 ? "first" : "second";
-            //str2 = "Player(" + me_is + ")<br/> " + props.p2.Player.spots;
-           
-            let computerIs = props.p2.Computer.is === 1 ? "first" : "second";
-            //str3 = "Computer(" + me_is + ")<br/> " + props.p2.Computer.spots;
+            const strStyle = {font: "caption", fontSize: 20, fontWeight: "bold"};
 
             return (
                 <div id="status_spot">
 
                     <div className="time">
                         <div>Time of game</div>
-                        {parseInt(sec/3600)} <span style={{fontWeight: "lighter"}}> Hours, </span>
-                        {parseInt(sec/60%60)}<span style={{fontWeight: "lighter"}}> Minutes, </span>
-                        {(s<10)?'0'+s:s}<span style={{fontWeight: "lighter"}}> Seconds</span>
+                        <span style={strStyle}>{parseInt(sec/3600)}</span><span style={{fontWeight: "lighter"}}> Hours, </span>
+                        <span style={strStyle}>{parseInt(sec/60%60)}</span><span style={{fontWeight: "lighter"}}> Minutes, </span>
+                        <span style={strStyle}>{(s<10)?'0'+s:s}</span><span style={{fontWeight: "lighter"}}> Seconds</span>
                     </div>
 
                     <div className="player">
                         <span style={{color: GetColor(PlayerDlg.color)}}>Player</span>
                         <span style={{fontWeight: "lighter"}}> ({playerIs})</span>
-                        <div id="player-score">{props.p2.Player.spots}</div>
+                        <div id="player-score" style={strStyle}>{props.p2.Player.spots}</div>
                     </div>
 
                     <div className="player">
                         <span style={{color: GetColor(ComputerDlg.color)}}>Computer</span>
                         <span style={{fontWeight: "lighter"}}> ({computerIs})</span>
-                        <div id="computer-score">{props.p2.Computer.spots}</div>
+                        <div id="computer-score" style={strStyle}>{props.p2.Computer.spots}</div>
                     </div>
 
                 </div>
