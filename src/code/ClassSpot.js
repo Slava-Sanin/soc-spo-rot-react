@@ -45,7 +45,6 @@ class ClassSpot {
     kakoe_iz_odinakovux_vubrat = 0;
     first_time = true;
     best = Object.create(PLACE);
-    ready;
     table = 1;
     refState = null;
     setState = null;
@@ -279,8 +278,6 @@ class ClassSpot {
                             //----computer is beginning now----
                                 this.computer_move();
                                 //this.moves++;
-
-                                console.log('Ready:', this.ready);
 
                                 console.log("after computer_move");
                                 this.check_spots_number();
