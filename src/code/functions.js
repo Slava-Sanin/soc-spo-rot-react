@@ -45,15 +45,15 @@ function InitStatus(props)
             s = parseInt(sec%60);
             props.p2.check_spots_number();
 
-            const strStyle = {font: "caption", fontSize: 20, fontWeight: "bold"};
+            const strStyle = {font: "caption", fontSize: 20, fontWeight: "bold", paddingTop: "4px"};
 
             return (
                 <div id="status_spot">
 
                     <div className="time">
                         <div>Time of game</div>
-                        <span style={strStyle}>{parseInt(sec/3600)}</span><span style={{fontWeight: "lighter"}}> Hours, </span>
-                        <span style={strStyle}>{parseInt(sec/60%60)}</span><span style={{fontWeight: "lighter"}}> Minutes, </span>
+                        <span style={strStyle}>{parseInt(sec/3600)}</span><span style={{fontWeight: "lighter"}}> Hours </span>
+                        <span style={strStyle}>{parseInt(sec/60%60)}</span><span style={{fontWeight: "lighter"}}> Minutes </span>
                         <span style={strStyle}>{(s<10)?'0'+s:s}</span><span style={{fontWeight: "lighter"}}> Seconds</span>
                     </div>
 
