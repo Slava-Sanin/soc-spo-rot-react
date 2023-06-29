@@ -77,7 +77,7 @@ class ClassSpot {
         this.error = 0;
         this.data_level = [...SpotsLevels[this.level - 1].data.split('')];
         ///////////////////////
-        // Test
+        // Test level
         for(let x=1; x<6; x++) {
             for(let y=1; y<9; y++) {
                 this.data_level[x*Bsp+y] = '2';

@@ -41,7 +41,9 @@ function InitStatus(props)
             sec = props.p2.retime();
             s = parseInt(sec%60);
             props.p2.check_spots_number();
-            str1 = ` ${parseInt(sec/3600)} Hours, ${parseInt(sec/60%60)} Minutes, ${(s<10)?'0'+s:s} Seconds`;
+            /*str1 = ` ${parseInt(sec/3600)} <span style={{fontWeight: "lighter"}}>Hours</span>,
+             ${parseInt(sec/60%60)} <span style={{fontWeight: "lighter"}}>Minutes</span>,
+              ${(s<10)?'0'+s:s} <span style={{fontWeight: "lighter"}}>Seconds</span>`;*/
 
             let playerIs = props.p2.Player.is === 1 ? "first" : "second";
             //str2 = "Player(" + me_is + ")<br/> " + props.p2.Player.spots;
@@ -51,17 +53,26 @@ function InitStatus(props)
 
             return (
                 <div id="status_spot">
-                    <div className="time">Time of game<br/> {str1} </div>
+
+                    <div className="time">
+                        <div>Time of game</div>
+                        {parseInt(sec/3600)} <span style={{fontWeight: "lighter"}}> Hours, </span>
+                        {parseInt(sec/60%60)}<span style={{fontWeight: "lighter"}}> Minutes, </span>
+                        {(s<10)?'0'+s:s}<span style={{fontWeight: "lighter"}}> Seconds</span>
+                    </div>
+
                     <div className="player">
                         <span style={{color: GetColor(PlayerDlg.color)}}>Player</span>
                         <span style={{fontWeight: "lighter"}}> ({playerIs})</span>
                         <div id="player-score">{props.p2.Player.spots}</div>
                     </div>
+
                     <div className="player">
                         <span style={{color: GetColor(ComputerDlg.color)}}>Computer</span>
                         <span style={{fontWeight: "lighter"}}> ({computerIs})</span>
                         <div id="computer-score">{props.p2.Computer.spots}</div>
                     </div>
+
                 </div>
             );
 
