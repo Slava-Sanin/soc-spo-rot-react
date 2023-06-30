@@ -78,14 +78,29 @@ class ClassSpot {
         this.data_level = [...SpotsLevels[this.level - 1].data.split('')];
         ///////////////////////
         // Test level
-        for(let x=1; x<6; x++) {
-            for(let y=1; y<9; y++) {
+        /*for(let x=1; x<6; x++) {
+            for(let y=1; y<5; y++) {
                 this.data_level[x*Bsp+y] = '2';
             }
         }
         for(let x=1; x<6; x++) {
-            for(let y=9; y<11; y++) {
+            for(let y=7; y<11; y++) {
                 this.data_level[x*Bsp+y] = '3';
+            }
+        }*/
+        ///////////////////////
+        // Random level
+        let randomSpotsCount = 2 + Math.floor(Math.random()*10) % 5;
+        for(let c= 1; c < randomSpotsCount; c++) {
+            let a = 1 + Math.floor(Math.random()*10) % (Asp-2); // Place in array
+            let b = 1 + Math.floor(Math.random()*10) % ((Bsp-3)/2); // Place in array
+            let j = 2 + Math.floor(Math.random()*10) % 2; // Player or Computer
+            if (j === 2) {
+                this.data_level[Bsp*a + b] = '2';
+                this.data_level[Asp*Bsp - (Bsp*a + b) - 1] = '3';
+            } else {
+                this.data_level[Bsp*a + b] = '3';
+                this.data_level[Asp*Bsp - (Bsp*a + b) - 1] = '2';
             }
         }
         ///////////////////////
