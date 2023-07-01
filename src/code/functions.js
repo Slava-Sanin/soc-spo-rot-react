@@ -22,7 +22,7 @@ function InitStatus(props)
     let str4;
     let sec,s;
     let gamecode = props.selectedTab + 1;
-    const strStyle = {font: "caption", fontSize: 20, fontWeight: "bold", paddingTop: "4px"};
+    const strStyle = {font: "caption", fontSize: 20, fontWeight: "bold", paddingTop: "3px"};
 
     switch (gamecode)
     {
@@ -34,7 +34,7 @@ function InitStatus(props)
                 <div id="status_sokoban">
 
                     <div className="time">
-                        <div>Time of game</div>
+                        <div>Time of the game</div>
                         <span style={strStyle}>{parseInt(sec/3600)}</span><span style={{fontWeight: "lighter"}}> Hours </span>
                         <span style={strStyle}>{parseInt(sec/60%60)}</span><span style={{fontWeight: "lighter"}}> Minutes </span>
                         <span style={strStyle}>{(s<10)?'0'+s:s}</span><span style={{fontWeight: "lighter"}}> Seconds</span>
@@ -73,13 +73,13 @@ function InitStatus(props)
                     <div className="player">
                         <span style={{color: GetColor(PlayerDlg.color)}}>Player</span>
                         <span style={{fontWeight: "lighter"}}> ({playerIs})</span>
-                        <div id="player-score" style={strStyle}>{props.p2.Player.spots}</div>
+                        <div id="player-score" style={{...strStyle, paddingTop: "3px"}}>{props.p2.Player.spots}</div>
                     </div>
 
                     <div className="player">
                         <span style={{color: GetColor(ComputerDlg.color)}}>Computer</span>
                         <span style={{fontWeight: "lighter"}}> ({computerIs})</span>
-                        <div id="computer-score" style={strStyle}>{props.p2.Computer.spots}</div>
+                        <div id="computer-score" style={{...strStyle, paddingTop: "3px"}}>{props.p2.Computer.spots}</div>
                     </div>
 
                 </div>
