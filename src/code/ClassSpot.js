@@ -91,13 +91,13 @@ class ClassSpot {
         }*/
         ///////////////////////
         // Random level
-        for(let x=1; x<(Asp-1); x++) {
-            for(let y=1; y<(Bsp-1); y++) {
-                this.data_level[x*Bsp+y] = ' ';
-            }
-        }
-
         if (this.spotRandomLevel) {
+            for(let x=1; x<(Asp-1); x++) {
+                for(let y=1; y<(Bsp-1); y++) {
+                    this.data_level[x*Bsp+y] = ' ';
+                }
+            }
+
             let randomSpotsCount = 2 + Math.floor(Math.random()*10) % 5;
             for(let c= 1; c < randomSpotsCount; c++) {
                 let a = 1 + Math.floor(Math.random()*10) % (Asp-2); // Place in array
@@ -296,6 +296,7 @@ class ClassSpot {
                             this.fill_around(x, y, this.Computer.color); // Paint around all enemy
                             this.first_step = true;
                             this.check_spots_number();
+                            this.setNeedUpdateTrigger(!this.needUpdateTrigger);
                             //InitStatus();
                             if (this.level_is_completed) return;
                             //Sleep(1000);
@@ -341,6 +342,7 @@ class ClassSpot {
 
     computer_move() {
         this.setWaitFlag(true); // Block player moving and pressing on some buttons. Waiting while computer completes her move.
+        //document.querySelector('div.protector').setAttribute('cursor','wait');
         document.querySelector('#btn-new').setAttribute('disabled', true);
         document.querySelector('#btn-undo').setAttribute('disabled', true);
 
@@ -415,6 +417,7 @@ class ClassSpot {
                         this.refState.undoStates[1] = false;
                         this.setState({...this.refState});
                     }
+                    document.querySelector('div.protector').setAttribute('cursor','pointer');
                     this.setWaitFlag(false); //Cancel blocking player actions
                     this.moves++;
                     setTimeout(() => {
