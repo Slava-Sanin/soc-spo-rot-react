@@ -91,6 +91,12 @@ class ClassSpot {
         }*/
         ///////////////////////
         // Random level
+        for(let x=1; x<(Asp-1); x++) {
+            for(let y=1; y<(Bsp-1); y++) {
+                this.data_level[x*Bsp+y] = ' ';
+            }
+        }
+
         if (this.spotRandomLevel) {
             let randomSpotsCount = 2 + Math.floor(Math.random()*10) % 5;
             for(let c= 1; c < randomSpotsCount; c++) {
