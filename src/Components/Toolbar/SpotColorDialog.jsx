@@ -3,9 +3,12 @@ import '../../CSS/spot_toolbar.css';
 import men from '../../assets/images/men.png';
 import computer from '../../assets/images/computer.jpg';
 import {PlayerDlg, ComputerDlg} from "../../code/globals";
+import { StyledEngineProvider } from '@mui/material/styles';
+import Switch from '@mui/material/Switch';
 
 const SpotColorDialog = ({handleSpotDialogTrigger, state, setState}) => {
 	const [config, setConfig] = useState(false);
+	const [spotRandomLevel, setSpotRandomLevel] = useState(state.p2.spotRandomLevel);
 
 	useEffect(() => {
 			console.log("Redrawing Spot's options")
@@ -40,6 +43,12 @@ const SpotColorDialog = ({handleSpotDialogTrigger, state, setState}) => {
 		}
 		setConfig(!config);
 		setState({...state});
+	}
+
+	const handleSpotRandomLevelMode = () => {
+		setSpotRandomLevel(!spotRandomLevel);
+		state.p2.spotRandomLevel = !state.p2.spotRandomLevel;
+		console.log('spotRamdomLevel: ', state.p2.spotRandomLevel);
 	}
 
 	return (
@@ -117,6 +126,22 @@ const SpotColorDialog = ({handleSpotDialogTrigger, state, setState}) => {
 									>&lt;&gt;</button>
 								</div>
 								<div id="Computer_is" className="div14">{(ComputerDlg.is === 1) ? 'First' : 'Second'}</div>
+
+								<StyledEngineProvider injectFirst>
+									<div className="random_level">
+										<div>Random level</div>
+										<div>
+											<span>Off</span>
+											<Switch
+												checked={spotRandomLevel}
+												onChange={handleSpotRandomLevelMode}
+												inputProps={{'aria-label': 'Random level'}}
+											/>
+											<span>On</span>
+										</div>
+									</div>
+								</StyledEngineProvider>
+
 							</div>
 						</div>
 

@@ -13,7 +13,7 @@ import {
 
 import SpotsLevels from "../Spot/levels.json";
 import {Asp, Bsp} from './constants';
-import {PlayerDlg, ComputerDlg, MaxLevel} from "./globals";
+import {PlayerDlg, ComputerDlg, MaxLevel, spotRandomLevel} from "./globals";
 import {wait} from "@testing-library/user-event/dist/utils";
 
 // For finding the best place to put spot.
@@ -68,6 +68,7 @@ class ClassSpot {
             is: 2,    // Moving by default
             spots: 0
         };
+        this.spotRandomLevel = spotRandomLevel;
         this.init();
     }
 
@@ -90,17 +91,19 @@ class ClassSpot {
         }*/
         ///////////////////////
         // Random level
-        let randomSpotsCount = 2 + Math.floor(Math.random()*10) % 5;
-        for(let c= 1; c < randomSpotsCount; c++) {
-            let a = 1 + Math.floor(Math.random()*10) % (Asp-2); // Place in array
-            let b = 1 + Math.floor(Math.random()*10) % ((Bsp-3)/2); // Place in array
-            let j = 2 + Math.floor(Math.random()*10) % 2; // Player or Computer
-            if (j === 2) {
-                this.data_level[Bsp*a + b] = '2';
-                this.data_level[Asp*Bsp - (Bsp*a + b) - 1] = '3';
-            } else {
-                this.data_level[Bsp*a + b] = '3';
-                this.data_level[Asp*Bsp - (Bsp*a + b) - 1] = '2';
+        if (this.spotRandomLevel) {
+            let randomSpotsCount = 2 + Math.floor(Math.random()*10) % 5;
+            for(let c= 1; c < randomSpotsCount; c++) {
+                let a = 1 + Math.floor(Math.random()*10) % (Asp-2); // Place in array
+                let b = 1 + Math.floor(Math.random()*10) % ((Bsp-3)/2); // Place in array
+                let j = 2 + Math.floor(Math.random()*10) % 2; // Player or Computer
+                if (j === 2) {
+                    this.data_level[Bsp*a + b] = '2';
+                    this.data_level[Asp*Bsp - (Bsp*a + b) - 1] = '3';
+                } else {
+                    this.data_level[Bsp*a + b] = '3';
+                    this.data_level[Asp*Bsp - (Bsp*a + b) - 1] = '2';
+                }
             }
         }
         ///////////////////////

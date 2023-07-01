@@ -40,6 +40,6 @@ let
         color: 3,
         is: 2
     },
-    virtual_buttons_moving= 0;
-
+    virtual_buttons_moving= 0,
+    spotRandomLevel = true;
 

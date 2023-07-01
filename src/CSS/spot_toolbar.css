@@ -69,7 +69,7 @@
 
 #Spot_color_dialog {
     width: 270px;
-    height: 464px;
+    /*height: 464px;*/
     border: 4px solid;
     border-top-color: #E7D2A5;
     border-right-color: #776737;
@@ -142,7 +142,7 @@
 }
 
 .div4 {
-    height: 364px;
+    /*height: 364px;*/
     border: 4px solid;
     border-top-color: #E7D2A5;
     border-right-color: #776737;
@@ -231,7 +231,7 @@
 .div13 .div7 {
     margin-top: 0px;
     margin-bottom: 4px;
-    height: 15px;
+    height: 6px;
 }
 
 .div14 {
@@ -241,9 +241,9 @@
     border-left-color: #776737;
     border-right-color: #FFFBF3;
     border-bottom-color: #FFFBF3;
-    width: 64px;
+    width: 62px;
     height: 18px;
-    margin: 30px 4px 0px;
+    margin: 22px 5px 0px;
     text-align: center;
     padding: 2px 0px;
     font-weight: bold;
@@ -291,4 +291,32 @@
     font-family: 'Benne', serif;
     font-weight: 600;
     letter-spacing: 2px;
+}
+
+.random_level {
+    clear: both;
+    text-align: center;
+    border: 3px solid;
+    border-top-color: #776737;
+    border-left-color: #776737;
+    border-right-color: #FFFBF3;
+    border-bottom-color: #FFFBF3;
+    margin: 5px;
+    margin-top: 57px;
+    padding: 5px 0px 0px;
+    font-family: 'Benne', serif;
+    font-weight: 600;
+}
+
+div.random_level > div:nth-child(1) {
+    line-height: 1.3;
+    height: 15px;
+}
+
+div.random_level > div:nth-child(2) {
+    height: 32px;
+}
+
+div.random_level > div:nth-child(2) > span {
+    top: -2px;
 }
