@@ -238,13 +238,16 @@ class ClassSpot {
         setTimeout( () => {
             let result;
             // Checking for a winner
-            if (this.Player.spots === this.Computer.spots) result = "Teko!!!";
+            if (this.Player.spots === this.Computer.spots) result = "Draw!!!";
             else if (this.Player.spots < this.Computer.spots) result = "Computer won!!!";
                 else if (this.Player.spots > this.Computer.spots) {
                             PlayMySound("winner.wav", this.refState.soundMode);
-                            result = "You are winner!!!";
+                            result = "You are the winner!!!";
                         }
-            alert(result + "\n\n Party complete.");
+            this.refState.bannerIs = "visible";
+            this.refState.bannerText = result;
+            this.setState({...this.refState});
+            //alert(result + "\n\n Party complete.");
             //if (this.level === this.maxLevel) alert("Level complete. \n\n No more levels!");
         }, 500);
         return 1;

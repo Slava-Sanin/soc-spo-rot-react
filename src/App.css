@@ -257,6 +257,27 @@ body {
   cursor: wait;
 }
 
+.banner {
+  position: absolute;
+  z-index: 300;
+  background: url("./assets/images/banner.png") no-repeat center;
+  width: -webkit-fill-available; /*450px;*/
+  height: 230px;
+  /*background-size: 100% 100%;*/
+  top: 30%;
+  font-size: 30pt;
+  color: sandybrown; /*gainsboro;*/
+  display: flex;
+  /*display: grid;*/
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Benne', serif;
+  font-weight: bolder;
+  letter-spacing: 3px;
+}
+
+
 /*
 .background-off {
   background: none; !* !important;*!

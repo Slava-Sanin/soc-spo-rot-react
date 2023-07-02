@@ -81,6 +81,8 @@ const App = () => {
      toolbarMode: false,
      backgroundModes: [3,3,3],
      undoStates: [false,false,false],
+     bannerIs: "hidden",
+     bannerText: "",
      p1,p2,p3
     });
     const [sokobanLevelData, setSokobanLevelData] = useState(p1.data_level);
@@ -191,6 +193,12 @@ const App = () => {
 
     const handleSpotDialogTrigger = () => setSpotSettingsDialogMode(!spotSettingsDialogMode);
 
+    const handleHideBanner = () => {
+        state.bannerIs = "hidden";
+        state.bannerText = "";
+        setState({...state});
+    }
+
     return (
       <div ref={refApp} className="App" style={{backgroundColor: state.toolbarMode ? 'rgb(234,220,187,0.5)' : 'transparent'}}>
 
@@ -296,7 +304,13 @@ const App = () => {
               </p>
           </div>
 
+          <div className="banner" style={{visibility: state.bannerIs}}
+               onClick={handleHideBanner}
+          >
+              {state.bannerText}
           </div>
+
+      </div>
       );
 }
 
