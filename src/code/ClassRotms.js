@@ -269,17 +269,20 @@ class ClassRotms {
         this.switchUndoMode(false);
         
         setTimeout( () => {
-        if (window.confirm("Level completed. Next level?") === true)
-        {
-            if (this.level === this.maxLevel) // If this is the last level
-            alert("Level completed. No more levels!");
-            else
+            this.refState.bannerIs = "visible";
+            this.refState.bannerText = "Level completed. Next level?";
+            this.setState({...this.refState});
+            /*if (window.confirm("Level completed. Next level?") === true)
             {
-                this.change_level(1);  // Load next level.
-                //this.NewGame(); // Play again.
-                this.setRotmsLevelData([...this.data_level]);
-            }
-        }
+                if (this.level === this.maxLevel) // If this is the last level
+                alert("Level completed. No more levels!");
+                else
+                {
+                    this.change_level(1);  // Load next level.
+                    //this.NewGame(); // Play again.
+                    this.setRotmsLevelData([...this.data_level]);
+                }
+            }*/
         }, 500);
     }
     

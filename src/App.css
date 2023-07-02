@@ -292,6 +292,8 @@ div.banner button {
   font-size: initial;
   text-align: center;
   padding: 3px;
+  margin: 10px;
+  width: 40px;
 }
 
 /*
