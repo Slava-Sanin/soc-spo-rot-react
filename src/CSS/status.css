@@ -31,6 +31,7 @@
     border-right: solid white 2px;
     flex: auto;
     padding: 4px;
+    padding-bottom: 0;
 }
 
 /******/
