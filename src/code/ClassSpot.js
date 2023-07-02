@@ -136,24 +136,25 @@ class ClassSpot {
     NewGame() {
         console.log('New game function');
         PlayMySound("changepage.wav", this.refState.soundMode);
-        if (this.first_step === false) { //If big spot now on the board, cancel it by backing it be small
+        /*if (this.first_step === false) { //If big spot now on the board, cancel it by backing it be small
             console.log('this.first_step', this.first_step);
             let str = '#tabs-2 div.board div:nth-child(' + (this.first_X * Bsp + this.first_Y + 1) + ')';
-            let kode = this.data_level[this.first_X*Bsp+this.first_Y];
+            //let kode = this.data_level[this.first_X*Bsp+this.first_Y]; // TODO: Delete later
             document.querySelector(str).className = 'div-spo-' + PlayerDlg.color;
-        }
+        }*/
         this.init();
         //InitStatus();
     }
 
     Undo() {
-        for(let x=0; x<Asp; x++) {
+        /*for(let x=0; x<Asp; x++) {
             for(let y=0; y<Bsp; y++) {
                 this.data_level[x*Bsp+y] = this.data_undo[x*Bsp+y];
                 if (this.data_level[x*Bsp+y] === '2') {this.curX = x; this.curY = y;}
                 this.putthis(x, y, this.data_level[x*Bsp+y]);
             }
-        }
+        }*/
+        this.data_level = [...this.data_undo];
         this.moves--;
         this.first_step = true;
         this.check_spots_number();
