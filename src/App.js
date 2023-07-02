@@ -199,6 +199,29 @@ const App = () => {
         setState({...state});
     }
 
+    const handleNextLevel = () => {
+                state.bannerIs = "hidden";
+                state.bannerText = "";
+                setState({...state});
+
+                switch (state.selectedTab) {
+                    case 0:  p1.change_level(1);  // Load next level.
+                             setSokobanLevelData([...p1.data_level]);
+                             break;
+
+                    case 2:  p3.change_level(1);  // Load next level.
+                             setRotmsLevelData([...p3.data_level]);
+                             break;
+
+                    default:
+                }
+    }
+    const handleNotNextLevel = () => {
+                state.bannerIs = "hidden";
+                state.bannerText = "";
+                setState({...state});
+    }
+
     return (
       <div ref={refApp} className="App" style={{backgroundColor: state.toolbarMode ? 'rgb(234,220,187,0.5)' : 'transparent'}}>
 
@@ -304,10 +327,10 @@ const App = () => {
               </p>
           </div>
 
-          <div className="banner" style={{visibility: state.bannerIs}}
-               onClick={handleHideBanner}
-          >
-              {state.bannerText}
+          <div className="banner" style={{visibility: state.bannerIs}}>
+              <div>{state.bannerText}</div>
+              {(state.selectedTab === 1) && <div><button onClick={handleHideBanner}>OK</button></div>}
+              {(state.selectedTab !== 1) && <div><button onClick={handleNextLevel}>Yes</button><button onClick={handleNotNextLevel}>No</button></div>}
           </div>
 
       </div>

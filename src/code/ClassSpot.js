@@ -248,7 +248,7 @@ class ClassSpot {
             this.refState.bannerText = result;
             this.setState({...this.refState});
             //alert(result + "\n\n Party complete.");
-            //if (this.level === this.maxLevel) alert("Level complete. \n\n No more levels!");
+            //if (this.level === this.maxLevel) alert("Level completed. \n\n No more levels!");
         }, 500);
         return 1;
     }

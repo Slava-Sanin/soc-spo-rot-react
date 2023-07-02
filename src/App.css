@@ -265,9 +265,9 @@ body {
   height: 230px;
   /*background-size: 100% 100%;*/
   top: 30%;
-  font-size: 30pt;
+  font-size: 22pt;
   color: sandybrown; /*gainsboro;*/
-  display: flex;
+  /*display: flex;*/
   /*display: grid;*/
   align-items: center;
   justify-content: center;
@@ -277,6 +277,22 @@ body {
   letter-spacing: 3px;
 }
 
+div.banner > div:nth-child(1) {
+  margin-top: 75px;
+}
+
+div.banner > div:nth-child(2) {
+  top: -7px;
+  position: relative;
+}
+
+div.banner button {
+  color: yellow;
+  background: darkred;
+  font-size: initial;
+  text-align: center;
+  padding: 3px;
+}
 
 /*
 .background-off {
