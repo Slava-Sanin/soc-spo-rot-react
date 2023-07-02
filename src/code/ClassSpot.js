@@ -134,8 +134,10 @@ class ClassSpot {
     }
 
     NewGame() {
+        console.log('New game function');
         PlayMySound("changepage.wav", this.refState.soundMode);
         if (this.first_step === false) { //If big spot now on the board, cancel it by backing it be small
+            console.log('this.first_step', this.first_step);
             let str = '#tabs-2 div.board div:nth-child(' + (this.first_X * Bsp + this.first_Y + 1) + ')';
             let kode = this.data_level[this.first_X*Bsp+this.first_Y];
             document.querySelector(str).className = 'div-spo-' + PlayerDlg.color;
@@ -342,7 +344,6 @@ class ClassSpot {
 
     computer_move() {
         this.setWaitFlag(true); // Block player moving and pressing on some buttons. Waiting while computer completes her move.
-        //document.querySelector('div.protector').setAttribute('cursor','wait');
         document.querySelector('#btn-new').setAttribute('disabled', true);
         document.querySelector('#btn-undo').setAttribute('disabled', true);
 
@@ -383,7 +384,7 @@ class ClassSpot {
         PlayMySound("poper.wav", this.refState.soundMode);
 
         let str = '#tabs-2 div.board div:nth-child(' + (x*Bsp+y+1) + ')';
-        let kode = this.data_level[x*Bsp+y];
+        //let kode = this.data_level[x*Bsp+y]; // TODO: Delete later
         document.querySelector(str).className = 'div-spo-' + ComputerDlg.color + 'big';
         //Sleep(5000);
         setTimeout(() => {
@@ -398,7 +399,7 @@ class ClassSpot {
 
             //-----------------------
             str = '#tabs-2 div.board div:nth-child(' + (best.x*Bsp+best.y+1) + ')';
-            kode = this.data_level[best.x*Bsp+best.y];
+            //kode = this.data_level[best.x*Bsp+best.y]; // TODO: Delete later
             document.querySelector(str).className = 'div-spo-' + ComputerDlg.color + 'big';
             //-----------------------
 
@@ -417,7 +418,6 @@ class ClassSpot {
                         this.refState.undoStates[1] = false;
                         this.setState({...this.refState});
                     }
-                    document.querySelector('div.protector').setAttribute('cursor','pointer');
                     this.setWaitFlag(false); //Cancel blocking player actions
                     this.moves++;
                     setTimeout(() => {
