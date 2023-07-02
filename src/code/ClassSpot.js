@@ -230,6 +230,8 @@ class ClassSpot {
         }
 
         this.level_is_completed = true;
+        this.refState.undoStates[1] = false;
+        this.setState({...this.refState});
         console.log("Level is completed!");
 
         // Sleep(4000);
@@ -242,9 +244,7 @@ class ClassSpot {
                             PlayMySound("winner.wav", this.refState.soundMode);
                             result = "You are winner!!!";
                         }
-
             alert(result + "\n\n Party complete.");
-
             //if (this.level === this.maxLevel) alert("Level complete. \n\n No more levels!");
         }, 500);
         return 1;
