@@ -99,12 +99,7 @@ body {
 }
 
 .main-window {
-  background: url("./assets/images/GRAND/grand1.jpg") no-repeat;
   background-size: 100% 100% !important;
-  /*background-size: cover !important;*/
-  /*border: 2px solid #E7D2A5;*/
-  /*max-height: 422px;*/
-  /*min-height: 422px;*/
   margin-top: 6px;
 }
 
@@ -211,7 +206,7 @@ li#tab\:r0\:0 {
 body {
   /*background: url(https://images.unsplash.com/photo-1544306094-e2dcf9479da3) no-repeat;*/
   /*background: url(http://localhost:3000/static/images/kandinsky-download-1686260629023.png) no-repeat;*/
-  background: url("../public/static/images/kandinsky-download-1686260629023.png") no-repeat;
+  /*background: url("../public/static/images/kandinsky-download-1686260629023.png") no-repeat;*/
   /* Keep the inherited background full size. */
   background-attachment: fixed;
   /*background-size: cover;*/
@@ -296,12 +291,3 @@ div.banner button {
   width: 40px;
 }
 
-/*
-.background-off {
-  background: none; !* !important;*!
-}
-
-.background-on {
-  background: url("./assets/images/GRAND/grand1.jpg");
-}
-*/

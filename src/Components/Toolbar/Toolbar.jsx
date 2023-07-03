@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import '../../CSS/toolbar.css';
 import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
+import {ComputerDlg, PlayerDlg, spotRandomLevel} from "../../code/globals";
 
 const Toolbar = ({
                   state, setState,
@@ -16,7 +17,7 @@ const Toolbar = ({
      backgroundModes[2] - Rotms background mode
      mode 1 - Background is transparent
      mode 2 - Background of '.main-window' is visible
-     mode 3 - Backgrounds of '.main-window' and '#tabs-x' is visible
+     mode 3 - Backgrounds of '.main-window' and '#tabs-[1/2/3]' is visible
     */
 
     console.log("Redrawing Toolbar");
@@ -97,6 +98,18 @@ const Toolbar = ({
         switchUndoMode(false);
     };
 
+    const handleSave = () => {
+        let data = {
+            p1: {...state.p1},
+            p2: {...state.p2},
+            p3: {...state.p3},
+            state: {...state},
+            PlayerDlg: PlayerDlg,
+            ComputerDlg: ComputerDlg,
+            spotRandomLevel: spotRandomLevel
+        };
+        localStorage.setItem('sok-spo-rot', JSON.stringify(data));
+    };
 
     return (
         <div className='toolbar' >
@@ -129,32 +142,33 @@ const Toolbar = ({
             </button>
 
             <button id='btn-save'
-                    key='btn-5'>
-                <span className="mytooltiptext">Save</span>
+                    key='btn-5'
+                    onClick={ handleSave }
+                    ><span className="mytooltiptext">Save</span>
             </button>
 
             <button id='btn-new'
                     key='btn-6'
                     onClick={ newGame }
-                ><span className="mytooltiptext">New game</span>
+                    ><span className="mytooltiptext">New game</span>
             </button>
 
             <button id='btn-finish'
                     key='btn-7'
-                    onClick={()=>window.close()}>
-                <span className="mytooltiptext">Close and Exit</span>
+                    onClick={()=>window.close()}
+                    ><span className="mytooltiptext">Close and Exit</span>
             </button>
 
             <button id='btn-undo'
                     key='btn-8'
                     disabled={(state.undoStates[state.selectedTab] === false)}
                     onClick={ handleUndo }
-                ><span className="mytooltiptext">Undo</span>
+                    ><span className="mytooltiptext">Undo</span>
             </button>
 
             <button id='toolbar-switch'
                     onClick={ toggleToolbarMode }
-                ><span className="mytooltiptext">Toolbar mode</span>
+                    ><span className="mytooltiptext">Toolbar mode</span>
             </button>
 
             <SpotToolbar state={state} setState={setState} handleSpotDialogTrigger={handleSpotDialogTrigger} />

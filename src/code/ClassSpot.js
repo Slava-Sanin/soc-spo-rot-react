@@ -4,11 +4,8 @@ import {
     InitStatus,   
     Sound_On_Off,
     PlayMySound,
-    Change_Player_color,
-    Change_Computer_color,
     Sleep,
-    GetColor,   
-    moveVirtualButtons
+    GetColor
 } from './functions.js'
 
 import SpotsLevels from "../Spot/levels.json";

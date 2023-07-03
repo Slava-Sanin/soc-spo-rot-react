@@ -1,6 +1,5 @@
-import $ from 'jquery';
 import {PlayerDlg, ComputerDlg} from "./globals";
-import {level_in_text_format, glob_sound, virtual_buttons_moving, soundPath} from './globals';
+import {soundPath} from './globals';
 
 /*function loadDoc(filename) {
   let xhttp = new XMLHttpRequest();
@@ -31,10 +30,8 @@ const fetchTXTFile = async (path) => {
 
 function InitStatus(props)
 {
-    let str1;
     let str2;
     let str3;
-    let str4;
     let sec,s;
     let gamecode = props.selectedTab + 1;
     const strStyle = {font: "caption", fontSize: 20, fontWeight: "bold"};
@@ -146,40 +143,6 @@ function PlayMySound(soundName, soundMode)
 }
 
 
-function Change_Player_color()
-{
-    PlayerDlg.color = document.forms["Player"].color.value;
-    if (PlayerDlg.color === ComputerDlg.color)
-    {
-        ComputerDlg.color++;
-        if (ComputerDlg.color > 6) ComputerDlg.color = 2;
-        document.forms["Computer"].elements[ComputerDlg.color-2]["checked"] = true;
-
-        //console.log(document.forms["Computer"].elements[ComputerDlg.color-2]);
-    }  
-    $(".Spot_color.left").css("background", "url('G4W/images/Spot/spots.png') -80px -" + 40*PlayerDlg.color + "px no-repeat black");
-    $(".Spot_color.right").css("background", "url('G4W/images/Spot/spots.png') -80px -" + 40*ComputerDlg.color + "px no-repeat black");
-}
-
-
-function Change_Computer_color()
-{
-    //console.log(document.forms["Computer"].color.value);
-
-    ComputerDlg.color = document.forms["Computer"].color.value;
-    if (ComputerDlg.color === PlayerDlg.color)
-    {
-        PlayerDlg.color++;
-        if (PlayerDlg.color > 6) PlayerDlg.color = 2;
-        document.forms["Player"].elements[PlayerDlg.color-2]["checked"] = true;
-
-        //console.log(document.forms["Player"].elements[PlayerDlg.color-2]);
-    }
-    $(".Spot_color.left").css("background", "url('G4W/images/Spot/spots.png') -80px -" + 40*PlayerDlg.color + "px no-repeat black");
-    $(".Spot_color.right").css("background", "url('G4W/images/Spot/spots.png') -80px -" + 40*ComputerDlg.color + "px no-repeat black");
-}
-
-
 function Sleep(milliseconds)
 {
   let start = new Date().getTime();
@@ -204,24 +167,11 @@ function GetColor(color)
     }
 }
 
-function moveVirtualButtons(e)
-{
-    //e.preventDefault();
-    let x = e.clientX - 137/2;
-    let y = e.clientY - 137/2;
-    //if (virtual_buttons_moving) $("div.virtual_buttons").css("left", x).css("top", y).css("position","fixed");
-    $("div.virtual_buttons").css("left", x).css("top", y).css("position","fixed");
-}
 
 export {
-    //loadDoc,
     fetchTXTFile,
     InitStatus,   
-    //Sound_On_Off,
     PlayMySound,
-    Change_Player_color,
-    Change_Computer_color,
     Sleep,
-    GetColor,   
-    moveVirtualButtons
+    GetColor
 }

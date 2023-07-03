@@ -2,8 +2,6 @@ import {
     loadDoc,
     InitStatus,   
     PlayMySound,
-    Change_Player_color,
-    Change_Computer_color,
     Sleep,
     GetColor,   
 } from './functions.js'

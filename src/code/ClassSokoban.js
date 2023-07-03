@@ -1,10 +1,5 @@
 import {
-    loadDoc,
-    InitStatus,   
-    Sound_On_Off,
-    PlayMySound,
-    Sleep,
-    moveVirtualButtons
+    PlayMySound
 } from './functions.js'
 import SokobanLevels from "../Sokoban/levels.json";
 import {A, B} from './constants';
@@ -26,7 +21,6 @@ class ClassSokoban {
     curY;
     error = 0;
     level_is_completed;
-    is_loaded = 0;
     refState = null;
     setState = null;
     setSokobanLevelData;

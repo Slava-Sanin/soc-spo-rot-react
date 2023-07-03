@@ -8,7 +8,6 @@ import './CSS/tabs.css';
 import './CSS/scroll.css';
 import './CSS/status.css';
 
-//import logo from './assets/images/spot.ico';
 import logo from './assets/images/logo64.png';
 import Toolbar from './Components/Toolbar/Toolbar';
 import Status from './Components/Status/Status';
@@ -21,47 +20,21 @@ import {PlayerDlg, ComputerDlg, ClassSpot} from './code/ClassSpot';
 import ClassRotms from './code/ClassRotms';
 
 import {
-    A,
-    B,
-    Asp,
-    Bsp,
-    W1,
-    W2,
-    W3,
-    W4,
-    otstup,
-    otstup_sp,
-    MENU_PIC, RotmsBlockWidth, RotmsBlockHeight, SpotBlockWidth, SpotBlockHeight
+    RotmsBlockWidth,
+    RotmsBlockHeight,
+    SpotBlockWidth,
+    SpotBlockHeight
 } from "./code/constants";
 
 import {
     host,
-    soundPath,
     Backgrounds,
     CurPath,
-    paintstruct,
-    parts,
-    gamecode,
-    loaded,
-    glob_sound,
-    status_line,
-    table,
-    Save_as_Flag,
-    level_in_text_format,
-    timer,
-    prev_game,
-    virtual_buttons_moving
+    glob_sound
 } from "./code/globals";
 
 import {
-    loadDoc,
-    InitStatus,
-    PlayMySound,
-    Change_Player_color,
-    Change_Computer_color,
-    Sleep,
-    GetColor,
-    moveVirtualButtons, fetchTXTFile
+    fetchTXTFile
 } from "./code/functions";
 
 console.log(CurPath);
