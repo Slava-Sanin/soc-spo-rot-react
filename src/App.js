@@ -222,10 +222,12 @@ const App = () => {
 
                 switch (state.selectedTab) {
                     case 0:  p1.change_level(1);  // Load next level.
+                             Backgrounds.backgroundTab1 = host + Backgrounds.backgroundsPath + Backgrounds.list[Math.floor(Math.random()*10) % (Backgrounds.list.length-1)];
                              setSokobanLevelData([...p1.data_level]);
                              break;
 
                     case 2:  p3.change_level(1);  // Load next level.
+                             Backgrounds.backgroundTab3 = host + Backgrounds.backgroundsPath + Backgrounds.list[Math.floor(Math.random()*10) % (Backgrounds.list.length-1)];
                              setRotmsLevelData([...p3.data_level]);
                              break;
 

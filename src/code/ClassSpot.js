@@ -13,7 +13,7 @@ import {
 
 import SpotsLevels from "../Spot/levels.json";
 import {Asp, Bsp} from './constants';
-import {PlayerDlg, ComputerDlg, MaxLevel, spotRandomLevel} from "./globals";
+import {PlayerDlg, ComputerDlg, MaxLevel, spotRandomLevel, Backgrounds, host} from "./globals";
 import {wait} from "@testing-library/user-event/dist/utils";
 
 // For finding the best place to put spot.
@@ -243,6 +243,7 @@ class ClassSpot {
                 else if (this.Player.spots > this.Computer.spots) {
                             PlayMySound("winner.wav", this.refState.soundMode);
                             result = "You are the winner!!!";
+                            Backgrounds.backgroundTab2 = host + Backgrounds.backgroundsPath + Backgrounds.list[Math.floor(Math.random()*10) % (Backgrounds.list.length-1)];
                         }
             this.refState.bannerIs = "visible";
             this.refState.bannerText = result;
