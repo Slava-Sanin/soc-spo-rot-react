@@ -52,9 +52,7 @@ const Toolbar = ({
 
             case 1:
                 state.p2.NewGame();
-                //setState({...state});
                 setSpotLevelData([...state.p2.data_level]);
-                console.log(state.p2)
                 break;
 
             case 2:
@@ -103,7 +101,12 @@ const Toolbar = ({
             p1: {...state.p1},
             p2: {...state.p2},
             p3: {...state.p3},
-            state: {...state},
+            state: {
+                ...state,
+                p1: null,
+                p2: null,
+                p3: null
+            },
             PlayerDlg: PlayerDlg,
             ComputerDlg: ComputerDlg,
             spotRandomLevel: spotRandomLevel

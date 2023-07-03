@@ -110,7 +110,7 @@ class ClassSpot {
             }
         }
         ///////////////////////
-        console.log(this.data_level)
+        //console.log(this.data_level)
         this.starttime = new Date(); // Init. timer
         this.moves = 0;
         this.first_step = true;

@@ -15,7 +15,6 @@ class ClassSokoban {
     htime;
     moves;
     background;
-    backgroundMode = 3;
     filename;
     curX;
     curY;
@@ -275,17 +274,6 @@ class ClassSokoban {
             this.refState.bannerIs = "visible";
             this.refState.bannerText = "Level completed. Next level?";
             this.setState({...this.refState});
-            /*if (window.confirm("Level completed. Next level?")  === true) {
-                if (this.level === this.maxLevel) { // If this is a last level.
-                    //alert("Level completed. No more levels!");
-                    this.refState.bannerIs = "visible";
-                    this.refState.bannerText = "Level completed. No more levels!";
-                    this.setState({...this.refState});
-                } else {
-                    this.change_level(1);  // Load next level.
-                    this.setSokobanLevelData([...this.data_level]);
-                }
-            }*/
         }, 500);
     }
 

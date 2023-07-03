@@ -37,8 +37,6 @@ import {
     fetchTXTFile
 } from "./code/functions";
 
-console.log(CurPath);
-
 const
     p1 = new ClassSokoban(),
     p2 = new ClassSpot(),
@@ -97,7 +95,7 @@ const App = () => {
         fetchTXTFile(Backgrounds.backgroundsList)
             .then(data => {
                 Backgrounds.list = data.split("\r\n");
-                console.log(Backgrounds.list);
+                //console.log(Backgrounds.list);
                 document.body.style.background = `url('${host}${Backgrounds.backgroundsPath}${Backgrounds.list[Math.floor(Math.random()*10) % (Backgrounds.list.length-1)]} ') center center / contain no-repeat fixed`;
                 /*document.body.style.background = `url('${host}${Backgrounds.backgroundsPath}${Backgrounds.list[Math.floor(Math.random()*10) % (Backgrounds.list.length-1)]} ') no-repeat`;
                 document.body.style.backgroundSize = "contain";
