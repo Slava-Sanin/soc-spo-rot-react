@@ -13,6 +13,21 @@ import {level_in_text_format, glob_sound, virtual_buttons_moving, soundPath} fro
   xhttp.send();
 }*/
 
+const fetchTXTFile = async (path) => {
+    return new Promise((resolve, reject) => {
+        fetch(path)
+            .then(response => response.text())
+            .then(data => {
+                // Обработка полученного текстового файла
+                resolve(data);
+            })
+            .catch(error => {
+                // Обработка ошибки
+                console.error('Ошибка:', error);
+                reject(error);
+            });
+    });
+}
 
 function InitStatus(props)
 {
@@ -200,6 +215,7 @@ function moveVirtualButtons(e)
 
 export {
     //loadDoc,
+    fetchTXTFile,
     InitStatus,   
     //Sound_On_Off,
     PlayMySound,

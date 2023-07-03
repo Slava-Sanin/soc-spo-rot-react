@@ -61,9 +61,10 @@ import {
     Change_Computer_color,
     Sleep,
     GetColor,
-    moveVirtualButtons
+    moveVirtualButtons, fetchTXTFile
 } from "./code/functions";
 
+console.log(CurPath);
 
 const
     p1 = new ClassSokoban(),
@@ -120,6 +121,21 @@ const App = () => {
     }
 
     useEffect(() => {
+        fetchTXTFile(Backgrounds.backgroundsList)
+            .then(data => {
+                Backgrounds.list = data.split("\r\n");
+                console.log(Backgrounds.list);
+                //document.body.style.background = `url('${host}${Backgrounds.backgroundsPath}${Backgrounds.list[5]} ') center center contain no-repeat fixed`;
+                document.body.style.background = `url('${host}${Backgrounds.backgroundsPath}${Backgrounds.list[Math.floor(Math.random()*10) % (Backgrounds.list.length-1)]} ') no-repeat`;
+                document.body.style.backgroundSize = "contain";
+                document.body.style.backgroundPosition = "center";
+                document.body.style.backgroundAttachment = "fixed";
+            })
+            .catch(error => {
+                // Handle any errors
+                console.error(error);
+        });
+
         //TODO: To uncomment later
         /*document.addEventListener('contextmenu', function(e) {
             e.preventDefault();

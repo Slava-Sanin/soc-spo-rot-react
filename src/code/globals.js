@@ -15,6 +15,10 @@ let
 
         //backgroundTab3: host + "/static/backgrounds/grand4.jpg",
         backgroundTab3: host + "/static/images/kandinsky-download-1686291071861.png",
+
+        backgroundsPath: "/static/images/",
+        backgroundsList: "/static/backgrounds_list.txt",
+        list: {}
     },
     MaxLevel = {
         socoban: 20,
