@@ -30,9 +30,9 @@ import {
     host,
     Backgrounds,
     glob_sound,
-    spotRandomLevel,
     PlayerDlg,
-    ComputerDlg
+    ComputerDlg,
+    toolbarMode
 } from "./code/globals";
 
 import {
@@ -55,8 +55,6 @@ if (_localStorage) {
     for(let prop in _localStorage.PlayerDlg) PlayerDlg[prop] = _localStorage.PlayerDlg[prop];
     for(let prop in _localStorage.ComputerDlg) ComputerDlg[prop] = _localStorage.ComputerDlg[prop];
     for(let prop in _localStorage.Backgrounds) Backgrounds[prop] = _localStorage.Backgrounds[prop];
-
-    //spotRandomLevel = _localStorage.spotRandomLevel;
 }
 
 
@@ -68,7 +66,7 @@ const App = () => {
     const [state, setState] = useState(_localStorage ? {..._localStorage.state,p1,p2,p3} : {
      selectedTab: 0,
      soundMode: glob_sound,
-     toolbarMode: false,
+     toolbarMode: toolbarMode,
      backgroundModes: [3,3,3],
      undoStates: [false,false,false],
      bannerIs: "hidden",

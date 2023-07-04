@@ -1,4 +1,4 @@
-export let
+export const
     host = "http://localhost:3000",
     CurPath= window.location.pathname,
     soundPath = "/static/sound/",
@@ -34,6 +34,7 @@ export let
         color: 3,
         is: 2
     },
+    toolbarMode = true,
     virtual_buttons_moving = 0,
     spotRandomLevel = true;
 
