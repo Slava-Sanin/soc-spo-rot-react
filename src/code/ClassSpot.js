@@ -1,17 +1,11 @@
 
 import {
-    loadDoc,
-    InitStatus,   
-    Sound_On_Off,
-    PlayMySound,
-    Sleep,
-    GetColor
+    PlayMySound
 } from './functions.js'
 
 import SpotsLevels from "../Spot/levels.json";
 import {Asp, Bsp} from './constants';
 import {PlayerDlg, ComputerDlg, MaxLevel, spotRandomLevel, Backgrounds, host} from "./globals";
-import {wait} from "@testing-library/user-event/dist/utils";
 
 // For finding the best place to put spot.
 const PLACE = {
@@ -25,9 +19,9 @@ class ClassSpot {
     maxLevel = MaxLevel.spot;
     data_lev_gr = []; //[Asp][Bsp];
     data_undo = []; //[Asp][Bsp];
-    starttime;
-    curtime;
-    htime;
+    start_time;
+    cur_time;
+    h_time;
     moves;
     background = "";
     filename;
@@ -110,7 +104,7 @@ class ClassSpot {
         }
         ///////////////////////
         //console.log(this.data_level)
-        this.starttime = new Date(); // Init. timer
+        this.start_time = new Date(); // Init. timer
         this.moves = 0;
         this.first_step = true;
         this.who_is_now = (PlayerDlg.is === 1) ? 1 : 2;
@@ -209,10 +203,10 @@ class ClassSpot {
     }
 
     retime() {
-        if (this.level_is_completed) return this.htime/1000;
-        this.curtime = new Date();
-        this.htime = this.curtime - this.starttime;
-        return this.htime/1000;
+        if (this.level_is_completed) return this.h_time/1000;
+        this.cur_time = new Date();
+        this.h_time = this.cur_time - this.start_time;
+        return this.h_time/1000;
     }
 
     check_end() {

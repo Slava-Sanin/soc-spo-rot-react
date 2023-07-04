@@ -1,5 +1,4 @@
-export
-let
+export let
     host = "http://localhost:3000",
     CurPath= window.location.pathname,
     soundPath = "/static/sound/",

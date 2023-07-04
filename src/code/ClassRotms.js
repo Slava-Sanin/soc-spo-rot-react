@@ -1,10 +1,6 @@
 import './ClassFire'  // Defining class fire
 import {
-    loadDoc,
-    InitStatus,   
-    PlayMySound,
-    Sleep,
-    GetColor,   
+    PlayMySound
 } from './functions.js';
 import ClassFire from './ClassFire';
 import RotmsLevels from "../Rotms/levels.json";
@@ -17,9 +13,9 @@ class ClassRotms {
     data_level = [];
     data_lev_gr = [];
     data_undo = [];
-    starttime;
-    curtime;
-    htime;
+    start_time;
+    cur_time;
+    h_time;
     moves;
     score;
     score_undo;
@@ -41,7 +37,7 @@ class ClassRotms {
     init() {
         this.error = 0;
         this.data_level = RotmsLevels[this.level - 1].data.split('');
-        this.starttime = new Date();
+        this.start_time = new Date();
         this.score = 0;
         this.score_undo = 0;
         this.moves = 0;
@@ -245,9 +241,9 @@ class ClassRotms {
     }
 
     retime() {
-        this.curtime = new Date();
-        this.htime = this.curtime - this.starttime;
-        return this.htime/1000;
+        this.cur_time = new Date();
+        this.h_time = this.cur_time - this.start_time;
+        return this.h_time/1000;
     }
     
     check_end() {

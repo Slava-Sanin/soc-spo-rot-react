@@ -28,12 +28,15 @@ const fetchTXTFile = async (path) => {
     });
 }
 
-function extractVariables(obj) {
+function extractVariables(obj, exclude) {
     let variablesObj = {};
 
     for (let prop in obj) {
         if (obj.hasOwnProperty(prop) && typeof obj[prop] !== 'function') {
-            if (prop === 'refState') continue;
+            if (exclude.includes(prop)) {
+                console.log('exclude',prop);
+                continue;
+            }
             variablesObj[prop] = obj[prop];
         }
     }

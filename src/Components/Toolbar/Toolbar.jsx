@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import '../../CSS/toolbar.css';
 import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
-import {ComputerDlg, PlayerDlg, spotRandomLevel} from "../../code/globals";
+import {Backgrounds, ComputerDlg, PlayerDlg, spotRandomLevel} from "../../code/globals";
 import {extractVariables} from "../../code/functions";
 
 const Toolbar = ({
@@ -99,9 +99,9 @@ const Toolbar = ({
 
     const handleSave = () => {
         let data = {
-            p1: {...extractVariables(state.p1)},
-            p2: {...extractVariables(state.p2)},
-            p3: {...extractVariables(state.p3)},
+            p1: {...extractVariables(state.p1,['refState','start_time'])},
+            p2: {...extractVariables(state.p2,['refState','start_time'])},
+            p3: {...extractVariables(state.p3,['refState','start_time'])},
             state: {
                 ...state,
                 p1: null,
@@ -110,6 +110,7 @@ const Toolbar = ({
             },
             PlayerDlg: PlayerDlg,
             ComputerDlg: ComputerDlg,
+            Backgrounds: Backgrounds,
             spotRandomLevel: spotRandomLevel
         };
         localStorage.setItem('sok-spo-rot', JSON.stringify(data));

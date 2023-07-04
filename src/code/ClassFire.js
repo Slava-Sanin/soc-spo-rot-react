@@ -1,9 +1,5 @@
 import {
-    loadDoc,
-    InitStatus,   
-    PlayMySound,
-    Sleep,
-    GetColor,   
+    PlayMySound
 } from './functions.js'
 
 import {A, B} from './constants';

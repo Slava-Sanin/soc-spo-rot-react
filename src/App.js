@@ -16,7 +16,7 @@ import Sokoban from './Components/Sokoban/Sokoban';
 import Spot from './Components/Spot/Spot';
 import Rotms from './Components/Rotms/Rotms';
 import ClassSokoban from './code/ClassSokoban';
-import {PlayerDlg, ComputerDlg, ClassSpot} from './code/ClassSpot';
+import {ClassSpot} from './code/ClassSpot';
 import ClassRotms from './code/ClassRotms';
 
 import {
@@ -29,8 +29,10 @@ import {
 import {
     host,
     Backgrounds,
-    CurPath,
-    glob_sound
+    glob_sound,
+    spotRandomLevel,
+    PlayerDlg,
+    ComputerDlg
 } from "./code/globals";
 
 import {
@@ -38,16 +40,32 @@ import {
 } from "./code/functions";
 
 const
+    _localStorage = JSON.parse(localStorage.getItem('sok-spo-rot')),
     p1 = new ClassSokoban(),
     p2 = new ClassSpot(),
     p3 = new ClassRotms();
+
+
+console.log('_localStorage from localStorage:', _localStorage);
+if (_localStorage) {
+    for(let prop in _localStorage.p1) p1[prop] = _localStorage.p1[prop];
+    for(let prop in _localStorage.p2) p2[prop] = _localStorage.p2[prop];
+    for(let prop in _localStorage.p3) p3[prop] = _localStorage.p3[prop];
+
+    for(let prop in _localStorage.PlayerDlg) PlayerDlg[prop] = _localStorage.PlayerDlg[prop];
+    for(let prop in _localStorage.ComputerDlg) ComputerDlg[prop] = _localStorage.ComputerDlg[prop];
+    for(let prop in _localStorage.Backgrounds) Backgrounds[prop] = _localStorage.Backgrounds[prop];
+
+    //spotRandomLevel = _localStorage.spotRandomLevel;
+}
+
 
 const App = () => {
     console.log('------------------------')
     console.log("Redrawing App");
 
     const refApp = useRef(null);
-    const [state, setState] = useState({
+    const [state, setState] = useState(_localStorage ? {..._localStorage.state,p1,p2,p3} : {
      selectedTab: 0,
      soundMode: glob_sound,
      toolbarMode: false,

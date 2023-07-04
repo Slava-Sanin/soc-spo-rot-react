@@ -10,9 +10,9 @@ class ClassSokoban {
     maxLevel = MaxLevel.socoban;
     data_lev_gr = [];
     data_undo = [];
-    starttime;
-    curtime;
-    htime;
+    start_time;
+    cur_time;
+    h_time;
     moves;
     background;
     filename;
@@ -31,7 +31,8 @@ class ClassSokoban {
     init() {
         this.error = 0;        
         this.data_level = [...SokobanLevels[this.level - 1].data.split('')];
-        this.starttime = new Date();
+        this.start_time = new Date();
+        console.log('this.start_time:', this.start_time);
         this.moves = 0;
         this.level_is_completed = false;
         this.build_ground();
@@ -250,9 +251,9 @@ class ClassSokoban {
     }
 
     retime() {
-        this.curtime = new Date();
-        this.htime = this.curtime - this.starttime;
-        return this.htime/1000;
+        this.cur_time = new Date();
+        this.h_time = this.cur_time - this.start_time;
+        return this.h_time/1000;
     }
 
     check_end() {
