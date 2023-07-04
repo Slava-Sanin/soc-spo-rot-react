@@ -3,7 +3,7 @@ import {
 } from './functions.js'
 import SokobanLevels from "../Sokoban/levels.json";
 import {A, B} from './constants';
-import {MaxLevel} from "./globals";
+import {debugMode, MaxLevel} from "./globals";
 
 class ClassSokoban {
     level = 1;
@@ -32,7 +32,9 @@ class ClassSokoban {
         this.error = 0;        
         this.data_level = [...SokobanLevels[this.level - 1].data.split('')];
         this.start_time = new Date();
-        console.log('this.start_time:', this.start_time);
+        if (debugMode) {
+            console.log('this.start_time:', this.start_time);
+        }
         this.moves = 0;
         this.level_is_completed = false;
         this.build_ground();

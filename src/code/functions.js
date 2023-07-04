@@ -1,4 +1,4 @@
-import {PlayerDlg, ComputerDlg} from "./globals";
+import {PlayerDlg, ComputerDlg, debugMode} from "./globals";
 import {soundPath} from './globals';
 
 /*function loadDoc(filename) {
@@ -34,7 +34,9 @@ function extractVariables(obj, exclude) {
     for (let prop in obj) {
         if (obj.hasOwnProperty(prop) && typeof obj[prop] !== 'function') {
             if (exclude.includes(prop)) {
-                console.log('exclude',prop);
+                if (debugMode) {
+                    console.log('exclude', prop);
+                }
                 continue;
             }
             variablesObj[prop] = obj[prop];

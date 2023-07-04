@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import '../../CSS/toolbar.css';
 import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
-import {Backgrounds, ComputerDlg, PlayerDlg, spotRandomLevel} from "../../code/globals";
+import {Backgrounds, ComputerDlg, debugMode, PlayerDlg, spotRandomLevel} from "../../code/globals";
 import {extractVariables} from "../../code/functions";
 
 const Toolbar = ({
@@ -21,7 +21,9 @@ const Toolbar = ({
      mode 3 - Backgrounds of '.main-window' and '#tabs-[1/2/3]' is visible
     */
 
-    console.log("Redrawing Toolbar");
+    if (debugMode) {
+        console.log("Redrawing Toolbar");
+    }
     const handleBackgroundMode = (game) => {
         state.backgroundModes[game]++;
         if (state.backgroundModes[game] > 3) state.backgroundModes[game] = 1;
@@ -43,7 +45,9 @@ const Toolbar = ({
     };
 
     const newGame = () => {
-        console.log("Clicked newGame");
+        if (debugMode) {
+            console.log("Clicked newGame");
+        }
         switch (state.selectedTab)
         {
             case 0:
@@ -73,7 +77,9 @@ const Toolbar = ({
     }
 
     const handleUndo = () => {
-        console.log("Clicked undo");
+        if (debugMode) {
+            console.log("Clicked undo");
+        }
         switch (state.selectedTab)
         {
             case 0: //Socoban

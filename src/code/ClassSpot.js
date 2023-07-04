@@ -5,7 +5,7 @@ import {
 
 import SpotsLevels from "../Spot/levels.json";
 import {Asp, Bsp} from './constants';
-import {PlayerDlg, ComputerDlg, MaxLevel, spotRandomLevel, Backgrounds, host} from "./globals";
+import {PlayerDlg, ComputerDlg, MaxLevel, spotRandomLevel, Backgrounds, host, debugMode} from "./globals";
 
 // For finding the best place to put spot.
 const PLACE = {
@@ -124,31 +124,18 @@ class ClassSpot {
     }
 
     NewGame() {
-        console.log('New game function');
+        if (debugMode) {
+            console.log('New game function');
+        }
         PlayMySound("changepage.wav", this.refState.soundMode);
-        /*if (this.first_step === false) { //If big spot now on the board, cancel it by backing it be small
-            console.log('this.first_step', this.first_step);
-            let str = '#tabs-2 div.board div:nth-child(' + (this.first_X * Bsp + this.first_Y + 1) + ')';
-            //let kode = this.data_level[this.first_X*Bsp+this.first_Y]; // TODO: Delete later
-            document.querySelector(str).className = 'div-spo-' + PlayerDlg.color;
-        }*/
         this.init();
-        //InitStatus();
     }
 
     Undo() {
-        /*for(let x=0; x<Asp; x++) {
-            for(let y=0; y<Bsp; y++) {
-                this.data_level[x*Bsp+y] = this.data_undo[x*Bsp+y];
-                if (this.data_level[x*Bsp+y] === '2') {this.curX = x; this.curY = y;}
-                this.putthis(x, y, this.data_level[x*Bsp+y]);
-            }
-        }*/
         this.data_level = [...this.data_undo];
         this.moves--;
         this.first_step = true;
         this.check_spots_number();
-        //InitStatus();
     }
 
     member_last_move() {
@@ -222,7 +209,9 @@ class ClassSpot {
         this.level_is_completed = true;
         this.refState.undoStates[1] = false;
         this.setState({...this.refState});
-        console.log("Level is completed!");
+        if (debugMode) {
+            console.log("Level is completed!");
+        }
 
         // Sleep(4000);
         setTimeout( () => {
@@ -299,12 +288,12 @@ class ClassSpot {
                             //Sleep(1000);
                             //----computer is beginning now----
                                 this.computer_move();
-                                //this.moves++;
 
-                                console.log("after computer_move");
+                                if (debugMode) {
+                                    console.log("after computer_move");
+                                }
                                 this.check_spots_number();
                                 this.setSpotLevelData([...this.data_level]);
-                                //InitStatus();
                     },500);
 
 
@@ -319,8 +308,10 @@ class ClassSpot {
 
     player_cant_move() {
         let x, y;
-        console.log("Player spots: " + this.Player.spots);
-        console.log("Computer spots: " + this.Computer.spots);
+        if (debugMode) {
+            console.log("Player spots: " + this.Player.spots);
+            console.log("Computer spots: " + this.Computer.spots);
+        }
         for (x=1; x<(Asp-1); x++)
             for (y=1; y<(Bsp-1); y++) {
                 if (this.data_level[x*Bsp+y] == this.Player.color) {
@@ -333,7 +324,9 @@ class ClassSpot {
                         }
                 }
             }
+        if (debugMode) {
             console.log("Player can't move");
+        }
         return true;
     }
 
@@ -371,8 +364,9 @@ class ClassSpot {
                     this.draw_computer_moving(X_from, Y_from, best); // Computer moves.
                 }, 1000);
         }
-
-        console.log("exit from computer_move()");
+        if (debugMode) {
+            console.log("exit from computer_move()");
+        }
     }
 
     draw_computer_moving(x, y, best) {
@@ -416,7 +410,9 @@ class ClassSpot {
                     this.setWaitFlag(false); //Cancel blocking player actions
                     this.moves++;
                     setTimeout(() => {
-                        console.log("Loop for case when player can't move and computer can");
+                        if (debugMode) {
+                            console.log("Loop for case when player can't move and computer can");
+                        }
                         if (!this.level_is_completed && this.player_cant_move()) this.computer_move();
                     },0); // Loop for case when player can't move and computer can
 

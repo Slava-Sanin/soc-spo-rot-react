@@ -1,8 +1,11 @@
 import React from 'react';
 import '../../CSS/sokoban.css';
+import {debugMode} from "../../code/globals";
 
 const Sokoban = (props) => {
-    console.log("Redrawing Component Sokoban");
+    if (debugMode) {
+        console.log("Redrawing Component Sokoban");
+    }
 
     return (
         <>

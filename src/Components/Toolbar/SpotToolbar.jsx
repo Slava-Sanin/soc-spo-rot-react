@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import '../../CSS/spot_toolbar.css';
-import {PlayerDlg, ComputerDlg} from "../../code/globals";
+import {PlayerDlg, ComputerDlg, debugMode} from "../../code/globals";
 import SpotsImages from "../../assets/images/Spot/spots.png";
 
 const SpotToolbar = ({state, setState, handleSpotDialogTrigger}) => {
-	console.log("Redrawing SpotToolbar");
+	if (debugMode) {
+		console.log("Redrawing SpotToolbar");
+	}
 
 	return (
 		<div className="Spot_toolbar" style={{display: (state.selectedTab === 1) ? "block" : "none"}}>

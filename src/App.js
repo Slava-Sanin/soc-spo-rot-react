@@ -32,7 +32,8 @@ import {
     glob_sound,
     PlayerDlg,
     ComputerDlg,
-    toolbarMode
+    toolbarMode,
+    debugMode
 } from "./code/globals";
 
 import {
@@ -45,8 +46,10 @@ const
     p2 = new ClassSpot(),
     p3 = new ClassRotms();
 
+if (debugMode) {
+    console.log('_localStorage from localStorage:', _localStorage);
+}
 
-console.log('_localStorage from localStorage:', _localStorage);
 if (_localStorage) {
     for(let prop in _localStorage.p1) p1[prop] = _localStorage.p1[prop];
     for(let prop in _localStorage.p2) p2[prop] = _localStorage.p2[prop];
@@ -59,8 +62,10 @@ if (_localStorage) {
 
 
 const App = () => {
-    console.log('------------------------')
-    console.log("Redrawing App");
+    if (debugMode) {
+        console.log('------------------------')
+        console.log("Redrawing App");
+    }
 
     const refApp = useRef(null);
     const [state, setState] = useState(_localStorage ? {..._localStorage.state,p1,p2,p3} : {
@@ -113,20 +118,17 @@ const App = () => {
                 Backgrounds.list = data.split("\r\n");
                 //console.log(Backgrounds.list);
                 document.body.style.background = `url('${host}${Backgrounds.backgroundsPath}${Backgrounds.list[Math.floor(Math.random()*10) % (Backgrounds.list.length-1)]} ') center center / contain no-repeat fixed`;
-                /*document.body.style.background = `url('${host}${Backgrounds.backgroundsPath}${Backgrounds.list[Math.floor(Math.random()*10) % (Backgrounds.list.length-1)]} ') no-repeat`;
-                document.body.style.backgroundSize = "contain";
-                document.body.style.backgroundPosition = "center";
-                document.body.style.backgroundAttachment = "fixed";*/
             })
             .catch(error => {
                 // Handle any errors
                 console.error(error);
         });
 
-        //TODO: To uncomment later
-        /*document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });*/
+        if (!debugMode) {
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+            });
+        }
 
         document.addEventListener('keydown', handleKeyDown);
 
@@ -179,7 +181,9 @@ const App = () => {
         let offsetY = elementRect.top - parentRect.top;
 
         if (selectedTab === 1) {
-            console.log('Clicked mouse in Spot');
+            if (debugMode) {
+                console.log('Clicked mouse in Spot');
+            }
             let x = parseInt((offsetY-42) / SpotBlockWidth);
             let y = parseInt((offsetX-3) / SpotBlockHeight);
             p2.player_move(x, y);
@@ -187,7 +191,9 @@ const App = () => {
         }
 
         if (selectedTab === 2) {
-            console.log('Clicked mouse in Rotms');
+            if (debugMode) {
+                console.log('Clicked mouse in Rotms');
+            }
             let x = parseInt(offsetY / RotmsBlockWidth);
             let y = parseInt(offsetX / RotmsBlockHeight);
             p3.pushbutton(x, y);

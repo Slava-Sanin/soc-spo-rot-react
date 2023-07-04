@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import '../../CSS/spot_toolbar.css';
 import men from '../../assets/images/men.png';
 import computer from '../../assets/images/computer.jpg';
-import {PlayerDlg, ComputerDlg} from "../../code/globals";
+import {PlayerDlg, ComputerDlg, debugMode} from "../../code/globals";
 import { StyledEngineProvider } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 
@@ -11,9 +11,11 @@ const SpotColorDialog = ({handleSpotDialogTrigger, state, setState}) => {
 	const [spotRandomLevel, setSpotRandomLevel] = useState(state.p2.spotRandomLevel);
 
 	useEffect(() => {
-			console.log("Redrawing Spot's options")
-			console.log("PlayerDlg:",PlayerDlg)
-			console.log("ComputerDlg:",ComputerDlg)
+			if (debugMode) {
+				console.log("Redrawing Spot's options")
+				console.log("PlayerDlg:",PlayerDlg)
+				console.log("ComputerDlg:",ComputerDlg)
+			}
 		});
 
 	const handleFirstOrSecond = () => {
@@ -48,7 +50,9 @@ const SpotColorDialog = ({handleSpotDialogTrigger, state, setState}) => {
 	const handleSpotRandomLevelMode = () => {
 		setSpotRandomLevel(!spotRandomLevel);
 		state.p2.spotRandomLevel = !state.p2.spotRandomLevel;
-		console.log('spotRamdomLevel: ', state.p2.spotRandomLevel);
+		if (debugMode) {
+			console.log('spotRamdomLevel: ', state.p2.spotRandomLevel);
+		}
 	}
 
 	return (

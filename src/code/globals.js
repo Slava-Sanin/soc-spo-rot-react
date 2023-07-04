@@ -1,4 +1,5 @@
 export const
+    debugMode = false,
     host = "http://localhost:3000",
     CurPath= window.location.pathname,
     soundPath = "/static/sound/",
@@ -24,7 +25,7 @@ export const
         spot: 1,
         rotms: 20
     },
-    glob_sound= false,
+    glob_sound= true,
     table= 1,
     PlayerDlg = {
         color: 2,

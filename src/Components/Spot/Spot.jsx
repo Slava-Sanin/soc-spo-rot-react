@@ -1,9 +1,11 @@
 import React from 'react';
 import '../../CSS/spot.css';
-import {ComputerDlg, PlayerDlg} from "../../code/globals";
+import {debugMode, ComputerDlg, PlayerDlg} from "../../code/globals";
 
 const Spot = ({level, handleClick}) => {
-    console.log("Redrawing Component Spot");
+    if (debugMode) {
+        console.log("Redrawing Component Spot");
+    }
 
     return (
         <>

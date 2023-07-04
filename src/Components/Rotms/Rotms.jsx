@@ -1,8 +1,11 @@
 import React from 'react';
 import '../../CSS/rotms.css';
+import {debugMode} from "../../code/globals";
 
 const Rotms = ({level, handleClick}) => {
-    console.log("Redrawing Component Rotms");
+    if (debugMode) {
+        console.log("Redrawing Component Rotms");
+    }
 
     return (
         <>
