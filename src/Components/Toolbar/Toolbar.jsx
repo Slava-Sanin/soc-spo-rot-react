@@ -3,6 +3,7 @@ import '../../CSS/toolbar.css';
 import SpotToolbar from './SpotToolbar';
 import VirtualButtons from './VirtualButtons';
 import {ComputerDlg, PlayerDlg, spotRandomLevel} from "../../code/globals";
+import {extractVariables} from "../../code/functions";
 
 const Toolbar = ({
                   state, setState,
@@ -98,9 +99,9 @@ const Toolbar = ({
 
     const handleSave = () => {
         let data = {
-            p1: {...state.p1},
-            p2: {...state.p2},
-            p3: {...state.p3},
+            p1: {...extractVariables(state.p1)},
+            p2: {...extractVariables(state.p2)},
+            p3: {...extractVariables(state.p3)},
             state: {
                 ...state,
                 p1: null,

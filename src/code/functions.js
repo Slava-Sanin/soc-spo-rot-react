@@ -28,6 +28,19 @@ const fetchTXTFile = async (path) => {
     });
 }
 
+function extractVariables(obj) {
+    let variablesObj = {};
+
+    for (let prop in obj) {
+        if (obj.hasOwnProperty(prop) && typeof obj[prop] !== 'function') {
+            if (prop === 'refState') continue;
+            variablesObj[prop] = obj[prop];
+        }
+    }
+
+    return variablesObj;
+}
+
 function InitStatus(props)
 {
     let str2;
@@ -170,6 +183,7 @@ function GetColor(color)
 
 export {
     fetchTXTFile,
+    extractVariables,
     InitStatus,   
     PlayMySound,
     Sleep,
