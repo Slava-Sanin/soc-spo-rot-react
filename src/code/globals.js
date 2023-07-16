@@ -1,7 +1,7 @@
 export const
     debugMode = true,
-    //host = "http://localhost:3000",
-    host = "https://sok-spo-rot.000webhostapp.com",
+    host = "http://localhost:3000",
+    //host = "https://sok-spo-rot.000webhostapp.com",
     CurPath= window.location.pathname,
     soundPath = "/static/sound/",
     Backgrounds= {

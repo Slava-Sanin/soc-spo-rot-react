@@ -7,6 +7,7 @@ import './CSS/spot_toolbar.css';
 import './CSS/tabs.css';
 import './CSS/scroll.css';
 import './CSS/status.css';
+import './CSS/mobile.css';
 
 import logo from './assets/images/logo64.png';
 import Toolbar from './Components/Toolbar/Toolbar';
