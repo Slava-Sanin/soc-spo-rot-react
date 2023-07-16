@@ -183,7 +183,7 @@ const Toolbar = ({
             </button>
 
             <SpotToolbar state={state} setState={setState} handleSpotDialogTrigger={handleSpotDialogTrigger} />
-            <VirtualButtons state={state} setState={setState} />
+            <VirtualButtons state={state} setSokobanLevelData={setSokobanLevelData} />
         </div>
     );
 }
