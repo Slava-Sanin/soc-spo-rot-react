@@ -94,7 +94,7 @@ function InitStatus(props)
                 <div id="status_spot">
 
                     <div className="time">
-                        <div>Time of game</div>
+                        <div>Time of the game</div>
                         <span style={strStyle}>{parseInt(sec/3600)}</span><span style={{fontWeight: "lighter"}}> Hours </span>
                         <span style={strStyle}>{parseInt(sec/60%60)}</span><span style={{fontWeight: "lighter"}}> Minutes </span>
                         <span style={strStyle}>{(s<10)?'0'+s:s}</span><span style={{fontWeight: "lighter"}}> Seconds</span>
@@ -123,7 +123,7 @@ function InitStatus(props)
                 <div id="status_rotms">
 
                     <div className="time">
-                        <div>Time of game</div>
+                        <div>Time of the game</div>
                         <span style={strStyle}>{parseInt(sec/3600)}</span><span style={{fontWeight: "lighter"}}> Hours </span>
                         <span style={strStyle}>{parseInt(sec/60%60)}</span><span style={{fontWeight: "lighter"}}> Minutes </span>
                         <span style={strStyle}>{(s<10)?'0'+s:s}</span><span style={{fontWeight: "lighter"}}> Seconds</span>
