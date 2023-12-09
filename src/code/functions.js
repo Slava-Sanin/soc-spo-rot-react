@@ -48,8 +48,6 @@ function extractVariables(obj, exclude) {
 
 function InitStatus(props)
 {
-    let str2;
-    let str3;
     let sec,s;
     let gamecode = props.selectedTab + 1;
     const strStyle = {font: "caption", fontSize: 20, fontWeight: "bold"};
@@ -70,12 +68,12 @@ function InitStatus(props)
                         <span style={strStyle}>{(s<10)?'0'+s:s}</span><span style={{fontWeight: "lighter"}}> Seconds</span>
                     </div>
 
-                    <div className="level"> {str2}
+                    <div className="level">
                         <div>Level</div>
                         <span style={strStyle}>{props.p1.level}</span>
                     </div>
 
-                    <div className="moves"> {str3}
+                    <div className="moves">
                         <div>Moves</div>
                         <span style={strStyle}>{props.p1.moves}</span>
                     </div>
